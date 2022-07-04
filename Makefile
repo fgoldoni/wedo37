@@ -29,24 +29,6 @@ phpcs: ## PRS2 Validation
 
 php-cs: ## PRS2 Validation
 	../tools/php-cs-fixer/vendor/bin/php-cs-fixer fix app --diff
-	../tools/php-cs-fixer/vendor/bin/php-cs-fixer fix Modules/Users/Database --diff
-	../tools/php-cs-fixer/vendor/bin/php-cs-fixer fix Modules/Users/Entities --diff
-	../tools/php-cs-fixer/vendor/bin/php-cs-fixer fix Modules/Users/Http --diff
-	../tools/php-cs-fixer/vendor/bin/php-cs-fixer fix Modules/Users/Providers --diff
-	../tools/php-cs-fixer/vendor/bin/php-cs-fixer fix Modules/Users/Notifications --diff
-	../tools/php-cs-fixer/vendor/bin/php-cs-fixer fix Modules/Users/Listeners --diff
-	../tools/php-cs-fixer/vendor/bin/php-cs-fixer fix Modules/Users/Observers --diff
-	../tools/php-cs-fixer/vendor/bin/php-cs-fixer fix Modules/Users/Policies --diff
-	../tools/php-cs-fixer/vendor/bin/php-cs-fixer fix Modules/Users/Notifications --diff
-
-	../tools/php-cs-fixer/vendor/bin/php-cs-fixer fix Modules/Roles/Database --diff
-	../tools/php-cs-fixer/vendor/bin/php-cs-fixer fix Modules/Roles/Entities --diff
-	../tools/php-cs-fixer/vendor/bin/php-cs-fixer fix Modules/Roles/Http --diff
-	../tools/php-cs-fixer/vendor/bin/php-cs-fixer fix Modules/Roles/Providers --diff
-	../tools/php-cs-fixer/vendor/bin/php-cs-fixer fix Modules/Roles/Notifications --diff
-	../tools/php-cs-fixer/vendor/bin/php-cs-fixer fix Modules/Roles/Listeners --diff
-	../tools/php-cs-fixer/vendor/bin/php-cs-fixer fix Modules/Roles/Observers --diff
-	../tools/php-cs-fixer/vendor/bin/php-cs-fixer fix Modules/Roles/Policies --diff
 
 php-cs-2: ## PRS2 Validation
 	../tools/php-cs-fixer/vendor/bin/php-cs-fixer fix Modules/Countries/Database --diff
