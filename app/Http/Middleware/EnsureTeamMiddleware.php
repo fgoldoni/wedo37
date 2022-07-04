@@ -12,15 +12,18 @@ class EnsureTeamMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
+        Cache::flush();
         try {
             if ($subDomain = self::getSubDomain()) {
                 $team = Cache::rememberForever(static::getCacheKey($subDomain), function () use ($subDomain) {
                     $response = Http::acceptJson()->get(env('API_URL') . "/api/teams/{$subDomain}");
 
-                    return $response->ok() ? $response->object() : throw new Exception('Team not found for ' . $subDomain, 500);
+                    return $response->ok() ? $response->object()->data : throw new Exception('Team not found for ' . $subDomain, 500);
                 });
 
-                session()->put('team-id', $team->data->id);
+                session()->put('team-id', $team->id);
+            } else {
+                throw new Exception('Invalid subdomain', 500);
             }
         } catch (Exception $e) {
             return response()->json([$e->getMessage()], 500);
@@ -39,5 +42,10 @@ class EnsureTeamMiddleware
         preg_match('/(?:http[s]*\:\/\/)*(.*?)\.(?=[^\/]*\..{2,5})/i', url('/'), $match);
 
         return $match[1] ?? null;
+    }
+
+    public static function companyFromCache()
+    {
+        return Cache::get(self::getCacheKey(self::getSubDomain()));
     }
 }
