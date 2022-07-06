@@ -35,7 +35,7 @@
                     </li>
                     <li class="mx-auto">
                         <a href="#_" class="w-1/4 py-4 pl-6 pr-4 md:pl-4 md:py-0">
-                            <img class="h-12 w-12" src="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->avatar }}" alt="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->name }}">
+                            <img class="w-32 h-auto" src="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->avatar }}" alt="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->name }}">
                         </a>
                     </li>
                     <li class="mx-2 lg:mx-3">
@@ -70,7 +70,7 @@
             <nav class="fixed top-0 z-30 flex flex-col flex-wrap items-center justify-between w-full h-auto px-6 md:hidden">
                 <div class="relative z-30 flex items-center justify-between w-full h-20">
                     <a href="#_" class="flex items-center flex-shrink-0 mr-6 text-white">
-                        <img class="h-12 w-auto" src="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->avatar }}" alt="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->name }}">
+                        <img class="w-24 h-auto" src="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->avatar }}" alt="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->name }}">
                     </a>
                     <div class="block lg:hidden">
                         <button @click="showMenu = !showMenu" class="flex items-center justify-center w-10 h-10 text-gray-200 rounded-full hover:text-white hover:bg-white hover:bg-opacity-25 focus:outline-none">
