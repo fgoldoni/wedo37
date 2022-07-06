@@ -1,19 +1,20 @@
 <x-guest-layout>
 
-    <!-- Section 1 -->
-    <section class="relative w-full bg-top bg-cover md:bg-center" x-data="{ showMenu: false }" style="background-image:url({{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->image }})" data-tails-scripts="//unpkg.com/alpinejs">
 
-        <div class="absolute inset-0 z-0 h-full bg-gradient-to-r from-cyan-500 to-blue-500 opacity-25"></div>
+    <!-- Section 1 -->
+    <section class="relative w-full h-auto bg-gradient-to-bl from-slate-900" x-data="{ showMenu: false }" data-tails-scripts="//unpkg.com/alpinejs">
+
+        <img class="absolute w-full h-full object-cover mix-blend-overlay bg-center" src="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->image }}" alt="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->name }}">
 
         <!-- Desktop menu -->
         <div class="flex items-center w-full h-20">
-            <nav class="hidden w-full md:block" x-show="!showMenu" x-cloak="">
+            <nav class="hidden w-full md:block" x-show="!showMenu">
                 <ul class="relative z-10 flex items-center px-6 text-sm text-white lg:text-base">
                     <li class="mx-2 lg:mx-3">
                         <a href="#_" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false" class="relative inline-block font-medium text-gray-200 hover:text-white">
                             <span class="block">First Link</span>
                             <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
-                            <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-pink-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"></span>
+                            <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-pink-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" style="display: none;"></span>
                         </span>
                         </a>
                     </li>
@@ -21,7 +22,7 @@
                         <a href="#_" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false" class="relative inline-block font-medium text-gray-200 hover:text-white">
                             <span class="block">Second Link</span>
                             <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
-                            <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-pink-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"></span>
+                            <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-pink-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" style="display: none;"></span>
                         </span>
                         </a>
                     </li>
@@ -29,7 +30,7 @@
                         <a href="#_" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false" class="relative inline-block font-medium text-gray-200 hover:text-white">
                             <span class="block">Third Link</span>
                             <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
-                            <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-pink-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"></span>
+                            <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-pink-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" style="display: none;"></span>
                         </span>
                         </a>
                     </li>
@@ -42,7 +43,7 @@
                         <a href="#_" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false" class="relative inline-block font-medium text-gray-200 hover:text-white">
                             <span class="block">Fourth Link</span>
                             <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
-                            <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-pink-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"></span>
+                            <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-pink-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" style="display: none;"></span>
                         </span>
                         </a>
                     </li>
@@ -50,7 +51,7 @@
                         <a href="#_" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false" class="relative inline-block font-medium text-gray-200 hover:text-white">
                             <span class="block">Fifth Link</span>
                             <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
-                            <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-pink-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"></span>
+                            <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-pink-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" style="display: none;"></span>
                         </span>
                         </a>
                     </li>
@@ -58,7 +59,7 @@
                         <a href="#_" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false" class="relative inline-block font-medium text-gray-200 hover:text-white">
                             <span class="block">Sixth Link</span>
                             <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
-                            <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-pink-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"></span>
+                            <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-pink-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" style="display: none;"></span>
                         </span>
                         </a>
                     </li>
@@ -86,25 +87,29 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div x-show.transition="showMenu" class="absolute top-0 z-20 flex flex-col items-center justify-center w-full h-full space-y-5 text-lg origin-center bg-pink-500" x-cloak="">
+        <div x-show.transition="showMenu" class="absolute top-0 z-20 flex flex-col items-center justify-center w-full h-full space-y-5 text-lg origin-center bg-pink-500" style="display: none;">
             <a href="#_" class="block text-pink-200 hover:text-white">First Link</a>
             <a href="#_" class="block text-pink-200 hover:text-white">Second Link</a>
             <a href="#_" class="block text-pink-200 hover:text-white">Third Link</a>
         </div>
         <!-- End Mobile Menu -->
 
-        <div class="container flex items-center justify-center h-auto py-32 mx-auto">
+        <div class="container flex items-center justify-center h-auto py-56 mx-auto">
 
-            <div class="z-10 flex flex-col items-center px-8 xl:px-0">
-                <h1 class="mx-6 mt-1 text-2xl sm:text-4xl font-black text-center text-white  sm:text-center sm:mx-0">Welcome to
-                    <br/><br/><span class="block text-4xl sm:text-6xl">{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->display_name }} Job Portal!</span></h1>
+            <div class="z-10 flex flex-col items-center xl:px-0 space-y-20">
+                <h1 class="mx-6 mt-1 text-2xl font-black text-center text-white sm:text-center sm:mx-0">{{ __('Welcome to') }}
+                    <br/><br/> <span class="text-5xl sm:text-6xl">{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->display_name }} Portal!</span>
+                </h1>
                 <div class="flex justify-center md:mt-10">
-                    <a href="#" class="px-8 py-2 m-2 mt-10 text-4xl text-center font-bold text-white bg-pink-500 border-2 border-pink-500 rounded-full hover:bg-transparent">Browse Jobs</a>
+                    <a href="#" class="px-8 py-2 m-2 text-center text-white bg-pink-500 border-2 border-pink-500 rounded-full hover:bg-transparent">Get Started</a>
+                    <a href="#" class="px-8 py-2 m-2 text-center text-white border-2 border-pink-500 rounded-full hover:bg-pink-500">Learn More</a>
                 </div>
             </div>
 
         </div>
     </section>
+
+
 
     <!-- Section 2 -->
     <section class="relative px-10 py-16 overflow-hidden bg-gray-100">
