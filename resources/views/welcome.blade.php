@@ -1,9 +1,9 @@
 <x-guest-layout>
 
     <!-- Section 1 -->
-    <section class="relative w-full h-auto bg-no-repeat bg-cover" x-data="{ showMenu: false }" style="background-image: url({{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->image }});" data-tails-scripts="//unpkg.com/alpinejs">
+    <section class="relative w-full bg-top bg-cover md:bg-center" x-data="{ showMenu: false }" style="background-image:url({{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->image }})" data-tails-scripts="//unpkg.com/alpinejs">
 
-        <div class="absolute inset-0 z-0 h-full bg-purple-700 opacity-25"></div>
+        <div class="absolute inset-0 z-0 h-full bg-gradient-to-r from-cyan-500 to-blue-500 opacity-25"></div>
 
         <!-- Desktop menu -->
         <div class="flex items-center w-full h-20">
@@ -35,7 +35,7 @@
                     </li>
                     <li class="mx-auto">
                         <a href="#_" class="w-1/4 py-4 pl-6 pr-4 md:pl-4 md:py-0">
-                            <span class="text-3xl font-black leading-none text-white select-none logo">tails<span class="text-pink-500">.</span></span>
+                            <img class="h-12 w-auto" src="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->avatar }}" alt="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->name }}">
                         </a>
                     </li>
                     <li class="mx-2 lg:mx-3">
@@ -70,7 +70,7 @@
             <nav class="fixed top-0 z-30 flex flex-col flex-wrap items-center justify-between w-full h-auto px-6 md:hidden">
                 <div class="relative z-30 flex items-center justify-between w-full h-20">
                     <a href="#_" class="flex items-center flex-shrink-0 mr-6 text-white">
-                        <span class="text-3xl font-black leading-none text-white select-none logo">tails<span class="text-pink-500">.</span></span>
+                        <img class="h-12 w-auto" src="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->avatar }}" alt="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->name }}">
                     </a>
                     <div class="block lg:hidden">
                         <button @click="showMenu = !showMenu" class="flex items-center justify-center w-10 h-10 text-gray-200 rounded-full hover:text-white hover:bg-white hover:bg-opacity-25 focus:outline-none">
