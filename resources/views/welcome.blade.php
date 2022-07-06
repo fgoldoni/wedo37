@@ -4,7 +4,7 @@
     <!-- Section 1 -->
     <section class="relative w-full h-auto bg-gradient-to-bl from-slate-900" x-data="{ showMenu: false }" data-tails-scripts="//unpkg.com/alpinejs">
 
-        <img class="absolute w-full h-full object-cover mix-blend-overlay bg-center" src="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->image }}" alt="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->name }}">
+        <img class="absolute w-full h-full object-cover mix-blend-overlay bg-center" src="{{ app_team()->image }}" alt="{{ app_team()->name }}">
 
         <!-- Desktop menu -->
         <div class="flex items-center w-full h-20">
@@ -36,7 +36,7 @@
                     </li>
                     <li class="mx-auto">
                         <a href="#_" class="w-1/4 py-4 pl-6 pr-4 md:pl-4 md:py-0">
-                            <img class="h-12 w-auto" src="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->avatar }}" alt="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->name }}">
+                            <img class="h-12 w-auto" src="{{ app_team()->avatar }}" alt="{{ app_team()->name }}">
                         </a>
                     </li>
                     <li class="mx-2 lg:mx-3">
@@ -71,7 +71,7 @@
             <nav class="fixed top-0 z-30 flex flex-col flex-wrap items-center justify-between w-full h-auto px-6 md:hidden">
                 <div class="relative z-30 flex items-center justify-between w-full h-20">
                     <a href="#_" class="flex items-center flex-shrink-0 mr-6 text-white">
-                        <img class="h-12 w-auto" src="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->avatar }}" alt="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->name }}">
+                        <img class="h-12 w-auto" src="{{ app_team()->avatar }}" alt="{{ app_team()->name }}">
                     </a>
                     <div class="block lg:hidden">
                         <button @click="showMenu = !showMenu" class="flex items-center justify-center w-10 h-10 text-gray-200 rounded-full hover:text-white hover:bg-white hover:bg-opacity-25 focus:outline-none">
@@ -98,7 +98,7 @@
 
             <div class="z-10 flex flex-col items-center xl:px-0 space-y-20">
                 <h1 class="mx-6 mt-1 text-2xl font-black text-center text-white sm:text-center sm:mx-0">{{ __('Welcome to') }}
-                    <br/><br/> <span class="text-5xl sm:text-6xl">{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->display_name }} Portal!</span>
+                    <br/><br/> <span class="text-5xl sm:text-6xl">{{ app_team()->display_name }} Portal!</span>
                 </h1>
                 <div class="flex justify-center md:mt-10">
                     <a href="#" class="px-8 py-2 m-2 text-center text-white bg-pink-500 border-2 border-pink-500 rounded-full hover:bg-transparent">Get Started</a>

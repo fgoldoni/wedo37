@@ -12,7 +12,6 @@ class EnsureTeamMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        Cache::flush();
         try {
             if ($subDomain = self::getSubDomain()) {
                 $team = Cache::rememberForever(static::getCacheKey($subDomain), function () use ($subDomain) {
