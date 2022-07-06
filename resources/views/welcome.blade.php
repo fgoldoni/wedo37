@@ -35,7 +35,7 @@
                     </li>
                     <li class="mx-auto">
                         <a href="#_" class="w-1/4 py-4 pl-6 pr-4 md:pl-4 md:py-0">
-                            <img class="h-12 w-auto" src="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->avatar }}" alt="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->name }}">
+                            <img class="h-12 w-12" src="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->avatar }}" alt="{{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->name }}">
                         </a>
                     </li>
                     <li class="mx-2 lg:mx-3">
