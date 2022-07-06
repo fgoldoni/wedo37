@@ -1,7 +1,7 @@
 <x-guest-layout>
 
     <!-- Section 1 -->
-    <section class="relative w-full h-auto bg-no-repeat bg-cover" x-data="{ showMenu: false }" style="background-image: url(https://images.unsplash.com/photo-1533693706533-57740e69765d?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2700&amp;q=80);" data-tails-scripts="//unpkg.com/alpinejs">
+    <section class="relative w-full h-auto bg-no-repeat bg-cover" x-data="{ showMenu: false }" style="background-image: url({{ \App\Http\Middleware\EnsureTeamMiddleware::companyFromCache()->image }});" data-tails-scripts="//unpkg.com/alpinejs">
 
         <div class="absolute inset-0 z-0 h-full bg-purple-700 opacity-25"></div>
 
