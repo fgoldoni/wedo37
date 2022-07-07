@@ -11,8 +11,8 @@
             <nav class="hidden w-full md:block" x-show="!showMenu">
                 <ul class="relative z-10 flex items-center px-6 text-sm text-white lg:text-base">
                     <li class="mx-2 lg:mx-3">
-                        <a href="#_" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false" class="relative inline-block font-medium text-gray-200 hover:text-white">
-                            <span class="block">First Link</span>
+                        <a href="{{ route('login') }}" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false" class="relative inline-block font-medium text-gray-200 hover:text-white">
+                            <span class="block">Login</span>
                             <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
                             <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-pink-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" style="display: none;"></span>
                         </span>
@@ -57,7 +57,7 @@
                     </li>
                     <li class="mx-2 lg:mx-3">
                         <a href="#_" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false" class="relative inline-block font-medium text-gray-200 hover:text-white">
-                            <span class="block">Sixth Link</span>
+                            <span class="block">{{ auth()->user()?->name }}</span>
                             <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
                             <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-pink-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" style="display: none;"></span>
                         </span>

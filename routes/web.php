@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Wedo\LoginController;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,9 @@ Route::get('/cache/clear', function () {
 })->name('cache.clear');
 
 require __DIR__.'/auth.php';
+
+Route::group(['middleware' => ['web'], 'namespace' => 'Wedo'], function () {
+    Route::post('login/link', [LoginController::class, 'loginLink'])->name('login.link');
+    Route::get('token/{token}', [LoginController::class, 'loginWithToken'])->name('login.token');
+});
+
