@@ -10,14 +10,39 @@
         <div class="flex items-center w-full h-20">
             <nav class="hidden w-full md:block" x-show="!showMenu">
                 <ul class="relative z-10 flex items-center px-6 text-sm text-white lg:text-base">
-                    <li class="mx-2 lg:mx-3">
-                        <a href="{{ route('login') }}" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false" class="relative inline-block font-medium text-gray-200 hover:text-white">
-                            <span class="block">Login</span>
-                            <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
-                            <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-pink-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" style="display: none;"></span>
-                        </span>
-                        </a>
-                    </li>
+                    @auth
+                        <!-- Authentication -->
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <li class="mx-2 lg:mx-3">
+                                <a href="{{ route('logout') }}"
+                                   x-data="{ hover: false }"
+                                   @mouseenter="hover = true"
+                                   @mouseleave="hover = false"
+                                   class="relative inline-block font-medium text-gray-200 hover:text-white"
+                                   onclick="event.preventDefault(); this.closest('form').submit();"
+                                >
+                                    <span class="block">
+                                        <x-heroicon-o-logout class="w-6 h-6"/>
+                                    </span>
+                                    <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
+                                    <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-pink-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" style="display: none;"></span>
+                                </span>
+                                </a>
+                            </li>
+                        </form>
+                    @else
+                        <li class="mx-2 lg:mx-3">
+                            <a href="{{ route('login') }}" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false" class="relative inline-block font-medium text-gray-200 hover:text-white">
+                                <span class="block">Login</span>
+                                    <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
+                                    <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-pink-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" style="display: none;"></span>
+                                </span>
+                            </a>
+                        </li>
+                    @endauth
+
                     <li class="mx-2 lg:mx-3">
                         <a href="#_" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false" class="relative inline-block font-medium text-gray-200 hover:text-white">
                             <span class="block">Second Link</span>
@@ -26,25 +51,9 @@
                         </span>
                         </a>
                     </li>
-                    <li class="mx-2 lg:mx-3">
-                        <a href="#_" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false" class="relative inline-block font-medium text-gray-200 hover:text-white">
-                            <span class="block">Third Link</span>
-                            <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
-                            <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-pink-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" style="display: none;"></span>
-                        </span>
-                        </a>
-                    </li>
                     <li class="mx-auto">
                         <a href="#_" class="w-1/4 py-4 pl-6 pr-4 md:pl-4 md:py-0">
                             <img class="h-12 w-auto" src="{{ app_team()->avatar }}" alt="{{ app_team()->name }}">
-                        </a>
-                    </li>
-                    <li class="mx-2 lg:mx-3">
-                        <a href="#_" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false" class="relative inline-block font-medium text-gray-200 hover:text-white">
-                            <span class="block">Fourth Link</span>
-                            <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
-                            <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-pink-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" style="display: none;"></span>
-                        </span>
                         </a>
                     </li>
                     <li class="mx-2 lg:mx-3">
