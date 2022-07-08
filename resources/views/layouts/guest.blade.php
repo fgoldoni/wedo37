@@ -15,7 +15,7 @@
         <!-- Scripts -->
         @livewireStyles
 
-        @wireUiScripts
+        <wireui:scripts />
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>

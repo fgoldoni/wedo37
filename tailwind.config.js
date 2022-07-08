@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -22,9 +23,37 @@ module.exports = {
     ],
     theme: {
         extend: {
-            fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+            colors: {
+                primary: colors.pink,
+                secondary: colors.slate,
+                gray: colors.slate,
+                orange: colors.orange,
+                positive: colors.emerald,
+                warning: colors.amber,
+                negative: colors.red,
+                info: colors.sky,
             },
+            inset: {
+                '-0.5': '-0.125rem',
+            },
+            spacing: {
+                44: '11rem',
+                18: '4.5rem',
+                95: '23.75rem',
+                125: '31.25rem',
+                140: '35rem'
+            },
+            opacity: {
+                15: '.15',
+                30: '0.3',
+                40: '0.4',
+            },
+            minHeight: {
+                '(screen-content)': 'calc(100vh - 9.625rem)',
+            },
+            fontFamily: {
+                sans: ['Inter var', ...defaultTheme.fontFamily.sans]
+            }
         },
     },
 
