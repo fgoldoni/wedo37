@@ -8,13 +8,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
-
 class WedoAuthService
 {
     public static function retrieveUser(string $token): WedoUser
     {
         return Cache::rememberForever(static::getCacheKey($token), function () use ($token) {
-
             $response = Http::withToken($token)->get(env('API_URL') . "/api/user");
 
             $user = $response->json();
@@ -54,9 +52,9 @@ class WedoAuthService
 
     protected static function bind(WedoUser $user): void
     {
-        app()->bind('user', static fn(): WedoUser => $user);
+        app()->bind('user', static fn (): WedoUser => $user);
 
-        app()->bind('token', static fn(): string => session('token'));
+        app()->bind('token', static fn (): string => session('token'));
     }
 
     protected static function login(WedoUser $user): void

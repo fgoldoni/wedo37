@@ -25,6 +25,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Auth::provider('wedo', static fn(): WedoUserProvider => new WedoUserProvider());
+        Auth::provider('wedo', static fn (): WedoUserProvider => new WedoUserProvider());
     }
 }

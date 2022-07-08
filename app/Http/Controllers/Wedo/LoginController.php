@@ -33,9 +33,7 @@ class LoginController extends Controller
             }
 
             throw new \Exception('Invalid Email');
-
         } catch (\Exception $e) {
-
             return redirect()->back()->withErrors(['message' => $e->getMessage()]);
         }
     }

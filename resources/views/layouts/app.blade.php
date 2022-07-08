@@ -10,7 +10,13 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
+        @stack('styles')
+
         <!-- Scripts -->
+        @livewireStyles
+
+        @wireUiScripts
+
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="h-full font-sans antialiased">
@@ -22,5 +28,10 @@
                 {{ $slot }}
             </main>
         </div>
+        @livewire('livewire-ui-modal')
+
+        @livewireScripts
+
+        @stack('scripts')
     </body>
 </html>
