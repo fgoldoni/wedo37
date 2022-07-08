@@ -28,11 +28,12 @@ class LoginController extends Controller
         try {
             $response = WedoAuthService::loginLink($request->email);
 
-            if ($response->ok()) {
-                return redirect()->back()->with(['success' => $response->object()->message]);
+            if ($response->successful()) {
+                return redirect()->back()->with(['status' => $response->object()->message]);
             }
 
-            return redirect()->back()->withErrors(['message' => 'Invalid Email']);
+            throw new \Exception('Invalid Email');
+
         } catch (\Exception $e) {
 
             return redirect()->back()->withErrors(['message' => $e->getMessage()]);
