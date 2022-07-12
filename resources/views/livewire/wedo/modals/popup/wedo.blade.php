@@ -43,8 +43,6 @@
 
 
 
-
-
     <!-- This example requires Tailwind CSS v2.0+ -->
     <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 p-4">
         <div class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
@@ -101,7 +99,7 @@
     </div>
 
 
-    <button type="submit" class="mt-8 w-full bg-primary-600 border border-transparent py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">Send</button>
+    <button wire:click="$emit('closeModal')" type="submit" class="mt-8 w-full bg-primary-600 border border-transparent py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">Send</button>
 
 
 
