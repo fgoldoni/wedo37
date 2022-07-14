@@ -29,7 +29,7 @@
 
         <div
             {{ $attributes->class([
-                'w-full rounded-none bg-white shadow-lg',
+                'w-full rounded-t-md sm:rounded-xl border border-secondary-200 bg-white shadow-lg',
                 'dark:bg-secondary-800 dark:border-secondary-600 transition-all relative overflow-hidden',
             ]) }}
             x-show="popover"

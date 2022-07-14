@@ -26,7 +26,7 @@
         </div>
     @endif
 
-    <div class="relative @unless($shadowless) shadow-xl @endunless">
+    <div class="relative rounded-md @unless($shadowless) shadow-sm @endunless">
         @if ($prefix || $icon)
             <div class="absolute inset-y-0 left-0 pl-2.5 flex items-center pointer-events-none
                 {{ $hasError ? 'text-negative-500' : 'text-secondary-400' }}">
@@ -48,7 +48,6 @@
 
         <textarea {{ $attributes->class([
             $getInputClasses($hasError),
-            'rounded-none'
         ])->merge([
             'autocomplete' => 'off',
             'rows'         => 4
