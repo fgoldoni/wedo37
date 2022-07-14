@@ -4,8 +4,8 @@
     <div class="container relative z-10 px-4 mx-auto">
         <div class="w-full mb-8 sm:w-1/2 md:w-3/4 sm:pr-4 md:pr-12 sm:-mb-32 md:-mb-24 lg:-mb-36 xl:-mb-28">
             <h2 class="tracking-widest text-{{ app_color() }}-500 uppercase">Features</h2>
-            <p class="my-3 text-5xl font-bold tracking-tighter text-{{ app_color() }}-900 lg:text-6xl">Integrated Editor</p>
-            <p class="max-w-sm text-lg text-gray-500">Check out our awesome features including a beautiful dashboard, member management, integrations center, and much more.</p>
+            <p class="my-3 text-5xl font-bold tracking-tighter text-{{ app_color() }}-900 lg:text-6xl">We Are Searching For You!</p>
+            <p class="max-w-sm text-lg text-gray-500">Make the difference with our expert assistants within 24 hours!</p>
         </div>
 
         <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">

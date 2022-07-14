@@ -102,7 +102,7 @@
     <div class="container flex items-center justify-center h-auto py-56 mx-auto">
 
         <div class="z-10 flex flex-col items-center xl:px-0 space-y-20">
-            <h1 class="mx-6 mt-1 text-2xl font-black text-center text-white sm:text-center sm:mx-0">{{ __('We are searching for you!') }}
+            <h1 class="mx-6 mt-1 text-2xl font-black text-center text-white sm:text-center sm:mx-0">{{ __('Welcome to') }}
                 <br/><br/> <span class="text-5xl sm:text-6xl">{{ app_team()->display_name }} Job Career Portal!</span>
             </h1>
             <div class="flex justify-center md:mt-10">

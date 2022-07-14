@@ -28,7 +28,7 @@
             <div class="col-span-2">
                 <div class="grid grid-cols-1 gap-4">
                     <div class="col-span-full text-center py-20 text-2xl">
-                        We are searching for you!
+                        Specify and our experts find for you!
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
 
     <div class="grid grid-cols-1 gap-4 p-4 bg-white">
         <p class="text-base text-gray-600 line-clamp-2 text-center">
-            The easiest application to get your new Jobs, Employment & Career Opportunities!
+            Your jobs, employment and career opportunities in 24 hours with Wedo's assistant experts are ready!
         </p>
     </div>
 
