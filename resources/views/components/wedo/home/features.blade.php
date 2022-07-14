@@ -3,8 +3,8 @@
     <img class="absolute left-0 z-0 object-cover object-center w-full h-full opacity-50 top-24" src="https://cdn.devdojo.com/tails/images/swirl-white.svg">
     <div class="container relative z-10 px-4 mx-auto">
         <div class="w-full mb-8 sm:w-1/2 md:w-3/4 sm:pr-4 md:pr-12 sm:-mb-32 md:-mb-24 lg:-mb-36 xl:-mb-28">
-            <h2 class="tracking-widest text-primary-500 uppercase">Features</h2>
-            <p class="my-3 text-5xl font-bold tracking-tighter text-primary-900 lg:text-6xl">Integrated Editor</p>
+            <h2 class="tracking-widest text-{{ app_color() }}-500 uppercase">Features</h2>
+            <p class="my-3 text-5xl font-bold tracking-tighter text-{{ app_color() }}-900 lg:text-6xl">Integrated Editor</p>
             <p class="max-w-sm text-lg text-gray-500">Check out our awesome features including a beautiful dashboard, member management, integrations center, and much more.</p>
         </div>
 
@@ -18,7 +18,7 @@
                             <img class="absolute inset-0 object-cover object-center w-full h-full transition duration-500 lg:opacity-80 group-hover:opacity-100 group-hover:scale-110" src="https://cdn.devdojo.com/images/september2021/beautiful-dashboard.jpeg" alt="">
                         </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
-                            <span class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-primary-500 rounded-md">{{ $area->jobs_count }} Position(s)</span>
+                            <span class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-{{ app_color() }}-500 rounded-md">{{ $area->jobs_count }} Position(s)</span>
                             <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">{{ $area->name }}</h4>
                         </div>
                     </a>
@@ -33,7 +33,7 @@
                                 <img class="absolute inset-0 object-cover object-center w-full h-full transition duration-500 lg:opacity-80 group-hover:opacity-100 group-hover:scale-110" src="https://cdn.devdojo.com/images/september2021/member-management.jpeg" alt="">
                             </div>
                             <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
-                                <span class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-primary-500 rounded-md">{{ $area->jobs_count }} Position(s)</span>
+                                <span class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-{{ app_color() }}-500 rounded-md">{{ $area->jobs_count }} Position(s)</span>
                                 <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">{{ $area->name }}</h4>
                             </div>
                         </a>
@@ -48,7 +48,7 @@
                                 <img class="absolute inset-0 object-cover object-center w-full h-full transition duration-500 lg:opacity-80 group-hover:opacity-100 group-hover:scale-110" src="https://cdn.devdojo.com/images/september2021/custom-navigation.jpeg" alt="">
                             </div>
                             <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
-                                <span class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-primary-500 rounded-md">{{ $area->jobs_count }} Position(s)</span>
+                                <span class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-{{ app_color() }}-500 rounded-md">{{ $area->jobs_count }} Position(s)</span>
                                 <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">{{ $area->name }}</h4>
                             </div>
                         </a>
@@ -64,7 +64,7 @@
                             <img class="absolute inset-0 object-cover object-center w-full h-full transition duration-500 lg:opacity-80 group-hover:opacity-100 group-hover:scale-110" src="https://cdn.devdojo.com/images/september2021/integration-center.jpeg" alt="">
                         </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
-                            <span class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-primary-500 rounded-md">{{ $area->jobs_count }} Position(s)</span>
+                            <span class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-{{ app_color() }}-500 rounded-md">{{ $area->jobs_count }} Position(s)</span>
                             <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">{{ $area->name }}</h4>
                         </div>
                     </a>
@@ -80,7 +80,7 @@
                             <img class="absolute inset-0 object-cover object-center w-full h-full transition duration-500 lg:opacity-80 group-hover:opacity-100 group-hover:scale-110" src="https://cdn.devdojo.com/images/september2021/design-handoff.jpeg" alt="">
                         </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
-                            <span class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-primary-500 rounded-md">{{ $area->jobs_count }} Position(s)</span>
+                            <span class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-{{ app_color() }}-500 rounded-md">{{ $area->jobs_count }} Position(s)</span>
                             <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">{{ $area->name }}</h4>
                         </div>
                     </a>
@@ -96,7 +96,7 @@
                             <img class="absolute inset-0 object-cover object-center w-full h-full transition duration-500 lg:opacity-80 group-hover:opacity-100 group-hover:scale-110" src="https://cdn.devdojo.com/images/september2021/3rd-party-modules.jpeg" alt="">
                         </div>
                         <div class="relative z-10 flex flex-col items-start justify-start w-full px-6 py-7">
-                            <span class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-primary-500 rounded-md">{{ $area->jobs_count }} Position(s)</span>
+                            <span class="px-2 py-1 mb-3 text-xs font-semibold tracking-tight text-white uppercase bg-{{ app_color() }}-500 rounded-md">{{ $area->jobs_count }} Position(s)</span>
                             <h4 class="text-4xl font-bold tracking-tight text-gray-100 sm:text-3xl md:text-2xl lg:text-3xl">{{ $area->name }}</h4>
                         </div>
                     </a>

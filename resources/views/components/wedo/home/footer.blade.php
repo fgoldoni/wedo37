@@ -1,7 +1,7 @@
 <footer class="text-center bg-white">
     <div class="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto space-y-6">
-            <p class="text-xs font-medium">© 2022 Tails</p>
+            <p class="text-xs font-medium">© 2022 Wedo</p>
             <div class="flex justify-center space-x-6">
                 <a href="#_" target="_blank" class="text-red-500">
                     <svg class="w-8 h-8 fill-current" viewBox="0 0 80 56" xmlns="http://www.w3.org/2000/svg"><path d="m41.771 55.637-16.395-.3c-5.308-.104-10.63.104-15.834-.978-7.916-1.618-8.477-9.548-9.064-16.2-.809-9.35-.496-18.872 1.03-28.145.862-5.204 4.252-8.309 9.495-8.647C28.703.141 46.52.287 64.18.86c1.865.052 3.743.339 5.582.665 9.078 1.591 9.299 10.578 9.888 18.143.586 7.642.339 15.325-.783 22.915-.9 6.285-2.622 11.556-9.888 12.065-9.104.665-18 1.2-27.129 1.03 0-.04-.052-.04-.078-.04Zm-9.638-15.912c6.86-3.94 13.59-7.813 20.411-11.725-6.873-3.94-13.59-7.813-20.411-11.726v23.451Z" fill-rule="nonzero"></path></svg>
@@ -24,7 +24,7 @@
             </div>
 
             <p class="max-w-lg mx-auto text-xs text-gray-500">
-                Tails is a product developed by the DevDojo. You are free to use the templates in your applications to improve your user experience.
+                Wedo is a product developed by Goldoni.
             </p>
         </div>
     </div>

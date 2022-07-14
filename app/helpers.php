@@ -13,3 +13,10 @@ if (! function_exists('app_areas')) {
         return array_values((array) app_team()->areas);
     }
 }
+
+if (! function_exists('app_color')) {
+    function app_color(): string
+    {
+        return app_team()->color;
+    }
+}

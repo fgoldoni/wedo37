@@ -1,5 +1,18 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
+const colorSaveList = [];
+const extendeColors = {};
+
+for (const key in colors) {
+    extendeColors[key] = colors[key];
+
+    [100, 200, 300, 400, 500, 600, 700, 800, 900].forEach(colorValue => {
+        colorSaveList.push(`text-${key}-${colorValue}`);
+        colorSaveList.push(`bg-${key}-${colorValue}`);
+        colorSaveList.push(`hover:bg-${key}-${colorValue}`);
+        colorSaveList.push(`border-${key}-${colorValue}`);
+    });
+}
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -20,6 +33,7 @@ module.exports = {
         'lg:max-w-2xl',
         'lg:max-w-3xl',
         'lg:max-w-4xl',
+        ...colorSaveList
     ],
     theme: {
         extend: {

@@ -99,7 +99,7 @@
     </div>
 
 
-    <button wire:click="$emit('closeModal')" type="submit" class="uppercase mt-8 w-full bg-primary-600 border border-transparent py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">Become a team member now!</button>
+    <button wire:click="$emit('closeModal')" type="submit" class="uppercase mt-8 w-full bg-{{ app_color() }}-600 border border-transparent py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-500">Become a team member now!</button>
 
 
 
