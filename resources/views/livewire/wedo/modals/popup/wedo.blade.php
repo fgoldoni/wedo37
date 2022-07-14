@@ -5,7 +5,7 @@
             <div class="col-span-1">
                 <div class="grid grid-cols-1 gap-4">
                     <div class="col-span-full p-4">
-                        <img class="h-12 w-auto" src="{{ app_team()->avatar }}" alt="{{ app_team()->name }}">
+                        <img class="h-6 sm:h-12 w-auto" src="{{ app_team()->avatar }}" alt="{{ app_team()->name }}">
                     </div>
                 </div>
             </div>
@@ -27,13 +27,14 @@
 
             <div class="col-span-2">
                 <div class="grid grid-cols-1 gap-4">
-                    <div class="col-span-full text-center py-20 text-2xl">
+                    <div class="col-span-full text-center py-4 sm:py-20 text-xl">
                         Specify and our experts find for you!
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <div class="grid grid-cols-1 gap-4 p-4 bg-white">
         <p class="text-base text-gray-600 line-clamp-2 text-center">
