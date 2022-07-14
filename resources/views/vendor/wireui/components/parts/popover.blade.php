@@ -29,8 +29,8 @@
 
         <div
             {{ $attributes->class([
-                'w-full rounded-t-md sm:rounded-xl border border-secondary-200 bg-white shadow-lg',
-                'dark:bg-secondary-800 dark:border-secondary-600 transition-all relative overflow-hidden',
+                'w-full bg-white shadow-lg',
+                'dark:bg-secondary-800 transition-all relative overflow-hidden',
             ]) }}
             x-show="popover"
             tabindex="-1"

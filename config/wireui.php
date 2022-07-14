@@ -90,7 +90,7 @@ return [
         ],
         'button' => [
             'class' => Components\Button::class,
-            'alias' => 'button',
+            'alias' => 'wire-button',
         ],
         'button.circle' => [
             'class' => Components\CircleButton::class,
