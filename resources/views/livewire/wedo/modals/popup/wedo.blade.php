@@ -28,7 +28,7 @@
             <div class="col-span-2">
                 <div class="grid grid-cols-1 gap-4">
                     <div class="col-span-full text-center py-20 text-2xl">
-                        Can we advise you?
+                        We are searching for you!
                     </div>
                 </div>
             </div>
@@ -36,8 +36,8 @@
     </div>
 
     <div class="grid grid-cols-1 gap-4 p-4 bg-white">
-        <p class="text-base text-gray-600 line-clamp-2">
-            Tenetur libero voluptatem rerum occaecati qui est molestiae exercitationem. Voluptate quisquam iure assumenda consequatur ex et recusandae. Alias consectetur voluptatibus. Accusamus a ab dicta et. Consequatur quis dignissimos voluptatem nisi.
+        <p class="text-base text-gray-600 line-clamp-2 text-center">
+            The easiest application to get your new Jobs, Employment & Career Opportunities!
         </p>
     </div>
 
@@ -99,7 +99,7 @@
     </div>
 
 
-    <button wire:click="$emit('closeModal')" type="submit" class="mt-8 w-full bg-primary-600 border border-transparent py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">Send</button>
+    <button wire:click="$emit('closeModal')" type="submit" class="uppercase mt-8 w-full bg-primary-600 border border-transparent py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">Become a team member now!</button>
 
 
 

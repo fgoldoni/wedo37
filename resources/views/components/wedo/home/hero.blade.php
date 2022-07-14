@@ -102,12 +102,12 @@
     <div class="container flex items-center justify-center h-auto py-56 mx-auto">
 
         <div class="z-10 flex flex-col items-center xl:px-0 space-y-20">
-            <h1 class="mx-6 mt-1 text-2xl font-black text-center text-white sm:text-center sm:mx-0">{{ __('Welcome to') }}
-                <br/><br/> <span class="text-5xl sm:text-6xl">{{ app_team()->display_name }} Portal!</span>
+            <h1 class="mx-6 mt-1 text-2xl font-black text-center text-white sm:text-center sm:mx-0">{{ __('We are searching for you!') }}
+                <br/><br/> <span class="text-5xl sm:text-6xl">{{ app_team()->display_name }} Job Career Portal!</span>
             </h1>
             <div class="flex justify-center md:mt-10">
-                <a href="#" onclick="Livewire.emit('openModal', 'wedo.modals.popup.wedo')" class="px-8 py-2 m-2 text-center text-white bg-primary-500 border-2 border-primary-500 rounded-full hover:bg-transparent">Get Started</a>
-                <a href="#" class="px-8 py-2 m-2 text-center text-white border-2 border-primary-500 rounded-full hover:bg-primary-500">Learn More</a>
+                <a href="#" onclick="Livewire.emit('openModal', 'wedo.modals.popup.wedo')" class="px-8 py-2 m-2 text-center text-white bg-primary-500 border-2 border-primary-500 rounded-full hover:bg-transparent">Short - Application</a>
+                <a href="#" class="px-8 py-2 m-2 text-center text-white border-2 border-primary-500 rounded-full hover:bg-primary-500">Browse Jobs</a>
             </div>
         </div>
 

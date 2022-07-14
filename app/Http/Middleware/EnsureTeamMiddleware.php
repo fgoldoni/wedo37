@@ -41,7 +41,7 @@ class EnsureTeamMiddleware
     {
         preg_match('/(?:http[s]*\:\/\/)*(.*?)\.(?=[^\/]*\..{2,5})/i', url('/'), $match);
 
-        return $match[1] ?? null;
+        return urlencode($match[1]) ?? null;
     }
 
     public static function companyFromCache()
