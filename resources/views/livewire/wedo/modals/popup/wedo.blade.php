@@ -1,5 +1,5 @@
 <div class="relative shadow-xl text-base text-left transform transition w-full md:max-w-4xl lg:max-w-6xl">
-    <div class="hidden sm:block relative w-full h-50 text-white bg-gradient-to-tl from-purple-900 to-green-700">
+    <div class="relative w-full h-50 text-white bg-gradient-to-tl from-purple-900 to-green-700">
         <img class="absolute w-full h-full object-cover object-center mix-blend-overlay bg-center" src="{{ app_team()->image }}" alt="{{ app_team()->name }}">
         <div class="grid grid-cols-2 gap-4">
             <div class="col-span-1">
