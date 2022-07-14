@@ -1,5 +1,5 @@
-<div class="relative text-base text-left transform transition w-full md:max-w-4xl lg:max-w-6xl">
-    <div class="relative w-full h-50 text-white bg-gradient-to-tl from-purple-900 to-green-700">
+<div class="relative shadow-xl text-base text-left transform transition w-full md:max-w-4xl lg:max-w-6xl">
+    <div class="hidden sm:block relative w-full h-50 text-white bg-gradient-to-tl from-purple-900 to-green-700">
         <img class="absolute w-full h-full object-cover object-center mix-blend-overlay bg-center" src="{{ app_team()->image }}" alt="{{ app_team()->name }}">
         <div class="grid grid-cols-2 gap-4">
             <div class="col-span-1">
@@ -44,58 +44,49 @@
 
 
     <!-- This example requires Tailwind CSS v2.0+ -->
-    <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 p-4">
-        <div class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-            <div class="flex-shrink-0">
-                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-            </div>
-            <div class="flex-1 min-w-0">
-                <a href="#" class="focus:outline-none">
-                    <span class="absolute inset-0" aria-hidden="true"></span>
-                    <p class="text-sm font-medium text-gray-900">Leslie Alexander</p>
-                    <p class="text-sm text-gray-500 truncate">Co-Founder / CEO</p>
-                </a>
-            </div>
+    <div class="mt-4 grid grid-cols-1 gap-8 sm:grid-cols-2 p-4">
+        <div class="col-span-1">
+            <x-datetime-picker
+                placeholder="Start Date"
+                parse-format="DD-MM-YYYY HH:mm"
+                without-time
+                display-format="DD, MMM YYYY"
+                wire:model.defer="customFormat"
+            />
         </div>
 
-        <div class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-            <div class="flex-shrink-0">
-                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-            </div>
-            <div class="flex-1 min-w-0">
-                <a href="#" class="focus:outline-none">
-                    <span class="absolute inset-0" aria-hidden="true"></span>
-                    <p class="text-sm font-medium text-gray-900">Leslie Alexander</p>
-                    <p class="text-sm text-gray-500 truncate">Co-Founder / CEO</p>
-                </a>
-            </div>
+        <div class="col-span-1">
+            <x-select
+                placeholder="Salary Types"
+                :options="['Active', 'Pending', 'Stuck', 'Done']"
+                wire:model.defer="model"
+            />
         </div>
 
-        <div class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-            <div class="flex-shrink-0">
-                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-            </div>
-            <div class="flex-1 min-w-0">
-                <a href="#" class="focus:outline-none">
-                    <span class="absolute inset-0" aria-hidden="true"></span>
-                    <p class="text-sm font-medium text-gray-900">Leslie Alexander</p>
-                    <p class="text-sm text-gray-500 truncate">Co-Founder / CEO</p>
-                </a>
-            </div>
+        <div class="col-span-1">
+            <x-input right-icon="currency-euro" placeholder="Salary" />
         </div>
 
-        <div class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-            <div class="flex-shrink-0">
-                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-            </div>
-            <div class="flex-1 min-w-0">
-                <a href="#" class="focus:outline-none">
-                    <span class="absolute inset-0" aria-hidden="true"></span>
-                    <p class="text-sm font-medium text-gray-900">Leslie Alexander</p>
-                    <p class="text-sm text-gray-500 truncate">Co-Founder / CEO</p>
-                </a>
-            </div>
+        <div class="col-span-1">
+            <x-select
+                placeholder="Area"
+                :options="['Active', 'Pending', 'Stuck', 'Done']"
+                wire:model.defer="model"
+            />
         </div>
+
+        <div class="col-span-1 sm:col-span-2">
+            <x-textarea wire:model="comment" placeholder="Text" />
+        </div>
+
+        <div class="col-span-1">
+            <x-input right-icon="user" placeholder="Full name" />
+        </div>
+
+        <div class="col-span-1">
+            <x-input right-icon="at-symbol" placeholder="Email Address" />
+        </div>
+
     </div>
 
 
