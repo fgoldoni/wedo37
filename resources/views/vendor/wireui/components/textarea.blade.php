@@ -48,6 +48,7 @@
 
         <textarea {{ $attributes->class([
             $getInputClasses($hasError),
+            'rounded-none'
         ])->merge([
             'autocomplete' => 'off',
             'rows'         => 4

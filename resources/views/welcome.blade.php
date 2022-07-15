@@ -1,6 +1,4 @@
 <x-guest-layout>
-
-
     <!-- Hero Section -->
     <x-wedo.home.hero></x-wedo.home.hero>
 

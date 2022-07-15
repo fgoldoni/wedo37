@@ -47,7 +47,7 @@
 
         <input {{ $attributes->class([
                 $getInputClasses($hasError),
-                'rounded-none border-none'
+                'rounded-none border-none focus:outline-none'
             ])->merge([
                 'type'         => 'text',
                 'autocomplete' => 'off',

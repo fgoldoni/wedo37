@@ -102,8 +102,8 @@
     <div class="container flex items-center justify-center h-auto py-56 mx-auto">
 
         <div class="z-10 flex flex-col items-center xl:px-0 space-y-20">
-            <h1 class="mx-6 mt-1 text-2xl font-black text-center text-white sm:text-center sm:mx-0">{{ __('Welcome to') }}
-                <br/><br/> <span class="text-5xl sm:text-6xl">{{ app_team()->display_name }} Job Career Portal!</span>
+            <h1 class="mx-6 mt-1 text-2xl text-center text-white sm:text-center sm:mx-0">{{ __('Welcome to') }}
+                <br/><br/> <span class="text-5xl sm:text-6xl font-sans">{{ app_team()->display_name }} Portal!</span>
             </h1>
             <div class="flex justify-center md:mt-10">
                 <a href="#" onclick="Livewire.emit('openModal', 'wedo.modals.popup.wedo')" class="px-8 py-2 m-2 text-center text-white bg-{{ app_color() }}-500 border-2 border-{{ app_color() }}-500 rounded-full hover:bg-transparent">Short - Application</a>

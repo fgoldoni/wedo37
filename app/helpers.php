@@ -20,3 +20,10 @@ if (! function_exists('app_color')) {
         return app_team()->color;
     }
 }
+
+if (! function_exists('app_job_types')) {
+    function app_job_types(): array
+    {
+        return app_team()->jobTypes;
+    }
+}

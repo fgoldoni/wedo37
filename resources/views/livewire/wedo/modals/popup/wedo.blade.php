@@ -52,40 +52,43 @@
                 parse-format="DD-MM-YYYY HH:mm"
                 without-time
                 display-format="DD, MMM YYYY"
-                wire:model.defer="customFormat"
+                wire:model.defer="startDate"
+            />
+        </div>
+        <div class="col-span-1">
+            <x-select
+                placeholder="Select one area"
+                :options="app_areas()"
+                option-label="name"
+                option-value="id"
+                wire:model.defer="area"
             />
         </div>
 
         <div class="col-span-1">
-            <x-select
-                placeholder="Salary Types"
-                :options="['Active', 'Pending', 'Stuck', 'Done']"
-                wire:model.defer="model"
-            />
-        </div>
-
-        <div class="col-span-1">
-            <x-input right-icon="currency-euro" placeholder="Salary" />
+            <x-inputs.currency right-icon="currency-dollar" thousands=" " placeholder="Salary"  wire:model.defer="salary"/>
         </div>
 
         <div class="col-span-1">
             <x-select
-                placeholder="Area"
-                :options="['Active', 'Pending', 'Stuck', 'Done']"
-                wire:model.defer="model"
+                placeholder="Select one area"
+                :options="app_job_types()"
+                option-label="name"
+                option-value="id"
+                wire:model.defer="jobType"
             />
         </div>
 
         <div class="col-span-1 sm:col-span-2">
-            <x-textarea wire:model="comment" placeholder="Text" />
+            <x-textarea wire:model.defer="note" placeholder="Text" />
         </div>
 
         <div class="col-span-1">
-            <x-input right-icon="user" placeholder="Full name" />
+            <x-input right-icon="user" placeholder="Full name"  wire:model.defer="name"/>
         </div>
 
         <div class="col-span-1">
-            <x-input right-icon="at-symbol" placeholder="Email Address" />
+            <x-input right-icon="at-symbol" placeholder="Email Address"  wire:model.defer="email"/>
         </div>
 
     </div>
