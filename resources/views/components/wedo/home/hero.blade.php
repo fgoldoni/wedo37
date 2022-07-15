@@ -6,68 +6,59 @@
     <div class="flex items-center w-full h-20">
         <nav class="hidden w-full md:block" x-show="!showMenu">
             <ul class="relative z-10 flex items-center px-6 text-sm text-white lg:text-base">
-            @auth
-                <!-- Authentication -->
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-
-                        <li class="mx-2 lg:mx-3">
-                            <a href="{{ route('logout') }}"
-                               x-data="{ hover: false }"
-                               @mouseenter="hover = true"
-                               @mouseleave="hover = false"
-                               class="relative inline-block font-medium text-gray-200 hover:text-white"
-                               onclick="event.preventDefault(); this.closest('form').submit();"
-                            >
-                                    <span class="block">
-                                        <x-heroicon-o-logout class="w-6 h-6"/>
-                                    </span>
-                                <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
-                                    <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-{{ app_color() }}-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" style="display: none;"></span>
-                                </span>
-                            </a>
-                        </li>
-                    </form>
-                @else
-                    <li class="mx-2 lg:mx-3">
-                        <a href="{{ route('login') }}" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false" class="relative inline-block font-medium text-gray-200 hover:text-white">
-                            <span class="block">Login</span>
-                            <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
-                                    <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-{{ app_color() }}-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" style="display: none;"></span>
-                                </span>
-                        </a>
-                    </li>
-                @endauth
-
                 <li class="mx-2 lg:mx-3">
-                    <a href="#_" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false" class="relative inline-block font-medium text-gray-200 hover:text-white">
-                        <span class="block">Second Link</span>
+                    <a href="{{ route('jobs.index') }}" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false" class="relative inline-block font-medium text-gray-200 hover:text-white">
+                        <span class="block">Browse Jobs</span>
                         <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
                             <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-{{ app_color() }}-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" style="display: none;"></span>
                         </span>
                     </a>
                 </li>
                 <li class="mx-auto">
-                    <a href="#_" class="w-1/4 py-4 pl-6 pr-4 md:pl-4 md:py-0">
-                        <img class="h-12 w-auto" src="{{ app_team()->avatar }}" alt="{{ app_team()->name }}">
+                    <a href="{{ url('/') }}" class="w-1/4 py-4 pl-6 pr-4 md:pl-4 md:py-0">
+                        <img class="h-10 w-auto" src="{{ app_team()->avatar }}" alt="{{ app_team()->name }}">
                     </a>
                 </li>
-                <li class="mx-2 lg:mx-3">
-                    <a href="#_" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false" class="relative inline-block font-medium text-gray-200 hover:text-white">
-                        <span class="block">Fifth Link</span>
-                        <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
-                            <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-{{ app_color() }}-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" style="display: none;"></span>
-                        </span>
-                    </a>
-                </li>
-                <li class="mx-2 lg:mx-3">
-                    <a href="#_" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false" class="relative inline-block font-medium text-gray-200 hover:text-white">
-                        <span class="block">{{ auth()->user()?->name }}</span>
-                        <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
-                            <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-{{ app_color() }}-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" style="display: none;"></span>
-                        </span>
-                    </a>
-                </li>
+                @auth
+                    <x-dropdown>
+                        <x-slot name="trigger">
+                            <div>
+                                <button type="button" class="max-w-xs flex items-center text-sm focus:outline-none border-l border-gray-800 pl-4">
+                                    <span class="sr-only">Open user menu</span>
+                                    <p class="font-bold text-xs text-gray-200 hover:text-white mr-2 text-right">
+                                        {{ __('Account') }} <br>
+                                        <span class="text-xs text-teal-500"> Trial Period </span>
+                                    </p>
+                                    <img class="h-8 w-8 rounded-full" src="{{ Auth::user()?->profile_photo_url }}" alt="{{ Auth::user()?->name }}">
+                                </button>
+                            </div>
+                        </x-slot>
+                        <x-dropdown.item>
+                            <b>Help Center</b>
+                        </x-dropdown.item>
+                        <x-dropdown.item separator>
+                            <b>Live Chat</b>
+                        </x-dropdown.item>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-dropdown.item separator :href="route('logout')"
+                                             onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </x-dropdown.item>
+                        </form>
+                    </x-dropdown>
+                @else
+                    <li class="mx-2 lg:mx-3">
+                        <a href="{{ route('login') }}" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false" class="relative inline-block font-medium text-gray-200 hover:text-white">
+                            <span class="block">{{ __('Login') }}</span>
+                                <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
+                                <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-{{ app_color() }}-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" style="display: none;"></span>
+                            </span>
+                        </a>
+                    </li>
+                @endauth
             </ul>
         </nav>
         <!-- End Desktop menu -->
@@ -75,8 +66,8 @@
         <!-- Mobile Nav  -->
         <nav class="fixed top-0 z-30 flex flex-col flex-wrap items-center justify-between w-full h-auto px-6 md:hidden">
             <div class="relative z-30 flex items-center justify-between w-full h-20">
-                <a href="#_" class="flex items-center flex-shrink-0 mr-6 text-white">
-                    <img class="h-12 w-auto" src="{{ app_team()->avatar }}" alt="{{ app_team()->name }}">
+                <a href="{{ url('/') }}" class="flex items-center flex-shrink-0 mr-6 text-white">
+                    <img class="h-8 w-auto" src="{{ app_team()->avatar }}" alt="{{ app_team()->name }}">
                 </a>
                 <div class="block lg:hidden">
                     <button @click="showMenu = !showMenu" class="flex items-center justify-center w-10 h-10 text-gray-200 rounded-full hover:text-white hover:bg-white hover:bg-opacity-25 focus:outline-none">

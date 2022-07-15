@@ -5,7 +5,7 @@
             <div class="col-span-1">
                 <div class="grid grid-cols-1 gap-4">
                     <div class="col-span-full p-4">
-                        <img class="h-6 sm:h-12 w-auto" src="{{ app_team()->avatar }}" alt="{{ app_team()->name }}">
+                        <img class="h-6 sm:h-10 w-auto" src="{{ app_team()->avatar }}" alt="{{ app_team()->name }}">
                     </div>
                 </div>
             </div>
