@@ -84,9 +84,21 @@
 
     <!-- Mobile Menu -->
     <div x-show.transition="showMenu" class="absolute top-0 z-20 flex flex-col items-center justify-center w-full h-full space-y-5 text-lg origin-center bg-{{ app_color() }}-500" style="display: none;">
-        <a href="#_" class="block text-{{ app_color() }}-200 hover:text-white">First Link</a>
-        <a href="#_" class="block text-{{ app_color() }}-200 hover:text-white">Second Link</a>
-        <a href="#_" class="block text-{{ app_color() }}-200 hover:text-white">Third Link</a>
+        <a href="{{ route('jobs.index') }}" class="block text-{{ app_color() }}-200 hover:text-white">{{ __('Browse Jobs') }}</a>
+
+        @auth
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+
+                <a class="block text-{{ app_color() }}-200 hover:text-white cursor-pointer" :href="route('logout')"
+                   onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                    {{ __('Log Out') }}
+                </a>
+            </form>
+        @else
+            <a href="{{ route('login') }}" class="block text-{{ app_color() }}-200 hover:text-white">{{ __('Login') }}</a>
+        @endauth
     </div>
     <!-- End Mobile Menu -->
 
