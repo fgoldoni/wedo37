@@ -172,7 +172,7 @@
         </div>
         <div class="col-start-1 row-start-1 py-4">
             <div class="flex justify-end max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <x-dropdown>
+                <x-dropdown content-classes="relative inline-block">
                     <x-slot name="trigger">
                         <div class="flex">
                             <button type="button" class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900" id="menu-button" aria-expanded="false" aria-haspopup="true">
