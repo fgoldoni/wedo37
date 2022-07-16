@@ -6,3 +6,9 @@
 [x-cloak] {
     display: none;
 }
+
+
+.max-height {
+    height: calc(100vh - 9.625rem);
+}
+

@@ -27,7 +27,7 @@ class Api implements ApiInterface
     {
         $this->client = $http->withHeaders(['X-Team-Id' => session('team-id')])
             ->acceptJson()
-            ->withToken(Auth::user()->token);
+            ->withToken(Auth::user()?->token);
 
         $this->apiUrl = env('API_URL', 'http://localhost:8000') . '/api';
     }

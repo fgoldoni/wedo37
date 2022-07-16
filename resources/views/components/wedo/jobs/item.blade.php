@@ -1,6 +1,6 @@
 @props(['row'])
 
-<li class="{{ false ? 'bg-yellow-50 ' : 'bg-white '}} relative px-4 py-6 sm:p-6 shadow hover:shadow-xl hover:-translate-y-1 ease-in-out delay-150 duration-300 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+<li class="{{ false ? 'bg-yellow-50 ' : 'bg-white '}} relative px-4 py-6 sm:p-6 shadow hover:shadow-xl hover:-translate-y-1 ease-in-out delay-150 duration-300 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-{{ app_color() }}-500">
 
     <article aria-labelledby="question-title-81614">
 
@@ -22,7 +22,7 @@
 
                     <p class="text-sm font-medium text-gray-900">
 
-                        <a href="#" class="hover:underline font-bold">{{ $row->team->display_name }}</a>
+                        <a href="#" class="hover:underline font-bold">{{ $row->company->name }}</a>
 
                     </p>
 
@@ -30,7 +30,7 @@
 
                         <a href="#" class="hover:underline">
 
-                            <time datetime="2020-12-09T11:43:00">live_at</time>
+                            <time datetime="2020-12-09T11:43:00">{{ $row->live_at }}</time>
 
                         </a>
 
@@ -56,7 +56,7 @@
 
                 <div class="flex-shrink-0 justify-self-stretch">
 
-                    <a href="#" class="text-xs text-indigo-500 hover:text-indigo-900 font-bold underline">
+                    <a href="#" class="text-xs text-{{ app_color() }}-500 hover:text-{{ app_color() }}-900 font-bold underline">
 
                         Details <span aria-hidden="true">&rarr;</span>
 
@@ -100,7 +100,7 @@
 
                         </div>
 
-                        <div class="ml-3.5 text-sm font-medium text-gray-900">categories</div>
+                        <div class="ml-3.5 text-sm font-medium text-gray-900">{{ $row->job_type }}</div>
 
                     </a>
 
@@ -110,15 +110,15 @@
 
             <a href="#" class="hover:underline font-semibold">
 
-                <h2 id="question-title-81614" class="mt-4 text-base font-medium text-indigo-900 text-xl">{{ $row->name }}</h2>
+                <h2 id="question-title-81614" class="mt-4 text-base font-medium text-{{ app_color() }}-900 text-xl">{{ $row->name }}</h2>
 
             </a>
 
         </div>
 
-        <div class="mt-2 text-sm text-gray-700 space-y-4 text-justify">
+        <div class="mt-2 text-xs text-gray-700 space-y-4 text-justify">
 
-            <p>Quibala, Angola</p>
+            <p>{{ $row->address }}</p>
 
         </div>
 
@@ -162,19 +162,19 @@
 
             </div>
 
-            @if($row->country_id)
+            @if(true)
 
                 <div class="flex text-sm">
 
                     <span class="inline-flex items-center text-sm">
 
-                          <a href="{{ route('jobs.show', $row->slug) }}" class="inline-flex items-center space-x-2 text-indigo-400 hover:text-indigo-500 cursor-pointer">
+                          <a href="#" class="inline-flex items-center space-x-2 text-{{ app_color() }}-400 hover:text-{{ app_color() }}-500 cursor-pointer">
 
                               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
                               </svg>
 
-                              <span class="font-medium text-indigo-900 text-xs md:text-sm">
+                              <span class="font-medium text-{{ app_color() }}-900 text-xs md:text-sm">
                                   Save Job
                               </span>
 
