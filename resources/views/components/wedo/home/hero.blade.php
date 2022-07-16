@@ -109,7 +109,7 @@
                 <br/><br/> <span class="text-5xl sm:text-6xl font-sans">{{ app_team()->display_name }} Portal!</span>
             </h1>
             <div class="flex justify-center md:mt-10">
-                <a href="jascript:;" onclick="Livewire.emit('openModal', 'wedo.modals.popup.wedo')" class="px-8 py-2 m-2 text-center text-white bg-{{ app_color() }}-500 border-2 border-{{ app_color() }}-500 rounded-full hover:bg-transparent">Short - Application</a>
+                <button type="button" onclick="Livewire.emit('openModal', 'wedo.modals.popup.wedo')" class="px-8 py-2 m-2 text-center text-white bg-{{ app_color() }}-500 border-2 border-{{ app_color() }}-500 rounded-full hover:bg-transparent">Short - Application</button>
                 <a href="{{ route('jobs.index') }}" class="px-8 py-2 m-2 text-center text-white border-2 border-{{ app_color() }}-500 rounded-full hover:bg-{{ app_color() }}-500">Browse Jobs</a>
             </div>
         </div>

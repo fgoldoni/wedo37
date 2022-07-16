@@ -14,7 +14,7 @@
             x-on:keydown.tab.prevent="$event.shiftKey || nextFocusable().focus()"
             x-on:keydown.shift.tab.prevent="prevFocusable().focus()"
             x-show="show"
-            class="fixed inset-0 z-30 overflow-y-auto"
+            class="fixed inset-0 z-30 scrollbar-thin scrollbar-thumb-secondary-700 scrollbar-track-secondary-300 overflow-auto"
             style="display: none;"
     >
         <div class="flex items-end justify-center min-h-screen md:px-4 md:pt-4 md:pb-10 text-center sm:block sm:p-0">
