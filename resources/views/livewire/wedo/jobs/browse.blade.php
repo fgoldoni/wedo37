@@ -4,7 +4,7 @@
     <div class="col-span-1 sm:col-span-3 py-4">
         <div class="px-4 space-y-2 sm:px-0 sm:flex sm:items-baseline sm:justify-between sm:space-y-0">
             <div class="flex sm:items-baseline sm:space-x-4">
-                <h1 class="text-base font-medium tracking-tight text-gray-500 sm:text-xl">About 122 results ...</h1>
+                <h1 class="text-base font-medium tracking-tight text-gray-500 sm:text-xl">About {{ count($rows->data) }} results ...</h1>
                 <a href="#" class="hidden text-sm font-medium text-{{ app_color() }}-600 hover:text-{{ app_color() }}-500 sm:block">Quickly apply to thousands of jobs<span aria-hidden="true"> &rarr;</span></a>
             </div>
             <p class="text-sm text-gray-600">Order placed <time datetime="2021-03-22" class="font-medium text-gray-900">March 22, 2021</time></p>
