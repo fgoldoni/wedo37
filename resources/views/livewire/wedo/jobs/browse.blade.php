@@ -146,25 +146,27 @@
                                     </dd>
                                 </div>
 
+                                @if($job->responsibilities)
+                                    <div class="col-span-1 sm:col-span-2 border-t border-gray-200 pt-8">
+                                        <h2 class="text-sm font-medium text-gray-900">{{__('Key Responsibilities')}}</h2>
 
-                                <div class="col-span-1 sm:col-span-2 border-t border-gray-200 pt-8">
-                                    <h2 class="text-sm font-medium text-gray-900">{{__('Key Responsibilities')}}</h2>
-
-                                    <div class="mt-4 prose prose-sm text-gray-500">
-                                        <ul role="list">
-                                            @forelse ($job->responsibilities as $responsibility)
-                                                <li>{{ $responsibility }}</li>
-                                            @empty
-                                                <p>No Key Responsibilities required</p>
-                                            @endforelse
-                                        </ul>
+                                        <div class="mt-4 prose prose-sm text-gray-500">
+                                            <ul role="list">
+                                                @forelse ($job->responsibilities as $responsibility)
+                                                    <li>{{ $responsibility }}</li>
+                                                @empty
+                                                    <p>No Key Responsibilities required</p>
+                                                @endforelse
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
 
-                                <div class="col-span-1 sm:col-span-3 border-t border-gray-200 pt-8">
-                                    <h2 class="text-sm font-medium text-gray-900">{{__('Skill & Experience')}}</h2>
+                                @if($job->skills)
+                                    <div class="col-span-1 sm:col-span-3 border-t border-gray-200 pt-8">
+                                        <h2 class="text-sm font-medium text-gray-900">{{__('Skill & Experience')}}</h2>
 
-                                    <div class="mt-4 prose prose-sm text-gray-500">
+                                        <div class="mt-4 prose prose-sm text-gray-500">
                                         <ul role="list">
                                             @forelse ($job->skills as $skill)
                                                 <li>{{ $skill }}</li>
@@ -173,22 +175,24 @@
                                             @endforelse
                                         </ul>
                                     </div>
-                                </div>
-
-
-                                <div class="col-span-1 sm:col-span-3 border-t border-gray-200 pt-8">
-                                    <h2 class="text-sm font-medium text-gray-900">{{__('Benefits')}}</h2>
-
-                                    <div class="mt-4 prose prose-sm text-gray-500">
-                                        <ul role="list">
-                                            @forelse ($job->benefits as $benefit)
-                                                <li>{{ $benefit }}</li>
-                                            @empty
-                                                <p>No Skill & Experience required</p>
-                                            @endforelse
-                                        </ul>
                                     </div>
-                                </div>
+                                @endif
+
+                                @if($job->benefits)
+                                    <div class="col-span-1 sm:col-span-3 border-t border-gray-200 pt-8">
+                                        <h2 class="text-sm font-medium text-gray-900">{{__('Benefits')}}</h2>
+
+                                        <div class="mt-4 prose prose-sm text-gray-500">
+                                            <ul role="list">
+                                                @forelse ($job->benefits as $benefit)
+                                                    <li>{{ $benefit }}</li>
+                                                @empty
+                                                    <p>No Skill & Experience required</p>
+                                                @endforelse
+                                            </ul>
+                                        </div>
+                                    </div>
+                                @endif
 
 
 
