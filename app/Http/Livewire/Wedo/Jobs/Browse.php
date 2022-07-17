@@ -20,6 +20,10 @@ class Browse extends Component
 
     protected $queryString = ['filters'];
 
+    private ?\stdClass $job = null;
+
+    public ?int $show = null;
+
     public array $filters = [
         'search' => null,
         'category' => null,
@@ -35,6 +39,13 @@ class Browse extends Component
     public function mount(ApiInterface $api)
     {
         $this->api = $api;
+    }
+
+    public function updatedShow($value)
+    {
+        $this->useCachedRows();
+
+        $this->job = app()->make(ApiInterface::class)->get( '/jobs/' . $value)->data;
     }
 
     public function resetFilters()
@@ -60,6 +71,6 @@ class Browse extends Component
 
     public function render()
     {
-        return view('livewire.wedo.jobs.browse', ['rows' => $this->rows]);
+        return view('livewire.wedo.jobs.browse', ['rows' => $this->rows, 'job' => $this->job]);
     }
 }

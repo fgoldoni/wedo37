@@ -21,7 +21,7 @@
         class="relative z-10 border-t border-b border-secondary-200 grid items-center">
 
         <div class="relative col-start-1 row-start-1 py-4">
-            <div class="max-w-7xl mx-auto flex space-x-6 divide-x divide-gray-200 text-sm">
+            <div class="max-w-7xl mx-auto flex space-x-6 divide-x divide-gray-200 text-sm px-4 sm:px-0">
                 <div>
                     <button  @click="openFilters = !openFilters" type="button" class="relative inline-block group text-gray-700 font-medium flex items-center" aria-controls="disclosure-1" aria-expanded="false">
                         <!-- Heroicon name: solid/filter -->
