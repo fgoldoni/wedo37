@@ -30,8 +30,8 @@
         ]) }}
         style="display: none;"
         @unless($persistent) x-on:click="close" @endunless>
-        <div class="relative {{ $height }} soft-scrollbar overflow-auto border border-secondary-200
-                    rounded-lg shadow-lg p-1 bg-white dark:bg-secondary-800 dark:border-secondary-600">
+        <div class="relative {{ $height }} soft-scrollbar scrollbar-thin scrollbar-thumb-secondary-400 scrollbar-track-secondary-200 overflow-auto border border-secondary-200
+                    shadow-lg p-1 bg-white dark:bg-secondary-800 dark:border-secondary-600">
             {{ $slot }}
         </div>
     </div>

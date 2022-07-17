@@ -1,3 +1,16 @@
+@props(['filters'])
+
+@php
+
+    $filtersCount =0;
+
+    foreach ($filters as $filter)
+    {
+        $filtersCount += empty($filter) ? 0 : (is_array($filter) ? count($filter) : 1);
+    }
+
+@endphp
+
 <section aria-labelledby="filter-heading" class="relative z-10 border-t border-b border-gray-200 grid items-center">
     <h2 id="filter-heading" class="sr-only">Filters</h2>
     <div
@@ -8,18 +21,21 @@
         class="relative z-10 border-t border-b border-secondary-200 grid items-center">
 
         <div class="relative col-start-1 row-start-1 py-4">
-            <div class="max-w-7xl mx-auto flex space-x-6 divide-x divide-gray-200 text-sm px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto flex space-x-6 divide-x divide-gray-200 text-sm">
                 <div>
-                    <button  @click="openFilters = !openFilters" type="button" class="group text-gray-700 font-medium flex items-center" aria-controls="disclosure-1" aria-expanded="false">
+                    <button  @click="openFilters = !openFilters" type="button" class="relative inline-block group text-gray-700 font-medium flex items-center" aria-controls="disclosure-1" aria-expanded="false">
                         <!-- Heroicon name: solid/filter -->
-                        <svg class="flex-none w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd" />
-                        </svg>
-                        2 Filters
+                        <x-heroicon-o-adjustments class="flex-none w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500"/>
+                        Filters
+                        @if($filtersCount)
+                            <span class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-{{ app_color() }}-600 rounded-full">
+                                {{ $filtersCount }}
+                            </span>
+                        @endif
                     </button>
                 </div>
                 <div class="pl-6">
-                    <button type="button" class="text-gray-500">Clear all</button>
+                    <button type="button" class="text-gray-500 hover:text-gray-900" wire:click="resetFilters">Clear all</button>
                 </div>
             </div>
         </div>
@@ -41,65 +57,38 @@
 
             x-cloak
 
+            x-data="{
+                selected:  @entangle($attributes->wire('model')),
+            }"
+
+
             class="border-t border-secondary-200 bg-secondary-200 py-10" id="disclosure-1">
             <div class="max-w-7xl mx-auto grid grid-cols-2 gap-x-4 px-4 text-sm sm:px-6 md:gap-x-6 lg:px-8">
                 <div class="grid grid-cols-1 gap-y-10 auto-rows-min md:grid-cols-2 md:gap-x-6">
                     <fieldset>
-                        <legend class="block font-medium">Price</legend>
+                        <legend class="block font-medium">{{ __('Job Type') }}</legend>
                         <div class="pt-6 space-y-6 sm:pt-4 sm:space-y-4">
-                            <div class="flex items-center text-base sm:text-sm">
-                                <input id="price-0" name="price[]" value="0" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                                <label for="price-0" class="ml-3 min-w-0 flex-1 text-gray-600"> $0 - $25 </label>
-                            </div>
-
-                            <div class="flex items-center text-base sm:text-sm">
-                                <input id="price-1" name="price[]" value="25" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                                <label for="price-1" class="ml-3 min-w-0 flex-1 text-gray-600"> $25 - $50 </label>
-                            </div>
-
-                            <div class="flex items-center text-base sm:text-sm">
-                                <input id="price-2" name="price[]" value="50" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                                <label for="price-2" class="ml-3 min-w-0 flex-1 text-gray-600"> $50 - $75 </label>
-                            </div>
-
-                            <div class="flex items-center text-base sm:text-sm">
-                                <input id="price-3" name="price[]" value="75" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                                <label for="price-3" class="ml-3 min-w-0 flex-1 text-gray-600"> $75+ </label>
-                            </div>
+                            @forelse(app_job_types() as $jobType)
+                                <div class="flex items-center text-base sm:text-sm">
+                                    <input x-model="selected" id="area-{{ $jobType->id }}" value="{{ $jobType->id }}" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                                    <label for="area-{{ $jobType->id }}" class="ml-3 min-w-0 flex-1 text-gray-600"> {{ $jobType->name }} </label>
+                                </div>
+                            @empty
+                                No Results
+                            @endforelse
                         </div>
                     </fieldset>
                     <fieldset>
-                        <legend class="block font-medium">Color</legend>
+                        <legend class="block font-medium">{{ __('Area') }}</legend>
                         <div class="pt-6 space-y-6 sm:pt-4 sm:space-y-4">
-                            <div class="flex items-center text-base sm:text-sm">
-                                <input id="color-0" name="color[]" value="white" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                                <label for="color-0" class="ml-3 min-w-0 flex-1 text-gray-600"> White </label>
-                            </div>
-
-                            <div class="flex items-center text-base sm:text-sm">
-                                <input id="color-1" name="color[]" value="beige" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                                <label for="color-1" class="ml-3 min-w-0 flex-1 text-gray-600"> Beige </label>
-                            </div>
-
-                            <div class="flex items-center text-base sm:text-sm">
-                                <input id="color-2" name="color[]" value="blue" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" checked>
-                                <label for="color-2" class="ml-3 min-w-0 flex-1 text-gray-600"> Blue </label>
-                            </div>
-
-                            <div class="flex items-center text-base sm:text-sm">
-                                <input id="color-3" name="color[]" value="brown" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                                <label for="color-3" class="ml-3 min-w-0 flex-1 text-gray-600"> Brown </label>
-                            </div>
-
-                            <div class="flex items-center text-base sm:text-sm">
-                                <input id="color-4" name="color[]" value="green" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                                <label for="color-4" class="ml-3 min-w-0 flex-1 text-gray-600"> Green </label>
-                            </div>
-
-                            <div class="flex items-center text-base sm:text-sm">
-                                <input id="color-5" name="color[]" value="purple" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                                <label for="color-5" class="ml-3 min-w-0 flex-1 text-gray-600"> Purple </label>
-                            </div>
+                            @forelse(app_areas() as $area)
+                                <div class="flex items-center text-base sm:text-sm">
+                                    <input x-model="selected" id="area-{{ $area->id }}" value="{{ $area->id }}" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                                    <label for="area-{{ $area->id }}" class="ml-3 min-w-0 flex-1 text-gray-600"> {{ $area->name }} </label>
+                                </div>
+                            @empty
+                                No Results
+                            @endforelse
                         </div>
                     </fieldset>
                 </div>
@@ -186,8 +175,10 @@
                     </x-slot>
 
                     <x-dropdown.item label="Most Popular" />
-                    <x-dropdown.item separator label="Best Rating" />
-                    <x-dropdown.item separator label="Newest" />
+                    <x-dropdown.item separator label="{{ __('Today') }}" wire:click="$set('filters.days', 1)"/>
+                    <x-dropdown.item separator label="{{ __('Last 2 Days') }}" wire:click="$set('filters.days', 2)"/>
+                    <x-dropdown.item separator label="{{ __('Last 7 Days') }}" wire:click="$set('filters.days', 7)"/>
+                    <x-dropdown.item separator label="{{ __('Last 30 Days') }}" wire:click="$set('filters.days', 3)"/>
                 </x-dropdown>
             </div>
         </div>

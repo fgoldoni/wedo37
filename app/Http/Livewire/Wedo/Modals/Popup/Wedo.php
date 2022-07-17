@@ -6,7 +6,6 @@ use LivewireUI\Modal\ModalComponent;
 
 class Wedo extends ModalComponent
 {
-
     public int $area = 4;
 
     public int $jobType = 185;

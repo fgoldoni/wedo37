@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Services;
 
 use App\Http\Services\Contracts\ApiInterface;
@@ -15,13 +14,13 @@ use Illuminate\Support\Facades\Auth;
  */
 class Api implements ApiInterface
 {
-    private Factory $http;
+    private readonly Factory $http;
 
-    private string $apiUrl;
+    private readonly string $apiUrl;
 
-    private \Illuminate\Http\Client\Response|\GuzzleHttp\Promise\PromiseInterface $response;
+    private readonly \Illuminate\Http\Client\Response|\GuzzleHttp\Promise\PromiseInterface $response;
 
-    private PendingRequest $client;
+    private readonly PendingRequest $client;
 
     public function __construct(Factory $http)
     {
@@ -44,5 +43,4 @@ class Api implements ApiInterface
              default => $this->response->object(),
         };
     }
-
 }

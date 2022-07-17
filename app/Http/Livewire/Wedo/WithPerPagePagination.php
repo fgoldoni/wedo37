@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Livewire\Wedo;
 
 use Livewire\WithPagination;

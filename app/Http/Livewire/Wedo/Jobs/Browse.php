@@ -18,16 +18,37 @@ class Browse extends Component
 
     private ApiInterface $api;
 
+    protected $queryString = ['filters'];
+
+    public array $filters = [
+        'search' => null,
+        'category' => null,
+        'categories' => [],
+        'countries' => [],
+        'divisions' => [],
+        'cities' => [],
+        'days' => null,
+        'latest' => null,
+        'oldest' => null,
+    ];
+
     public function mount(ApiInterface $api)
     {
         $this->api = $api;
     }
 
+    public function resetFilters()
+    {
+        $this->reset('filters');
+    }
+
     public function getRowsQueryProperty()
     {
-        return $this->api->get('/jobs',
+        return app()->make(ApiInterface::class)->get(
+            '/jobs',
             [
-                'search' => ''
+                'search' => '',
+                'filters' => $this->filters,
             ]
         );
     }
