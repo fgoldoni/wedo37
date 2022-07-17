@@ -18,7 +18,7 @@ class Browse extends Component
 
     private ApiInterface $api;
 
-    protected $queryString = ['filters'];
+    protected $queryString = ['filters', 'show'];
 
     private ?\stdClass $job = null;
 
@@ -45,12 +45,17 @@ class Browse extends Component
     {
         $this->useCachedRows();
 
-        $this->job = app()->make(ApiInterface::class)->get( '/jobs/' . $value)->data;
+        $this->job = $this->cache(fn () => $this->showQuery, 'current-job-' . $value);
     }
 
     public function resetFilters()
     {
         $this->reset('filters');
+    }
+
+    public function getShowQueryProperty()
+    {
+        return app()->make(ApiInterface::class)->get( '/jobs/' . $this->show)->data;
     }
 
     public function getRowsQueryProperty()
