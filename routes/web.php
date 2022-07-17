@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\JobController;
+use App\Http\Controllers\Wedo\JobController;
 use App\Http\Controllers\Wedo\LoginController;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
@@ -32,7 +32,12 @@ Route::get('/cache/clear', function () {
 
 require __DIR__.'/auth.php';
 
-Route::resource('jobs', JobController::class);
+
+
+Route::group(['middleware' => ['web']], function () {
+    Route::resource('jobs', JobController::class);
+});
+
 
 Route::group(['middleware' => ['web'], 'namespace' => 'Wedo'], function () {
     Route::post('login/link', [LoginController::class, 'loginLink'])->name('login.link');

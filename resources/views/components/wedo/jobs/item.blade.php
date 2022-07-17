@@ -2,7 +2,7 @@
 
 <li class="{{ false ? 'bg-yellow-50 ' : 'bg-white '}} relative px-4 py-6 sm:p-6 shadow hover:shadow-xl hover:-translate-y-1 ease-in-out delay-150 duration-300 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-{{ app_color() }}-500">
 
-    <article aria-labelledby="question-title-81614">
+    <article>
 
         <div>
 
@@ -10,11 +10,18 @@
 
                 <div class="flex-shrink-0">
 
-                    <a href="javascript:;" wire:click="$set('show', {{ $row->id }})">
+                    <a href="javascript:;" class="hidden lg:block" wire:click="$set('show', {{ $row->id }})">
 
                         <img class="h-10 w-10 rounded-full cursor-pointer" src="{{ $row->avatar_url }}" alt="{{ $row->name }}">
 
                     </a>
+
+                    <a href="{{ route('jobs.show', $row->id) }}" class="lg:hidden">
+
+                        <img class="h-10 w-10 rounded-full cursor-pointer" src="{{ $row->avatar_url }}" alt="{{ $row->name }}">
+
+                    </a>
+
 
                 </div>
 
@@ -22,13 +29,15 @@
 
                     <p class="text-sm font-medium text-gray-900">
 
-                        <a href="javascript:;" wire:click="$set('show', {{ $row->id }})" class="hover:underline font-bold">{{ $row->company->name }}</a>
+                        <a href="javascript:;" wire:click="$set('show', {{ $row->id }})" class="hidden lg:block hover:underline font-bold">{{ $row->company->name }}</a>
+
+                        <a href="{{ route('jobs.show', $row->id) }}" class="lg:hidden hover:underline font-bold">{{ $row->company->name }}</a>
 
                     </p>
 
                     <p class="text-sm text-gray-500">
 
-                        <a href="#" class="hover:underline">
+                        <a href="javascript:;" class="hover:underline">
 
                             <time datetime="2020-12-09T11:43:00">{{ $row->live_at }}</time>
 
@@ -56,7 +65,14 @@
 
                 <div class="flex-shrink-0 justify-self-stretch">
 
-                    <a href="javascript:;" wire:click="$set('show', {{ $row->id }})" class="text-xs text-{{ app_color() }}-500 hover:text-{{ app_color() }}-900 font-bold underline">
+                    <a href="javascript:;" wire:click="$set('show', {{ $row->id }})" class="hidden lg:block text-xs text-{{ app_color() }}-500 hover:text-{{ app_color() }}-900 font-bold underline">
+
+                        Details <span aria-hidden="true">&rarr;</span>
+
+                    </a>
+
+
+                    <a href="{{ route('jobs.show', $row->id) }}" class="lg:hidden text-xs text-{{ app_color() }}-500 hover:text-{{ app_color() }}-900 font-bold underline">
 
                         Details <span aria-hidden="true">&rarr;</span>
 
@@ -108,7 +124,13 @@
 
             </ul>
 
-            <a href="javascript:;" wire:click="$set('show', {{ $row->id }})" class="hover:underline font-semibold">
+            <a href="javascript:;" wire:click="$set('show', {{ $row->id }})" class="hidden lg:block hover:underline font-semibold">
+
+                <h2 id="question-title-81614" class="mt-4 text-base font-medium text-{{ app_color() }}-900 text-xl">{{ $row->name }}</h2>
+
+            </a>
+
+            <a href="{{ route('jobs.show', $row->id) }}" class="lg:hidden hover:underline font-semibold">
 
                 <h2 id="question-title-81614" class="mt-4 text-base font-medium text-{{ app_color() }}-900 text-xl">{{ $row->name }}</h2>
 

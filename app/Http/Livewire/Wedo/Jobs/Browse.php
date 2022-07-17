@@ -20,7 +20,7 @@ class Browse extends Component
 
     protected $queryString = ['filters', 'show'];
 
-    private ?\stdClass $job;
+    private ?\stdClass $job = null;
 
     public ?int $show = null;
 
@@ -54,7 +54,7 @@ class Browse extends Component
 
     public function resetFilters()
     {
-        $this->reset('filters');
+        $this->reset('filters', 'show');
     }
 
     public function getShowQueryProperty()
