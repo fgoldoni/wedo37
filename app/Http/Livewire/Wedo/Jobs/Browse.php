@@ -20,7 +20,7 @@ class Browse extends Component
 
     protected $queryString = ['filters', 'show'];
 
-    private ?\stdClass $job = null;
+    private ?\stdClass $job;
 
     public ?int $show = null;
 
@@ -39,6 +39,10 @@ class Browse extends Component
     public function mount(ApiInterface $api)
     {
         $this->api = $api;
+
+        $this->useCachedRows();
+
+        $this->job = $this->show ? $this->cache(fn () => $this->showQuery, 'current-job-' . $this->show) : null;
     }
 
     public function updatedShow($value)
