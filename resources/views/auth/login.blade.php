@@ -6,7 +6,7 @@
             @csrf
             <x-auth-session-status class="mt-4" :status="session('status')" />
             <x-auth-validation-errors class="mt-4" :errors="$errors" />
-            <section class="w-full px-8 sm:py-24 bg-gray-100 xl:px-8">
+            <section class="w-full px-8 sm:mt-36 bg-gray-100 xl:px-8">
                 <div class="max-w-5xl mx-auto">
                     <div class="flex flex-col items-center md:flex-row">
 
