@@ -40,8 +40,8 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
-                <div class="col-span-1 sm:col-span-2">
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+                <div class="col-span-1 md:col-span-2">
                     <!-- Tabs -->
                     <div class="mt-6 sm:mt-2 2xl:mt-5">
                         <div class="border-b border-gray-200">
