@@ -20,35 +20,7 @@
                     </a>
                 </li>
                 @auth
-                    <x-dropdown>
-                        <x-slot name="trigger">
-                            <div>
-                                <button type="button" class="max-w-xs flex items-center text-sm focus:outline-none border-l border-gray-800 pl-4">
-                                    <span class="sr-only">Open user menu</span>
-                                    <p class="font-bold text-xs text-gray-200 hover:text-white mr-2 text-right">
-                                        {{ __('Account') }} <br>
-                                        <span class="text-xs text-teal-500"> Trial Period </span>
-                                    </p>
-                                    <img class="h-8 w-8 rounded-full" src="{{ Auth::user()?->profile_photo_url }}" alt="{{ Auth::user()?->name }}">
-                                </button>
-                            </div>
-                        </x-slot>
-                        <x-dropdown.item>
-                            <b>Help Center</b>
-                        </x-dropdown.item>
-                        <x-dropdown.item separator>
-                            <b>Live Chat</b>
-                        </x-dropdown.item>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-dropdown.item separator :href="route('logout')"
-                                             onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown.item>
-                        </form>
-                    </x-dropdown>
+                    <x-wedo.jobs.user-dropdown></x-wedo.jobs.user-dropdown>
                 @else
                     <li class="mx-2 lg:mx-3">
                         <a href="{{ route('login') }}" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false" class="relative inline-block font-medium text-gray-200 hover:text-white">
@@ -90,7 +62,7 @@
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
 
-                <a class="block text-{{ app_color() }}-200 hover:text-white cursor-pointer" :href="route('logout')"
+                <a class="block text-{{ app_color() }}-200 hover:text-white cursor-pointer" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                     {{ __('Log Out') }}
@@ -106,7 +78,7 @@
 
         <div class="z-10 flex flex-col items-center xl:px-0 space-y-20">
             <h1 class="mx-6 mt-1 text-2xl text-center text-white sm:text-center sm:mx-0">{{ __('Welcome to') }}
-                <br/><br/> <span class="text-5xl sm:text-6xl font-sans">{{ app_team()->display_name }} Portal!</span>
+                <br/><br/> <span class="text-5xl sm:text-6xl font-semibold">{{ app_team()->display_name }} Portal!</span>
             </h1>
             <div class="flex justify-center md:mt-10">
                 <button type="button" onclick="Livewire.emit('openModal', 'wedo.modals.popup.wedo')" class="px-8 py-2 m-2 text-center text-white bg-{{ app_color() }}-500 border-2 border-{{ app_color() }}-500 rounded-full hover:bg-transparent">Short - Application</button>

@@ -35,7 +35,9 @@ require __DIR__.'/auth.php';
 
 
 Route::group(['middleware' => ['web']], function () {
-    Route::resource('jobs', JobController::class);
+    Route::resource('jobs', JobController::class)->except(['show']);
+
+    Route::get('jobs/{id}/{slug}', [JobController::class, 'show'])->name('jobs.show');
 });
 
 

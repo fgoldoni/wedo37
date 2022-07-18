@@ -8,6 +8,8 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
+        <link href="https://fonts.cdnfonts.com/css/operator-mono" rel="stylesheet">
+
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
         @stack('styles')

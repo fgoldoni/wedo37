@@ -21,41 +21,13 @@
             <!-- Settings Dropdown -->
             @auth
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
-                    <x-dropdown>
-                        <x-slot name="trigger">
-                            <div>
-                                <button type="button" class="max-w-xs bg-white flex items-center text-sm focus:outline-none border-l border-gray-800 pl-4">
-                                    <span class="sr-only">Open user menu</span>
-                                    <p class="font-bold text-xs mr-2 text-gray-700 text-right">
-                                        {{ __('Account') }} <br>
-                                        <span class="text-xs text-teal-500"> Trial Period </span>
-                                    </p>
-                                    <img class="h-8 w-8 rounded-full" src="{{ Auth::user()?->profile_photo_url }}" alt="{{ Auth::user()?->name }}">
-                                </button>
-                            </div>
-                        </x-slot>
-                        <x-dropdown.item>
-                            <b>Help Center</b>
-                        </x-dropdown.item>
-                        <x-dropdown.item separator>
-                            <b>Live Chat</b>
-                        </x-dropdown.item>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-dropdown.item separator :href="route('logout')"
-                                             onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown.item>
-                        </form>
-                    </x-dropdown>
+                    <x-wedo.jobs.user-dropdown class="text-gray-700"></x-wedo.jobs.user-dropdown>
                 </div>
             @else
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
-                    <a href="{{ route('login') }}" class="max-w-xs bg-white flex items-center focus:outline-none border-l border-gray-800 pl-4">
+                    <a href="{{ route('login') }}" class="max-w-xs bg-white flex items-center focus:outline-none border-l border-gray-300 pl-4">
                         <span class="sr-only">Open user menu</span>
-                        <p class="mr-2 text-gray-700 text-right">
+                        <p class="mr-2 text-sm text-gray-600 text-right">
                             {{ __('Login') }}
                         </p>
                     </a>

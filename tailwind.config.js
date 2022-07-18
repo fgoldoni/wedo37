@@ -69,7 +69,8 @@ module.exports = {
                 '(screen-content)': 'calc(100vh - 9.625rem)',
             },
             fontFamily: {
-                sans: ['Inter var', ...defaultTheme.fontFamily.sans]
+                sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+                mono: ['Operator Mono', ...defaultTheme.fontFamily.sans],
             }
         },
     },

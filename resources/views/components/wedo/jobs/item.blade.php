@@ -16,7 +16,7 @@
 
                     </a>
 
-                    <a href="{{ route('jobs.show', $row->id) }}" class="lg:hidden">
+                    <a href="{{ route('jobs.show', ['id' => $row->id, 'slug' => $row->slug]) }}" class="lg:hidden">
 
                         <img class="h-10 w-10 rounded-full cursor-pointer" src="{{ $row->avatar_url }}" alt="{{ $row->name }}">
 
@@ -31,7 +31,7 @@
 
                         <a href="javascript:;" wire:click="$set('show', {{ $row->id }})" class="hidden lg:block hover:underline font-bold">{{ $row->company->name }}</a>
 
-                        <a href="{{ route('jobs.show', $row->id) }}" class="lg:hidden hover:underline font-bold">{{ $row->company->name }}</a>
+                        <a href="{{ route('jobs.show', ['id' => $row->id, 'slug' => $row->slug]) }}" class="lg:hidden hover:underline font-bold">{{ $row->company->name }}</a>
 
                     </p>
 
@@ -72,7 +72,7 @@
                     </a>
 
 
-                    <a href="{{ route('jobs.show', $row->id) }}" class="lg:hidden text-xs text-{{ app_color() }}-500 hover:text-{{ app_color() }}-900 font-bold underline">
+                    <a href="{{ route('jobs.show', ['id' => $row->id, 'slug' => $row->slug]) }}" class="lg:hidden text-xs text-{{ app_color() }}-500 hover:text-{{ app_color() }}-900 font-bold underline">
 
                         Details <span aria-hidden="true">&rarr;</span>
 
@@ -130,7 +130,7 @@
 
             </a>
 
-            <a href="{{ route('jobs.show', $row->id) }}" class="lg:hidden hover:underline font-semibold">
+            <a href="{{ route('jobs.show', ['id' => $row->id, 'slug' => $row->slug]) }}" class="lg:hidden hover:underline font-semibold">
 
                 <h2 id="question-title-81614" class="mt-4 text-base font-medium text-{{ app_color() }}-900 text-xl">{{ $row->name }}</h2>
 
