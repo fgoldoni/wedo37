@@ -1,6 +1,6 @@
 <div class="relative shadow-xl text-base text-left transform transition w-full md:max-w-4xl lg:max-w-6xl">
     <div class="relative w-full h-50 text-white bg-gradient-to-tl from-purple-900 to-green-700">
-        <img class="absolute w-full h-full object-cover object-center mix-blend-overlay bg-center" src="{{ asset('images/modal.jpg') }}" alt="{{ app_team()->name }}">
+        <img class="absolute w-full h-full object-cover object-center mix-blend-unset bg-center" src="{{ asset('images/modal.jpg') }}" alt="{{ app_team()->name }}">
         <div class="relative z-20 mx-auto text-center text-white max-w-7xl">
             <div class="grid grid-cols-2 gap-4">
                 <div class="col-span-1">
