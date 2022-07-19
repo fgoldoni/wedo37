@@ -5,6 +5,7 @@ namespace App\Http\Services;
 use App\Http\Services\Contracts\ApiInterface;
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\PendingRequest;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 /**
@@ -33,18 +34,40 @@ class Api implements ApiInterface
 
     public function get(string $endpoint, array $data = []): \stdClass
     {
-        return $this->client->get($this->apiUrl . $endpoint, $data)->object();
+        try {
+            $this->response = $this->client->get($this->apiUrl . $endpoint, $data);
+            if ($this->response->failed() || $this->response->serverError() || $this->response->clientError()) {
+                dd($this->response);
+            }
+            return $this->client->get($this->apiUrl . $endpoint, $data)->object();
+        } catch (\Exception $e) {
+            abort($e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 
     public function post(string $endpoint, array $data = []): \stdClass
     {
-        return $this->client->post($this->apiUrl . $endpoint, $data)->object();
+        try {
+            $this->response = $this->client->post($this->apiUrl . $endpoint, $data);
+
+            if ($this->response->failed()
+                || $this->response->serverError()
+                || $this->response->clientError()) {
+                throw new \Exception($this->response->object()->message);
+            }
+
+            return $this->response->object();
+        } catch (\Exception $e) {
+            abort(Response::HTTP_INTERNAL_SERVER_ERROR, $e->getMessage());
+        }
     }
 
     public function attach($file): self
     {
         $this->client->attach(
-            'attachment', file_get_contents($file->getRealPath()), $file->getClientOriginalName()
+            'attachment',
+            file_get_contents($file->getRealPath()),
+            $file->getClientOriginalName()
         );
 
         return $this;

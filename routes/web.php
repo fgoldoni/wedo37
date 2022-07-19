@@ -48,6 +48,6 @@ Route::group(['middleware' => ['web'], 'namespace' => 'Wedo'], function () {
 });
 
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => ['web', 'auth']], function () {
     Route::resource('resumes', ResumeController::class);
 });
