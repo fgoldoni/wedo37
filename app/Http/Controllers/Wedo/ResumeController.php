@@ -8,7 +8,7 @@ use App\Http\Services\Contracts\ApiInterface;
 class ResumeController extends Controller
 {
 
-    public function __construct(private ApiInterface $api)
+    public function __construct(private readonly ApiInterface $api)
     {
     }
 

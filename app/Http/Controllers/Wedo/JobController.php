@@ -12,7 +12,7 @@ class JobController extends Controller
     use WithCachedRows;
 
 
-    public function __construct(private ApiInterface $api)
+    public function __construct(private readonly ApiInterface $api)
     {
     }
 

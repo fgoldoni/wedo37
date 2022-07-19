@@ -36,6 +36,20 @@ class Api implements ApiInterface
         return $this->client->get($this->apiUrl . $endpoint, $data)->object();
     }
 
+    public function post(string $endpoint, array $data = []): \stdClass
+    {
+        return $this->client->post($this->apiUrl . $endpoint, $data)->object();
+    }
+
+    public function attach($file): self
+    {
+        $this->client->attach(
+            'attachment', file_get_contents($file->getRealPath()), $file->getClientOriginalName()
+        );
+
+        return $this;
+    }
+
     public function response(string $format = null)
     {
         return match ($format) {
