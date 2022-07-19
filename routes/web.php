@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Wedo\JobController;
 use App\Http\Controllers\Wedo\LoginController;
+use App\Http\Controllers\Wedo\ResumeController;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
@@ -46,3 +47,7 @@ Route::group(['middleware' => ['web'], 'namespace' => 'Wedo'], function () {
     Route::get('token/{token}', [LoginController::class, 'loginWithToken'])->name('login.token');
 });
 
+
+Route::group(['middleware' => ['web']], function () {
+    Route::resource('resumes', ResumeController::class);
+});

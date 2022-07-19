@@ -11,7 +11,7 @@
             </button>
         </div>
     </x-slot>
-    <x-dropdown.item>
+    <x-dropdown.item href="{{ route('resumes.index') }}">
         <b>My Resume</b>
     </x-dropdown.item>
     <x-dropdown.item separator>
