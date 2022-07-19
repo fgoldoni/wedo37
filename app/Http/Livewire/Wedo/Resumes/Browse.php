@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Wedo\Resumes;
 
+use App\Http\Livewire\Wedo\Datatables\ResumesTable;
 use App\Http\Services\Contracts\ApiInterface;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -32,7 +33,7 @@ class Browse extends Component
             'hashName' => $file->hashName(),
         ]);
 
-        $this->emit('onRefreshResume', $response->data);
+        $this->emitTo(ResumesTable::class, 'onRefreshResume', $response->data);
 
     }
 
