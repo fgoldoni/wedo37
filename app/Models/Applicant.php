@@ -16,7 +16,6 @@ class Applicant extends Model
     public function getRows(): array
     {
         $this->useCachedRows();
-        $this->forget(config('app.system.cache.keys.applicants'));
 
         $items = $this->cache(
             fn () => app()->make(ApiInterface::class)->get('/applicants')->data,
