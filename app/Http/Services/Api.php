@@ -26,8 +26,7 @@ class Api implements ApiInterface
     public function __construct(Factory $http)
     {
         $this->client = $http->withHeaders(['X-Team-Id' => session('team-id')])
-            ->acceptJson()
-            ->withToken(Auth::user()?->token);
+            ->acceptJson();
 
         $this->apiUrl = env('API_URL', 'http://localhost:8000') . '/api';
     }
@@ -35,20 +34,25 @@ class Api implements ApiInterface
     public function get(string $endpoint, array $data = []): \stdClass
     {
         try {
-            $this->response = $this->client->get($this->apiUrl . $endpoint, $data);
-            if ($this->response->failed() || $this->response->serverError() || $this->response->clientError()) {
-                dd($this->response);
+            $this->response = $this->clientWithToken()
+                ->get($this->apiUrl . $endpoint, $data);
+
+            if ($this->response->failed()
+                || $this->response->serverError()
+                || $this->response->clientError()) {
+                throw new \Exception($this->response->object()->message);
             }
-            return $this->client->get($this->apiUrl . $endpoint, $data)->object();
+
+            return $this->response->object();
         } catch (\Exception $e) {
-            abort($e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+            abort(Response::HTTP_INTERNAL_SERVER_ERROR, $e->getMessage());
         }
     }
 
     public function post(string $endpoint, array $data = []): \stdClass
     {
         try {
-            $this->response = $this->client->post($this->apiUrl . $endpoint, $data);
+            $this->response = $this->clientWithToken()->post($this->apiUrl . $endpoint, $data);
 
             if ($this->response->failed()
                 || $this->response->serverError()
@@ -71,6 +75,13 @@ class Api implements ApiInterface
         );
 
         return $this;
+    }
+
+    public function clientWithToken(): PendingRequest
+    {
+        return $this->client
+            ->withHeaders(['X-Team-Idd' => session('token', auth()->user()->id)])
+            ->withToken(session('token', auth()->user()->id));
     }
 
     public function response(string $format = null)
