@@ -22,6 +22,7 @@ return [
     'cache' => [
         'keys' => [
             'resumes' => 'resumes',
+            'applicants' => 'applicants',
             'roles' => 'roles',
             'users' => 'users',
             'jobs' => 'jobs',

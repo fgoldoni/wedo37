@@ -12,10 +12,10 @@
         </div>
     </x-slot>
     <x-dropdown.item href="{{ route('resumes.index') }}">
-        <b>My Resume</b>
+        <b>My Resumes</b>
     </x-dropdown.item>
-    <x-dropdown.item separator>
-        <b>Apply Jobs</b>
+    <x-dropdown.item separator href="{{ route('applicants.index') }}">
+        <b>My Applications</b>
     </x-dropdown.item>
     <x-dropdown.item separator>
         <b>Shortlisted Jobs</b>

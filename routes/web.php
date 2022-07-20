@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Wedo\ApplicantsController;
 use App\Http\Controllers\Wedo\JobController;
 use App\Http\Controllers\Wedo\LoginController;
 use App\Http\Controllers\Wedo\ResumeController;
@@ -50,4 +51,8 @@ Route::group(['middleware' => ['web'], 'namespace' => 'Wedo'], function () {
 
 Route::group(['middleware' => ['web', 'auth']], function () {
     Route::resource('resumes', ResumeController::class);
+});
+
+Route::group(['middleware' => ['web', 'auth']], function () {
+    Route::resource('applicants', ApplicantsController::class);
 });
