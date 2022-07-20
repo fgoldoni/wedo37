@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Wedo\Datatables;
 
 use App\Models\Resume;
+use JetBrains\PhpStorm\ArrayShape;
 use Livewire\Component;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
@@ -29,6 +30,14 @@ class ResumesTable extends DataTableComponent
         $this->setColumnSelectDisabled();
 
         $this->setPerPageAccepted([5, 10, 25, 50, 100]);
+    }
+
+    #[ArrayShape(['Delete' => "string"])]
+    public function bulkActions(): array
+    {
+        return [
+            'Delete' => 'Delete',
+        ];
     }
 
     public function columns(): array
