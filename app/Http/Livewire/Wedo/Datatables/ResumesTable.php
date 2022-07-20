@@ -82,9 +82,11 @@ class ResumesTable extends DataTableComponent
                 ->sortable()
                 ->searchable(),
             Column::make('Created', 'created_at')
+                ->sortable()
                 ->searchable(),
             Column::make('File', 'mime_type')
                 ->searchable()
+                ->sortable()
                 ->format(
                     fn ($value, $row, Column $column) => view('components.wedo.datatables.views.mime')->withRow($row)
                 ),

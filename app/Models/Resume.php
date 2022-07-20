@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Http\Services\Contracts\ApiInterface;
 use Illuminate\Database\Eloquent\Model;
 use Sushi\Sushi;
@@ -10,9 +11,18 @@ class Resume extends Model
 {
     use Sushi;
 
+    use WithCachedRows;
+
     public function getRows(): array
     {
-        return json_decode(json_encode(app()->make(ApiInterface::class)->get('/resumes')->data), true);
+        $this->useCachedRows();
+
+        $items = $this->cache(
+            fn () => app()->make(ApiInterface::class)->get('/resumes')->data,
+            config('app.system.cache.keys.resumes')
+        );
+
+        return json_decode(json_encode($items), true);
     }
 
     public static function get($columns = ['*'])

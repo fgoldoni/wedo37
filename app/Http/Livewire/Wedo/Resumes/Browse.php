@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Wedo\Resumes;
 
 use App\Http\Livewire\Wedo\Datatables\ResumesTable;
+use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Http\Services\Contracts\ApiInterface;
 use App\Models\Resume;
 use Livewire\Component;
@@ -13,6 +14,7 @@ class Browse extends Component
 {
     use WithFileUploads;
     use Actions;
+    use WithCachedRows;
 
     public ?string $upload = null;
 
@@ -46,6 +48,8 @@ class Browse extends Component
 
     public function refreshTotal()
     {
+        $this->forget(config('app.system.cache.keys.resumes'));
+
         $this->total = Resume::count();
     }
 
