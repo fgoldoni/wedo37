@@ -10,16 +10,9 @@ class Resume extends Model
 {
     use Sushi;
 
-    public function __construct(array $attributes = [])
-    {
-        $this->api = app()->make(ApiInterface::class);
-
-        parent::__construct($attributes);
-    }
-
     public function getRows(): array
     {
-        return json_decode(json_encode($this->api->get('/resumes')->data), true);
+        return json_decode(json_encode(app()->make(ApiInterface::class)->get('/resumes')->data), true);
     }
 
     public static function get($columns = ['*'])

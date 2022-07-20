@@ -6,7 +6,6 @@ use App\Http\Livewire\Wedo\Datatables\ResumesTable;
 use App\Http\Services\Contracts\ApiInterface;
 use App\Models\Resume;
 use Livewire\Component;
-use Livewire\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 use WireUi\Traits\Actions;
 
@@ -18,6 +17,8 @@ class Browse extends Component
     public ?string $upload = null;
 
     public int $total = 0;
+
+    protected $listeners = ['onRefreshBrowse' => 'refreshTotal'];
 
     public function mount()
     {
@@ -38,8 +39,13 @@ class Browse extends Component
 
         $this->notification()->success(__('Updated'), __('The resume has been successfully created!'));
 
-        $this->emitTo(ResumesTable::class, 'onRefreshResume', $response->data);
+        $this->emitTo(ResumesTable::class, 'onRefreshResume');
 
+        $this->refreshTotal();
+    }
+
+    public function refreshTotal()
+    {
         $this->total = Resume::count();
     }
 

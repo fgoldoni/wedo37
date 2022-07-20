@@ -2,14 +2,18 @@
 
 namespace App\Http\Livewire\Wedo\Datatables;
 
+use App\Http\Livewire\Wedo\Resumes\Browse;
+use App\Http\Services\Contracts\ApiInterface;
 use App\Models\Resume;
 use JetBrains\PhpStorm\ArrayShape;
-use Livewire\Component;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use WireUi\Traits\Actions;
 
 class ResumesTable extends DataTableComponent
 {
+    use Actions;
+
     protected $model = Resume::class;
 
     public array $columnSearch = [
@@ -36,8 +40,38 @@ class ResumesTable extends DataTableComponent
     public function bulkActions(): array
     {
         return [
-            'Delete' => 'Delete',
+            'dialogConfirm' => 'Delete',
         ];
+    }
+
+    public function dialogConfirm()
+    {
+        $this->dialog()->confirm([
+            'title' => 'Are you Sure ?',
+            'description' => 'Delete the information?',
+            'icon' => 'error',
+            'accept' => [
+                'label' => 'Yes, delete it',
+                'method' => 'delete',
+            ],
+            'reject' => [
+                'label' => 'No, cancel',
+            ],
+        ]);
+    }
+
+    public function delete()
+    {
+        app()->make(ApiInterface::class)
+            ->delete('/resumes/destroy', ['selected' => $this->getSelected()]);
+
+        Resume::whereIn('id', $this->getSelected())->delete();
+
+        $this->clearSelected();
+
+        $this->emitTo(Browse::class, 'onRefreshBrowse');
+
+        $this->notification()->info(__('Deleted'), __('Resume has been successfully deleted!'));
     }
 
     public function columns(): array
@@ -47,7 +81,13 @@ class ResumesTable extends DataTableComponent
             Column::make('Name', 'name')
                 ->sortable()
                 ->searchable(),
-            Column::make('mime_type', 'mime_type')->sortable()->deselected(),
+            Column::make('Created', 'created_at')
+                ->searchable(),
+            Column::make('File', 'mime_type')
+                ->searchable()
+                ->format(
+                    fn ($value, $row, Column $column) => view('components.wedo.datatables.views.mime')->withRow($row)
+                ),
             Column::make('Download', 'url')
                 ->searchable()
                 ->format(

@@ -77,6 +77,13 @@ class Api implements ApiInterface
         return $this;
     }
 
+    public function dd(): self
+    {
+        $this->client->dd();
+
+        return $this;
+    }
+
     public function clientWithToken(): PendingRequest
     {
         return $this->client->withToken(session('token', session('token', auth()->user()?->id)));
@@ -88,5 +95,22 @@ class Api implements ApiInterface
             'array' => $this->response->json(),
              default => $this->response->object(),
         };
+    }
+
+    public function delete(string $endpoint, array $data = [])
+    {
+        try {
+            $this->response = $this->clientWithToken()->delete($this->apiUrl . $endpoint, $data);
+
+            if ($this->response->failed()
+                || $this->response->serverError()
+                || $this->response->clientError()) {
+                throw new \Exception($this->response->object()->message);
+            }
+
+            return $this->response->object();
+        } catch (\Exception $e) {
+            abort(Response::HTTP_INTERNAL_SERVER_ERROR, $e->getMessage());
+        }
     }
 }
