@@ -4,28 +4,9 @@
 
         <x-slot name="title">
 
-            {{ __('Resumes') }}
+            {{ __('Applications') }}
 
         </x-slot>
-
-        @if($total > 0)
-
-            <x-slot name="action">
-
-                <div class="flex">
-
-
-                    <span class="shadow-sm rounded-md">
-
-                        <x-wedo.input.add-resume label="{{ __('Add Resume') }}" wire:model="upload" id="upload" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf"></x-wedo.input.add-resume>
-
-                    </span>
-
-                </div>
-
-            </x-slot>
-
-        @endif
 
 
 

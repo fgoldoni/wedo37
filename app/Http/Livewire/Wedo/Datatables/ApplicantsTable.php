@@ -31,8 +31,6 @@ class ApplicantsTable extends DataTableComponent
 
         $this->setHideBulkActionsWhenEmptyEnabled();
 
-        $this->setColumnSelectDisabled();
-
         $this->setPerPageAccepted([5, 10, 25, 50, 100]);
     }
 
@@ -40,7 +38,7 @@ class ApplicantsTable extends DataTableComponent
     public function bulkActions(): array
     {
         return [
-            'dialogConfirm' => 'Delete',
+            'dialogConfirm' => 'Remove',
         ];
     }
 
@@ -63,7 +61,7 @@ class ApplicantsTable extends DataTableComponent
     public function delete()
     {
         app()->make(ApiInterface::class)
-            ->delete('/applicant/destroy', ['selected' => $this->getSelected()]);
+            ->delete('/applicants/destroy', ['selected' => $this->getSelected()]);
 
         Applicant::whereIn('id', $this->getSelected())->delete();
 
@@ -77,24 +75,53 @@ class ApplicantsTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make('Id', 'id')->sortable()->setSortingPillTitle('Key')->setSortingPillDirections('0-9', '9-0')->searchable(),
-            Column::make('Name', 'name')
-                ->sortable()
+            Column::make('Id', 'id')
+                ->sortable()->setSortingPillTitle('Key')
+                ->setSortingPillDirections('0-9', '9-0')
                 ->searchable(),
+            Column::make('Job', 'job_name')
+                ->sortable()
+                ->searchable()
+                ->format(
+                    fn($value, $row, Column $column) => view('components.wedo.datatables.views.job')->withRow($row)
+                ),
             Column::make('Created', 'created_at')
                 ->sortable()
                 ->searchable(),
-            Column::make('File', 'mime_type')
+            Column::make('Candidate', 'candidate_name')
+                ->searchable()
+                ->sortable()
+                ->format(
+                    fn (
+                        $value,
+                        $row,
+                        Column $column
+                    ) => view('components.wedo.datatables.views.candidate')->withRow($row)
+                ),
+            Column::make('Resume', 'mime_type')
                 ->searchable()
                 ->sortable()
                 ->format(
                     fn ($value, $row, Column $column) => view('components.wedo.datatables.views.mime')->withRow($row)
                 ),
-            Column::make('Download', 'url')
+            Column::make('Status', 'status')
                 ->searchable()
+                ->sortable()
                 ->format(
-                    fn ($value, $row, Column $column) => view('components.wedo.datatables.views.download')->withRow($row)
+                    fn (
+                        $value,
+                        $row,
+                        Column $column
+                    ) => view('components.wedo.datatables.views.status')->withRow($row)
                 ),
+            Column::make('Job Id', 'job_id')->deselected(),
+            Column::make('City', 'job_city')->deselected(),
+            Column::make('Job Avatar', 'job_avatar_url')->deselected(),
+            Column::make('Country', 'job_country_emoji')->deselected(),
+            Column::make('Candidate Id', 'candidate_id')->deselected(),
+            Column::make('Candidate Email', 'candidate_email')->deselected(),
+            Column::make('Candidate Avatar', 'candidate_profile_photo_url')->deselected(),
+            Column::make('Resume url', 'url')->deselected(),
         ];
     }
 }

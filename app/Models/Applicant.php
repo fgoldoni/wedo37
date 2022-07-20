@@ -16,17 +16,14 @@ class Applicant extends Model
     public function getRows(): array
     {
         $this->useCachedRows();
+        $this->forget(config('app.system.cache.keys.applicants'));
 
-//        $items = $this->cache(
-//            fn () => app()->make(ApiInterface::class)->get('/applicants')->data,
-//            config('app.system.cache.keys.applicants')
-//        );
+        $items = $this->cache(
+            fn () => app()->make(ApiInterface::class)->get('/applicants')->data,
+            config('app.system.cache.keys.applicants')
+        );
 
-        return [
-            ['id' => 1, 'name' => 'admin', 'url' => 'admin', 'created_at' => 'admin', 'mime_type' => 'application/pdf'],
-            ['id' => 2, 'name' => 'manager', 'url' => 'admin', 'created_at' => 'admin', 'mime_type' => 'application/pdf'],
-            ['id' => 3, 'name' => 'user', 'url' => 'admin', 'created_at' => 'admin', 'mime_type' => 'application/pdf'],
-        ];
+        return app()->make(ApiInterface::class)->toArray($items);
     }
 
     public static function get($columns = ['*'])

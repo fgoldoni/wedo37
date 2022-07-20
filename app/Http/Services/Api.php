@@ -97,6 +97,16 @@ class Api implements ApiInterface
         };
     }
 
+    public function toArray($data): array
+    {
+        return json_decode(
+            json_encode($data, JSON_THROW_ON_ERROR),
+            true,
+            512,
+            JSON_THROW_ON_ERROR
+        );
+    }
+
     public function delete(string $endpoint, array $data = [])
     {
         try {
