@@ -8,7 +8,7 @@
             <ul class="relative z-10 flex items-center px-6 text-sm text-white lg:text-base">
                 <li class="mx-2 lg:mx-3">
                     <a href="{{ route('jobs.index') }}" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false" class="relative inline-block font-medium text-gray-200 hover:text-white">
-                        <span class="block">Browse Jobs</span>
+                        <span class="block">{{ __('Browse Jobs') }}</span>
                         <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
                             <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-{{ app_color() }}-500" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" style="display: none;"></span>
                         </span>
@@ -57,6 +57,8 @@
     <!-- Mobile Menu -->
     <div x-show.transition="showMenu" class="absolute top-0 z-20 flex flex-col items-center justify-center w-full h-full space-y-5 text-lg origin-center bg-{{ app_color() }}-500" style="display: none;">
         <a href="{{ route('jobs.index') }}" class="block text-{{ app_color() }}-200 hover:text-white">{{ __('Browse Jobs') }}</a>
+        <a href="{{ route('resumes.index') }}" class="block text-{{ app_color() }}-200 hover:text-white">{{ __('My Resumes') }}</a>
+        <a href="{{ route('applicants.index') }}" class="block text-{{ app_color() }}-200 hover:text-white">{{ __('My Applications') }}</a>
 
         @auth
             <form method="POST" action="{{ route('logout') }}">
