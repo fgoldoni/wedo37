@@ -79,9 +79,7 @@ class Api implements ApiInterface
 
     public function clientWithToken(): PendingRequest
     {
-        return $this->client
-            ->withHeaders(['X-Team-Idd' => session('token', auth()->user()->id)])
-            ->withToken(session('token', auth()->user()->id));
+        return $this->client->withToken(session('token', session('token', auth()->user()?->id)));
     }
 
     public function response(string $format = null)
