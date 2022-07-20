@@ -29,7 +29,7 @@
                 <div class="col-span-2">
                     <div class="grid grid-cols-1 gap-4">
                         <div class="col-span-full text-center py-4 sm:py-20 text-xl">
-                            Can't find anything? We'll help you!
+                            Still Need Help ?!
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
 
     <div class="grid grid-cols-1 gap-4 p-4 bg-white">
         <p class="text-xl text-gray-600 line-clamp-2 text-center">
-            Wedo's expert assistants will help you find the career you deserve!
+            Let us now about your issue and a Professional will reach you out.
         </p>
     </div>
 
