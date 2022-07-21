@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Middleware;
 
 use Closure;
@@ -27,7 +26,6 @@ class EnsureTeamMiddleware
         } catch (Exception $e) {
             return response()->json([$e->getMessage()], 500);
         }
-
 
         return $next($request);
     }

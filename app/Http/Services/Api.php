@@ -1,12 +1,10 @@
 <?php
-
 namespace App\Http\Services;
 
 use App\Http\Services\Contracts\ApiInterface;
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Auth;
 
 /**
  * Class Api

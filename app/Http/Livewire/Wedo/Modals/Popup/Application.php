@@ -1,17 +1,12 @@
 <?php
-
 namespace App\Http\Livewire\Wedo\Modals\Popup;
 
-use App\Http\Livewire\Wedo\Datatables\ResumesTable;
 use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Http\Services\Contracts\ApiInterface;
 use App\Models\Applicant;
 use App\Models\Job;
 use App\Rules\Phone;
 use App\Rules\RealEmail;
-use Illuminate\Validation\Rule;
-use Illuminate\Validation\Rules\Password;
-use JetBrains\PhpStorm\NoReturn;
 use Livewire\WithFileUploads;
 use LivewireUI\Modal\ModalComponent;
 use WireUi\Traits\Actions;
@@ -63,17 +58,13 @@ class Application extends ModalComponent
         $this->closeModal();
     }
 
-
     public function mount($id): void
     {
         $this->useCachedRows();
 
         $this->job = Job::findOrFail($id);
 
-
-
         $this->editing = $this->makeBlankApplicant();
-
 
         if (auth()->check()) {
             $this->attachments = $this->cache(
@@ -104,8 +95,6 @@ class Application extends ModalComponent
             'user_id' => auth()->user()?->id,
             'hashName' => $file->hashName(),
         ]);
-
-
 
         $this->notification()->success(__('Updated'), __('The resume has been successfully created!'));
 

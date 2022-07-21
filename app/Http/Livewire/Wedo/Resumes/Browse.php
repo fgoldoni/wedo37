@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Livewire\Wedo\Resumes;
 
 use App\Http\Livewire\Wedo\Datatables\ResumesTable;

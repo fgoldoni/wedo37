@@ -32,9 +32,7 @@ Route::get('/cache/clear', function () {
     return redirect()->to('/');
 })->name('cache.clear');
 
-require __DIR__.'/auth.php';
-
-
+require __DIR__ . '/auth.php';
 
 Route::group(['middleware' => ['web']], function () {
     Route::resource('jobs', JobController::class)->except(['show']);
@@ -42,12 +40,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('jobs/{id}/{slug}', [JobController::class, 'show'])->name('jobs.show');
 });
 
-
 Route::group(['middleware' => ['web'], 'namespace' => 'Wedo'], function () {
     Route::post('login/link', [LoginController::class, 'loginLink'])->name('login.link');
     Route::get('token/{token}', [LoginController::class, 'loginWithToken'])->name('login.token');
 });
-
 
 Route::group(['middleware' => ['web', 'auth']], function () {
     Route::resource('resumes', ResumeController::class);

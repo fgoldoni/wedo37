@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Livewire\Wedo\Datatables;
 
 use App\Http\Livewire\Wedo\Applicants\Browse;
@@ -22,7 +21,6 @@ class ApplicantsTable extends DataTableComponent
 
     protected $listeners = ['onRefreshApplicant' => '$refresh'];
 
-
     public function configure(): void
     {
         $this->setPrimaryKey('id');
@@ -34,7 +32,7 @@ class ApplicantsTable extends DataTableComponent
         $this->setPerPageAccepted([5, 10, 25, 50, 100]);
     }
 
-    #[ArrayShape(['Delete' => "string"])]
+    #[ArrayShape(['Delete' => 'string'])]
     public function bulkActions(): array
     {
         return [

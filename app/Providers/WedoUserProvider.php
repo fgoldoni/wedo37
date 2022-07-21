@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Providers;
 
 use App\Services\WedoAuthService;
@@ -13,24 +12,20 @@ class WedoUserProvider implements UserProvider
         return WedoAuthService::retrieveUser($identifier);
     }
 
-
     public function retrieveByToken($identifier, $token)
     {
         // TODO: Implement retrieveByToken() method.
     }
-
 
     public function updateRememberToken(Authenticatable $user, $token)
     {
         // TODO: Implement updateRememberToken() method.
     }
 
-
     public function retrieveByCredentials(array $credentials)
     {
         // TODO: Implement retrieveByCredentials() method.
     }
-
 
     public function validateCredentials(Authenticatable $user, array $credentials)
     {
