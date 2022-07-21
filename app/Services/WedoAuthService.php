@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Models\WedoUser;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Auth;
@@ -10,6 +11,8 @@ use Illuminate\Support\Facades\Http;
 
 class WedoAuthService
 {
+    use WithCachedRows;
+
     public static function retrieveUser(string $token): WedoUser
     {
         return Cache::rememberForever(static::getCacheKey($token), function () use ($token) {
@@ -36,6 +39,8 @@ class WedoAuthService
 
     private static function auth(WedoUser $user): WedoUser
     {
+        static::forgetCache();
+
         static::session($user);
 
         static::bind($user);
@@ -74,5 +79,11 @@ class WedoAuthService
             'host' => url('/'),
             'to' => url('/'),
         ]);
+    }
+
+    public static function forgetCache()
+    {
+        return (new self)->forget(config('app.system.cache.keys.resumes'));
+        return (new self)->forget(config('app.system.cache.keys.applicants'));
     }
 }
