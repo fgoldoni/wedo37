@@ -49,6 +49,7 @@ class Browse extends Component
     public function refreshTotal()
     {
         $this->forget(config('app.system.cache.keys.resumes'));
+        $this->forget(config('app.system.cache.keys.attachments'));
 
         $this->total = Resume::count();
     }

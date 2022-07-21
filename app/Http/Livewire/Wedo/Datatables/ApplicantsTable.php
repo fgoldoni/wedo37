@@ -83,7 +83,7 @@ class ApplicantsTable extends DataTableComponent
                 ->sortable()
                 ->searchable()
                 ->format(
-                    fn($value, $row, Column $column) => view('components.wedo.datatables.views.job')->withRow($row)
+                    fn ($value, $row, Column $column) => view('components.wedo.datatables.views.job')->withRow($row)
                 ),
             Column::make('Created', 'created_at')
                 ->sortable()

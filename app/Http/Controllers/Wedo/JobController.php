@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Wedo;
 
-
 use App\Http\Controllers\Controller;
 use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Http\Services\Contracts\ApiInterface;
@@ -32,6 +31,6 @@ class JobController extends Controller
 
     private function apiJob(int $id)
     {
-        return $this->api->get( '/jobs/' . $id)->data;
+        return $this->api->get('/jobs/' . $id)->data;
     }
 }

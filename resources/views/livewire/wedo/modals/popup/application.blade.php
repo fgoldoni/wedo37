@@ -40,7 +40,7 @@
 
     <div class="grid grid-cols-1 gap-4 p-4 bg-white">
         <p class="text-xl text-gray-600 line-clamp-2 text-center">
-            Let us now about your issue and a Professional will reach you out.
+            {{ $job->name }}
         </p>
     </div>
 
@@ -49,35 +49,56 @@
     <!-- This example requires Tailwind CSS v2.0+ -->
     <div class="mt-4 grid grid-cols-1 gap-8 sm:grid-cols-2 p-4">
         <div class="col-span-1 sm:col-span-2">
-            <div wire:ignore x-data="internationalNumber('#phone')" class="sm:col-span-2">
-                <x-wedo.input.group :error="$errors->first('phone')">
+            <div wire:ignore x-data="internationalNumber('#phone')" class="col-span-1 sm:col-span-2">
+                <x-wedo.input.group label="{{ __('Phone number') }}" for="editing.phone" :error="$errors->first('editing.phone')" isRequired>
 
-                    <x-wedo.input.text wire:model.lazy="phone" type="tel" id="phone" ></x-wedo.input.text>
+                    <x-wedo.input.text wire:model.lazy="editing.phone" type="tel" name="editing.phone" id="phone" required></x-wedo.input.text>
 
                 </x-wedo.input.group>
             </div>
+            @if ($errors->first('editing.phone'))
+                <p class="mt-1 text-sm text-rose-500 dark:text-rose-400">{{ $errors->first('editing.phone') }}</p>
+            @endif
         </div>
 
         <div class="col-span-1 sm:col-span-2">
-            <x-textarea wire:model.defer="message" placeholder="Text" />
-        </div>
+            <x-wedo.input.group :error="$errors->first('editing.message')" label="{{ __('Message') }}" for="message" isRequired>
 
+                <x-wedo.input.textarea wire:model.lazy="editing.message" name="editing.message" id="message" isRequired></x-wedo.input.textarea>
 
-        <div class="col-span-1 sm:col-span-2">
-            <x-input right-icon="at-symbol" type="email" placeholder="Email Address"  wire:model.defer="email"/>
+            </x-wedo.input.group>
         </div>
 
         @auth
+            <x-wedo.input.group  class="col-span-1 sm:col-span-2" :error="$errors->first('editing.email')" isRequired inline>
+
+                <x-wedo.input.text value="{{ $editing->email }}" type="email" name="editing.email" id="email" placeholder="{{ __('Email address') }}" autocomplete="off" required disabled/>
+
+            </x-wedo.input.group>
+        @else
+            <x-wedo.input.group label="{{ __('Email address') }}" for="email"  class="col-span-1 sm:col-span-2" :error="$errors->first('editing.email')" isRequired inline>
+
+                <x-wedo.input.text wire:model.defer="editing.email" type="email" name="editing.email" id="email" placeholder="{{ __('Email address') }}" autocomplete="off" required/>
+
+            </x-wedo.input.group>
+        @endauth
+
+        @if(count($attachments) > 0)
             <div class="col-span-1 sm:col-span-2">
                 <fieldset>
-                    <legend class="sr-only">Pricing plans</legend>
+                    <legend class="sr-only">Resume</legend>
                     <div class="relative bg-white rounded-md -space-y-px">
                         @foreach ($attachments as $attachment)
+                            @if(is_array($attachment))
+                                @php
+                                    $attachment = json_decode(json_encode($attachment), FALSE);
+                                @endphp
+                            @endif
                             @if ($loop->first)
                                 <!-- Checked: "bg-indigo-50 border-indigo-200 z-10", Not Checked: "border-gray-200" -->
                                 <label class="rounded-tl-md rounded-tr-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-2 focus:outline-none">
                                       <span class="flex items-center text-sm">
-                                        <input type="radio" name="pricing-plan" value="Startup" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500" aria-labelledby="pricing-plans-0-label" aria-describedby="pricing-plans-0-description-0 pricing-plans-0-description-1">
+                                       <input type="radio" wire:model.lazy="resume" value="{{ $attachment->id }}" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
                                           <!-- Checked: "text-indigo-900", Not Checked: "text-gray-900" -->
                                         <span id="pricing-plans-0-label" class="ml-3 font-medium">{{ $attachment->name }}</span>
                                       </span>
@@ -96,7 +117,7 @@
                                 <!-- Checked: "bg-indigo-50 border-indigo-200 z-10", Not Checked: "border-gray-200" -->
                                     <label class="rounded-bl-md rounded-br-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-2 focus:outline-none">
                                       <span class="flex items-center text-sm">
-                                                                        <input type="radio" name="pricing-plan" value="Startup" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500" aria-labelledby="pricing-plans-0-label" aria-describedby="pricing-plans-0-description-0 pricing-plans-0-description-1">
+                                          <input type="radio" wire:model.lazy="resume" value="{{ $attachment->id }}" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
                                           <!-- Checked: "text-indigo-900", Not Checked: "text-gray-900" -->
                                         <span id="pricing-plans-0-label" class="ml-3 font-medium">{{ $attachment->name }}</span>
                                       </span>
@@ -115,8 +136,8 @@
 
                                 <!-- Checked: "bg-indigo-50 border-indigo-200 z-10", Not Checked: "border-gray-200" -->
                                     <label class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-2 focus:outline-none">
-       <span class="flex items-center text-sm">
-                                        <input type="radio" name="pricing-plan" value="Startup" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500" aria-labelledby="pricing-plans-0-label" aria-describedby="pricing-plans-0-description-0 pricing-plans-0-description-1">
+                                        <span class="flex items-center text-sm">
+                                       <input type="radio" wire:model.lazy="resume" value="{{ $attachment->id }}" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
            <!-- Checked: "text-indigo-900", Not Checked: "text-gray-900" -->
                                         <span id="pricing-plans-0-label" class="ml-3 font-medium">{{ $attachment->name }}</span>
                                       </span>
@@ -143,16 +164,28 @@
 
                     </div>
                 </fieldset>
-
             </div>
-        @endauth
+        @endif
+        <div class="col-span-1">
+            <x-wedo.input.add-resume-apply wire:model="upload" id="upload" label="{{ __('Add Resume') }}" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf"/>
+            @if ($errors->first('resume'))
+                <p class="mt-1 text-sm text-rose-500 dark:text-rose-400">{{ $errors->first('resume') }}</p>
+            @endif
+        </div>
+
+        <div class="col-span-1">
+            <button wire:click="save" type="button" class="uppercase inline-flex justify-center w-full border border-transparent shadow-sm px-6 py-3 bg-{{ app_color() }}-600 text-base font-medium text-white hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-500">
+                <x-heroicon-o-shield-check class="-ml-1 mr-3 h-6 w-6"/>
+                Apply!
+            </button>
+        </div>
 
 
 
         <div class="col-span-1 sm:col-span-2">
             <div class="relative flex items-start">
                 <div class="flex items-center h-5">
-                    <input id="offers" aria-describedby="offers-description" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                    <input id="offers" aria-describedby="offers-description" name="offers" type="checkbox" class="focus:ring-{{ app_color() }}-500 h-4 w-4 text-{{ app_color() }}-600 border-gray-300 rounded">
                 </div>
                 <div class="ml-3 text-sm">
                     <label for="terms" class="text-gray-500">You accept our</label>
@@ -162,10 +195,5 @@
         </div>
 
     </div>
-
-
-    <button type="submit" class="uppercase mt-8 w-full bg-{{ app_color() }}-600 border border-transparent py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-500">Become a team member now!</button>
-
-
 
 </div>

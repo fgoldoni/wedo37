@@ -83,7 +83,9 @@ class WedoAuthService
 
     public static function forgetCache()
     {
-        return (new self)->forget(config('app.system.cache.keys.resumes'));
-        return (new self)->forget(config('app.system.cache.keys.applicants'));
+        cache()->forget(config('app.system.cache.keys.resumes'));
+        cache()->forget(config('app.system.cache.keys.applicants'));
+        cache()->forget(config('app.system.cache.keys.attachments'));
+        cache()->forget(config('app.system.cache.keys.jobs'));
     }
 }

@@ -23,9 +23,8 @@ return [
         'keys' => [
             'resumes' => 'resumes',
             'applicants' => 'applicants',
-            'roles' => 'roles',
-            'users' => 'users',
             'jobs' => 'jobs',
+            'attachments' => 'attachments',
             'permissions' => 'permissions',
         ],
     ],

@@ -5,30 +5,34 @@ namespace App\Models;
 use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Http\Services\Contracts\ApiInterface;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 use Sushi\Sushi;
 
-class Applicant extends Model
+class Job extends Model
 {
     use Sushi;
 
     use WithCachedRows;
 
-    protected $guarded = [];
-
     public function getRows(): array
     {
         $this->useCachedRows();
 
-        if (auth()->check()) {
-            $items = $this->cache(
-                fn () => app()->make(ApiInterface::class)->get('/applicants')->data,
-                config('app.system.cache.keys.applicants')
-            );
+        $jobs = [];
 
-            return app()->make(ApiInterface::class)->toArray($items);
+        $items = $this->cache(
+            fn () => app()->make(ApiInterface::class)->get('/jobs')->data,
+            config('app.system.cache.keys.jobs')
+        );
+
+        foreach ($items as $item) {
+            $jobs[] = [
+                'id' => $item->id,
+                'name' => $item->name,
+            ];
         }
 
-        return [];
+        return $jobs;
     }
 
     public static function get($columns = ['*'])

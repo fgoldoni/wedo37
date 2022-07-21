@@ -6,6 +6,8 @@ use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Http\Livewire\Wedo\WithPerPagePagination;
 use App\Http\Livewire\Wedo\WithSorting;
 use App\Http\Services\Contracts\ApiInterface;
+use App\Models\Job;
+use Illuminate\Support\Arr;
 use Livewire\Component;
 
 class Browse extends Component
@@ -59,7 +61,7 @@ class Browse extends Component
 
     public function getShowQueryProperty()
     {
-        return app()->make(ApiInterface::class)->get( '/jobs/' . $this->show)->data;
+        return app()->make(ApiInterface::class)->get('/jobs/' . $this->show)->data;
     }
 
     public function getRowsQueryProperty()
