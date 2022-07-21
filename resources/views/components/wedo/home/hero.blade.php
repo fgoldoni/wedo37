@@ -57,10 +57,10 @@
     <!-- Mobile Menu -->
     <div x-show.transition="showMenu" class="absolute top-0 z-20 flex flex-col items-center justify-center w-full h-full space-y-5 text-lg origin-center bg-{{ app_color() }}-500" style="display: none;">
         <a href="{{ route('jobs.index') }}" class="block text-{{ app_color() }}-200 hover:text-white">{{ __('Browse Jobs') }}</a>
-        <a href="{{ route('resumes.index') }}" class="block text-{{ app_color() }}-200 hover:text-white">{{ __('My Resumes') }}</a>
-        <a href="{{ route('applicants.index') }}" class="block text-{{ app_color() }}-200 hover:text-white">{{ __('My Applications') }}</a>
 
         @auth
+            <a href="{{ route('resumes.index') }}" class="block text-{{ app_color() }}-200 hover:text-white">{{ __('My Resumes') }}</a>
+            <a href="{{ route('applicants.index') }}" class="block text-{{ app_color() }}-200 hover:text-white">{{ __('My Applications') }}</a>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
 
