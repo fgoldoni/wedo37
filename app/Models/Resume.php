@@ -22,7 +22,7 @@ class Resume extends Model
             config('app.system.cache.keys.resumes')
         );
 
-        return json_decode(json_encode($items, JSON_THROW_ON_ERROR), true, 512, JSON_THROW_ON_ERROR);
+        return app()->make(ApiInterface::class)->toArray($items);
     }
 
     public static function get($columns = ['*'])
