@@ -14,7 +14,8 @@ for (const key in colors) {
         colorSaveList.push(`focus:ring-${key}-${colorValue}`);
         colorSaveList.push(`focus-within:ring-${key}-${colorValue}`);
         colorSaveList.push(`border-${key}-${colorValue}`);
-        colorSaveList.push(`border-${key}-${colorValue}`);
+        colorSaveList.push(`from-${key}-${colorValue}`);
+        colorSaveList.push(`to-${key}-${colorValue}`);
     });
 }
 
