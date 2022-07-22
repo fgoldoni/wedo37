@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AccountsController;
 use App\Http\Controllers\Wedo\ApplicantsController;
 use App\Http\Controllers\Wedo\JobController;
 use App\Http\Controllers\Wedo\LoginController;
@@ -51,4 +52,8 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
 Route::group(['middleware' => ['web', 'auth']], function () {
     Route::resource('applicants', ApplicantsController::class);
+});
+
+Route::group(['middleware' => ['web', 'auth']], function () {
+    Route::resource('accounts', AccountsController::class);
 });

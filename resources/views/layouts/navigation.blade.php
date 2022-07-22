@@ -1,24 +1,18 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
-    <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-                <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ url('/') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
-
-                <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('jobs.index')" :active="request()->routeIs('jobs.index')">
-                        {{ __('Browse jobs') }}
+                        {{ __('layout.navigation.browse_jobs') }}
                     </x-nav-link>
                 </div>
             </div>
-
-            <!-- Settings Dropdown -->
             @auth
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                     <x-wedo.jobs.user-dropdown class="text-gray-700"></x-wedo.jobs.user-dropdown>
@@ -28,14 +22,11 @@
                     <a href="{{ route('login') }}" class="max-w-xs bg-white flex items-center focus:outline-none border-l border-gray-300 pl-4">
                         <span class="sr-only">Open user menu</span>
                         <p class="mr-2 text-sm text-gray-600 text-right">
-                            {{ __('Login') }}
+                            {{ __('layout.navigation.sign_in') }}
                         </p>
                     </a>
                 </div>
             @endauth
-
-
-            <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -46,48 +37,42 @@
             </div>
         </div>
     </div>
-
-    <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-1 space-y-1">
             <x-responsive-nav-link :href="route('jobs.index')" :active="request()->routeIs('jobs.index')">
-                {{ __('Browse Jobs') }}
+                {{ __('layout.navigation.browse_jobs') }}
             </x-responsive-nav-link>
             @guest
                 <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
-                    {{ __('Login') }}
+                    {{ __('layout.navigation.sign_in') }}
                 </x-responsive-nav-link>
             @endguest
         </div>
         @auth
-            <!-- Responsive Settings Options -->
             <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()?->name }}</div>
+                <div class="font-medium text-base text-gray-800"> {{ __('layout.navigation.signed_in_as') }}</div>
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()?->email }}</div>
             </div>
-
             <div class="mt-3 space-y-1">
+                <x-responsive-nav-link :href="route('accounts.index')" :active="request()->routeIs('accounts.index')">
+                    {{ __('layout.navigation.personal_account') }}
+                </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('resumes.index')" :active="request()->routeIs('resumes.index')">
-                    {{ __('My Resumes') }}
+                    {{ __('layout.navigation.resumes') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('applicants.index')" :active="request()->routeIs('applicants.index')">
-                    {{ __('My Applications') }}
+                    {{ __('layout.navigation.applications') }}
                 </x-responsive-nav-link>
             </div>
             <div class="mt-3 space-y-1">
-                <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
-                    <x-responsive-nav-link :href="route('logout')"
-                                           onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                        {{ __('layout.navigation.sign_out') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
-
         </div>
         @endauth
     </div>
