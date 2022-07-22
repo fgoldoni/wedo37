@@ -21,6 +21,13 @@ if (!function_exists('app_color')) {
     }
 }
 
+if (!function_exists('app_team_name')) {
+    function app_team_name(): string
+    {
+        return app_team()->display_name;
+    }
+}
+
 if (!function_exists('app_job_types')) {
     function app_job_types(): array
     {
