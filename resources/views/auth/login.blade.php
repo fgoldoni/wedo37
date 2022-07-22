@@ -1,7 +1,5 @@
 <x-app-layout>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
-        <!-- Section 1 -->
         <form method="POST" action="{{ route('login.link') }}">
             @csrf
             <x-auth-session-status class="mt-4" :status="session('status')" />
@@ -9,7 +7,6 @@
             <section class="w-full px-8 sm:mt-36 bg-gray-100 xl:px-8">
                 <div class="max-w-5xl mx-auto">
                     <div class="flex flex-col items-center md:flex-row">
-
                         <div class="hidden sm:block w-full space-y-5 md:w-3/5 md:pr-16">
                             <p class="font-medium text-{{ app_color() }}-500 uppercase">
                                 {{ __('Welcome back to :team Portal', ['team' => app_team_name()]) }} </p>
@@ -37,13 +34,10 @@
                                 </p>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </section>
         </form>
-
     </div>
-
     <x-wedo.home.footer class="mt-28"></x-wedo.home.footer>
 </x-app-layout>
