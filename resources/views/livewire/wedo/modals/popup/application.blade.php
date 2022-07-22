@@ -85,87 +85,44 @@
 
         @if(count($attachments) > 0)
             <div class="col-span-1 sm:col-span-2">
-                <fieldset>
-                    <legend class="sr-only">Resume</legend>
-                    <div class="relative bg-white rounded-md -space-y-px">
+                <div>
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">Select Attachments</h3>
+
+                    <dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
                         @foreach ($attachments as $attachment)
                             @if(is_array($attachment))
                                 @php
                                     $attachment = json_decode(json_encode($attachment), FALSE);
                                 @endphp
                             @endif
-                            @if ($loop->first)
-                                <!-- Checked: "bg-indigo-50 border-indigo-200 z-10", Not Checked: "border-gray-200" -->
-                                <label class="rounded-tl-md rounded-tr-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-2 focus:outline-none">
-                                      <span class="flex items-center text-sm">
-                                       <input type="radio" wire:model.lazy="resume" value="{{ $attachment->id }}" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
-                                          <!-- Checked: "text-indigo-900", Not Checked: "text-gray-900" -->
-                                        <span id="pricing-plans-0-label" class="ml-3 font-medium">{{ $attachment->name }}</span>
-                                      </span>
-                                        <!-- Checked: "text-indigo-700", Not Checked: "text-gray-500" -->
-                                    <a href="{{ $attachment->url }}" target="_blank" class="ml-6 text-sm md:ml-0 md:pl-0 md:text-right">
-                                            @if($attachment->mime_type === 'application/pdf')
-                                                <img class="inline-block h-8 w-8 text-gray-700" src="{{ asset('images/noun-pdf-749513.svg') }}" alt="{{ $attachment->name }}">
-                                            @elseif($attachment->mime_type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
-                                                <img class="inline-block h-8 w-8 text-gray-700" src="{{ asset('images/noun-docx-1126811.svg') }}" alt="{{ $attachment->name }}">
-                                            @else
-                                                <img class="inline-block h-8 w-8 text-gray-700" src="{{ asset('images/noun-document-4996788.svg') }}" alt="{{ $attachment->name }}">
-                                            @endif
-                                        </a>
-                                    </label>
-                            @elseif ($loop->last)
-                                <!-- Checked: "bg-indigo-50 border-indigo-200 z-10", Not Checked: "border-gray-200" -->
-                                    <label class="rounded-bl-md rounded-br-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-2 focus:outline-none">
-                                      <span class="flex items-center text-sm">
-                                          <input type="radio" wire:model.lazy="resume" value="{{ $attachment->id }}" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
-                                          <!-- Checked: "text-indigo-900", Not Checked: "text-gray-900" -->
-                                        <span id="pricing-plans-0-label" class="ml-3 font-medium">{{ $attachment->name }}</span>
-                                      </span>
-                                        <!-- Checked: "text-indigo-700", Not Checked: "text-gray-500" -->
-                                        <a href="{{ $attachment->url }}" target="_blank" class="ml-6 text-sm md:ml-0 md:pl-0 md:text-right">
-                                            @if($attachment->mime_type === 'application/pdf')
-                                                <img class="inline-block h-8 w-8 text-gray-700" src="{{ asset('images/noun-pdf-749513.svg') }}" alt="{{ $attachment->name }}">
-                                            @elseif($attachment->mime_type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
-                                                <img class="inline-block h-8 w-8 text-gray-700" src="{{ asset('images/noun-docx-1126811.svg') }}" alt="{{ $attachment->name }}">
-                                            @else
-                                                <img class="inline-block h-8 w-8 text-gray-700" src="{{ asset('images/noun-document-4996788.svg') }}" alt="{{ $attachment->name }}">
-                                            @endif
-                                        </a>
-                                    </label>
-                            @else
-
-                                <!-- Checked: "bg-indigo-50 border-indigo-200 z-10", Not Checked: "border-gray-200" -->
-                                    <label class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-2 focus:outline-none">
-                                        <span class="flex items-center text-sm">
-                                       <input type="radio" wire:model.lazy="resume" value="{{ $attachment->id }}" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
-           <!-- Checked: "text-indigo-900", Not Checked: "text-gray-900" -->
-                                        <span id="pricing-plans-0-label" class="ml-3 font-medium">{{ $attachment->name }}</span>
-                                      </span>
-                                        <!-- Checked: "text-indigo-700", Not Checked: "text-gray-500" -->
-                                        <a href="{{ $attachment->url }}" target="_blank" class="ml-6 text-sm md:ml-0 md:pl-0 md:text-right">
-                                            @if($attachment->mime_type === 'application/pdf')
-                                                <img class="inline-block h-8 w-8 text-gray-700" src="{{ asset('images/noun-pdf-749513.svg') }}" alt="{{ $attachment->name }}">
-                                            @elseif($attachment->mime_type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
-                                                <img class="inline-block h-8 w-8 text-gray-700" src="{{ asset('images/noun-docx-1126811.svg') }}" alt="{{ $attachment->name }}">
-                                            @else
-                                                <img class="inline-block h-8 w-8 text-gray-700" src="{{ asset('images/noun-document-4996788.svg') }}" alt="{{ $attachment->name }}">
-                                            @endif
-                                        </a>
-                                    </label>
-                            @endif
-
-
-
-
-
+                            <div class="col-span-1 sm:col-span-2 relative bg-white pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden">
+                            <dt>
+                                <div class="absolute bg-gray-200 rounded-md p-3">
+                                    @if($attachment->mime_type === 'application/pdf')
+                                        <img class="inline-block h-8 w-8 text-white" src="{{ asset('images/noun-pdf-749513.svg') }}" alt="{{ $attachment->name }}">
+                                    @elseif($attachment->mime_type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+                                        <img class="inline-block h-8 w-8 text-white" src="{{ asset('images/noun-docx-1126811.svg') }}" alt="{{ $attachment->name }}">
+                                    @else
+                                        <img class="inline-block h-8 w-8 text-white" src="{{ asset('images/noun-document-4996788.svg') }}" alt="{{ $attachment->name }}">
+                                    @endif
+                                </div>
+                                <p class="ml-16 text-sm font-medium text-gray-500 truncate">{{ $attachment->name }}</p>
+                            </dt>
+                            <dd class="ml-16 pb-6 flex items-baseline sm:pb-7">
+                                <p class="text-2xl font-semibold text-gray-900">{{ $attachment->created_at }}</p>
+                                <div class="absolute bottom-0 inset-x-0 bg-gray-50 px-4 py-4 sm:px-6">
+                                    <div class="text-sm">
+                                        <input type="radio" wire:model.lazy="resume" value="{{ $attachment->id }}" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                                    </div>
+                                </div>
+                            </dd>
+                        </div>
                         @endforeach
-
-
-
-                    </div>
-                </fieldset>
+                    </dl>
+                </div>
             </div>
         @endif
+
         <div class="col-span-1">
             <x-wedo.input.add-resume-apply wire:model="upload" id="upload" label="{{ __('Add Resume') }}" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf"/>
             @if ($errors->first('resume'))
