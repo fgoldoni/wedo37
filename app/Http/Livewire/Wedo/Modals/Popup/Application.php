@@ -116,7 +116,8 @@ class Application extends ModalComponent
 
         $this->forget(config('app.system.cache.keys.attachments'));
 
-        $this->resume = $attachment->id;
+        $this->resume = $this->resume ?: $attachment->id;
+
 
         $this->putCache(config('app.system.cache.keys.attachments'), $this->attachments);
     }

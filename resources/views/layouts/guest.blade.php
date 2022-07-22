@@ -20,8 +20,11 @@
         @livewireStyles
     </head>
     <body>
-        <div class="font-sans text-gray-900 antialiased">
-            {{ $slot }}
+        <div class="font-sans min-h-screen bg-gray-100 antialiased">
+            @include('layouts.navigation')
+            <main>
+                {{ $slot }}
+            </main>
         </div>
 
         @livewire('livewire-ui-modal')

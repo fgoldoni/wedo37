@@ -9,13 +9,10 @@ return [
         ],
         'welcome' => 'Welcome to',
         'header' => ':team Portal',
-        'personal_account' => 'Personal Account',
-        'browse_jobs' => 'Browse jobs',
-        'resumes' => 'My Resumes',
-        'applications' => 'My Applications',
-        'shortlisted' => 'Shortlisted',
-        'sign_in' => 'Login Link',
-        'sign_out' => 'Sign out',
+        'description' => 'Your job search starts and ends with us.',
+        'keywords' => 'Keywords',
+        'area' => 'Domain',
+        'go' => 'GO',
     ],
 
     'features' => [
