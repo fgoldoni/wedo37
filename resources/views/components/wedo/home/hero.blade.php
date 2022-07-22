@@ -65,8 +65,7 @@
                 @csrf
 
                 <a class="block text-{{ app_color() }}-200 hover:text-white cursor-pointer" href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                   onclick="event.preventDefault(); this.closest('form').submit();">
                     {{ __('Log Out') }}
                 </a>
             </form>
@@ -83,8 +82,8 @@
                 <br/><br/> <span class="text-5xl sm:text-6xl font-semibold">{{ app_team()->display_name }} Portal!</span>
             </h1>
             <div class="flex justify-center md:mt-10">
-                <button type="button" onclick="Livewire.emit('openModal', 'wedo.modals.popup.wedo')" class="uppercase px-8 py-2 m-2 text-center rounded-full text-white bg-{{ app_color() }}-500 border-2 border-{{ app_color() }}-500 hover:bg-transparent">Short - Application</button>
-                <a href="{{ route('jobs.index') }}" class="uppercase px-8 py-2 m-2 text-center rounded-full text-white border-2 border-{{ app_color() }}-500 hover:bg-{{ app_color() }}-500">Browse Jobs</a>
+                <button type="button" onclick="Livewire.emit('openModal', 'wedo.modals.popup.wedo')" class="uppercase px-8 py-2 m-2 text-center rounded-full text-white  text-sm sm:text-base bg-{{ app_color() }}-500 border-2 border-{{ app_color() }}-500 hover:bg-transparent">Short - Application</button>
+                <a href="{{ route('jobs.index') }}" class="uppercase px-8 py-2 m-2 text-center rounded-full text-white border-2 text-sm sm:text-base border-{{ app_color() }}-500 hover:bg-{{ app_color() }}-500">Browse Jobs</a>
             </div>
         </div>
 
