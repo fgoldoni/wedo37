@@ -6,11 +6,6 @@ use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Response;
 
-/**
- * Class Api
- *
- * @package \App\Http\Services
- */
 class Api implements ApiInterface
 {
     private readonly Factory $http;
@@ -23,8 +18,7 @@ class Api implements ApiInterface
 
     public function __construct(Factory $http)
     {
-        $this->client = $http->withHeaders(['X-Team-Id' => session('team-id')])
-            ->acceptJson();
+        $this->client = $http->withHeaders(['X-Team-Id' => session('team-id')])->acceptJson();
 
         $this->apiUrl = env('API_URL', 'http://localhost:8000') . '/api';
     }

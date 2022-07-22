@@ -30,6 +30,11 @@ trait WithCachedRows
         cache()->forget($key);
     }
 
+    public function flush()
+    {
+        cache()->flush();
+    }
+
     public function putCache($cacheKey, $result)
     {
         cache()->put($cacheKey, $result);

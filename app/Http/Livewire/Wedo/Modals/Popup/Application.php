@@ -14,7 +14,9 @@ use WireUi\Traits\Actions;
 class Application extends ModalComponent
 {
     use WithFileUploads;
+
     use Actions;
+
     use WithCachedRows;
 
     public Job $job;
@@ -110,9 +112,12 @@ class Application extends ModalComponent
     {
         $this->attachments[] = $attachment;
 
-        $this->reset('resume');
-
         $this->forget(config('app.system.cache.keys.resumes'));
+
+        $this->forget(config('app.system.cache.keys.attachments'));
+
+        $this->resume = $attachment->id;
+
         $this->putCache(config('app.system.cache.keys.attachments'), $this->attachments);
     }
 }

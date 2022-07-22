@@ -4,20 +4,17 @@ namespace App\Http\Controllers\Wedo;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginLinkRequest;
 use App\Services\WedoAuthService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
-    public function loginWithToken(Request $request, string $token)
+    public function loginWithToken(string $token)
     {
         try {
             WedoAuthService::loginWithToken($token);
 
             return redirect('/');
         } catch (\Exception $e) {
-            Log::error($e->getMessage());
-
             return redirect()->back()->withErrors(['message' => $e->getMessage()]);
         }
     }

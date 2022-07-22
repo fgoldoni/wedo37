@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
@@ -16,12 +17,14 @@ class EnsureTeamMiddleware
                 $team = Cache::rememberForever(static::getCacheKey($subDomain), function () use ($subDomain) {
                     $response = Http::acceptJson()->get(env('API_URL') . "/api/teams/{$subDomain}");
 
-                    return $response->ok() ? $response->object()->data : throw new Exception('Team not found for ' . $subDomain, 500);
+                    return $response->ok()
+                        ? $response->object()->data
+                        : throw new Exception('Team not found for ' . $subDomain, 500);
                 });
 
-                session()->put('team-id', $team->id);
+                session()->put(config('app.system.sessions.keys.team'), $team->id);
             } else {
-                throw new Exception('Invalid subdomain', 500);
+                throw new Exception('Invalid subdomain', Response::HTTP_INTERNAL_SERVER_ERROR);
             }
         } catch (Exception $e) {
             return response()->json([$e->getMessage()], 500);

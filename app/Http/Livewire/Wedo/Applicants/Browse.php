@@ -10,7 +10,9 @@ use WireUi\Traits\Actions;
 class Browse extends Component
 {
     use WithFileUploads;
+
     use Actions;
+
     use WithCachedRows;
 
     public int $total = 0;

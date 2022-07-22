@@ -15,9 +15,7 @@ class ApplicantsTable extends DataTableComponent
 
     protected $model = Applicant::class;
 
-    public array $columnSearch = [
-        'name' => null,
-    ];
+    public array $columnSearch = [ 'name' => null ];
 
     protected $listeners = ['onRefreshApplicant' => '$refresh'];
 
