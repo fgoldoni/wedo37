@@ -8,24 +8,28 @@
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
                     <div class="flex">
-                        <img class="h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32" src="{{ $job->avatar_url }}" alt="{{ $job->name }}">
+                        <img class="h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="{{ $job->name }}">
                     </div>
                     <div class="mt-6 sm:flex-1 sm:min-w-0 sm:flex sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
                         <div class="sm:hidden 2xl:block mt-6 min-w-0 flex-1">
-                            <h1 class="text-2xl font-bold text-gray-900 truncate">{{ $job->name }}</h1>
+                            <h1 class="text-2xl font-bold text-gray-900 truncate">Ricardo Cooper</h1>
                         </div>
                         <div class="mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
 
-                            <button onclick="Livewire.emit('openModal', 'wedo.modals.popup.application', {{ json_encode(['id' => $job->id]) }})" type="button" class="inline-flex justify-center px-4 py-2 border border-{{ app_color() }}-300 shadow-sm text-sm font-medium rounded-md text-{{ app_color() }}-700 bg-white hover:bg-{{ app_color() }}-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
-
-                                <x-heroicon-o-lightning-bolt class="-ml-1 mr-2 h-5 w-5 text-{{ app_color() }}-400"/>
-
-                                <span>Quick Apply</span>
-                            </button>
-
                             <button type="button" class="inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
-                                <x-heroicon-o-phone-outgoing class="-ml-1 mr-2 h-5 w-5 text-gray-400"/>
-                                <span>0123456789</span>
+                                <!-- Heroicon name: solid/mail -->
+                                <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                </svg>
+                                <span>Message</span>
+                            </button>
+                            <button type="button" class="inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
+                                <!-- Heroicon name: solid/phone -->
+                                <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                                </svg>
+                                <span>Call</span>
                             </button>
                         </div>
                     </div>
@@ -343,161 +347,49 @@
             </div>
 
             <div class="col-span-1">
-                <section aria-labelledby="timeline-title" class="lg:col-start-3 mt-6 sm:mt-2 2xl:mt-5">
-
-                    <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:px-6">
-
-                        <h2 id="timeline-title" class="text-lg font-medium text-gray-900">Tips for candidates</h2>
-
-                        <div class="mt-6 flow-root">
-
-                            <ul role="list" class="-mb-8">
-
-                                <li>
-
-                                    <div class="relative pb-8">
-
-                                        <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
-
-                                        <div class="relative flex space-x-3">
-                                            <div>
-                                          <span class="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center ring-8 ring-white">
-
-                                              <svg class="w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-
-                                                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-
-                                              </svg>
-
-                                          </span>
-
-                                            </div>
-
-                                            <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
-
-                                                <div>
-
-                                                    <p class="text-sm text-gray-500">Check if the offer matches your profile</p>
-
-                                                </div>
-
-                                                <div class="text-right text-sm whitespace-nowrap text-gray-500">
-
-                                                    <time datetime="2020-09-20">#1</time>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </li>
-
-                                <li>
-
-                                    <div class="relative pb-8">
-
-                                        <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
-
-                                        <div class="relative flex space-x-3">
-                                            <div>
-
-                                            <span class="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center ring-8 ring-white">
-
-
-                                                <svg class="w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-
-                                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-
-                                                </svg>
-
-                                            </span>
-                                            </div>
-
-                                            <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
-
-                                                <div>
-
-                                                    <p class="text-sm text-gray-500">Check the closing date</p>
-
-                                                </div>
-
-                                                <div class="text-right text-sm whitespace-nowrap text-gray-500">
-
-                                                    <time datetime="2020-09-22">#2</time>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </li>
-
-                                <li>
-
-                                    <div class="relative pb-8">
-
-                                        <div class="relative flex space-x-3">
-
-                                            <div>
-
-                                            <span class="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center ring-8 ring-white">
-
-                                                <svg class="w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-
-                                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-
-                                                </svg>
-
-                                            </span>
-
-                                            </div>
-
-                                            <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
-
-                                                <div>
-
-                                                    <p class="text-sm text-gray-500">Meet the employer in a professional location</p>
-
-                                                </div>
-
-                                                <div class="text-right text-sm whitespace-nowrap text-gray-500">
-
-                                                    <time datetime="2020-10-04">#3</time>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </li>
-
-                            </ul>
-
+                <section aria-labelledby="summary-heading" class="mt-16 bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5">
+                    <h2 id="summary-heading" class="text-lg font-medium text-gray-900">Order summary</h2>
+
+                    <dl class="mt-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <dt class="text-sm text-gray-600">Subtotal</dt>
+                            <dd class="text-sm font-medium text-gray-900">$99.00</dd>
                         </div>
-
-                        <div class="mt-6 flex flex-col justify-stretch">
-
-                            <button type="button" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-{{ app_color() }}-600 hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-500">Get started</button>
-
+                        <div class="border-t border-gray-200 pt-4 flex items-center justify-between">
+                            <dt class="flex items-center text-sm text-gray-600">
+                                <span>Shipping estimate</span>
+                                <a href="#" class="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500">
+                                    <span class="sr-only">Learn more about how shipping is calculated</span>
+                                    <!-- Heroicon name: solid/question-mark-circle -->
+                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </dt>
+                            <dd class="text-sm font-medium text-gray-900">$5.00</dd>
                         </div>
-
-                        <div class="mt-6 flex items-center justify-center">
-
-                            {!! $job->iframe !!}
-
+                        <div class="border-t border-gray-200 pt-4 flex items-center justify-between">
+                            <dt class="flex text-sm text-gray-600">
+                                <span>Tax estimate</span>
+                                <a href="#" class="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500">
+                                    <span class="sr-only">Learn more about how tax is calculated</span>
+                                    <!-- Heroicon name: solid/question-mark-circle -->
+                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </dt>
+                            <dd class="text-sm font-medium text-gray-900">$8.32</dd>
                         </div>
+                        <div class="border-t border-gray-200 pt-4 flex items-center justify-between">
+                            <dt class="text-base font-medium text-gray-900">Order total</dt>
+                            <dd class="text-base font-medium text-gray-900">$112.32</dd>
+                        </div>
+                    </dl>
 
+                    <div class="mt-6">
+                        <button type="submit" class="w-full bg-indigo-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500">Checkout</button>
                     </div>
-
                 </section>
             </div>
         </div>

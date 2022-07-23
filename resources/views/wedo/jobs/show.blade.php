@@ -38,7 +38,7 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-3 max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="col-span-1 md:col-span-2">
                     <!-- Tabs -->
                     <div class="mt-6 sm:mt-2 2xl:mt-5">
