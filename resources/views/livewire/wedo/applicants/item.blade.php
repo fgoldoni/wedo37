@@ -347,7 +347,7 @@
             </div>
 
             <div class="col-span-1">
-                <section aria-labelledby="summary-heading" class="mt-16 bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5">
+                <section aria-labelledby="summary-heading" class="bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8 mt-6 sm:mt-2 2xl:mt-5 lg:col-span-5">
                     <h2 id="summary-heading" class="text-lg font-medium text-gray-900">Order summary</h2>
 
                     <dl class="mt-6 space-y-4">
