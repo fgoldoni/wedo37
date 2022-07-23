@@ -8,7 +8,7 @@
         <svg class="absolute right-0 w-6 h-6 mr-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
     </div>
     <div class="w-full h-full lg:w-auto">
-        <button type="button" class="inline-flex items-center justify-center w-full h-full px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 lg:w-64">
+        <button type="button" class="inline-flex items-center justify-center w-full h-full px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-{{ app_color() }}-600 border border-transparent rounded-md shadow-sm hover:bg-{{ app_color() }}-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-600 lg:w-64">
             {{ __('pages/home.hero.go') }}
         </button>
     </div>
