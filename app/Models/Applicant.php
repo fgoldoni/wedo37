@@ -19,16 +19,27 @@ class Applicant extends Model
     {
         $this->useCachedRows();
 
+        $results = [];
+
         if (auth()->check()) {
-            $items = $this->cache(
+            $response = $this->cache(
                 fn () => app()->make(ApiInterface::class)->get('/applicants')->data,
                 config('app.system.cache.keys.applicants')
             );
 
-            return app()->make(ApiInterface::class)->toArray($items);
+            $items = app()->make(ApiInterface::class)->toArray($response);
+
+            foreach ($items as $item) {
+                $results[] = [
+                    'id' => $item['id'],
+                    'phone' => $item['phone'],
+                    'message' => $item['phone'],
+                    'email' => '',
+                ];
+            }
         }
 
-        return [];
+        return $results;
     }
 
     public static function get($columns = ['*'])

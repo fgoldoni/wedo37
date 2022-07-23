@@ -22,6 +22,8 @@ class Browse extends Component
 
     public function mount()
     {
+        $this->useCachedRows();
+
         $this->total = count($this->rows);
     }
 
@@ -36,14 +38,12 @@ class Browse extends Component
 
     public function getRowsProperty(): array
     {
-        return $this->cache(fn () => $this->rowsQuery, config('app.system.cache.keys.applicants'));
+        return $this->cache(fn () => $this->rowsQuery, config('app.system.cache.keys.applicants_browse'));
     }
 
     public function refreshTotal()
     {
-        $this->forget(config('app.system.cache.keys.applicants'));
-
-        $this->total = Applicant::count();
+        $this->forget(config('app.system.cache.keys.applicants_browse'));
     }
 
     public function render()

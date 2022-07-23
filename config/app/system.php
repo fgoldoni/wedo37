@@ -23,6 +23,7 @@ return [
         'keys' => [
             'resumes' => 'resumes',
             'applicants' => 'applicants',
+            'applicants_browse' => 'applicants_browse',
             'jobs' => 'jobs',
             'attachments' => 'attachments',
             'permissions' => 'permissions',

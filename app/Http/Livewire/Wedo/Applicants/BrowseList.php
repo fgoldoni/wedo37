@@ -22,12 +22,14 @@ class BrowseList extends Component
 
     public function getRowsProperty(): array
     {
-        return $this->cache(fn () => $this->rowsQuery, config('app.system.cache.keys.applicants'));
+        return $this->cache(fn () => $this->rowsQuery, config('app.system.cache.keys.applicants_browse'));
     }
 
 
     public function render()
     {
+        $this->useCachedRows();
+
         return view('livewire.wedo.applicants.browse-list', ['rows' => $this->rows]);
     }
 }

@@ -1,4 +1,4 @@
-<footer {{ $attributes->merge(['class' => 'text-center bg-white']) }}>
+<footer {{ $attributes->merge(['class' => 'text-center']) }}>
     <div class="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto space-y-6">
             <p class="text-xs font-medium">{{ __('pages/home.footer.copyright', ['team' => app_team_name()]) }}</p>
