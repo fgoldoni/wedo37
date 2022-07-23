@@ -83,7 +83,7 @@
 
     @else
 
-        @livewire('wedo.datatables.applicants-table')
+        @livewire('wedo.applicants.browse-list')
 
     @endif
 

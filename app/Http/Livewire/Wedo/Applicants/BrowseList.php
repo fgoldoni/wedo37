@@ -1,29 +1,15 @@
 <?php
+
 namespace App\Http\Livewire\Wedo\Applicants;
 
 use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Http\Services\Contracts\ApiInterface;
 use App\Models\Applicant;
 use Livewire\Component;
-use Livewire\WithFileUploads;
-use WireUi\Traits\Actions;
 
-class Browse extends Component
+class BrowseList extends Component
 {
-    use WithFileUploads;
-
-    use Actions;
-
     use WithCachedRows;
-
-    public int $total = 0;
-
-    protected $listeners = ['onRefreshBrowse' => 'refreshTotal'];
-
-    public function mount()
-    {
-        $this->total = count($this->rows);
-    }
 
     public function getRowsQueryProperty(): array
     {
@@ -39,15 +25,9 @@ class Browse extends Component
         return $this->cache(fn () => $this->rowsQuery, config('app.system.cache.keys.applicants'));
     }
 
-    public function refreshTotal()
-    {
-        $this->forget(config('app.system.cache.keys.applicants'));
-
-        $this->total = Applicant::count();
-    }
 
     public function render()
     {
-        return view('livewire.wedo.applicants.browse');
+        return view('livewire.wedo.applicants.browse-list', ['rows' => $this->rows]);
     }
 }
