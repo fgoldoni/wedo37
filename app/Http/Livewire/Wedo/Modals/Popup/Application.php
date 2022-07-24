@@ -25,7 +25,7 @@ class Application extends ModalComponent
 
     public array $attachments = [];
 
-    public ?int $resume = null;
+    public array $resumes = [];
 
     public ?string $upload = null;
 
@@ -37,7 +37,8 @@ class Application extends ModalComponent
             'editing.message' => ['required', 'min:4'],
             'editing.email' => ['required', 'email', new RealEmail()],
             'editing.phone' => ['required', 'min:6', new Phone()],
-            'resume' => ['required', 'min:0', 'integer'],
+            'resumes' => ['required', 'array', 'min:1'],
+            'resumes.*' => ['required', 'integer'],
         ];
     }
 
@@ -49,13 +50,14 @@ class Application extends ModalComponent
             'phone' => $this->editing->phone,
             'message' => $this->editing->message,
             'email' => $this->editing->email,
-            'resume' => $this->resume,
+            'resumes' => $this->resumes,
             'job_id' => $this->job->id,
         ]);
 
         $this->notification()->success(__('Updated'), $response->message);
 
         $this->forget(config('app.system.cache.keys.applicants'));
+        $this->forget(config('app.system.cache.keys.applicants_browse'));
 
         $this->closeModal();
     }
@@ -115,9 +117,6 @@ class Application extends ModalComponent
         $this->forget(config('app.system.cache.keys.resumes'));
 
         $this->forget(config('app.system.cache.keys.attachments'));
-
-        $this->resume = $this->resume ?: $attachment->id;
-
 
         $this->putCache(config('app.system.cache.keys.attachments'), $this->attachments);
     }

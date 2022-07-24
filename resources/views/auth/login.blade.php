@@ -5,7 +5,7 @@
 
         <!-- Section 1 -->
         <section class="w-full px-8 sm:mt-36 bg-gray-100 xl:px-8">
-            <div class="px-10 mx-auto max-w-7xl">
+            <div class="mx-auto max-w-7xl">
                 <div class="flex flex-wrap items-center justify-center">
                     <div class="max-w-sm mb-16 lg:mb-0 lg:max-w-2xl lg:w-1/2 lg:px-4">
                         <a class="inline-block mb-6 text-3xl font-bold leading-none" href="javascript:;">

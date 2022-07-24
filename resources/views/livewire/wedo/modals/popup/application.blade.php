@@ -112,7 +112,7 @@
                                 <p class="text-2xl font-semibold text-gray-900">{{ $attachment->created_at }}</p>
                                 <div class="absolute bottom-0 inset-x-0 bg-gray-50 px-4 py-4 sm:px-6">
                                     <div class="text-sm">
-                                        <input type="radio" wire:model.lazy="resume" value="{{ $attachment->id }}" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                                        <input type="checkbox" wire:model.lazy="resumes" value="{{ $attachment->id }}" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
                                     </div>
                                 </div>
                             </dd>
@@ -125,8 +125,8 @@
 
         <div class="col-span-1">
             <x-wedo.input.add-resume-apply wire:model="upload" id="upload" label="{{ __('Add Resume') }}" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf"/>
-            @if ($errors->first('resume'))
-                <p class="mt-1 text-sm text-rose-500 dark:text-rose-400">{{ $errors->first('resume') }}</p>
+            @if ($errors->first('resumes'))
+                <p class="mt-1 text-sm text-rose-500 dark:text-rose-400">{{ $errors->first('resumes') }}</p>
             @endif
         </div>
 

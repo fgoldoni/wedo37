@@ -47,8 +47,9 @@
                     <div class="border-b border-gray-200">
                         <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
                             <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-                                <!-- Current: "border-pink-500 text-gray-900", Default: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" -->
-                                <a href="javascript:;" class="border-pink-500 text-gray-900 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" aria-current="page"> Job Overview </a>
+                                <a href="javascript:;" class="border-pink-500 text-gray-900 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-base" aria-current="page">
+                                    {{ __('Job overview') }}
+                                </a>
                             </nav>
                         </div>
                     </div>
@@ -112,11 +113,15 @@
                             </a>
                         </div>
 
+                        <div class="sm:col-span-1">
+                            <x-wedo.jobs.applicant-status status="{{ $applicant->status }}"></x-wedo.jobs.applicant-status>
+                        </div>
+
                         <div class="col-span-1 sm:col-span-3 mt-8">
                             <div class="shadow sm:rounded-lg sm:overflow-hidden">
                                 <div class="divide-y divide-gray-200">
                                     <div class="px-4 py-5 sm:px-6">
-                                        <h2 id="notes-title" class="text-lg font-medium text-gray-900">Notes</h2>
+                                        <h2 id="notes-title" class="text-base font-medium text-gray-900">{{ __('Notes') }}</h2>
                                     </div>
                                     <div class="px-4 py-6 sm:px-6">
                                         <ul role="list" class="space-y-8">
@@ -180,7 +185,7 @@
                                         <!-- Expand/collapse question button -->
                                         <button @click="open = !open" type="button" class="group relative w-full py-6 flex justify-between items-center text-left" aria-controls="disclosure-1" aria-expanded="false">
                                             <!-- Open: "text-{{ app_color() }}-600", Closed: "text-gray-900" -->
-                                            <span class="text-sm font-medium" :class="{ 'text-{{ app_color() }}-600': open, 'text-gray-900': !(open) }"> Additional details </span>
+                                            <span class="text-base font-medium text-gray-900" :class="{ 'text-{{ app_color() }}-600': open, 'text-gray-900': !(open) }"> Additional details </span>
                                             <span class="ml-6 flex items-center">
                       <!--
                         Heroicon name: outline/plus-sm
@@ -266,7 +271,7 @@
                         </div>
 
                         <div class="col-span-1 sm:col-span-3 border-t border-gray-200 pt-8">
-                            <dt class="text-sm font-medium text-gray-500">Attachments</dt>
+                            <dt class="text-base font-medium text-gray-900">Files</dt>
                             <dd class="mt-1 text-sm text-gray-900">
                                 <ul role="list" class="border border-gray-200 rounded-md divide-y divide-gray-200">
                                     @foreach($applicant->attachments as $attachment)
@@ -292,7 +297,7 @@
 
             <div class="col-span-1">
                 <section aria-labelledby="summary-heading" class="bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8 mt-8 sm:mt-2 2xl:mt-5 lg:col-span-5">
-                    <h2 id="summary-heading" class="text-lg font-medium text-gray-900">Order summary</h2>
+                    <h2 id="summary-heading" class="text-lg font-medium text-gray-900">About Us</h2>
 
                     <dl class="mt-6 space-y-4">
                         <div class="flex items-center justify-between">
@@ -332,7 +337,7 @@
                     </dl>
 
                     <div class="mt-6">
-                        <button type="submit" class="w-full bg-indigo-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500">Checkout</button>
+                        <button type="submit" class="w-full bg-{{ app_color() }}-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-{{ app_color() }}-500">Checkout</button>
                     </div>
                 </section>
             </div>
