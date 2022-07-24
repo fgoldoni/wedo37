@@ -26,5 +26,6 @@
         <x-dialog z-index="z-50" blur="md" align="center" />
         @livewireScripts
         @stack('scripts')
+        <x-wedo.home.float-button></x-wedo.home.float-button>
     </body>
 </html>

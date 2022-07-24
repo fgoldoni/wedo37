@@ -32,5 +32,6 @@
         @stack('scripts')
 
         @livewireScripts
+        <x-wedo.home.float-button></x-wedo.home.float-button>
     </body>
 </html>
