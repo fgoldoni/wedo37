@@ -26,7 +26,7 @@ return [
             'applicants_browse' => 'applicants_browse',
             'jobs' => 'jobs',
             'attachments' => 'attachments',
-            'permissions' => 'permissions',
+            'comments' => 'comments',
         ],
     ],
     'sessions' => [
