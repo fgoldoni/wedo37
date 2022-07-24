@@ -10,19 +10,32 @@ class Comments extends Component
 {
     use WithCachedRows;
 
-    private array $comments;
+    public array $comments = [];
+
+    protected $listeners = [
+        'editComment'
+    ];
+
+    public int $editId = 0;
 
     public function mount(string $model, int $modelId)
     {
+        $this->useCachedRows();
+
         $this->comments = $this->cache(
             fn () => $this->apiComments($model, $modelId),
             config('app.system.cache.keys.comments') . '-' . $modelId
         );
     }
 
+    public function editComment(int $id)
+    {
+        $this->editId = $id;
+    }
+
     public function render()
     {
-        return view('livewire.wedo.applicants.comments', ['comments' => $this->comments]);
+        return view('livewire.wedo.applicants.comments');
     }
 
     private function apiComments(string $model, int $modelId)
