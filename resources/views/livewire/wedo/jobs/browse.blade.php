@@ -192,8 +192,7 @@
                                     </div>
                                 @endif
 
-
-
+                                <x-wedo.jobs.tags :tags="$job->tags"></x-wedo.jobs.tags>
                             </dl>
                         </div>
                     </article>

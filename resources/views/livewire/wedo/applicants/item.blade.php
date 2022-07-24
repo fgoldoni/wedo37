@@ -117,6 +117,8 @@
                             <x-wedo.jobs.applicant-status status="{{ $applicant->status }}"></x-wedo.jobs.applicant-status>
                         </div>
 
+                        <x-wedo.jobs.tags :tags="$job->tags"></x-wedo.jobs.tags>
+
                         <div class="col-span-1 sm:col-span-3 mt-8">
                             <div class="shadow sm:rounded-lg sm:overflow-hidden">
                                 <div class="divide-y divide-gray-200">
