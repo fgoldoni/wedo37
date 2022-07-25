@@ -124,15 +124,19 @@
         @endif
 
         <div class="col-span-1">
-            <x-wedo.input.add-resume-apply wire:model="upload" id="upload" label="{{ __('Add Resume') }}" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf"/>
+            <x-wedo.input.add-resume-apply wire:model="upload" id="upload" wire:loading.class="opacity-25 cursor-not-allowed" label="{{ __('Add Resume') }}" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf"/>
             @if ($errors->first('resumes'))
                 <p class="mt-1 text-sm text-rose-500 dark:text-rose-400">{{ $errors->first('resumes') }}</p>
             @endif
         </div>
 
         <div class="col-span-1">
-            <button wire:click="save" type="button" class="uppercase inline-flex justify-center w-full border border-transparent shadow-sm px-6 py-3 bg-{{ app_color() }}-600 text-base font-medium text-white hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-500">
-                <x-heroicon-o-shield-check class="-ml-1 mr-3 h-6 w-6"/>
+            <button wire:click="save" type="button" wire:loading.attr="disabled" class="uppercase inline-flex justify-center w-full border border-transparent shadow-sm px-4 py-2 bg-{{ app_color() }}-600 text-base font-medium text-white hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-500 disabled:opacity-25 disabled:cursor-not-allowed">
+                <x-heroicon-o-shield-check wire:loading.remove class="-ml-1 mr-3 h-6 w-6"/>
+                <svg wire:loading wire:target="save" class="animate-spin -ml-1 mr-3 h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
                 Apply!
             </button>
         </div>
