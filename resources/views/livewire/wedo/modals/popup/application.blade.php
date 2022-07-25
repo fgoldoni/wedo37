@@ -86,39 +86,27 @@
         @if(count($attachments) > 0)
             <div class="col-span-1 sm:col-span-2">
                 <div>
-                    <h3 class="text-lg leading-6 font-medium text-gray-900">Select Attachments</h3>
-
-                    <dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
-                        @foreach ($attachments as $attachment)
-                            @if(is_array($attachment))
-                                @php
-                                    $attachment = json_decode(json_encode($attachment), FALSE);
-                                @endphp
-                            @endif
-                            <div class="col-span-1 sm:col-span-2 relative bg-white pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden">
-                            <dt>
-                                <div class="absolute bg-gray-200 rounded-md p-3">
-                                    @if($attachment->mime_type === 'application/pdf')
-                                        <img class="inline-block h-8 w-8 text-white" src="{{ asset('images/noun-pdf-749513.svg') }}" alt="{{ $attachment->name }}">
-                                    @elseif($attachment->mime_type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
-                                        <img class="inline-block h-8 w-8 text-white" src="{{ asset('images/noun-docx-1126811.svg') }}" alt="{{ $attachment->name }}">
-                                    @else
-                                        <img class="inline-block h-8 w-8 text-white" src="{{ asset('images/noun-document-4996788.svg') }}" alt="{{ $attachment->name }}">
-                                    @endif
-                                </div>
-                                <p class="ml-16 text-sm font-medium text-gray-500 truncate">{{ $attachment->name }}</p>
-                            </dt>
-                            <dd class="ml-16 pb-6 flex items-baseline sm:pb-7">
-                                <p class="text-2xl font-semibold text-gray-900">{{ $attachment->created_at }}</p>
-                                <div class="absolute bottom-0 inset-x-0 bg-gray-50 px-4 py-4 sm:px-6">
-                                    <div class="text-sm">
-                                        <input type="checkbox" wire:model.lazy="resumes" value="{{ $attachment->id }}" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                    <dt class="text-base font-medium text-gray-900">Files</dt>
+                    <dd class="mt-1 text-sm text-gray-900">
+                        <ul role="list" class="border border-gray-200 rounded-md divide-y divide-gray-200">
+                            @foreach ($attachments as $attachment)
+                                @if(is_array($attachment))
+                                    @php
+                                        $attachment = json_decode(json_encode($attachment), FALSE);
+                                    @endphp
+                                @endif
+                                <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                                    <div class="w-0 flex-1 flex items-center">
+                                        <input wire:model.lazy="resumes" value="{{ $attachment->id }}" id="resumes-{{ $attachment->id }}" name="resumes" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                        <label for="resumes-{{ $attachment->id }}" class="ml-2 flex-1 w-0 truncate">{{ $attachment->name }}</label>
                                     </div>
-                                </div>
-                            </dd>
-                        </div>
-                        @endforeach
-                    </dl>
+                                    <div class="ml-4 flex-shrink-0">
+                                        <a href="{{ $attachment->url }}" target="_blank" class="font-medium text-blue-600 hover:text-blue-500"> Download </a>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </dd>
                 </div>
             </div>
         @endif
@@ -131,8 +119,8 @@
         </div>
 
         <div class="col-span-1">
-            <button wire:click="save" type="button" wire:loading.attr="disabled" class="uppercase inline-flex justify-center w-full border border-transparent shadow-sm px-4 py-2 bg-{{ app_color() }}-600 text-base font-medium text-white hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-500 disabled:opacity-25 disabled:cursor-not-allowed">
-                <x-heroicon-o-shield-check wire:loading.remove class="-ml-1 mr-3 h-6 w-6"/>
+            <button wire:click="save" type="button" wire:target="save" wire:loading.attr="disabled" class="uppercase inline-flex justify-center w-full border border-transparent shadow-sm px-4 py-2 bg-{{ app_color() }}-600 text-base font-medium text-white hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-500 disabled:opacity-25 disabled:cursor-not-allowed">
+                <x-heroicon-o-shield-check wire:loading.remove wire:target="save" class="-ml-1 mr-3 h-6 w-6"/>
                 <svg wire:loading wire:target="save" class="animate-spin -ml-1 mr-3 h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
