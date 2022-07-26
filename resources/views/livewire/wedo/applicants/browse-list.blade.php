@@ -1,12 +1,12 @@
-<div class="w-full mx-auto space-y-8 sm:px-0">
+<section class="w-full mx-auto space-y-8 sm:px-0 mb-8">
     @foreach($rows as $row)
-        <section aria-labelledby="4376-heading" class="bg-white p-8">
+        <div class="bg-white p-8">
             <div class="space-y-1 md:flex md:items-baseline md:space-y-0 md:space-x-4">
                 <h2 id="4376-heading" class="text-lg font-medium text-gray-900 md:flex-shrink-0">Applied Nr: #00{{ $row->id }}</h2>
                 <div class="space-y-5 md:flex-1 md:min-w-0 sm:flex sm:items-baseline sm:justify-between sm:space-y-0">
                     <p class="text-sm font-medium text-gray-500">Closing on {{ $row->job->closing_to }}</p>
                     <div class="flex text-sm font-medium">
-                        <a href="javascript:;" class="text-{{ app_color() }}-600 hover:text-{{ app_color() }}-500">{{ $row->company?->name }}</a>
+                        <a href="javascript:;" class="text-{{ app_color() }}-600 hover:text-{{ app_color() }}-500">{{ $row->job?->company?->name }}</a>
                         <div class="border-l border-gray-200 ml-4 pl-4 sm:ml-6 sm:pl-6">
                             <a href="javascript:;" class="text-{{ app_color() }}-600 hover:text-{{ app_color() }}-500">{{ __('2 Position(s)') }}</a>
                         </div>
@@ -51,6 +51,6 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     @endforeach
 </section>

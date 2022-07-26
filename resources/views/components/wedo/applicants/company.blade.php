@@ -24,19 +24,19 @@
             <dt class="flex items-center text-sm text-gray-600">
                 <span>Company size</span>
             </dt>
-            <dd class="text-sm font-medium text-gray-900">{{ $company?->phone }}</dd>
+            <dd class="text-sm font-medium text-gray-900">{{ $company?->size }}</dd>
         </div>
         <div class="border-t border-gray-200 pt-4 flex items-center justify-between">
             <dt class="flex items-center text-sm text-gray-600">
                 <span>Founded in</span>
             </dt>
-            <dd class="text-sm font-medium text-gray-900">{{ $company?->phone }}</dd>
+            <dd class="text-sm font-medium text-gray-900">{{ $company?->founded }}</dd>
         </div>
         <div class="border-t border-gray-200 pt-4 flex items-center justify-between">
             <dt class="flex items-center text-sm text-gray-600">
                 <span>Location</span>
             </dt>
-            <dd class="text-sm font-medium text-gray-900">{{ $company?->phone }}</dd>
+            <dd class="text-sm font-medium text-gray-900">{{ $company?->location }}</dd>
         </div>
         <div class="border-t border-gray-200 pt-4 flex items-center justify-between">
             <dt class="flex items-center text-sm text-gray-600">
