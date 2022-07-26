@@ -14,8 +14,6 @@ class Item extends Component
 
     public function mount(int $id)
     {
-        $this->useCachedRows();
-
         $this->applicant = $this->cache(fn () => $this->apiApplicant($id), 'current-applicant-' . $id);
     }
 

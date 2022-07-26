@@ -8,11 +8,11 @@
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
                     <div class="flex">
-                        <img class="h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="{{ $job->name }}">
+                        <img class="h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32" src="{{ $job->avatar_url }}" alt="{{ $job->name }}">
                     </div>
                     <div class="mt-6 sm:flex-1 sm:min-w-0 sm:flex sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
                         <div class="sm:hidden 2xl:block mt-6 min-w-0 flex-1">
-                            <h1 class="text-2xl font-bold text-gray-900 truncate">Ricardo Cooper</h1>
+                            <h1 class="text-2xl font-bold text-gray-900 truncate">{{ $job->name }}</h1>
                         </div>
                         <div class="mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
                             <x-wedo.outline-button>
@@ -227,50 +227,7 @@
             </div>
 
             <div class="col-span-1">
-                <section aria-labelledby="summary-heading" class="bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8 mt-8 sm:mt-2 2xl:mt-5 lg:col-span-5">
-                    <h2 id="summary-heading" class="text-lg font-medium text-gray-900">About Us</h2>
-
-                    <dl class="mt-6 space-y-4">
-                        <div class="flex items-center justify-between">
-                            <dt class="text-sm text-gray-600">Subtotal</dt>
-                            <dd class="text-sm font-medium text-gray-900">$99.00</dd>
-                        </div>
-                        <div class="border-t border-gray-200 pt-4 flex items-center justify-between">
-                            <dt class="flex items-center text-sm text-gray-600">
-                                <span>Shipping estimate</span>
-                                <a href="#" class="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500">
-                                    <span class="sr-only">Learn more about how shipping is calculated</span>
-                                    <!-- Heroicon name: solid/question-mark-circle -->
-                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
-                                    </svg>
-                                </a>
-                            </dt>
-                            <dd class="text-sm font-medium text-gray-900">$5.00</dd>
-                        </div>
-                        <div class="border-t border-gray-200 pt-4 flex items-center justify-between">
-                            <dt class="flex text-sm text-gray-600">
-                                <span>Tax estimate</span>
-                                <a href="#" class="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500">
-                                    <span class="sr-only">Learn more about how tax is calculated</span>
-                                    <!-- Heroicon name: solid/question-mark-circle -->
-                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
-                                    </svg>
-                                </a>
-                            </dt>
-                            <dd class="text-sm font-medium text-gray-900">$8.32</dd>
-                        </div>
-                        <div class="border-t border-gray-200 pt-4 flex items-center justify-between">
-                            <dt class="text-base font-medium text-gray-900">Order total</dt>
-                            <dd class="text-base font-medium text-gray-900">$112.32</dd>
-                        </div>
-                    </dl>
-
-                    <div class="mt-6">
-                        <button type="submit" class="w-full bg-{{ app_color() }}-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-{{ app_color() }}-500">Checkout</button>
-                    </div>
-                </section>
+                <x-wedo.applicants.company :company="$job->company"></x-wedo.applicants.company>
             </div>
         </div>
     </article>
