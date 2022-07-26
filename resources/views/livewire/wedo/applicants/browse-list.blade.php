@@ -47,12 +47,7 @@
                             <span>{{__('Details')}}</span>
                             <x-heroicon-o-arrow-right class="-mr-1 ml-2 h-5 w-5 text-white"/>
                         </x-wedo.button>
-                        <x-wedo.outline-button class="cursor-not-allowed w-full items-center">
-                            <svg class="-ml-0.5 mr-1.5 h-2 w-2 @if ($row->status === 'approved') text-green-400 @elseif($row->status === 'rejected') text-rose-400 @else text-yellow-400 @endif" fill="currentColor" viewBox="0 0 8 8">
-                                <circle cx="4" cy="4" r="3" />
-                            </svg>
-                            <span class="@if ($row->status === 'approved') text-green-400 @elseif($row->status === 'rejected') text-rose-400 @else text-yellow-400 @endif">{{ $row->status }}</span>
-                        </x-wedo.outline-button>
+                        <x-wedo.jobs.applicant-status status="{{ $row->status }}"></x-wedo.jobs.applicant-status>
                     </div>
                 </div>
             </div>
