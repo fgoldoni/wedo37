@@ -111,23 +111,32 @@
             </div>
         @endif
 
-        <div class="col-span-1">
-            <x-wedo.input.add-resume-apply wire:model="upload" id="upload" wire:loading.class="opacity-25 cursor-not-allowed" label="{{ __('Add Resume') }}" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf"/>
+        <div class="col-span-1 sm:col-span-2">
             @if ($errors->first('resumes'))
                 <p class="mt-1 text-sm text-rose-500 dark:text-rose-400">{{ $errors->first('resumes') }}</p>
             @endif
         </div>
 
-        <div class="col-span-1">
-            <button wire:click="save" type="button" wire:target="save" wire:loading.attr="disabled" class="uppercase inline-flex justify-center w-full border border-transparent shadow-sm px-4 py-2 bg-{{ app_color() }}-600 text-base font-medium text-white hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-500 disabled:opacity-25 disabled:cursor-not-allowed">
-                <x-heroicon-o-shield-check wire:loading.remove wire:target="save" class="-ml-1 mr-3 h-6 w-6"/>
-                <svg wire:loading wire:target="save" class="animate-spin -ml-1 mr-3 h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                Apply!
-            </button>
+        <div class="col-span-1 sm:col-span-2">
+            <div class="flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-y-0">
+                <input class="sr-only" type="file" wire:model="upload" id="upload" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf">
+
+                <x-wedo.outline-button :label="true" for="upload" wire:loading.attr="disabled" class="w-full ml-0 sm:mr-2">
+                    <x-heroicon-o-document-add wire:loading.remove wire:target="upload" class="-ml-1 mr-2 h-5 w-5 text-{{ app_color() }}-400"/>
+                    <x-wedo.loader wire:loading wire:target="upload"/>
+                    <span>{{ __('Add Resume') }}</span>
+                </x-wedo.outline-button>
+
+
+
+                <x-wedo.button class="w-full ml-0 sm:ml-2" wire:click="save" type="submit" wire:loading.attr="disabled">
+                    <x-heroicon-o-shield-check wire:loading.remove wire:target="save" class="-ml-1 mr-2 h-5 w-5 text-white"/>
+                    <x-wedo.loader wire:loading wire:target="save"/>
+                    <span>{{ __('Submit') }}</span>
+                </x-wedo.button>
+            </div>
         </div>
+
 
 
 
