@@ -1,3 +1,10 @@
 {
-    "preset": "laravel"
+    "preset": "psr12",
+    "rules": {
+        "simplified_null_return": true,
+        "braces": false
+    },
+    "exclude": [
+        "Modules"
+    ]
 }
