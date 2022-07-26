@@ -1,4 +1,4 @@
-<div>
+<div class="@if($comment == 0) mt-14 @else mt-6 @endif">
     <div class="flex space-x-3">
         <div class="flex-shrink-0">
             <div class="relative">
