@@ -1,8 +1,8 @@
 <?php
+
 namespace App\Http\Controllers\Wedo;
 
 use App\Http\Controllers\Controller;
-use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Http\Services\Contracts\ApiInterface;
 use App\Models\Applicant;
 

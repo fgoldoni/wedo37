@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Services;
 
 use App\Http\Services\Contracts\ApiInterface;

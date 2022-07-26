@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Livewire\Wedo\Modals\Popup;
 
 use App\Http\Livewire\Wedo\WithCachedRows;

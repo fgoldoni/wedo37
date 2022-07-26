@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Livewire\Wedo\Datatables;
 
 use App\Http\Livewire\Wedo\Resumes\Browse;

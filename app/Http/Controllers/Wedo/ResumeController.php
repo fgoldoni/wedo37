@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Wedo;
 
 use App\Http\Controllers\Controller;

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 use App\Http\Livewire\Wedo\WithCachedRows;
@@ -15,7 +16,6 @@ class WedoAuthService
     public static function retrieveUser(string $token): WedoUser
     {
         return Cache::rememberForever(static::getCacheKey($token), function () use ($token) {
-
             $response = Http::withToken($token)->get(env('API_URL') . '/api/user');
 
             $user = $response->json();

@@ -1,10 +1,10 @@
 <?php
+
 namespace App\Models;
 
 use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Http\Services\Contracts\ApiInterface;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 use Sushi\Sushi;
 
 class Applicant extends Model

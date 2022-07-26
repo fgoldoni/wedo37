@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Wedo\Applicants;
 
 use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Http\Services\Contracts\ApiInterface;
-use App\Models\Applicant;
 use Livewire\Component;
 
 class BrowseList extends Component

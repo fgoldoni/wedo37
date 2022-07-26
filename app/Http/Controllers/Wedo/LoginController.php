@@ -1,11 +1,11 @@
 <?php
+
 namespace App\Http\Controllers\Wedo;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginLinkRequest;
 use App\Services\WedoAuthService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
