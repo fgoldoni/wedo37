@@ -37,7 +37,7 @@
                     <div class="border-b border-gray-200">
                         <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
                             <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-                                <a href="javascript:;" class="border-pink-500 text-gray-900 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-base" aria-current="page">
+                                <a href="javascript:;" class="uppercase border-pink-500 text-gray-900 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-base" aria-current="page">
                                     {{ __('Job overview') }}
                                 </a>
                             </nav>
@@ -105,104 +105,71 @@
 
                         <x-wedo.jobs.tags :tags="$job->tags"></x-wedo.jobs.tags>
 
-                        @livewire('wedo.applicants.comments', ['model' => $applicant->model, 'modelId' => $applicant->id])
+                        <x-wedo.disclosure title="Notes" :open="true">
+                            @livewire('wedo.applicants.comments', ['model' => $applicant->model, 'modelId' => $applicant->id])
+                        </x-wedo.disclosure>
 
-                        <div class="col-span-1 sm:col-span-3 mt-8">
-                            <h2 id="details-heading" class="sr-only">Additional details</h2>
-
-                            <div class="border-t divide-y divide-gray-200">
-                                <div x-data="{ open: false }">
-                                    <h3>
-                                        <!-- Expand/collapse question button -->
-                                        <button @click="open = !open" type="button" class="group relative w-full py-6 flex justify-between items-center text-left" aria-controls="disclosure-1" aria-expanded="false">
-                                            <!-- Open: "text-{{ app_color() }}-600", Closed: "text-gray-900" -->
-                                            <span class="text-base font-medium text-gray-900" :class="{ 'text-{{ app_color() }}-600': open, 'text-gray-900': !(open) }"> Additional details </span>
-                                            <span class="ml-6 flex items-center">
-                      <!--
-                        Heroicon name: outline/plus-sm
-
-                        Open: "hidden", Closed: "block"
-                      -->
-                      <svg class="h-6 w-6 text-gray-400 group-hover:text-gray-500 block"  :class="{ 'hidden': open, 'block': !(open) }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                      </svg>
-                                                <!--
-                                                  Heroicon name: outline/minus-sm
-
-                                                  Open: "block", Closed: "hidden"
-                                                -->
-                      <svg class="hidden h-6 w-6 text-{{ app_color() }}-400 group-hover:text-{{ app_color() }}-500" :class="{ 'block': open, 'hidden': !(open) }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
-                      </svg>
-                    </span>
-                                        </button>
-                                    </h3>
-                                    <div class="col-span-1 sm:col-span-3" id="disclosure-1" x-show="open" x-cloak>
-                                        <div class="grid grid-cols-1 gap-6">
-                                            <div class="col-span-1">
-                                                <dt class="text-sm font-medium text-gray-900">{{ __('Job Description') }}</dt>
-                                                <dd class="mt-1 max-w-prose text-base text-gray-600 text-justify space-y-5">
-                                                    {{ $job->content }}
-                                                </dd>
-                                            </div>
-
-                                            @if($job->responsibilities)
-                                                <div class="col-span-1 border-t border-gray-200 pt-8">
-                                                    <h2 class="text-sm font-medium text-gray-900">{{__('Key Responsibilities')}}</h2>
-
-                                                    <div class="mt-4 prose prose-sm text-gray-500">
-                                                        <ul role="list">
-                                                            @forelse ($job->responsibilities as $responsibility)
-                                                                <li class="text-justify">{{ $responsibility }}</li>
-                                                            @empty
-                                                                <p>No Skill & Experience required</p>
-                                                            @endforelse
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            @endif
-
-                                            @if($job->skills)
-                                                <div class="col-span-1 border-t border-gray-200 pt-8">
-                                                    <h2 class="text-sm font-medium text-gray-900">{{__('Skill & Experience')}}</h2>
-
-                                                    <div class="mt-4 prose prose-sm text-gray-500">
-                                                        <ul role="list">
-                                                            @forelse ($job->skills as $skill)
-                                                                <li class="text-justify">{{ $skill }}</li>
-                                                            @empty
-                                                                <p>No Skill & Experience required</p>
-                                                            @endforelse
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            @endif
-
-                                            @if($job->benefits)
-                                                <div class="col-span-1 border-t border-gray-200 pt-8">
-                                                    <h2 class="text-sm font-medium text-gray-900">{{__('Benefits')}}</h2>
-
-                                                    <div class="mt-4 prose prose-sm text-gray-500">
-                                                        <ul role="list">
-                                                            @forelse ($job->benefits as $benefit)
-                                                                <li class="text-justify">{{ $benefit }}</li>
-                                                            @empty
-                                                                <p>No Skill & Experience required</p>
-                                                            @endforelse
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            @endif
-                                        </div>
-                                    </div>
+                        <x-wedo.disclosure>
+                            <div class="grid grid-cols-1 gap-6">
+                                <div class="col-span-1">
+                                    <dt class="text-sm font-medium text-gray-900">{{ __('Job Description') }}</dt>
+                                    <dd class="mt-1 max-w-prose text-base text-gray-600 text-justify space-y-5">
+                                        {{ $job->content }}
+                                    </dd>
                                 </div>
 
-                                <!-- More sections... -->
+                                @if($job->responsibilities)
+                                    <div class="col-span-1 border-t border-gray-200 pt-8">
+                                        <h2 class="text-sm font-medium text-gray-900">{{__('Key Responsibilities')}}</h2>
+
+                                        <div class="mt-4 prose prose-sm text-gray-500">
+                                            <ul role="list">
+                                                @forelse ($job->responsibilities as $responsibility)
+                                                    <li class="text-justify">{{ $responsibility }}</li>
+                                                @empty
+                                                    <p>No Skill & Experience required</p>
+                                                @endforelse
+                                            </ul>
+                                        </div>
+                                    </div>
+                                @endif
+
+                                @if($job->skills)
+                                    <div class="col-span-1 border-t border-gray-200 pt-8">
+                                        <h2 class="text-sm font-medium text-gray-900">{{__('Skill & Experience')}}</h2>
+
+                                        <div class="mt-4 prose prose-sm text-gray-500">
+                                            <ul role="list">
+                                                @forelse ($job->skills as $skill)
+                                                    <li class="text-justify">{{ $skill }}</li>
+                                                @empty
+                                                    <p>No Skill & Experience required</p>
+                                                @endforelse
+                                            </ul>
+                                        </div>
+                                    </div>
+                                @endif
+
+                                @if($job->benefits)
+                                    <div class="col-span-1 border-t border-gray-200 pt-8">
+                                        <h2 class="text-sm font-medium text-gray-900">{{__('Benefits')}}</h2>
+
+                                        <div class="mt-4 prose prose-sm text-gray-500">
+                                            <ul role="list">
+                                                @forelse ($job->benefits as $benefit)
+                                                    <li class="text-justify">{{ $benefit }}</li>
+                                                @empty
+                                                    <p>No Skill & Experience required</p>
+                                                @endforelse
+                                            </ul>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
-                        </div>
+                        </x-wedo.disclosure>
 
                         <div class="col-span-1 sm:col-span-3 border-t border-gray-200 pt-8">
-                            <dt class="text-base font-medium text-gray-900">Files</dt>
+                            <dt class="uppercase text-base font-medium text-gray-900">Files</dt>
                             <dd class="mt-1 text-sm text-gray-900">
                                 <ul role="list" class="border border-gray-200 rounded-md divide-y divide-gray-200">
                                     @foreach($applicant->attachments as $attachment)

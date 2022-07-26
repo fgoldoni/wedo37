@@ -1,4 +1,4 @@
-<div class="mt-6">
+<div>
     <div class="flex space-x-3">
         <div class="flex-shrink-0">
             <div class="relative">

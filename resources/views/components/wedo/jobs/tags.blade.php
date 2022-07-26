@@ -1,8 +1,8 @@
 @props(['tags'])
 
 @if($tags)
-    <div {{ $attributes->merge(['class' => 'col-span-1 sm:col-span-3 pt-8']) }}>
-        <h2 class="text-sm font-medium text-gray-900">{{__('Tags')}}</h2>
+    <div {{ $attributes->merge(['class' => 'col-span-1 sm:col-span-3 border-t border-gray-200 pt-8']) }}>
+        <h2 class="uppercase text-base font-medium text-gray-900 py-4">{{__('Tags')}}</h2>
         <ul role="list" class="leading-8">
             @foreach($tags as $tag)
                 <li class="inline">

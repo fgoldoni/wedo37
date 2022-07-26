@@ -1,10 +1,6 @@
 <div class="col-span-1 sm:col-span-3 mt-8">
     <div class="divide-y divide-gray-200">
-        <div class="pb-4">
-            <h2 id="activity-title" class="text-lg font-medium text-gray-900">Activity</h2>
-        </div>
-        <div class="pt-6">
-            <!-- Activity feed-->
+        <div>
             <div class="flow-root">
                 <ul role="list" class="-mb-8">
                     @foreach($comments as $comment)
