@@ -20,7 +20,7 @@
 
                     <div class="col-span-1 sm:col-span-2">
                         <!-- comments list -->
-                        <x-wedo.disclosure title="Notes" :open="true" class="border-t border-gray-200 pt-8">
+                        <x-wedo.disclosure title="Notes" :open="true">
                             @livewire('wedo.applicants.comments', ['model' => $applicant->model, 'modelId' => $applicant->id])
                         </x-wedo.disclosure>
                     </div>

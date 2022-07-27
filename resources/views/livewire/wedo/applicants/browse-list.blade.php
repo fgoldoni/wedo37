@@ -6,9 +6,9 @@
                 <div class="space-y-5 md:flex-1 md:min-w-0 sm:flex sm:items-baseline sm:justify-between sm:space-y-0">
                     <p class="text-sm font-medium text-gray-500">Closing on {{ $row->job->closing_to }}</p>
                     <div class="flex text-sm font-medium">
-                        <a href="javascript:;" class="text-{{ app_color() }}-600 hover:text-{{ app_color() }}-500">{{ $row->job?->company?->name }}</a>
+                        <a href="{{ route('applicants.show', $row->id) }}" class="text-{{ app_color() }}-600 hover:text-{{ app_color() }}-500">{{ $row->job?->company?->name }}</a>
                         <div class="border-l border-gray-200 ml-4 pl-4 sm:ml-6 sm:pl-6">
-                            <a href="javascript:;" class="text-{{ app_color() }}-600 hover:text-{{ app_color() }}-500">{{ __('2 Position(s)') }}</a>
+                            <a href="{{ route('applicants.show', $row->id) }}" class="text-{{ app_color() }}-600 hover:text-{{ app_color() }}-500">{{ __('2 Position(s)') }}</a>
                         </div>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                         <img src="{{ $row->job->avatar_url }}" alt="{{ $row->job->name }}" class="flex-none w-20 h-20 rounded-md object-center object-cover sm:w-48 sm:h-48">
                         <div class="pt-1.5 min-w-0 flex-1 sm:pt-0">
                             <h3 class="text-sm font-medium text-gray-900">
-                                <a href="#">{{ $row->job->name }}</a>
+                                <a href="{{ route('applicants.show', $row->id) }}">{{ $row->job->name }}</a>
                             </h3>
                             <p class="text-sm text-gray-500 truncate">
                                 <button type="button" class="-ml-2 -my-2 flex rounded-full px-3 py-2 inline-flex items-center text-left text-gray-400 group">

@@ -21,6 +21,13 @@ if (!function_exists('app_color')) {
     }
 }
 
+if (!function_exists('app_team_avatar')) {
+    function app_team_avatar(): string
+    {
+        return app_team()->avatar;
+    }
+}
+
 if (!function_exists('app_team_name')) {
     function app_team_name(): string
     {
