@@ -6,7 +6,7 @@
 @if($link)
     <a
         href="{{ $link }}"
-        {{ $attributes->merge(['class' => 'inline-flex underline items-center whitespace-nowrap font-medium text-' . app_color() . '-700 hover:text-' . app_color() . '500']) }}
+        {{ $attributes->merge(['class' => 'inline-flex underline items-center whitespace-nowrap font-medium text-' . app_color() . '-700 hover:text-' . app_color() . '-500']) }}
     >
         {{ $slot }}
     </a>
