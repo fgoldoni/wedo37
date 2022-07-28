@@ -58,11 +58,11 @@ class EnsureTeamMiddleware
 
     public static function cacheTeamKey(): string
     {
-        return config('app.system.cache.keys.team');
+        return cache_path('team');
     }
 
-    public static function cachePrefix(): string
+    public static function cachePrefix($path): string
     {
-        return static::getCacheKey(self::getSubDomain()) . '-';
+        return static::getCacheKey(self::getSubDomain()) . '-' . $path;
     }
 }

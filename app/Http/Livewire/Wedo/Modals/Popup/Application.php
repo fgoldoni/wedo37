@@ -57,8 +57,8 @@ class Application extends ModalComponent
 
         $this->notification()->success(__('Updated'), $response->message);
 
-        $this->forget(config('app.system.cache.keys.applicants'));
-        $this->forget(config('app.system.cache.keys.applicants_browse'));
+        $this->forget(cache_path('applicants'));
+        $this->forget(cache_path('applicants_browse'));
 
         $this->closeModal();
     }
@@ -74,12 +74,12 @@ class Application extends ModalComponent
         if (auth()->check()) {
             $this->attachments = $this->cache(
                 fn () => app()->make(ApiInterface::class)->get('/resumes')->data,
-                config('app.system.cache.keys.attachments')
+                cache_path('attachments')
             );
         } else {
             $this->attachments = $this->cache(
                 fn () => [],
-                config('app.system.cache.keys.attachments')
+                cache_path('attachments')
             );
         }
     }
@@ -115,10 +115,10 @@ class Application extends ModalComponent
     {
         $this->attachments[] = $attachment;
 
-        $this->forget(config('app.system.cache.keys.resumes'));
+        $this->forget(cache_path('resumes'));
 
-        $this->forget(config('app.system.cache.keys.attachments'));
+        $this->forget(cache_path('attachments'));
 
-        $this->putCache(config('app.system.cache.keys.attachments'), $this->attachments);
+        $this->putCache(cache_path('attachments'), $this->attachments);
     }
 }

@@ -21,7 +21,7 @@ class Job extends Model
 
         $items = $this->cache(
             fn () => app()->make(ApiInterface::class)->get('/jobs')->data,
-            config('app.system.cache.keys.jobs')
+            cache_path('jobs')
         );
 
         foreach ($items as $item) {

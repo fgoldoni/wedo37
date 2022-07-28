@@ -24,7 +24,7 @@ class Applicant extends Model
         if (auth()->check()) {
             $response = $this->cache(
                 fn () => app()->make(ApiInterface::class)->get('/applicants')->data,
-                config('app.system.cache.keys.applicants')
+                cache_path('applicants')
             );
 
             $items = app()->make(ApiInterface::class)->toArray($response);

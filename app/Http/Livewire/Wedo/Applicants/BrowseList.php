@@ -21,7 +21,7 @@ class BrowseList extends Component
 
     public function getRowsProperty(): array
     {
-        return $this->cache(fn () => $this->rowsQuery, config('app.system.cache.keys.applicants_browse'));
+        return $this->cache(fn () => $this->rowsQuery, cache_path('applicants_browse'));
     }
 
 

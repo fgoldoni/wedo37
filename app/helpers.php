@@ -44,9 +44,9 @@ if (!function_exists('app_job_types')) {
     }
 }
 
-if (!function_exists('cache_prefix')) {
-    function cache_prefix(): string
+if (!function_exists('cache_path')) {
+    function cache_path(string $path): string
     {
-        return EnsureTeamMiddleware::cachePrefix();
+        return EnsureTeamMiddleware::cachePrefix(config('app.system.cache.keys.'. $path));
     }
 }

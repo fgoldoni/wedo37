@@ -19,7 +19,7 @@ class Resume extends Model
 
         $items = $this->cache(
             fn () => app()->make(ApiInterface::class)->get('/resumes')->data,
-            config('app.system.cache.keys.resumes')
+            cache_path('resumes')
         );
 
         return app()->make(ApiInterface::class)->toArray($items);

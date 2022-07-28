@@ -24,7 +24,7 @@ class Comments extends Component
 
         $this->comments = $this->cache(
             fn () => $this->apiComments($model, $modelId),
-            config('app.system.cache.keys.comments') . '-' . $modelId
+            cache_path('comments') . '-' . $modelId
         );
     }
 
