@@ -2,6 +2,7 @@
 
 namespace App\Http\Services;
 
+use App\Http\Middleware\EnsureTeamMiddleware;
 use App\Http\Services\Contracts\ApiInterface;
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\PendingRequest;
@@ -19,7 +20,9 @@ class Api implements ApiInterface
 
     public function __construct(Factory $http)
     {
-        $this->client = $http->withHeaders(['X-Team-Id' => session('team-id')])->acceptJson();
+        $this->client = $http->withHeaders([
+            'X-Team-Id' => EnsureTeamMiddleware::teamId()
+        ])->acceptJson();
 
         $this->apiUrl = env('API_URL', 'http://localhost:8000') . '/api';
     }

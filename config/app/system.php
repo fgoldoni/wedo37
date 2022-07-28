@@ -21,12 +21,13 @@ return [
 
     'cache' => [
         'keys' => [
-            'resumes' => 'resumes',
-            'applicants' => 'applicants',
-            'applicants_browse' => 'applicants_browse',
-            'jobs' => 'jobs',
-            'attachments' => 'attachments',
-            'comments' => 'comments',
+            'resumes' => cache_prefix() . 'resumes',
+            'applicants' => cache_prefix() . 'applicants',
+            'applicants_browse' => cache_prefix() . 'applicants_browse',
+            'jobs' => cache_prefix() . 'jobs',
+            'attachments' => cache_prefix() . 'attachments',
+            'comments' => cache_prefix() . 'comments',
+            'team' => cache_prefix() . 'team-id',
         ],
     ],
     'sessions' => [

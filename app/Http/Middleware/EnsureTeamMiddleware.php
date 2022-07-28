@@ -23,7 +23,7 @@ class EnsureTeamMiddleware
                         : throw new Exception('Team not found for ' . $subDomain, 500);
                 });
 
-                session()->put(config('app.system.sessions.keys.team'), $team->id);
+                Cache::rememberForever(self::cacheTeamKey(), fn() => $team->id);
             } else {
                 throw new Exception('Invalid subdomain', Response::HTTP_INTERNAL_SERVER_ERROR);
             }
@@ -49,5 +49,20 @@ class EnsureTeamMiddleware
     public static function companyFromCache()
     {
         return Cache::get(self::getCacheKey(self::getSubDomain()));
+    }
+
+    public static function teamId()
+    {
+        return Cache::get(self::cacheTeamKey());
+    }
+
+    public static function cacheTeamKey(): string
+    {
+        return config('app.system.cache.keys.team');
+    }
+
+    public static function cachePrefix(): string
+    {
+        return static::getCacheKey(self::getSubDomain()) . '-';
     }
 }

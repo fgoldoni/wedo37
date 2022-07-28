@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\EnsureTeamMiddleware;
+
 if (!function_exists('app_team')) {
     function app_team()
     {
@@ -39,5 +41,12 @@ if (!function_exists('app_job_types')) {
     function app_job_types(): array
     {
         return app_team()->jobTypes;
+    }
+}
+
+if (!function_exists('cache_prefix')) {
+    function cache_prefix(): string
+    {
+        return EnsureTeamMiddleware::cachePrefix();
     }
 }

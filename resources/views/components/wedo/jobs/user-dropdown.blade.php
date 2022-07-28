@@ -3,7 +3,7 @@
         <div>
             <button type="button" class="max-w-xs flex items-center text-sm focus:outline-none border-l border-gray-300 pl-4">
                 <span class="sr-only">{{ __('layout.user_dropdown.title')}}</span>
-                <p {{ $attributes->merge(['class' => 'font-bold text-xs text-gray-200 hover:text-white mr-2 text-right']) }}>
+                <p {{ $attributes->merge(['class' => 'font-bold text-xs hover:text-gray-500 mr-2 text-right']) }}>
                     {{ __('Account') }} <br>
                     <span class="text-xs text-teal-500">{{ __('layout.user_dropdown.trial_period') }}</span>
                 </p>

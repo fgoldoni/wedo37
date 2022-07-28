@@ -24,7 +24,7 @@ class Browse extends Component
     {
         $this->useCachedRows();
 
-        $this->total = count($this->rows);
+        $this->total = is_countable($this->rows) ? count($this->rows) : 0;
     }
 
     public function getRowsQueryProperty(): array

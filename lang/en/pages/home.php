@@ -8,7 +8,7 @@ return [
             'browse_jobs' => 'Browse jobs',
         ],
         'welcome' => 'Welcome to',
-        'header' => ':team Portal',
+        'header' => ':team Job Board',
         'description' => 'Your job search starts and ends with us.',
         'keywords' => 'Keywords',
         'area' => 'Domain',
