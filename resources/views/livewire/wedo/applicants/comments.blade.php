@@ -22,7 +22,7 @@
                 </ul>
             </div>
             @if($editId === 0)
-                 @livewire('wedo.applicants.comment-form', ['commentId' => $comment->id], key('comment-0'))
+                 @livewire('wedo.applicants.comment-form', ['commentId' => 0], key('comment-0'))
             @endif
 
         </div>
