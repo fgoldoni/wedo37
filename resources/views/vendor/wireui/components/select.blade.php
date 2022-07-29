@@ -19,7 +19,7 @@
     <div hidden x-ref="json">{{ $optionsToJson() }}</div>
     <div hidden x-ref="slot">{{ $slot }}</div>
 
-    <div class="relative">
+    <div class="relative h-full">
         @if ($label)
             <x-dynamic-component
                 :component="WireUi::component('label')"

@@ -14,14 +14,11 @@ class SearchController extends Controller
     }
     public function categories(Request $request)
     {
-        $data = $this->api->get('/categories/search', $request->all())->data;
+        return $this->api->get('/categories/search', $request->all())->data;
+    }
 
-        foreach ($data as $item) {
-            $resp[] = [
-                'id' => $item->id,
-                'name' => $item->name,
-            ];
-        }
-        return $data;
+    public function jobs(Request $request)
+    {
+        return $this->api->get('/search/jobs', $request->all())->data;
     }
 }

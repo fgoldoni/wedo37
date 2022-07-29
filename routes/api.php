@@ -21,3 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/search/categories', [SearchController::class, 'categories'])
     ->name('api.search.categories');
+
+Route::get('/search/jobs', [SearchController::class, 'jobs'])
+    ->name('api.search.jobs');
