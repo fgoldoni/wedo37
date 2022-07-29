@@ -19,7 +19,7 @@ class JobController extends Controller
         return view('wedo.jobs');
     }
 
-    public function show(int $id, string $slug)
+    public function show(int $id, ?string $slug = null)
     {
         $this->useCachedRows();
 

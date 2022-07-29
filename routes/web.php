@@ -38,7 +38,7 @@ require __DIR__ . '/auth.php';
 Route::group(['middleware' => ['web']], function () {
     Route::resource('jobs', JobController::class)->except(['show']);
 
-    Route::get('jobs/{id}/{slug}', [JobController::class, 'show'])->name('jobs.show');
+    Route::get('jobs/{id}/{slug?}', [JobController::class, 'show'])->name('jobs.show');
 });
 
 Route::group(['middleware' => ['web'], 'namespace' => 'Wedo'], function () {

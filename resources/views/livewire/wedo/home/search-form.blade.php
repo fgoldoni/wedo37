@@ -3,6 +3,7 @@
         <x-select
             class="w-full h-full font-medium text-gray-700 rounded-lg sm:text-lg focus:bg-gray-50 focus:outline-none"
             right-icon="academic-cap"
+            wire:model.defer="jobId"
             placeholder="Search jobs, keywords"
             :async-data="route('api.search.jobs')"
             :template="[
@@ -11,7 +12,7 @@
                 ]"
             option-label="name"
             option-value="id"
-            option-description="email"
+            option-description="category"
         />
     </div>
     <div class="w-0.5 bg-gray-100 h-12 lg:block hidden"></div>
@@ -20,7 +21,7 @@
         <x-select
             class="w-full h-full font-medium text-gray-700 rounded-lg sm:text-lg focus:bg-gray-50 focus:outline-none"
             right-icon="folder-open"
-            md
+            wire:model.defer="categoryId"
             placeholder="Domain"
             :async-data="route('api.search.categories')"
             :template="[
@@ -35,7 +36,7 @@
 
     <div class="w-full h-full lg:w-auto">
 
-        <x-wire-button class="py-3 inline-flex items-center justify-center w-full text-base font-medium" squared primary label="{{ __('pages/home.hero.go') }}" />
+        <x-wire-button sm wire:click="save" class="inline-flex items-center justify-center w-full text-base font-medium" squared primary label="{{ __('pages/home.hero.go') }}" />
 
     </div>
 </div>
