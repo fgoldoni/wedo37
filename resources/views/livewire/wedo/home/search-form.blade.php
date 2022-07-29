@@ -33,6 +33,6 @@
     </div>
 
     <div class="w-full lg:w-auto">
-        <button type="submit" class="inline-flex items-center justify-center w-full px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-{{ app_color() }}-600 border border-transparent shadow-sm hover:bg-{{ app_color() }}-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-600 lg:w-64">SEARCH</button>
+        <button wire:click="save" type="button" class="inline-flex items-center justify-center w-full px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-{{ app_color() }}-600 border border-transparent shadow-sm hover:bg-{{ app_color() }}-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-600 lg:w-64">SEARCH</button>
     </div>
 </div>
