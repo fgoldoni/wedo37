@@ -19,11 +19,10 @@
     <div hidden x-ref="json">{{ $optionsToJson() }}</div>
     <div hidden x-ref="slot">{{ $slot }}</div>
 
-    <div class="relative h-full">
+    <div class="relative">
         @if ($label)
             <x-dynamic-component
                 :component="WireUi::component('label')"
-                class="mb-1"
                 :label="$label"
                 :has-error="$name && $errors->has($name)"
                 :disabled="$disabled"
@@ -34,7 +33,7 @@
 
         <x-dynamic-component
             :component="WireUi::component('input')"
-            class="cursor-pointer overflow-hidden !text-transparent !dark:text-transparent"
+            class="py-3 cursor-pointer overflow-hidden !text-transparent !dark:text-transparent"
             x-ref="input"
             x-on:click="toggle"
             x-on:keydown.enter.stop.prevent="toggle"
