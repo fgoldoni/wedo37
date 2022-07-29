@@ -32,7 +32,8 @@ class SearchForm extends Component
             $filters['categories'][] = $this->categoryId;
             return  $this->redirectRoute('jobs.index', ['filters' => $filters]);
         }
-        dd($this->jobId, $this->categoryId);
+
+        return  $this->redirectRoute('jobs.index');
     }
 
     public function render()
