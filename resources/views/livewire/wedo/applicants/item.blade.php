@@ -10,9 +10,9 @@
                     <div class="col-span-1 sm:col-span-2 w-full mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-200 mt-8">
                         <!-- This example requires Tailwind CSS v2.0+ -->
                         <div class="bg-gray-50 shadow sm:rounded-lg">
-                            <div class="px-4 py-5 sm:p-6 space-y-4">
+                            <div class="px-4 py-5 sm:p-6">
                                 <h3 class="text-lg leading-6 font-medium text-gray-900">{{ $applicant->candidate->name }}</h3>
-                                <div class="mt-2 max-w-xl text-sm text-gray-500 whitespace-pre-line">
+                                <div class="mt-3 w-full text-sm text-gray-500 whitespace-pre-line">
                                     {!! $applicant->message !!}
                                 </div>
                                 <div class="mt-3 text-sm">
