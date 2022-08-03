@@ -10,6 +10,8 @@ for (const key in colors) {
         colorSaveList.push(`text-${key}-${colorValue}`);
         colorSaveList.push(`bg-${key}-${colorValue}`);
         colorSaveList.push(`hover:bg-${key}-${colorValue}`);
+        colorSaveList.push(`group-hover:text-${key}-${colorValue}`);
+        colorSaveList.push(`group-hover:bg-${key}-${colorValue}`);
         colorSaveList.push(`hover:text-${key}-${colorValue}`);
         colorSaveList.push(`focus:ring-${key}-${colorValue}`);
         colorSaveList.push(`focus:border-${key}-${colorValue}`);
