@@ -1,5 +1,5 @@
 @props([
-    'title' => 'Additional details',
+    'title' => 'Details',
     'open' => false,
 ])
 <div {{ $attributes->merge(['class' => 'w-full mx-auto px-4 sm:px-6 lg:px-8']) }}>
@@ -12,7 +12,7 @@
             <!-- Expand/collapse question button -->
             <button @click="open = !open" type="button" class="group relative w-full py-6 flex justify-between items-center text-left" aria-controls="disclosure-1" aria-expanded="false">
             <!-- Open: "text-{{ app_color() }}-600", Closed: "text-gray-900" -->
-                <span class="uppercase text-base font-medium text-gray-900" :class="{ 'text-{{ app_color() }}-600': open, 'text-gray-900': !(open) }"> {{ $title }} </span>
+                <span class="capitalize text-base font-medium text-gray-900" :class="{ 'text-{{ app_color() }}-600': open, 'text-gray-900': !(open) }"> {{ $title }} </span>
                 <span class="ml-6 flex items-center">
 
                                               <svg class="h-6 w-6 text-gray-400 group-hover:text-gray-500 block"  :class="{ 'hidden': open, 'block': !(open) }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">

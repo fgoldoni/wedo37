@@ -2,7 +2,7 @@
 
 @if($tags)
     <div {{ $attributes }}>
-        <h2 class="uppercase text-base font-medium text-gray-900 py-4">{{__('Tags')}}</h2>
+        <h2 class="capitalize text-base font-medium text-gray-900 py-4">{{__('Tags')}}</h2>
         <ul role="list" class="leading-8">
             @foreach($tags as $tag)
                 <li class="inline">

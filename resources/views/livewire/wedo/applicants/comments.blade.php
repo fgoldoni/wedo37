@@ -1,30 +1,30 @@
-<div class="col-span-1 sm:col-span-3 mt-8">
-    <div class="divide-y divide-gray-200">
-        <div>
-            <div class="flow-root">
-                <ul role="list" class="-mb-8">
-                    @foreach($comments as $comment)
-                        @if(is_array($comment))
-                            @php
-                                $comment = json_decode(json_encode($comment), FALSE);
-                            @endphp
-                        @endif
-                        <x-wedo.applicants.comment :comment="$comment"></x-wedo.applicants.comment>
+<div class="divide-y divide-gray-200 mt-4">
+    <div>
+        <div class="flow-root">
+            <ul role="list" class="-mb-8">
+                @foreach($comments as $comment)
+                    @if(is_array($comment))
+                        @php
+                            $comment = json_decode(json_encode($comment), FALSE);
+                        @endphp
+                    @endif
+                    <x-wedo.applicants.comment :comment="$comment"></x-wedo.applicants.comment>
 
-                        @if($editId == $comment->id)
-                            <div>
-                                @livewire('wedo.applicants.comment-form', ['comment' => $comment->id], key('comment-' . $comment->id))
-                            </div>
-                        @endif
+                    @if($editId == $comment->id)
+                        <div>
+                            @livewire('wedo.applicants.comment-form', ['comment' => $comment->id], key('comment-' . $comment->id))
+                        </div>
+                    @endif
 
 
-                    @endforeach
-                </ul>
-            </div>
-            @if($editId === 0)
-                 @livewire('wedo.applicants.comment-form', ['commentId' => 0], key('comment-0'))
-            @endif
-
+                @endforeach
+            </ul>
         </div>
+        @if($editId === 0)
+            <div class="mt-4">
+                @livewire('wedo.applicants.comment-form', ['commentId' => 0], key('comment-0'))
+            </div>
+        @endif
+
     </div>
 </div>

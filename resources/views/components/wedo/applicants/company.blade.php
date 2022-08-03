@@ -45,9 +45,9 @@
         </div>
     </dl>
     <div class="mt-6">
-        <x-wedo.button class="w-full" :link="$company->website" target="_blank">
+        <x-wedo.secondary-button class="w-full" :link="$company->website" target="_blank">
             <x-heroicon-o-external-link class="-ml-1 mr-2 h-5 w-5 text-white"/>
             <span class="truncate">{{ $company->website }}</span>
-        </x-wedo.button>
+        </x-wedo.secondary-button>
     </div>
 </section>

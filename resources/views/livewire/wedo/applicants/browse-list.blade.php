@@ -8,7 +8,14 @@
                     <div class="flex text-sm font-medium">
                         <a href="{{ route('applicants.show', $row->id) }}" class="text-{{ app_color() }}-600 hover:text-{{ app_color() }}-500">{{ $row->job?->company?->name }}</a>
                         <div class="border-l border-gray-200 ml-4 pl-4 sm:ml-6 sm:pl-6">
-                            <a href="{{ route('applicants.show', $row->id) }}" class="text-{{ app_color() }}-600 hover:text-{{ app_color() }}-500">{{ __('2 Position(s)') }}</a>
+                            <a href="{{ route('applicants.show', $row->id) }}" class="relative inline-block text-{{ app_color() }}-600 hover:text-{{ app_color() }}-500">
+                                <x-heroicon-o-bell class="-ml-1 h-5 w-5 mr-2 text-gray-500"/>
+                                @if($row->comments_count)
+                                    <span class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-slate-100 transform translate-x-1/2 -translate-y-1/2 bg-slate-600 rounded-full">
+                                        {{ $row->comments_count }}
+                                    </span>
+                                @endif
+                            </a>
                         </div>
                     </div>
                 </div>

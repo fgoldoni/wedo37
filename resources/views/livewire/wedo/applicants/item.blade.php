@@ -6,6 +6,27 @@
 
             <div class="col-span-1 md:col-span-2">
                 <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+
+                    <div class="col-span-1 sm:col-span-2 w-full mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-200 mt-8">
+                        <!-- This example requires Tailwind CSS v2.0+ -->
+                        <div class="bg-gray-50 shadow sm:rounded-lg">
+                            <div class="px-4 py-5 sm:p-6 space-y-4">
+                                <h3 class="text-lg leading-6 font-medium text-gray-900">{{ $applicant->candidate->name }}</h3>
+                                <div class="mt-2 max-w-xl text-sm text-gray-500 whitespace-pre-line">
+                                    {!! $applicant->message !!}
+                                </div>
+                                <div class="mt-3 text-sm">
+                                    <a href="tel: {{ $applicant->phone }}" class="flex items-center font-medium group text-{{ app_color() }}-900 hover:text-{{ app_color() }}-500">
+                                        <x-heroicon-o-phone-missed-call class="-ml-1 h-4 w-4 mr-2 group-hover:text-{{ app_color() }}-500"/>
+                                        {{ $applicant->phone }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        @livewire('wedo.applicants.comments', ['model' => $applicant->model, 'modelId' => $applicant->id])
+                    </div>
+
                     <x-wedo.jobs.overview :job="$job" class="col-span-1 sm:col-span-2"></x-wedo.jobs.overview>
 
                     <div class="col-span-1 sm:col-span-2">
@@ -13,21 +34,10 @@
                         <x-wedo.jobs.tags :tags="$job->tags" class="w-full mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-200 pt-8"></x-wedo.jobs.tags>
                     </div>
 
-                    <div class="col-span-1 sm:col-span-2">
-                        <!-- Tags list -->
-                        <x-wedo.jobs.canditate :applicant="$applicant" class="w-full mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-200 pt-8"></x-wedo.jobs.canditate>
-                    </div>
-
-                    <div class="col-span-1 sm:col-span-2">
-                        <!-- comments list -->
-                        <x-wedo.disclosure title="Notes" :open="true">
-                            @livewire('wedo.applicants.comments', ['model' => $applicant->model, 'modelId' => $applicant->id])
-                        </x-wedo.disclosure>
-                    </div>
 
                     <div class="col-span-1 sm:col-span-2">
                         <!-- Description list -->
-                        <x-wedo.disclosure title="Additional details" class="border-t border-gray-200 pt-8">
+                        <x-wedo.disclosure title="Details" class="border-t border-gray-200 pt-8">
                             <div class="grid grid-cols-1 gap-6">
                                 <div class="col-span-1">
                                     <dt class="text-sm font-medium text-gray-900">{{ __('Job Description') }}</dt>
@@ -90,7 +100,7 @@
                     <div class="col-span-1 sm:col-span-2 border-t border-gray-200 pt-8">
                         <!-- Description list -->
                         <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
-                            <dt class="uppercase text-base font-medium text-gray-900">Files</dt>
+                            <dt class="capitalize text-base font-medium text-gray-900">Files</dt>
                             <dd class="mt-1 text-sm text-gray-900">
                                 <ul role="list" class="border border-gray-200 rounded-md divide-y divide-gray-200">
                                     @foreach($applicant->attachments as $attachment)

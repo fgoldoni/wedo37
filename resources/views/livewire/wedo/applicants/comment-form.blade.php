@@ -1,35 +1,41 @@
-<div class="@if($comment == 0) mt-14 @else mt-6 @endif">
-    <div class="flex space-x-3">
-        <div class="flex-shrink-0">
-            <div class="relative">
-                <img class="h-10 w-10 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-white" src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80" alt="">
+<div @class(['flex items-start space-x-4', 'mt-6' => !($comment == 0) ])>
+    <div class="flex-shrink-0">
+        <img class="inline-block h-10 w-10 rounded-full" src="{{ auth()->user()->profile_photo_url }}" alt="">
+    </div>
+    <div class="min-w-0 flex-1">
+        <form action="#" class="relative">
+            <div class="border border-gray-300 rounded-lg shadow-sm overflow-hidden focus-within:border-{{ app_color() }}-500 focus-within:ring-1 focus-within:ring-{{ app_color() }}-500">
+                <label for="comment" class="sr-only">{{ __('Add your message') }}</label>
+                <textarea rows="3" name="comment" id="comment" class="block w-full py-3 border-0 resize-none focus:ring-0 sm:text-sm" placeholder="{{ __('Add your message ...') }}"></textarea>
 
-                <span class="absolute -bottom-0.5 -right-1 bg-white rounded-tl px-0.5 py-px">
-                              <!-- Heroicon name: solid/chat-alt -->
-                              <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
-                              </svg>
-                            </span>
+                <!-- Spacer element to match the height of the toolbar -->
+                <div class="py-2" aria-hidden="true">
+                    <!-- Matches height of button in toolbar (1px border + 36px content height) -->
+                    <div class="py-px">
+                        <div class="h-9"></div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="min-w-0 flex-1">
-            <form action="#">
-                <div>
-                    <label for="comment" class="sr-only">Comment</label>
-                    <textarea id="comment" name="comment" rows="3" class="shadow-sm block w-full focus:ring-gray-900 focus:border-gray-900 sm:text-sm border border-gray-300 rounded-md" placeholder="Leave a comment"></textarea>
-                </div>
-                <div class="mt-6 flex items-center justify-end space-x-4">
-                    <x-wedo.secondary-button wire:click="$emitUp('editComment', 0)" type="button"  class="cursor-not-allowed w-full items-center">
-                        <span>{{ __('Cancel') }}</span>
-                    </x-wedo.secondary-button>
 
-                    <x-wedo.outline-button type="submit" class="cursor-not-allowed w-full items-center">
-                        <span>{{ __('Send') }}</span>
-                    </x-wedo.outline-button>
+            <div class="absolute bottom-0 inset-x-0 pl-3 pr-2 py-2 flex justify-between">
+                <div class="flex items-center space-x-5">
+                    <div class="flex items-center">
+                        <button type="button" class="-m-2.5 w-10 h-10 rounded-full flex items-center justify-center text-gray-400 hover:text-gray-500">
+                            <!-- Heroicon name: solid/paper-clip -->
+                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd" />
+                            </svg>
+                            <span class="sr-only">Attach a file</span>
+                        </button>
+                    </div>
                 </div>
-            </form>
-        </div>
+                <div class="flex-shrink-0">
+                    <x-wedo.secondary-button type="submit" class="inline-flex items-center px-4 py-2">
+                        <span>{{ __('Send') }}</span>
+                    </x-wedo.secondary-button>
+                </div>
+
+            </div>
+        </form>
     </div>
 </div>
-
-

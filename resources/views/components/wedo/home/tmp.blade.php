@@ -1,35 +1,35 @@
+<div @class(['mt-14' => $comment == 0, 'mt-6' => !($comment == 0) ])>
+    <div class="flex space-x-3">
+        <div class="flex-shrink-0">
+            <div class="relative">
+                <img class="h-10 w-10 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-white" src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80" alt="">
 
-<!-- Section 1 -->
-<section class="relative" style="background-image: url('https://cdn.devdojo.com/images/february2021/directory-bg.jpg')">
-    <div class="absolute inset-0 bg-gradient-to-b from-black to-transparent opacity-30"></div>
-
-    <div class="relative z-20 px-4 py-24 mx-auto text-center text-white max-w-7xl lg:py-32">
-        <div class="flex flex-wrap text-white">
-            <div class="relative w-full px-4 mx-auto text-center xl:flex-grow-0 xl:flex-shrink-0">
-
-                <h1 class="mt-0 mb-2 text-4xl font-bold text-white sm:text-5xl lg:text-7xl">Search Directory</h1>
-                <p class="mt-0 mb-4 text-base text-white sm:text-lg lg:text-xl">
-                    Find the best places to eat, drink, and shop nearest to you.
-                </p>
-
+                <span class="absolute -bottom-0.5 -right-1 bg-white rounded-tl px-0.5 py-px">
+                              <!-- Heroicon name: solid/chat-alt -->
+                              <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
+                              </svg>
+                            </span>
             </div>
         </div>
-    </div>
+        <div class="min-w-0 flex-1">
+            <form action="#">
+                <div>
+                    <label for="comment" class="sr-only">Comment</label>
+                    <textarea id="comment" name="comment" rows="3" class="shadow-sm block w-full focus:ring-gray-900 focus:border-gray-900 sm:text-sm border border-gray-300 rounded-md" placeholder="Leave a comment"></textarea>
+                </div>
+                <div class="mt-6 flex items-center justify-end space-x-4">
+                    <x-wedo.secondary-button wire:click="$emitUp('editComment', 0)" type="button"  class="cursor-not-allowed w-full items-center">
+                        <span>{{ __('Cancel') }}</span>
+                    </x-wedo.secondary-button>
 
-    <div class="relative z-30 h-48 px-10 bg-white lg:h-32">
-        <form onsubmit="return false;" class="flex flex-col items-center h-auto max-w-lg p-6 mx-auto space-y-3 overflow-hidden transform -translate-y-12 bg-white rounded-lg shadow-md lg:h-24 lg:max-w-6xl lg:flex-row lg:space-y-0 lg:space-x-3">
-            <div class="w-full h-12 border-2 border-gray-200 rounded-lg lg:border-0 lg:w-auto lg:flex-1">
-                <input type="text" class="w-full h-full px-4 font-medium text-gray-700 rounded-lg sm:text-lg focus:bg-gray-50 focus:outline-none" placeholder="What Are You Searching For?">
-            </div>
-            <div class="w-0.5 bg-gray-100 h-10 lg:block hidden"></div>
-            <div class="relative flex items-center w-full h-12 border-2 border-gray-200 rounded-lg lg:w-auto lg:border-0 lg:flex-1">
-                <input type="text" class="w-full h-full px-4 font-medium text-gray-700 rounded-lg sm:text-lg focus:bg-gray-50 focus:outline-none" placeholder="Location?">
-                <svg class="absolute right-0 w-6 h-6 mr-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-            </div>
-            <div class="w-full h-full lg:w-auto">
-                <button type="submit" class="inline-flex items-center justify-center w-full h-full px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 lg:w-64">SEARCH</button>
-            </div>
-        </form>
+                    <x-wedo.outline-button type="submit" class="cursor-not-allowed w-full items-center">
+                        <span>{{ __('Send') }}</span>
+                    </x-wedo.outline-button>
+                </div>
+            </form>
+        </div>
     </div>
+</div>
 
-</section>
+
