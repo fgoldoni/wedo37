@@ -8,5 +8,7 @@ interface ApiInterface
 
     public function post(string $endpoint, array $data = []): ?\stdClass;
 
+    public function put(string $endpoint, array $data = []): ?\stdClass;
+
     public function delete(string $endpoint, array $data = []);
 }

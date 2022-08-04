@@ -50,7 +50,7 @@
             </div>
         </x-wedo.pages.layouts.empty-state>
 
-        <x-wedo.learn-more name="resumes    " link="#" ></x-wedo.learn-more>
+        <x-wedo.learn-more name="resumes" link="#" ></x-wedo.learn-more>
 
     @else
 

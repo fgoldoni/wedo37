@@ -46,7 +46,7 @@
 
                             <!-- Current Profile Photo -->
                             <div class="mt-2" x-show="! photoPreview">
-                                <img src="{{ $editing->profile_photo_url }}" alt="{{ $editing->name }}" class="rounded-full h-20 w-20 object-cover">
+                                <img src="{{ auth()->user()->profile_photo_url }}" alt="{{ auth()->user()->name }}" class="rounded-full h-20 w-20 object-cover">
                             </div>
 
                             <!-- New Profile Photo Preview -->

@@ -12,12 +12,12 @@
                         <div class="bg-gray-50 shadow sm:rounded-lg">
                             <div class="px-4 py-5 sm:p-6">
                                 <div class="space-y-1 md:flex md:items-baseline md:space-y-0 md:space-x-4">
-                                    <h2 class="flex items-center text-lg font-medium text-gray-900 md:flex-shrink-0">
-                                        <img class="-ml-1 mr-2 inline-block h-8 w-8 rounded-full" src="{{ $applicant->candidate->profile_photo_url }}" alt="{{ $applicant->candidate->name }}">
+                                    <h2 class="flex items-center text-md font-medium text-gray-900 md:flex-shrink-0">
+                                        <img class="-ml-1 mr-2 inline-block h-6 w-6 rounded-full" src="{{ $applicant->candidate->profile_photo_url }}" alt="{{ $applicant->candidate->name }}">
                                         <span>{{ $applicant->candidate->name }}</span>
                                     </h2>
                                     <div class="space-y-5 md:flex-1 md:min-w-0 sm:flex sm:items-baseline sm:justify-between sm:space-y-0">
-                                        <p class="text-sm font-medium text-gray-500">&nbsp;</p>
+                                        <p class="hidden sm:block text-sm font-medium text-gray-500">&nbsp;</p>
                                         <div class="flex text-sm font-medium">
                                             <a href="javascript:;" class="text-indigo-600 hover:text-indigo-500">Applied Nr: {{ str_pad($applicant->id, 4, '0', STR_PAD_LEFT) }}</a>
                                             <div class="border-l border-gray-200 ml-4 pl-4 sm:ml-6 sm:pl-6">
@@ -74,7 +74,7 @@
                             <div class="grid grid-cols-1 gap-6">
                                 <div class="col-span-1">
                                     <dt class="text-sm font-medium text-gray-900">{{ __('Job Description') }}</dt>
-                                    <dd class="whitespace-pre-line mt-1 max-w-prose text-base text-gray-600 text-justify space-y-5">
+                                    <dd class="whitespace-pre-line mt-1 w-full text-base text-gray-600 text-justify space-y-5">
                                         {!! $job->content !!}
                                     </dd>
                                 </div>

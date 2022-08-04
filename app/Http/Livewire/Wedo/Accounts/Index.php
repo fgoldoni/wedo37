@@ -2,15 +2,23 @@
 
 namespace App\Http\Livewire\Wedo\Accounts;
 
+use App\Http\Livewire\Wedo\WithCachedRows;
+use App\Http\Services\Contracts\ApiInterface;
 use App\Models\WedoUser;
 use App\Rules\Phone;
 use App\Rules\RealEmail;
+use App\Services\WedoAuthService;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use WireUi\Traits\Actions;
 
 class Index extends Component
 {
     use WithFileUploads;
+
+    use Actions;
+
+    use WithCachedRows;
 
     public WedoUser $editing;
 
@@ -24,15 +32,34 @@ class Index extends Component
     public function rules(): array
     {
         return [
+            'editing.id' => ['required', 'integer'],
             'editing.name' => ['required', 'string', 'max:255'],
             'editing.email' => ['required', 'email', new RealEmail()],
             'editing.phone' => ['required', 'min:6', new Phone()],
-            'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
+            'photo' => ['nullable'],
         ];
     }
+    public function updatedPhoto($file)
+    {
+        app()->make(ApiInterface::class)->attach($file)->post('/attachments/profile');
+
+        $this->notification()->info(__('Updated'), __('Photo has been successfully updated!'));
+    }
+
     public function updateProfileInformation()
     {
-        dd('ok');
+        $this->validate();
+
+        $response = app()->make(ApiInterface::class)->put('/users/' . $this->editing->id, [
+            'name' => $this->editing->name,
+            'email' => $this->editing->email,
+            'phone' => $this->editing->phone
+        ]);
+
+        $this->notification()->success(__('Updated'), $response->message);
+
+        $this->forget(WedoAuthService::cacheKey(session('token')));
+        $this->forget(cache_path('resumes'));
     }
 
     public function render()

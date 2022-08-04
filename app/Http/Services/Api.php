@@ -119,4 +119,21 @@ class Api implements ApiInterface
             abort(Response::HTTP_INTERNAL_SERVER_ERROR, $e->getMessage());
         }
     }
+
+    public function put(string $endpoint, array $data = []): ?\stdClass
+    {
+        try {
+            $this->response = $this->clientWithToken()->put($this->apiUrl . $endpoint, $data);
+
+            if ($this->response->failed()
+                || $this->response->serverError()
+                || $this->response->clientError()) {
+                throw new \Exception($this->response->object()->message);
+            }
+
+            return $this->response->object();
+        } catch (\Exception $e) {
+            abort(Response::HTTP_INTERNAL_SERVER_ERROR, $e->getMessage());
+        }
+    }
 }

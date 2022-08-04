@@ -5,8 +5,8 @@
 <div class="grid grid-cols-1 gap-6 sm:grid-cols-3 w-full mx-auto px-4 sm:px-6 lg:px-8">
     <div class="col-span-1 sm:col-span-3 mt-8">
         <dt class="text-sm font-medium text-gray-900">{{ __('Job Description') }}</dt>
-        <dd class="mt-1 max-w-prose text-base text-gray-600 text-justify space-y-5">
-            {{ $job->content }}
+        <dd class="whitespace-pre-line mt-1 w-full text-base text-gray-600 text-justify space-y-5">
+            {!! $job->content !!}
         </dd>
     </div>
 
