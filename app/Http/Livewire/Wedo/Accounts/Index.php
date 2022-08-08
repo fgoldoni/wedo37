@@ -43,6 +43,8 @@ class Index extends Component
     {
         app()->make(ApiInterface::class)->attach($file)->post('/attachments/profile');
 
+        $this->forget(WedoAuthService::cacheKey(session('token')));
+
         $this->notification()->info(__('Updated'), __('Photo has been successfully updated!'));
     }
 
@@ -56,10 +58,9 @@ class Index extends Component
             'phone' => $this->editing->phone
         ]);
 
-        $this->notification()->success(__('Updated'), $response->message);
-
         $this->forget(WedoAuthService::cacheKey(session('token')));
-        $this->forget(cache_path('resumes'));
+
+        $this->notification()->success(__('Updated'), $response->message);
     }
 
     public function render()

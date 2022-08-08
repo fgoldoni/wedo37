@@ -1,13 +1,15 @@
-<div @class(['flex items-start space-x-4', 'mt-6' => !($comment == 0) ])>
+<div @class(['flex items-start space-x-4', 'mt-6' => !($reply == 0) ])>
     <div class="flex-shrink-0">
         <img class="inline-block h-10 w-10 rounded-full" src="{{ auth()->user()->profile_photo_url }}" alt="">
     </div>
     <div class="min-w-0 flex-1">
-        <form action="#" class="relative">
-            <div class="border border-gray-300 rounded-lg shadow-sm overflow-hidden focus-within:border-{{ app_color() }}-500 focus-within:ring-1 focus-within:ring-{{ app_color() }}-500">
-                <label for="comment" class="sr-only">{{ __('Add your message') }}</label>
-                <textarea rows="3" name="comment" id="comment" class="block w-full py-3 border-0 resize-none focus:ring-0 sm:text-sm" placeholder="{{ __('Add your message ...') }}"></textarea>
-
+        <form wire:submit.prevent="saveComment" class="relative">
+            <div class="border border-gray-300 rounded-lg shadow-sm overflow-hidden focus-within:border-{{ app_color() }}-500 focus-within:ring-1 focus-within:ring-{{ app_color() }}-500"  >
+                <label for="content" class="sr-only">{{ __('Add your message') }}</label>
+                <textarea rows="3" wire:model.lazy="content" id="content" class="block w-full py-3 border-0 resize-none focus:ring-0 sm:text-sm" placeholder="{{ __('Add your message ...') }}" required></textarea>
+                @if ($errors->first('content'))
+                    <p class="mt-1 text-sm text-rose-500 dark:text-rose-400">{{ $errors->first('content') }}</p>
+                @endif
                 <!-- Spacer element to match the height of the toolbar -->
                 <div class="py-2" aria-hidden="true">
                     <!-- Matches height of button in toolbar (1px border + 36px content height) -->
@@ -29,8 +31,12 @@
                         </button>
                     </div>
                 </div>
-                <div class="flex-shrink-0">
-                    <x-wedo.secondary-button type="submit" class="inline-flex items-center px-4 py-2">
+                <div class="flex-shrink-0 space-x-2">
+                    <x-wedo.secondary-button link="javascript:;" wire:click="$emitUp('editComment', 0)">
+                        <span>{{ __('Cancel') }}</span>
+                    </x-wedo.secondary-button>
+                    <x-wedo.secondary-button type="submit">
+                        <x-wedo.loader wire:loading wire:target="saveComment"></x-wedo.loader>
                         <span>{{ __('Send') }}</span>
                     </x-wedo.secondary-button>
                 </div>

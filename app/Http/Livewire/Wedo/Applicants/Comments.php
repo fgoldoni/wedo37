@@ -13,19 +13,25 @@ class Comments extends Component
     public array $comments = [];
 
     protected $listeners = [
-        'editComment'
+        'editComment',
+        'refreshComponent' => 'apiComments'
     ];
 
     public int $editId = 0;
+
+    public string $model;
+
+    public int $modelId;
 
     public function mount(string $model, int $modelId)
     {
         $this->useCachedRows();
 
-        $this->comments = $this->cache(
-            fn () => $this->apiComments($model, $modelId),
-            cache_path('comments') . '-' . $modelId
-        );
+        $this->model = $model;
+
+        $this->modelId = $modelId;
+
+        $this->apiComments();
     }
 
     public function editComment(int $id)
@@ -33,19 +39,22 @@ class Comments extends Component
         $this->editId = $id;
     }
 
+    public function apiComments()
+    {
+        $this->comments = $this->cache(
+            fn () => app()->make(ApiInterface::class)->get(
+                '/comments',
+                [
+                    'model' => $this->model,
+                    'modelId' => $this->modelId,
+                ]
+            )->data,
+            cache_path('comments') . '-' . $this->modelId
+        );
+    }
+
     public function render()
     {
         return view('livewire.wedo.applicants.comments');
-    }
-
-    private function apiComments(string $model, int $modelId)
-    {
-        return app()->make(ApiInterface::class)->get(
-            '/comments',
-            [
-                'model' => $model,
-                'modelId' => $modelId,
-            ]
-        )->data;
     }
 }

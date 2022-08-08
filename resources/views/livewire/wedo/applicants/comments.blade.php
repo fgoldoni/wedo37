@@ -12,7 +12,7 @@
 
                     @if($editId == $comment->id)
                         <div>
-                            @livewire('wedo.applicants.comment-form', ['comment' => $comment->id], key('comment-' . $comment->id))
+                            @livewire('wedo.applicants.comment-form', ['reply' => $comment->id, 'model' => $model, 'modelId' => $modelId], key('comment-' . $comment->id))
                         </div>
                     @endif
 
@@ -22,7 +22,7 @@
         </div>
         @if($editId === 0)
             <div class="mt-4">
-                @livewire('wedo.applicants.comment-form', ['commentId' => 0], key('comment-0'))
+                @livewire('wedo.applicants.comment-form', ['reply' => 0, 'model' => $model, 'modelId' => $modelId], key('comment-0'))
             </div>
         @endif
 

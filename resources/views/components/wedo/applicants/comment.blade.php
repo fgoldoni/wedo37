@@ -23,7 +23,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="mt-2 text-sm text-gray-700">
+                <div class="mt-2 text-sm text-gray-700 whitespace-pre-line">
                     {!! $comment->content !!}
                 </div>
             </div>
