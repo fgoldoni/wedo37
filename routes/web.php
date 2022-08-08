@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AccountsController;
 use App\Http\Controllers\Wedo\ApplicantsController;
+use App\Http\Controllers\Wedo\BillingsController;
 use App\Http\Controllers\Wedo\JobController;
 use App\Http\Controllers\Wedo\LoginController;
 use App\Http\Controllers\Wedo\ResumeController;
@@ -56,4 +57,8 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
 Route::group(['middleware' => ['web', 'auth']], function () {
     Route::resource('accounts', AccountsController::class);
+});
+
+Route::group(['middleware' => ['web', 'auth']], function () {
+    Route::resource('billings', BillingsController::class);
 });

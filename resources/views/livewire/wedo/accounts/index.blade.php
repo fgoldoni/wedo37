@@ -6,9 +6,9 @@
                     <x-heroicon-o-phone-missed-call class="flex-shrink-0 -ml-1 mr-3 h-6 w-6 @if(request()->routeIs('accounts.index')) text-{{ app_color() }}-500 @else text-gray-400 group-hover:text-gray-500 @endif"/>
                     <span class="truncate"> My Profile </span>
                 </x-nav-link>
-                <x-nav-link :href="route('accounts.show', 1)" :active="request()->routeIs('accounts.show', 1)">
-                    <x-heroicon-o-key class="flex-shrink-0 -ml-1 mr-3 h-6 w-6 @if(request()->routeIs('accounts.show', 1)) text-{{ app_color() }}-500 @else text-gray-400 group-hover:text-gray-500 @endif"/>
-                    <span class="truncate"> Password </span>
+                <x-nav-link :href="route('billings.index')" :active="request()->routeIs('billings.index')">
+                    <x-heroicon-o-credit-card class="flex-shrink-0 -ml-1 mr-3 h-6 w-6 @if(request()->routeIs('billings.index')) text-{{ app_color() }}-500 @else text-gray-400 group-hover:text-gray-500 @endif"/>
+                    <span class="truncate"> Plan & Billing </span>
                 </x-nav-link>
             </nav>
         </aside>
