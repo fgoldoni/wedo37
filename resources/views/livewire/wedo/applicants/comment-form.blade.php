@@ -1,4 +1,4 @@
-<div @class(['flex items-start space-x-4', 'mt-6' => !($reply == 0) ])>
+<div @class(['flex items-start space-x-4', 'mt-6 ml-10' => !($reply == 0) ])>
     <div class="flex-shrink-0">
         <img class="inline-block h-10 w-10 rounded-full" src="{{ auth()->user()->profile_photo_url }}" alt="">
     </div>
@@ -22,13 +22,21 @@
             <div class="absolute bottom-0 inset-x-0 pl-3 pr-2 py-2 flex justify-between">
                 <div class="flex items-center space-x-5">
                     <div class="flex items-center">
-                        <button type="button" class="-m-2.5 w-10 h-10 rounded-full flex items-center justify-center text-gray-400 hover:text-gray-500">
-                            <!-- Heroicon name: solid/paper-clip -->
-                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="sr-only">Attach a file</span>
-                        </button>
+                        @if($attachment)
+                            <span class="-m-2.5 w-20 rounded-full flex items-center justify-center text-gray-400 hover:text-gray-500">
+                                    <span class="truncate"> {{ __('1 File') }} </span>
+                            </span>
+                        </span>
+                        @else
+                            <label for="upload" class="-m-2.5 w-10 h-10 rounded-full flex items-center justify-center text-gray-400 hover:text-gray-500">
+                                <input class="sr-only" type="file" wire:model="upload" id="upload" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf">
+                                <!-- Heroicon name: solid/paper-clip -->
+                                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="sr-only">Attach a file</span>
+                            </label>
+                        @endif
                     </div>
                 </div>
                 <div class="flex-shrink-0 space-x-2">

@@ -8,6 +8,7 @@
                             $comment = json_decode(json_encode($comment), FALSE);
                         @endphp
                     @endif
+
                     <x-wedo.applicants.comment :comment="$comment"></x-wedo.applicants.comment>
 
                     @if($editId == $comment->id)

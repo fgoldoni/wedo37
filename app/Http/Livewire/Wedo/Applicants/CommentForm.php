@@ -5,11 +5,14 @@ namespace App\Http\Livewire\Wedo\Applicants;
 use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Http\Services\Contracts\ApiInterface;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use WireUi\Traits\Actions;
 
 class CommentForm extends Component
 {
     use WithCachedRows;
+
+    use WithFileUploads;
 
     use Actions;
 
@@ -20,6 +23,10 @@ class CommentForm extends Component
     public ?string $model = null;
 
     public ?int $modelId = null;
+
+    public ?string $upload = null;
+
+    public ?string $attachment = null;
 
 
     public function mount(string $model, int $modelId)
@@ -34,6 +41,24 @@ class CommentForm extends Component
             'reply' => ['required', 'integer'],
             'content' => ['required', 'string'],
         ];
+    }
+
+    public function updatedUpload($file)
+    {
+        $this->attachment = app()->make(ApiInterface::class)->attach($file)->post('/attachments/applicant', [
+            'type' => 'resumes',
+            'name' => $file->getClientOriginalName(),
+            'mime_type' => $file->getMimeType(),
+            'resumes' => 'resumes',
+            'size' => $file->getSize(),
+            'user_id' => auth()->user()?->id,
+            'hashName' => $file->hashName(),
+            'applicantId' => $this->modelId,
+        ])->data->name;
+
+        $this->notification()->success(__('Updated'), __('The Attachment has been successfully saved!'));
+
+        $this->emitTo(Item::class, 'refreshComponent');
     }
 
     public function saveComment()

@@ -11,6 +11,11 @@
                     <x-nav-link :href="route('jobs.index')" :active="request()->routeIs('jobs.index')">
                         {{ __('layout.navigation.browse_jobs') }}
                     </x-nav-link>
+                    @auth
+                        <x-nav-link :href="route('applicants.index')" :active="request()->routeIs('applicants.index')">
+                            {{ __('layout.navigation.applications') }}
+                        </x-nav-link>
+                    @endauth
                 </div>
             </div>
             @auth
@@ -42,11 +47,15 @@
             <x-responsive-nav-link :href="route('jobs.index')" :active="request()->routeIs('jobs.index')">
                 {{ __('layout.navigation.browse_jobs') }}
             </x-responsive-nav-link>
-            @guest
+            @auth
+                <x-responsive-nav-link :href="route('applicants.index')" :active="request()->routeIs('applicants.index')">
+                    {{ __('layout.navigation.applications') }}
+                </x-responsive-nav-link>
+            @elseauth
                 <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
                     {{ __('layout.navigation.sign_in') }}
                 </x-responsive-nav-link>
-            @endguest
+            @endauth
         </div>
         @auth
             <div class="pt-4 pb-1 border-t border-gray-200">

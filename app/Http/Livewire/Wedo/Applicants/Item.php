@@ -10,20 +10,34 @@ class Item extends Component
 {
     use WithCachedRows;
 
-    private \stdClass $applicant;
+    private ?\stdClass $applicant = null;
+
+    protected $listeners = [
+        'refreshComponent' => 'apiApplicant'
+    ];
+
+    public int $applicantId;
 
     public function mount(int $id)
     {
-        $this->applicant = $this->cache(fn () => $this->apiApplicant($id), 'current-applicant-' . $id);
+        $this->applicantId = $id;
+
+        $this->apiApplicant();
     }
 
-    private function apiApplicant(int $id)
+    public function apiApplicant()
     {
-        return app()->make(ApiInterface::class)->get('/applicants/' . $id)->data;
+        $this->applicant = $this->cache(
+            fn () => app()->make(ApiInterface::class)->get('/applicants/' . $this->applicantId)->data,
+            'current-applicant-' . $this->applicantId
+        );
     }
 
     public function render()
     {
-        return view('livewire.wedo.applicants.item', ['applicant' => $this->applicant, 'job' => $this->applicant->job]);
+        return view(
+            'livewire.wedo.applicants.item',
+            ['applicant' => $this->applicant, 'job' => $this->applicant?->job]
+        );
     }
 }
