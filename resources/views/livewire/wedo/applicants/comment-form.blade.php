@@ -1,4 +1,4 @@
-<div @class(['flex items-start space-x-4', 'mt-6 ml-10' => !($reply == 0) ])>
+<div @class(['flex items-start space-x-4', 'mt-14' => ($reply == 0) , 'mt-6 ml-10' => !($reply == 0) ])>
     <div class="flex-shrink-0">
         <img class="inline-block h-10 w-10 rounded-full" src="{{ auth()->user()->profile_photo_url }}" alt="">
     </div>
