@@ -51,7 +51,7 @@
                 <x-responsive-nav-link :href="route('applicants.index')" :active="request()->routeIs('applicants.index')">
                     {{ __('layout.navigation.applications') }}
                 </x-responsive-nav-link>
-            @elseauth
+            @else
                 <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
                     {{ __('layout.navigation.sign_in') }}
                 </x-responsive-nav-link>
