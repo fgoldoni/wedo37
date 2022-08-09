@@ -73,6 +73,9 @@
                 <x-responsive-nav-link :href="route('applicants.index')" :active="request()->routeIs('applicants.index')">
                     {{ __('layout.navigation.applications') }}
                 </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('shortlisted.index')" :active="request()->routeIs('shortlisted.index')">
+                    {{ __('layout.navigation.shortlisted') }}
+                </x-responsive-nav-link>
             </div>
             <div class="mt-3 space-y-1">
                 <form method="POST" action="{{ route('logout') }}">
