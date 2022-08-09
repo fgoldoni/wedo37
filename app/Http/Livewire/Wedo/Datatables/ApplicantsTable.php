@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Livewire\Wedo\Datatables;
 
 use App\Http\Livewire\Wedo\Applicants\Browse;
@@ -16,7 +15,7 @@ class ApplicantsTable extends DataTableComponent
 
     protected $model = Applicant::class;
 
-    public array $columnSearch = [ 'name' => null ];
+    public array $columnSearch = ['name' => null];
 
     protected $listeners = ['onRefreshApplicant' => '$refresh'];
 

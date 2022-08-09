@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Services;
 
 use App\Http\Middleware\EnsureTeamMiddleware;

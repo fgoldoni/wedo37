@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Livewire\Wedo\Home;
 
 use Livewire\Component;
@@ -22,6 +21,7 @@ class SearchForm extends Component
 
     public function save()
     {
+        $filters = [];
         $this->validate();
 
         if ($this->jobId) {

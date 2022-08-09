@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Livewire\Wedo\Applicants;
 
 use App\Http\Livewire\Wedo\WithCachedRows;
@@ -23,7 +22,6 @@ class BrowseList extends Component
     {
         return $this->cache(fn () => $this->rowsQuery, cache_path('applicants_browse'));
     }
-
 
     public function render()
     {

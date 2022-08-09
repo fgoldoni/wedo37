@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Livewire\Wedo\Accounts;
 
 use App\Http\Livewire\Wedo\WithCachedRows;
@@ -39,6 +38,7 @@ class Index extends Component
             'photo' => ['nullable'],
         ];
     }
+
     public function updatedPhoto($file)
     {
         app()->make(ApiInterface::class)->attach($file)->post('/attachments/profile');

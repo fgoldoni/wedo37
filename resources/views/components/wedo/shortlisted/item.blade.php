@@ -10,13 +10,7 @@
 
                 <div class="flex-shrink-0">
 
-                    <a href="javascript:;" class="hidden lg:block" wire:click="$set('show', {{ $row->id }})">
-
-                        <img class="h-10 w-10 rounded-full cursor-pointer" src="{{ $row->avatar_url }}" alt="{{ $row->name }}">
-
-                    </a>
-
-                    <a href="{{ route('jobs.show', ['id' => $row->id, 'slug' => $row->slug]) }}" class="lg:hidden">
+                    <a href="{{ route('jobs.show', ['id' => $row->id, 'slug' => $row->slug]) }}">
 
                         <img class="h-10 w-10 rounded-full cursor-pointer" src="{{ $row->avatar_url }}" alt="{{ $row->name }}">
 
@@ -29,9 +23,7 @@
 
                     <p class="text-sm font-medium text-gray-900">
 
-                        <a href="javascript:;" wire:click="$set('show', {{ $row->id }})" class="hidden lg:block hover:underline font-bold">{{ $row->company->name }}</a>
-
-                        <a href="{{ route('jobs.show', ['id' => $row->id, 'slug' => $row->slug]) }}" class="lg:hidden hover:underline font-bold">{{ $row->company->name }}</a>
+                        <a href="{{ route('jobs.show', ['id' => $row->id, 'slug' => $row->slug]) }}" class="hover:underline font-bold">{{ $row->company->name }}</a>
 
                     </p>
 
@@ -65,14 +57,8 @@
 
                 <div class="flex-shrink-0 justify-self-stretch">
 
-                    <a href="javascript:;" wire:click="$set('show', {{ $row->id }})" class="hidden lg:block text-xs text-{{ app_color() }}-500 hover:text-{{ app_color() }}-900 font-bold underline">
 
-                        Details <span aria-hidden="true">&rarr;</span>
-
-                    </a>
-
-
-                    <a href="{{ route('jobs.show', ['id' => $row->id, 'slug' => $row->slug]) }}" class="lg:hidden text-xs text-{{ app_color() }}-500 hover:text-{{ app_color() }}-900 font-bold underline">
+                    <a href="{{ route('jobs.show', ['id' => $row->id, 'slug' => $row->slug]) }}" class="text-xs text-{{ app_color() }}-500 hover:text-{{ app_color() }}-900 font-bold underline">
 
                         Details <span aria-hidden="true">&rarr;</span>
 
@@ -124,13 +110,7 @@
 
             </ul>
 
-            <a href="javascript:;" wire:click="$set('show', {{ $row->id }})" class="hidden lg:block hover:underline font-semibold">
-
-                <h2 id="question-title-81614" class="mt-4 text-base font-medium text-{{ app_color() }}-900 text-xl">{{ $row->name }}</h2>
-
-            </a>
-
-            <a href="{{ route('jobs.show', ['id' => $row->id, 'slug' => $row->slug]) }}" class="lg:hidden hover:underline font-semibold">
+            <a href="{{ route('jobs.show', ['id' => $row->id, 'slug' => $row->slug]) }}" class="hover:underline font-semibold">
 
                 <h2 id="question-title-81614" class="mt-4 text-base font-medium text-{{ app_color() }}-900 text-xl">{{ $row->name }}</h2>
 
@@ -190,14 +170,12 @@
 
                     <span class="inline-flex items-center text-sm">
 
-                          <button wire:click="attach({{ $row->id }})" class="inline-flex items-center space-x-2 text-{{ app_color() }}-400 hover:text-{{ app_color() }}-500 cursor-pointer">
+                          <button wire:click="detach({{ $row->id }})" class="inline-flex items-center space-x-2 text-rose-400 hover:text-rose-500 cursor-pointer">
 
-                              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-                              </svg>
+                                <x-heroicon-o-x-circle class="h-4 w-4"/>
 
-                              <span class="font-medium text-{{ app_color() }}-900 text-xs md:text-sm">
-                                  Save Job
+                              <span class="font-medium text-rose-900 text-xs md:text-sm">
+                                  Remove
                               </span>
 
                           </button>

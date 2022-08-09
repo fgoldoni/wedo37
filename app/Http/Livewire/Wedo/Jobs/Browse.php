@@ -1,14 +1,16 @@
 <?php
-
 namespace App\Http\Livewire\Wedo\Jobs;
 
 use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Http\Services\Contracts\ApiInterface;
 use Livewire\Component;
+use WireUi\Traits\Actions;
 
 class Browse extends Component
 {
     use WithCachedRows;
+
+    use Actions;
 
     private ApiInterface $api;
 
@@ -44,6 +46,22 @@ class Browse extends Component
         $this->useCachedRows();
 
         $this->job = $this->cache(fn () => $this->showQuery, 'current-job-' . $value);
+    }
+
+    public function attach(int $jobId)
+    {
+        if (auth()->guest()) {
+            return $this->redirectRoute('login', ['to' => url()->current()]);
+        }
+
+        $response = app()->make(ApiInterface::class)->post(
+            '/jobs/attach',
+            [
+                'job_id' => $jobId,
+            ]
+        );
+
+        $this->notification()->info(__('Great!!'), $response->message);
     }
 
     public function resetFilters()

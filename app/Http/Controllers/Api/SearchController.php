@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
@@ -12,6 +11,7 @@ class SearchController extends Controller
         private readonly ApiInterface $api,
     ) {
     }
+
     public function categories(Request $request)
     {
         return $this->api->get('/categories/search', $request->all())->data;

@@ -1,9 +1,7 @@
 <?php
-
 namespace App\Http\Controllers\Wedo;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class BillingsController extends Controller
 {

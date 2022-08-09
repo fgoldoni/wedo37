@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Livewire\Wedo\Applicants;
 
 use App\Http\Livewire\Wedo\WithCachedRows;
@@ -27,7 +26,6 @@ class CommentForm extends Component
     public ?string $upload = null;
 
     public ?string $attachment = null;
-
 
     public function mount(string $model, int $modelId)
     {
@@ -80,6 +78,7 @@ class CommentForm extends Component
 
         $this->reset();
     }
+
     public function render()
     {
         return view('livewire.wedo.applicants.comment-form');

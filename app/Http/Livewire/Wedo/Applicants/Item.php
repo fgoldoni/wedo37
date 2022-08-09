@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Livewire\Wedo\Applicants;
 
 use App\Http\Livewire\Wedo\WithCachedRows;

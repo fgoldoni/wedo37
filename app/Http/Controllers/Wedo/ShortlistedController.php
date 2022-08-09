@@ -1,10 +1,10 @@
 <?php
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Wedo;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\Contracts\ApiInterface;
 
-class AccountsController extends Controller
+class ShortlistedController extends Controller
 {
     public function __construct(private readonly ApiInterface $api)
     {
@@ -12,6 +12,7 @@ class AccountsController extends Controller
 
     public function index()
     {
-        return view('wedo.accounts.index');
+        $rows = $this->api->get('/jobs/shortlisted');
+        return view('wedo.shortlisted.index', compact(['rows']));
     }
 }
