@@ -12,16 +12,19 @@
 
             <x-slot name="action">
 
-                <div class="flex">
-
-
-                    <span class="shadow-sm rounded-md">
-
-                        <x-wedo.input.add-resume label="{{ __('Add Resume') }}" wire:model="upload" id="upload" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf"></x-wedo.input.add-resume>
-
-                    </span>
-
-                </div>
+                <x-wedo.button>
+                    <div x-data="{ focused: false }">
+                        <label
+                            for="upload"
+                            :class="{ 'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500': focused }"
+                            class="flex items-center"
+                        >
+                            <input @focus="focused = true" @blur="focused = false" class="sr-only" type="file" wire:model="upload" id="upload" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf">
+                            <x-heroicon-o-document-text class="-ml-1 mr-2 h-5 w-5 text-white"/>
+                            {{ __('Add Resume') }}
+                        </label>
+                    </div>
+                </x-wedo.button>
 
             </x-slot>
 
@@ -46,7 +49,19 @@
                 <p class="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">Make a <span class="px-2 py-1 relative inline-block"><svg class="stroke-current bottom-0 absolute text-{{ app_color() }}-400 -translate-x-2" viewBox="0 0 410 18" xmlns="http://www.w3.org/2000/svg"><path d="M6 6.4c16.8 16.8 380.8-11.2 397.6 5.602" stroke-width="11.2" fill="none" fill-rule="evenodd" stroke-linecap="round"></path></svg><span class="relative">Difference</span></span> with Your Online Resume!</p>
                 <p class="max-w-3xl mt-5 mx-auto text-xl text-gray-500">Your job search starts and ends with us. Find Jobs, Employment & Career Opportunities</p>
 
-                <x-wedo.input.add-resume-xl wire:model="upload" id="upload" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf"/>
+                <x-wedo.button>
+                    <div x-data="{ focused: false }">
+                        <label
+                            for="upload"
+                            :class="{ 'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500': focused }"
+                            class="flex items-center cursor-pointer"
+                        >
+                            <input @focus="focused = true" @blur="focused = false" class="sr-only" type="file" wire:model="upload" id="upload" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf">
+                            <x-heroicon-o-document-text class="-ml-1 mr-2 h-5 w-5 text-white"/>
+                            {{ __('Add Resume') }}
+                        </label>
+                    </div>
+                </x-wedo.button>
             </div>
         </x-wedo.pages.layouts.empty-state>
 
