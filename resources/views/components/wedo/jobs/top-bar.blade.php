@@ -64,7 +64,7 @@
 
             class="border-t border-secondary-200 bg-secondary-200 py-10" id="disclosure-1">
             <div class="max-w-7xl mx-auto grid grid-cols-2 gap-x-4 px-4 text-sm sm:px-6 md:gap-x-6 lg:px-8">
-                <div class="grid grid-cols-1 gap-y-10 auto-rows-min md:grid-cols-2 md:gap-x-6">
+                <div class="grid grid-cols-1 gap-y-10 auto-rows-min">
                     <fieldset>
                         <legend class="block font-medium">{{ __('Job Type') }}</legend>
                         <div class="pt-6 space-y-6 sm:pt-4 sm:space-y-4">
@@ -78,6 +78,8 @@
                             @endforelse
                         </div>
                     </fieldset>
+                </div>
+                <div class="grid grid-cols-1 gap-y-10 auto-rows-min">
                     <fieldset>
                         <legend class="block font-medium">{{ __('Area') }}</legend>
                         <div class="pt-6 space-y-6 sm:pt-4 sm:space-y-4">
@@ -89,71 +91,6 @@
                             @empty
                                 No Results
                             @endforelse
-                        </div>
-                    </fieldset>
-                </div>
-                <div class="grid grid-cols-1 gap-y-10 auto-rows-min md:grid-cols-2 md:gap-x-6">
-                    <fieldset>
-                        <legend class="block font-medium">Size</legend>
-                        <div class="pt-6 space-y-6 sm:pt-4 sm:space-y-4">
-                            <div class="flex items-center text-base sm:text-sm">
-                                <input id="size-0" name="size[]" value="xs" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                                <label for="size-0" class="ml-3 min-w-0 flex-1 text-gray-600"> XS </label>
-                            </div>
-
-                            <div class="flex items-center text-base sm:text-sm">
-                                <input id="size-1" name="size[]" value="s" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" checked>
-                                <label for="size-1" class="ml-3 min-w-0 flex-1 text-gray-600"> S </label>
-                            </div>
-
-                            <div class="flex items-center text-base sm:text-sm">
-                                <input id="size-2" name="size[]" value="m" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                                <label for="size-2" class="ml-3 min-w-0 flex-1 text-gray-600"> M </label>
-                            </div>
-
-                            <div class="flex items-center text-base sm:text-sm">
-                                <input id="size-3" name="size[]" value="l" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                                <label for="size-3" class="ml-3 min-w-0 flex-1 text-gray-600"> L </label>
-                            </div>
-
-                            <div class="flex items-center text-base sm:text-sm">
-                                <input id="size-4" name="size[]" value="xl" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                                <label for="size-4" class="ml-3 min-w-0 flex-1 text-gray-600"> XL </label>
-                            </div>
-
-                            <div class="flex items-center text-base sm:text-sm">
-                                <input id="size-5" name="size[]" value="2xl" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                                <label for="size-5" class="ml-3 min-w-0 flex-1 text-gray-600"> 2XL </label>
-                            </div>
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                        <legend class="block font-medium">Category</legend>
-                        <div class="pt-6 space-y-6 sm:pt-4 sm:space-y-4">
-                            <div class="flex items-center text-base sm:text-sm">
-                                <input id="category-0" name="category[]" value="all-new-arrivals" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                                <label for="category-0" class="ml-3 min-w-0 flex-1 text-gray-600"> All New Arrivals </label>
-                            </div>
-
-                            <div class="flex items-center text-base sm:text-sm">
-                                <input id="category-1" name="category[]" value="tees" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                                <label for="category-1" class="ml-3 min-w-0 flex-1 text-gray-600"> Tees </label>
-                            </div>
-
-                            <div class="flex items-center text-base sm:text-sm">
-                                <input id="category-2" name="category[]" value="objects" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                                <label for="category-2" class="ml-3 min-w-0 flex-1 text-gray-600"> Objects </label>
-                            </div>
-
-                            <div class="flex items-center text-base sm:text-sm">
-                                <input id="category-3" name="category[]" value="sweatshirts" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                                <label for="category-3" class="ml-3 min-w-0 flex-1 text-gray-600"> Sweatshirts </label>
-                            </div>
-
-                            <div class="flex items-center text-base sm:text-sm">
-                                <input id="category-4" name="category[]" value="pants-and-shorts" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                                <label for="category-4" class="ml-3 min-w-0 flex-1 text-gray-600"> Pants &amp; Shorts </label>
-                            </div>
                         </div>
                     </fieldset>
                 </div>
