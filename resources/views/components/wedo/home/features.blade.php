@@ -46,7 +46,7 @@
 <section class="w-full py-20 bg-gray-100">
 
     <div class="max-w-3xl px-10 mx-auto">
-        <h2 class="mb-10 text-xl text-3xl font-bold text-center">PASS SOLO</h2>
+        <h2 class="mb-10 text-xl text-3xl font-bold text-center">SINGLE PASS</h2>
 
         <div class="relative flex flex-col overflow-hidden bg-gray-900 rounded-xl">
             <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-{{ app_color() }}-100 to-{{ app_color() }}-500"></div>

@@ -124,7 +124,7 @@ return [
         'dashboard' => 'Dashboard',
         'signed_in_as' => 'Signed in as',
         'personal_account' => 'Personal Account',
-        'browse_jobs' => 'Browse jobs',
+        'browse_tickets' => 'Browse Tickets',
         'sign_in' => 'Login Link',
         'resumes' => 'My Resumes',
         'applications' => 'My Applications',

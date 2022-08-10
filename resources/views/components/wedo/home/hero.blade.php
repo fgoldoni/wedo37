@@ -16,10 +16,10 @@
             <p class="mb-5 text-base text-gray-300 sm:pr-10 md:text-lg">
                 Learn how we are tranforming the world of web design. These state-of-the-art innovative tools will remind you of why you got into design in the first place.
             </p>
-            <button class="uppercase w-full flex items-center justify-center h-12 px-6 border border-transparent rounded shadow-md text-xl font-medium text-white transition duration-200 bg-{{ app_color() }}-500 hover:bg-{{ app_color() }}-700 hover:bg-deep-{{ app_color() }}-accent-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-500">
+            <a href="{{ route('tickets.index') }}" class="uppercase w-full flex items-center justify-center h-12 px-6 border border-transparent rounded shadow-md text-xl font-medium text-white hover:-translate-y-1 hover:ease-in-out duration-200 bg-{{ app_color() }}-500 hover:bg-{{ app_color() }}-700 hover:bg-deep-{{ app_color() }}-accent-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-500">
                 <x-heroicon-o-ticket class="-ml-1 mr-2 h-6 w-6 text-white"/>
                 Book Tickets
-            </button>
+            </a>
         </div>
     </div>
 </section>

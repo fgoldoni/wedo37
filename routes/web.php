@@ -7,6 +7,7 @@ use App\Http\Controllers\Wedo\JobController;
 use App\Http\Controllers\Wedo\LoginController;
 use App\Http\Controllers\Wedo\ResumeController;
 use App\Http\Controllers\Wedo\ShortlistedController;
+use App\Http\Controllers\Wedo\TicketsController;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
@@ -62,6 +63,10 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
 Route::group(['middleware' => ['web', 'auth']], function () {
     Route::resource('billings', BillingsController::class);
+});
+
+Route::group(['middleware' => ['web', 'auth']], function () {
+    Route::resource('tickets', TicketsController::class);
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {

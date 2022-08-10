@@ -12,7 +12,6 @@ class ShortlistedController extends Controller
 
     public function index()
     {
-        $rows = $this->api->get('/jobs/shortlisted');
-        return view('wedo.shortlisted.index', compact(['rows']));
+        return view('wedo.shortlisted.index');
     }
 }

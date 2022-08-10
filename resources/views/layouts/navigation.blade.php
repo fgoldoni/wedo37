@@ -8,8 +8,8 @@
                     </a>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('jobs.index')" :active="request()->routeIs('jobs.index')">
-                        {{ __('layout.navigation.browse_jobs') }}
+                    <x-nav-link :href="route('tickets.index')" :active="request()->routeIs('tickets.index')">
+                        {{ __('layout.navigation.browse_tickets') }}
                     </x-nav-link>
                     @auth
                         <x-nav-link :href="route('applicants.index')" :active="request()->routeIs('applicants.index')">
