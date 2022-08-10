@@ -4,7 +4,7 @@
     <div class="absolute w-full h-32 bg-gradient-to-b from-gray-100 to-white"></div>
     <div class="relative w-full px-5 py-10 mx-auto sm:py-12 md:py-16 md:px-10 max-w-7xl">
 
-        <h1 class="mb-1 text-4xl font-extrabold leading-none text-gray-900 lg:text-5xl xl:text-6xl sm:mb-3"><a href="#_">VIP LOUNGE</a></h1>
+        <h1 class="mb-1 text-4xl font-extrabold leading-none text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900 lg:text-5xl xl:text-6xl sm:mb-3"><a href="#_">VIP LOUNGE</a></h1>
         <div class="flex grid h-full grid-cols-12 gap-8 sm:gap-10 pb-10 mt-8 sm:mt-16">
             <div class="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group md:col-span-6 xl:col-span-4">
                 <a href="#_" class="block w-full transition duration-300 ease-in-out transform bg-center bg-cover h-96 hover:scale-110" style="background-image:url('https://cdn.devdojo.com/images/may2021/quench-satisfying.jpg')">
@@ -217,4 +217,6 @@
         </div>
     </div>
 </section>
+
+
 

@@ -11,12 +11,13 @@
             <h1 class="uppercase mb-5 font-sans text-3xl font-bold tracking-tight text-white sm:text-6xl sm:leading-none">
                 Black Mamba<br class="hidden md:block">
                 <span class="inline-block text-{{ app_color() }}-500">Presente</span>
+                <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-100 to-{{ app_color() }}-500">TENOR</span>
             </h1>
             <p class="mb-5 text-base text-gray-300 sm:pr-10 md:text-lg">
                 Learn how we are tranforming the world of web design. These state-of-the-art innovative tools will remind you of why you got into design in the first place.
             </p>
             <button class="uppercase w-full flex items-center justify-center h-12 px-6 border border-transparent rounded shadow-md text-xl font-medium text-white transition duration-200 bg-{{ app_color() }}-500 hover:bg-{{ app_color() }}-700 hover:bg-deep-{{ app_color() }}-accent-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-500">
-                <x-heroicon-o-ticket class="-ml-1 mr-2 h-5 w-5 text-white"/>
+                <x-heroicon-o-ticket class="-ml-1 mr-2 h-6 w-6 text-white"/>
                 Book Tickets
             </button>
         </div>
