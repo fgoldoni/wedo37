@@ -65,7 +65,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::resource('billings', BillingsController::class);
 });
 
-Route::group(['middleware' => ['web', 'auth']], function () {
+Route::group(['middleware' => ['web']], function () {
     Route::resource('tickets', TicketsController::class);
 });
 

@@ -13,7 +13,6 @@
                     <a href="#_" class="hover:scale-125 ease-in-out duration-150 inline-block text-xs font-semibold absolute top-0 -mt-3.5 rounded-full px-4 py-2 uppercase text-purple-500 bg-white">Continue ...</a>
                     <h2 class="uppercase mb-5 text-5xl font-bold"><a href="#_">Vip Silber</a></h2>
                     <p class="mb-2 text-lg font-normal text-purple-100 opacity-100">FROM 500 Euro</p>
-
                 </div>
             </div>
 
@@ -46,7 +45,7 @@
 <section class="w-full py-20 bg-gray-100">
 
     <div class="max-w-3xl px-10 mx-auto">
-        <h2 class="mb-10 text-xl text-3xl font-bold text-center">SINGLE PASS</h2>
+        <h2 class="mb-10 text-xl text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900">SINGLE PASS</h2>
 
         <div class="relative flex flex-col overflow-hidden bg-gray-900 rounded-xl">
             <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-{{ app_color() }}-100 to-{{ app_color() }}-500"></div>
@@ -80,8 +79,7 @@
     <div class="px-12 mx-auto text-center max-w-7xl">
         <div class="space-y-12 md:text-left">
             <div class="mb-20 space-y-5 sm:mx-auto sm:max-w-xl md:max-w-2xl sm:space-y-4 lg:max-w-5xl">
-                <h2 class="relative text-4xl font-extrabold tracking-tight sm:text-5xl">EVENT SPONSORS 🤝</h2>
-                <p class="text-xl text-gray-500">PARTNERS & SPONSORS</p>
+                <h2 class="relative text-4xl font-extrabold tracking-tight sm:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900">PARTNERS & SPONSORS 🤝</h2>
             </div>
             <div class="mx-auto space-y-16 sm:grid sm:grid-cols-2 sm:gap-16 sm:space-y-0 lg:grid-cols-3 lg:max-w-5xl">
 
@@ -217,6 +215,33 @@
         </div>
     </div>
 </section>
+
+
+<!-- Section 1 -->
+<section class="py-16 bg-gray-50 xl:px-0 px-8">
+    <div class="w-full max-w-6xl mx-auto">
+        <div class="w-full relative md:pr-48">
+            <img class="rounded-t-2xl md:rounded-2xl aspect-video object-cover" src="{{ asset('images/bar-4.jpeg') }}" alt="adventure destination">
+            <div class="md:absolute relative lg:w-96 w-full md:max-w-md right-0 top-0 md:py-8 lg:py-12 h-full">
+                <div class="w-full h-full flex flex-col items-start justify-between rounded-b-2xl md:rounded-2xl p-8 bg-white shadow-xl">
+                    <div class="bg-gray-50 mb-3 lg:flex flex md:hidden border border-gray-100 text-{{ app_color() }}-500 px-3.5 space-x-1 items-center py-1.5 text-xs rounded-full inline-block font-bold">
+                        <svg class="w-3.5 -ml-1 h-3.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <span class="">OUR CARD</span>
+                    </div>
+                    <div class="relative">
+                        <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-800">SKYLINE BAR</h3>
+                        <p class="text-gray-500 text-sm py-5 lg:py-3 lg:text-base">Here you get an insight on offered cocktails, long drinks and spirits.The full map is also available as a PDF download.</p>
+                    </div>
+                    <a href="{{ route('tickets.index') }}" class="bg-{{ app_color() }}-500 px-6 py-3 text-sm font-semibold rounded-full text-white">Continue ...</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
 
 
 
