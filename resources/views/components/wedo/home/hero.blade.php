@@ -15,7 +15,7 @@
             </h1>
             <p class="inline-flex mb-5 text-base text-gray-300 sm:pr-10 md:text-lg">
                 <x-heroicon-o-location-marker class="-ml-1 mr-2 h-6 w-6"/>
-                {{ app_event()->address }}
+                {{ app_event()?->address }}
             </p>
             <div class="uppercase flex flex-col items-center pt-2 sm:flex-row sm:pt-4">
                 <a href="{{ route('tickets.index') }}" class="inline-flex items-center justify-center w-full h-12 px-6 mb-4 font-medium tracking-wide text-white rounded shadow-md sm:w-auto sm:mr-4 sm:mb-0 hover:-translate-y-1 hover:ease-in-out duration-200 bg-{{ app_color() }}-500 hover:bg-{{ app_color() }}-700 hover:bg-deep-{{ app_color() }}-accent-700 focus:shadow-outline focus:outline-none">
