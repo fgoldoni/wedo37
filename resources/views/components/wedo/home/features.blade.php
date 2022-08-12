@@ -227,7 +227,7 @@
 <section class="py-16 bg-gray-50 xl:px-0 px-8">
     <div class="w-full max-w-6xl mx-auto">
         <div class="w-full relative md:pr-48">
-            <img class="rounded-t-2xl md:rounded-2xl aspect-video object-cover" src="{{ asset('images/bar-4.jpeg') }}" alt="adventure destination">
+            <img class="rounded-t-2xl md:rounded-2xl aspect-video object-cover" src="{{ app_event()?->image }}" alt="{{ app_event()?->name }}">
             <div class="md:absolute relative lg:w-96 w-full md:max-w-md right-0 top-0 md:py-8 lg:py-12 h-full">
                 <div class="w-full h-full flex flex-col items-start justify-between rounded-b-2xl md:rounded-2xl p-8 bg-white shadow-xl">
                     <div class="bg-gray-50 mb-3 lg:flex flex md:hidden border border-gray-100 text-{{ app_color() }}-500 px-3.5 space-x-1 items-center py-1.5 text-xs rounded-full inline-block font-bold">
