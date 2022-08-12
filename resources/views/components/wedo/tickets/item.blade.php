@@ -4,7 +4,7 @@
 
     <!-- Section 1 -->
     <section class="relative py-2">
-        <div class="p-10 bg-white border-t-4 border-{{ $row->color }}-400 md:mt-0 hover:shadow-xl hover:-translate-y-1 ease-in-out delay-150 duration-300 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-{{ $row->color }}-500">
+        <div class="p-10 bg-white border-t-4 border-{{ $row->color }}-400 md:mt-0 hover:shadow-xl hover:-translate-y-1 ease-in-out delay-150 duration-300">
             <div class="flex flex-col pb-8 border-b border-gray-200">
                 <h3 class="flex items-center text-{{ $row->color }}-400">
                     <span class="flex items-start text-4xl tracking-tight sm:text-5xl">
@@ -12,7 +12,7 @@
                       <span class="font-semibold"> {{ $row->price }} </span>
                     </span>
                 </h3>
-                <h4 class="uppercase mt-5 text-2xl font-medium text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-gray-900">{{ $row->name }}</h4>
+                <h4 class="uppercase mt-5 text-2xl font-medium text-transparent bg-clip-text bg-gradient-to-r from-{{ $row->color }}-400 to-{{ $row->color }}-900">{{ $row->name }}</h4>
                 <p class="mt-4 text-gray-500">{{ $row->description }}</p>
             </div>
             <ul class="px-3 pt-8 space-y-3">
