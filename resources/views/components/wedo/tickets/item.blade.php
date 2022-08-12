@@ -33,7 +33,7 @@
                     Email Support
                 </li>
             </ul>
-            <button type="button" wire:click="$set('show', {{ $row->id }})" class="hover:scale-125 ease-in-out duration-150  flex items-center justify-center w-full h-12 mt-8 font-medium text-{{ $row->color }}-600 border-2 border-{{ $row->color }}-500 rounded-full">
+            <button type="button" wire:click="$set('show', {{ $row->id }})" class="hover:scale-105 hover:shadow-2xl ease-in-out duration-150  flex items-center justify-center w-full h-12 mt-8 font-medium text-{{ $row->color }}-600 border-2 border-{{ $row->color }}-500 rounded-full">
                 Get a Free Plan
             </button>
         </div>
