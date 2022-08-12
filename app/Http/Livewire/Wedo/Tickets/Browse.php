@@ -3,6 +3,7 @@ namespace App\Http\Livewire\Wedo\Tickets;
 
 use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Http\Services\Contracts\ApiInterface;
+use App\Models\Ticket;
 use Livewire\Component;
 use WireUi\Traits\Actions;
 
@@ -16,7 +17,7 @@ class Browse extends Component
 
     protected $queryString = ['filters', 'show'];
 
-    private ?\stdClass $job = null;
+    private ?Ticket $ticket = null;
 
     public ?int $show = null;
 
@@ -32,36 +33,18 @@ class Browse extends Component
         'oldest' => null,
     ];
 
-    public function mount(ApiInterface $api)
+    public function mount()
     {
-        $this->api = $api;
-
         $this->useCachedRows();
 
-        $this->job = $this->show ? $this->cache(fn () => $this->showQuery, 'current-job-' . $this->show) : null;
+        $this->ticket = $this->show ? $this->cache(fn () => $this->showQuery, 'current-ticket-' . $this->show) : null;
     }
 
     public function updatedShow($value)
     {
         $this->useCachedRows();
 
-        $this->job = $this->cache(fn () => $this->showQuery, 'current-job-' . $value);
-    }
-
-    public function attach(int $jobId)
-    {
-        if (auth()->guest()) {
-            return $this->redirectRoute('login', ['to' => url()->current()]);
-        }
-
-        $response = app()->make(ApiInterface::class)->post(
-            '/jobs/attach',
-            [
-                'job_id' => $jobId,
-            ]
-        );
-
-        $this->notification()->info(__('Great!!'), $response->message);
+        $this->ticket = $this->cache(fn () => $this->showQuery, 'current-job-' . $value);
     }
 
     public function resetFilters()
@@ -71,18 +54,12 @@ class Browse extends Component
 
     public function getShowQueryProperty()
     {
-        return app()->make(ApiInterface::class)->get('/jobs/' . $this->show)->data;
+        return Ticket::find($this->show);
     }
 
     public function getRowsQueryProperty()
     {
-        return app()->make(ApiInterface::class)->get(
-            '/jobs',
-            [
-                'search' => '',
-                'filters' => $this->filters,
-            ]
-        );
+        return Ticket::all();
     }
 
     public function getRowsProperty()
@@ -92,6 +69,6 @@ class Browse extends Component
 
     public function render()
     {
-        return view('livewire.wedo.tickets.browse', ['rows' => $this->rows, 'job' => $this->job]);
+        return view('livewire.wedo.tickets.browse', ['rows' => $this->rows, 'ticket' => $this->ticket]);
     }
 }

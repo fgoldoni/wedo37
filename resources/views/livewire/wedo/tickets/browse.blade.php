@@ -9,7 +9,7 @@
         <div class="col-span-1 lg:col-span-3 py-4">
             <div class="px-4 space-y-2 sm:px-0 sm:flex sm:items-baseline sm:justify-between sm:space-y-0">
                 <div class="flex sm:items-baseline sm:space-x-4">
-                    <h1 class="text-base font-medium tracking-tight text-gray-500 sm:text-xl">About {{ count($rows->data) }} results ...</h1>
+                    <h1 class="text-base font-medium tracking-tight text-gray-500 sm:text-xl">About {{ count($rows) }} results ...</h1>
                     <a onclick="Livewire.emit('openModal', 'wedo.modals.popup.wedo')" href="javascript:;" class="hidden text-sm font-medium text-{{ app_color() }}-600 hover:text-{{ app_color() }}-500 sm:block">Quickly apply to thousands of jobs<span aria-hidden="true"> &rarr;</span></a>
                 </div>
                 <a onclick="Livewire.emit('openModal', 'wedo.modals.popup.wedo')" href="javascript:;" class="text-sm font-medium text-{{ app_color() }}-600 hover:text-{{ app_color() }}-500 sm:hidden">Quickly apply to thousands of jobs<span aria-hidden="true"> &rarr;</span></a>
@@ -18,13 +18,13 @@
 
         <div class="col-span-1 lg:col-span-1">
             <div class="grid grid-cols-1">
-                <x-wedo.jobs.list :rows="$rows->data"></x-wedo.jobs.list>
+                <x-wedo.tickets.list :rows="$rows"></x-wedo.tickets.list>
             </div>
         </div>
 
         <div class="hidden lg:block col-span-1 lg:col-span-2">
 
-            @if($job)
+            @if($ticket)
                 <!-- This example requires Tailwind CSS v2.0+ -->
                     <!-- This example requires Tailwind CSS v2.0+ -->
                     <div class="bg-white">

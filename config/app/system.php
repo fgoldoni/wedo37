@@ -28,6 +28,7 @@ return [
             'attachments' => 'attachments',
             'comments' => 'comments',
             'team' => 'team-id',
+            'tickets' => 'tickets',
         ],
     ],
     'sessions' => [
