@@ -1,7 +1,8 @@
+@props(['items'])
 <span
     x-data="{
                     text: '',
-                    textArray :  ['TENOR'],
+                    textArray :  {{ json_encode($items)  }},
                     textIndex: 0,
                     charIndex: 0,
                     pauseEnd: 1000,

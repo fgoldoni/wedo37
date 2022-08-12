@@ -44,6 +44,13 @@ if (!function_exists('app_job_types')) {
     }
 }
 
+if (!function_exists('app_event')) {
+    function app_event(): ?object
+    {
+        return app_team()->event;
+    }
+}
+
 if (!function_exists('cache_path')) {
     function cache_path(string $path): string
     {

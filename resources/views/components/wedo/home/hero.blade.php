@@ -6,18 +6,16 @@
     <div class="relative flex flex-col items-start w-full max-w-xl px-4 mx-auto md:px-0 lg:px-8 lg:max-w-screen-xl">
         <div class="mb-16 lg:my-40 lg:max-w-lg lg:pr-5">
             <p class="flex inline-block text-sm font-semibold tracking-wider text-{{ app_color() }}-200 uppercase rounded-full mb-7">
-                Sonntag, 04.12.2022, 18:00
+                {{ app_event()?->start }}
             </p>
             <h1 class="uppercase mb-5 font-sans text-3xl font-bold tracking-tight text-white sm:text-6xl sm:leading-none">
-                Black Mamba<br class="hidden md:block">
+                {{ app_team_name() }}<br class="hidden md:block">
                 <span class="inline-block text-{{ app_color() }}-500">Presente</span>
-                <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-100 to-{{ app_color() }}-500">
-
-                </span>
-                <span class="block"><x-wedo.home.typing-effect></x-wedo.home.typing-effect>&nbsp;</span>
+                <span class="block"><x-wedo.home.typing-effect :items="[app_event()?->name]"></x-wedo.home.typing-effect>&nbsp;</span>
             </h1>
-            <p class="mb-5 text-base text-gray-300 sm:pr-10 md:text-lg">
-                Learn how we are tranforming the world of web design. These state-of-the-art innovative tools will remind you of why you got into design in the first place.
+            <p class="inline-flex mb-5 text-base text-gray-300 sm:pr-10 md:text-lg">
+                <x-heroicon-o-location-marker class="-ml-1 mr-2 h-6 w-6"/>
+                {{ app_event()->address }}
             </p>
             <div class="uppercase flex flex-col items-center pt-2 sm:flex-row sm:pt-4">
                 <a href="{{ route('tickets.index') }}" class="inline-flex items-center justify-center w-full h-12 px-6 mb-4 font-medium tracking-wide text-white rounded shadow-md sm:w-auto sm:mr-4 sm:mb-0 hover:-translate-y-1 hover:ease-in-out duration-200 bg-{{ app_color() }}-500 hover:bg-{{ app_color() }}-700 hover:bg-deep-{{ app_color() }}-accent-700 focus:shadow-outline focus:outline-none">

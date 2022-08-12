@@ -6,43 +6,49 @@
 
         <h1 class="mb-1 text-4xl font-extrabold leading-none text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900 lg:text-5xl xl:text-6xl sm:mb-3"><a href="#_">VIP LOUNGE</a></h1>
         <div class="flex grid h-full grid-cols-12 gap-8 sm:gap-10 pb-10 mt-8 sm:mt-16">
-            <div class="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group md:col-span-6 xl:col-span-4">
-                <a href="#_" class="block w-full transition duration-300 ease-in-out transform bg-center bg-cover h-96 hover:scale-110" style="background-image:url('https://cdn.devdojo.com/images/may2021/quench-satisfying.jpg')">
-                </a>
-                <div class="relative z-20 w-full h-auto py-8 text-white bg-purple-500 border-t-0 border-yellow-200 px-7">
-                    <a href="#_" class="hover:scale-125 ease-in-out duration-150 inline-block text-xs font-semibold absolute top-0 -mt-3.5 rounded-full px-4 py-2 uppercase text-purple-500 bg-white">Continue ...</a>
-                    <h2 class="uppercase mb-5 text-5xl font-bold"><a href="#_">Vip Silber</a></h2>
-                    <p class="mb-2 text-lg font-normal text-purple-100 opacity-100">FROM 500 Euro</p>
-                </div>
-            </div>
 
-            <div class="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group md:col-span-6 xl:col-span-4">
-                <a href="#_" class="block w-full transition duration-300 ease-in-out transform bg-center bg-cover h-96 hover:scale-110" style="background-image:url('https://cdn.devdojo.com/images/may2021/orange.jpg')">
-                </a>
-                <div class="relative z-20 w-full h-auto py-8 text-white bg-blue-400 border-t-0 border-yellow-200 px-7">
-                    <a href="#_" class="hover:scale-125 ease-in-out duration-150 inline-block text-xs font-semibold absolute top-0 -mt-3.5 rounded-full px-4 py-2 uppercase text-blue-500 bg-white">Continue ...</a>
-                    <h2 class="uppercase mb-5 text-5xl font-bold"><a href="#_">Vip Platinum</a></h2>
-                    <p class="mb-2 text-lg font-normal text-blue-100 opacity-100">FROM 1500 Euro</p>
-
+            @if(isset(app_event()?->tickets[0]))
+                <div class="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group md:col-span-6 xl:col-span-4">
+                    <a href="#_" class="block w-full transition duration-300 ease-in-out transform bg-center bg-cover h-96 hover:scale-110" style="background-image:url('https://cdn.devdojo.com/images/may2021/quench-satisfying.jpg')">
+                    </a>
+                    <div class="relative z-20 w-full h-auto py-8 text-white bg-purple-500 border-t-0 border-yellow-200 px-7">
+                        <a href="#_" class="hover:scale-125 ease-in-out duration-150 inline-block text-xs font-semibold absolute top-0 -mt-3.5 rounded-full px-4 py-2 uppercase text-purple-500 bg-white">Continue ...</a>
+                        <h2 class="uppercase mb-5 text-5xl font-bold"><a href="#_">{{ Str::limit(app_event()?->tickets[0]->name, 18, '...') }}</a></h2>
+                        <p class="mb-2 text-lg font-normal text-purple-100 opacity-100">FROM {{ app_event()?->tickets[0]->price }} Euro</p>
+                    </div>
                 </div>
-            </div>
+            @endif
 
-            <div class="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group sm:col-span-12 xl:col-span-4 sm:flex-row xl:flex-col">
-                <a href="#_" class="block w-full transition duration-300 ease-in-out transform bg-center bg-cover h-96 hover:scale-110" style="background-image:url('https://cdn.devdojo.com/images/may2021/gbc.jpg')"></a>
-                <div class="relative z-20 flex flex-col items-start justify-center w-full h-auto py-8 text-white bg-yellow-400 border-t-0 border-yellow-200 sm:h-full xl:h-auto px-7">
-                    <a href="#_" class="hover:scale-125 ease-in-out duration-150 inline-block text-xs font-semibold absolute sm:mb-5 xl:mb-0 sm:relative xl:absolute top-0 -mt-3.5 rounded-full px-4 py-2 uppercase text-yellow-400 bg-white">Continue ...</a>
-                    <h2 class="uppercase mb-5 text-5xl font-bold"><a href="#_">Vip Gold</a></h2>
-                    <p class="mb-2 text-lg font-normal opacity-100 text-yellow-50">FROM 1000 Euro</p>
+            @if(isset(app_event()?->tickets[1]))
+                <div class="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group md:col-span-6 xl:col-span-4">
+                    <a href="#_" class="block w-full transition duration-300 ease-in-out transform bg-center bg-cover h-96 hover:scale-110" style="background-image:url('https://cdn.devdojo.com/images/may2021/orange.jpg')">
+                    </a>
+                    <div class="relative z-20 w-full h-auto py-8 text-white bg-blue-400 border-t-0 border-yellow-200 px-7">
+                        <a href="#_" class="hover:scale-125 ease-in-out duration-150 inline-block text-xs font-semibold absolute top-0 -mt-3.5 rounded-full px-4 py-2 uppercase text-blue-500 bg-white">Continue ...</a>
+                        <h2 class="uppercase mb-5 text-5xl font-bold"><a href="#_">{{ Str::limit(app_event()?->tickets[1]->name, 18, '...') }}</a></h2>
+                        <p class="mb-2 text-lg font-normal text-blue-100 opacity-100">FROM {{ app_event()?->tickets[1]->price }} Euro</p>
+                    </div>
                 </div>
-            </div>
+            @endif
+
+            @if(isset(app_event()?->tickets[2]))
+                    <div class="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group sm:col-span-12 xl:col-span-4 sm:flex-row xl:flex-col">
+                        <a href="#_" class="block w-full transition duration-300 ease-in-out transform bg-center bg-cover h-96 hover:scale-110" style="background-image:url('https://cdn.devdojo.com/images/may2021/gbc.jpg')"></a>
+                        <div class="relative z-20 flex flex-col items-start justify-center w-full h-auto py-8 text-white bg-yellow-400 border-t-0 border-yellow-200 sm:h-full xl:h-auto px-7">
+                            <a href="#_" class="hover:scale-125 ease-in-out duration-150 inline-block text-xs font-semibold absolute sm:mb-5 xl:mb-0 sm:relative xl:absolute top-0 -mt-3.5 rounded-full px-4 py-2 uppercase text-yellow-400 bg-white">Continue ...</a>
+                            <h2 class="uppercase mb-5 text-5xl font-bold"><a href="#_">{{ Str::limit(app_event()?->tickets[2]->name, 18, '...') }}</a></h2>
+                            <p class="mb-2 text-lg font-normal opacity-100 text-yellow-50">FROM {{ app_event()?->tickets[2]->price }} Euro</p>
+                        </div>
+                    </div>
+            @endif
         </div>
     </div>
 </section>
 
 
-
-<!-- Section 1 -->
-<section class="w-full py-20 bg-gray-100">
+@if(isset(app_event()?->tickets[3]))
+    <!-- Section 1 -->
+    <section class="w-full py-20 bg-gray-100">
 
     <div class="max-w-3xl px-10 mx-auto">
         <h2 class="mb-10 text-xl text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900">SINGLE PASS</h2>
@@ -63,8 +69,8 @@
 
             </div>
             <div class="px-10 py-8 bg-gray-900 border-t border-gray-700 bg-gradient-to-b from-gray-800 to-gray-900">
-                <h3 class="text-xl font-medium leading-tight text-gray-200">Single pass without drink</h3>
-                <p class="my-1 text-gray-400">Gain access to all our premium shows and episodes with a premium membership.</p>
+                <h3 class="text-xl font-medium leading-tight text-gray-200">{{ app_event()?->tickets[3]->name }}</h3>
+                <p class="my-1 text-gray-400 whitespace-pre-wrap">{{ app_event()?->tickets[3]->description }}</p>
             </div>
 
         </div>
@@ -72,7 +78,7 @@
     </div>
 
 </section>
-
+@endif
 
 <!-- Section 1 -->
 <section class="w-full py-16 bg-white lg:py-24">
