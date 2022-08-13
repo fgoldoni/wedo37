@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Wedo;
 
 use App\Http\Controllers\Controller;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 
 class TicketsController extends Controller
@@ -16,8 +17,8 @@ class TicketsController extends Controller
         return view('wedo.tickets.index');
     }
 
-    public function show(int $id = null)
+    public function show(Ticket $ticket)
     {
-        return view('wedo.tickets.index');
+        return view('wedo.tickets.item', compact('ticket'));
     }
 }

@@ -25,66 +25,103 @@
         <div class="hidden lg:block col-span-1 lg:col-span-2">
 
             @if($ticket)
-                <!-- This example requires Tailwind CSS v2.0+ -->
-                    <!-- This example requires Tailwind CSS v2.0+ -->
-                    <div class="bg-white">
-                        <div class="pt-2 sm:pt-4 lg:pt-6">
-                            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                                <div class="text-center">
-                                    <h2 class="flex flex-shrink-0 justify-center">
-                                        <img class="w-16 h-16" src="{{ $ticket->avatar_url }}" alt="{{ $ticket->name }}">
-                                    </h2>
-                                </div>
-                            </div>
+                <div class="bg-gray-200">
+                    <div class="pt-12 px-4 sm:px-6 lg:px-8 lg:pt-20">
+                        <div class="text-center">
+                            <h2 class="text-xl leading-6 font-semibold text-gray-700">{{ app_event()->start }}</h2>
+                            <p class="mt-2 text-3xl tracking-tight font-bold text-gray-900 sm:text-4xl sm:tracking-tight lg:text-5xl lg:tracking-tight">{{ app_event()->artist }}</p>
+                            <p class="mt-3 max-w-4xl mx-auto text-xl text-gray-700 sm:mt-5 sm:text-2xl whitespace-pre-wrap">{{ app_event()->address }}</p>
                         </div>
-                        <div class="mt-8 bg-gray-200 pb-16 sm:mt-12 sm:pb-20 lg:pb-28">
-                            <div class="relative">
-                                <div class="absolute inset-0 h-1/2 bg-white"></div>
-                                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                                    <div class="relative p-10 mt-10 bg-white rounded-lg shadow-xl md:mt-0">
-                                        <div class="pointer-events-none absolute inset-0 rounded-lg border-2 border-{{ $ticket->color }}-600" aria-hidden="true"></div>
-                                        <div class="absolute inset-x-0 top-0 transform translate-y-px">
-                                            <div class="flex justify-center transform -translate-y-1/2">
-                                                <span class="inline-flex rounded-full bg-{{ $ticket->color }}-600 px-4 py-1 text-sm font-semibold tracking-wider uppercase text-white"> Most popular </span>
+                    </div>
+                    <div class="mt-16 bg-white pb-12 lg:mt-20 lg:pb-20">
+                        <div class="relative z-0">
+                            <div class="absolute inset-0 h-5/6 bg-gray-200 lg:h-2/3"></div>
+                            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                                <div class="relative">
+                                    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                                        <div class="relative p-10 mt-10 bg-white rounded-lg shadow-xl md:mt-0">
+                                            <div class="pointer-events-none absolute inset-0 rounded-lg border-2 border-{{ $ticket->color }}-600" aria-hidden="true"></div>
+                                            <div class="absolute inset-x-0 top-0 transform translate-y-px">
+                                                <div class="flex justify-center transform -translate-y-1/2">
+                                                    <span class="inline-flex rounded-full bg-{{ $ticket->color }}-600 px-4 py-1 text-base font-semibold text-white"> Most popular </span>
+                                                </div>
+                                            </div>
+                                            <div class="bg-white rounded-t-lg px-6 pt-12 pb-10">
+                                                <div>
+                                                    <h3 class="uppercase text-center text-3xl tracking-tight font-semibold text-transparent bg-clip-text bg-gradient-to-r from-{{ $ticket->color }}-500 to-{{ $ticket->color }}-900 sm:-mx-6" id="tier-growth">{{ $ticket->name }}</h3>
+                                                    <div class="mt-4 flex items-center justify-center">
+                                                        <span class="px-3 flex items-start text-6xl tracking-tight text-gray-900 sm:text-6xl sm:tracking-tight">
+                                                          <span class="mt-2 mr-2 text-4xl tracking-tight font-medium"> $ </span>
+                                                          <span class="font-bold"> {{ $ticket->price }} </span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="border-t-2 border-gray-100 rounded-b-lg pt-10 pb-8 px-6 bg-gray-50 sm:px-10 sm:py-10">
+                                                <ul role="list" class="space-y-4">
+                                                    <li class="flex items-start">
+                                                        <div class="flex-shrink-0">
+                                                            <!-- Heroicon name: outline/check -->
+                                                            <svg class="flex-shrink-0 h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                                            </svg>
+                                                        </div>
+                                                        <p class="ml-3 text-base font-medium text-gray-500">Quia rem est sed impedit magnam</p>
+                                                    </li>
+
+                                                    <li class="flex items-start">
+                                                        <div class="flex-shrink-0">
+                                                            <!-- Heroicon name: outline/check -->
+                                                            <svg class="flex-shrink-0 h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                                            </svg>
+                                                        </div>
+                                                        <p class="ml-3 text-base font-medium text-gray-500">Dolorem vero ratione voluptates</p>
+                                                    </li>
+
+                                                    <li class="flex items-start">
+                                                        <div class="flex-shrink-0">
+                                                            <!-- Heroicon name: outline/check -->
+                                                            <svg class="flex-shrink-0 h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                                            </svg>
+                                                        </div>
+                                                        <p class="ml-3 text-base font-medium text-gray-500">Qui sed ab doloribus voluptatem dolore</p>
+                                                    </li>
+
+                                                    <li class="flex items-start">
+                                                        <div class="flex-shrink-0">
+                                                            <!-- Heroicon name: outline/check -->
+                                                            <svg class="flex-shrink-0 h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                                            </svg>
+                                                        </div>
+                                                        <p class="ml-3 text-base font-medium text-gray-500">Laborum commodi molestiae id et fugiat</p>
+                                                    </li>
+
+                                                    <li class="flex items-start">
+                                                        <div class="flex-shrink-0">
+                                                            <!-- Heroicon name: outline/check -->
+                                                            <svg class="flex-shrink-0 h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                                            </svg>
+                                                        </div>
+                                                        <p class="ml-3 text-base font-medium text-gray-500">Nam ut ipsa nesciunt culpa modi dolor</p>
+                                                    </li>
+                                                </ul>
+                                                <div class="mt-10">
+                                                    <div class="rounded-lg shadow-md">
+                                                        <a href="#" class="block w-full text-center rounded-lg border border-transparent bg-{{ $ticket->color }}-600 px-6 py-4 text-xl leading-6 font-medium text-white hover:bg-{{ $ticket->color }}-700" aria-describedby="tier-growth"> Start your trial </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="flex flex-col pb-8 border-b border-gray-200">
-                                            <h3 class="flex flex items-center">
-                                                <span class="flex items-start text-5xl tracking-tight text-gray-900 sm:text-6xl">
-                                                  <span class="mr-2 text-3xl font-medium"> $ </span>
-                                                  <span class="font-extrabold"> {{ $ticket->price }} </span>
-                                                </span>
-                                            </h3>
-                                            <h4 class="uppercase mt-5 text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ $ticket->color }}-400 to-{{ $ticket->color }}-900">{{ $ticket->name }}</h4>
-                                            <p class="mt-4 text-gray-500">{{ $ticket->description }}</p>
-                                        </div>
-                                        <ul class="px-3 pt-8 space-y-3">
-                                            <li class="flex font-medium text-gray-500">
-                                                <svg class="w-6 h-6 mr-1.5 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                                                Unlimited Access
-                                            </li>
-                                            <li class="flex font-medium text-gray-500">
-                                                <svg class="w-6 h-6 mr-1.5 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                                                5 Team Members
-                                            </li>
-                                            <li class="flex font-medium text-gray-500">
-                                                <svg class="w-6 h-6 mr-1.5 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                                                10,000 Api Calls
-                                            </li>
-                                            <li class="flex font-medium text-gray-500">
-                                                <svg class="w-6 h-6 mr-1.5 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                                                Email Support
-                                            </li>
-                                        </ul>
-                                        <a href="#_" class="flex items-center justify-center w-full h-12 mt-8 font-medium text-white bg-{{ $ticket->color }}-500 border-2 border-{{ $ticket->color }}-500 rounded-full">
-                                            Get the Basic Plan
-                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                </div>
 
                 @else
                 <section class="w-full py-16 overflow-hidden bg-white relative">
