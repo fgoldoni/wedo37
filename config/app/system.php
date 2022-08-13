@@ -29,6 +29,8 @@ return [
             'comments' => 'comments',
             'team' => 'team-id',
             'tickets' => 'tickets',
+            'events' => 'events',
+            'extras' => 'extras',
         ],
     ],
     'sessions' => [

@@ -13,6 +13,7 @@ for (const key in colors) {
         colorSaveList.push(`group-hover:text-${key}-${colorValue}`);
         colorSaveList.push(`group-hover:bg-${key}-${colorValue}`);
         colorSaveList.push(`hover:text-${key}-${colorValue}`);
+        colorSaveList.push(`ring-${key}-${colorValue}`);
         colorSaveList.push(`focus:ring-${key}-${colorValue}`);
         colorSaveList.push(`focus:border-${key}-${colorValue}`);
         colorSaveList.push(`focus-within:ring-${key}-${colorValue}`);

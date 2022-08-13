@@ -1,7 +1,7 @@
 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
     <!-- Filters -->
-    <x-wedo.jobs.top-bar :filters="$filters" wire:model="filters.categories"></x-wedo.jobs.top-bar>
+    <x-wedo.jobs.top-bar :filters="$filters" wire:model="filters.events"></x-wedo.jobs.top-bar>
 
     <!-- This example requires Tailwind CSS v2.0+ -->
     <div class="grid grid-cols-1 lg:gap-4 lg:grid-cols-3">
@@ -32,7 +32,7 @@
                             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                                 <div class="text-center">
                                     <h2 class="flex flex-shrink-0 justify-center">
-                                        <img class="w-16 h-16" src="https://demogoldoni.com/images/plans/plus.png" alt="">
+                                        <img class="w-16 h-16" src="{{ $ticket->avatar_url }}" alt="{{ $ticket->name }}">
                                     </h2>
                                 </div>
                             </div>
@@ -42,21 +42,21 @@
                                 <div class="absolute inset-0 h-1/2 bg-white"></div>
                                 <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                                     <div class="relative p-10 mt-10 bg-white rounded-lg shadow-xl md:mt-0">
-                                        <div class="pointer-events-none absolute inset-0 rounded-lg border-2 border-{{ app_color() }}-600" aria-hidden="true"></div>
+                                        <div class="pointer-events-none absolute inset-0 rounded-lg border-2 border-{{ $ticket->color }}-600" aria-hidden="true"></div>
                                         <div class="absolute inset-x-0 top-0 transform translate-y-px">
                                             <div class="flex justify-center transform -translate-y-1/2">
-                                                <span class="inline-flex rounded-full bg-{{ app_color() }}-600 px-4 py-1 text-sm font-semibold tracking-wider uppercase text-white"> Most popular </span>
+                                                <span class="inline-flex rounded-full bg-{{ $ticket->color }}-600 px-4 py-1 text-sm font-semibold tracking-wider uppercase text-white"> Most popular </span>
                                             </div>
                                         </div>
                                         <div class="flex flex-col pb-8 border-b border-gray-200">
                                             <h3 class="flex flex items-center">
                                                 <span class="flex items-start text-5xl tracking-tight text-gray-900 sm:text-6xl">
                                                   <span class="mr-2 text-3xl font-medium"> $ </span>
-                                                  <span class="font-extrabold"> 149 </span>
+                                                  <span class="font-extrabold"> {{ $ticket->price }} </span>
                                                 </span>
                                             </h3>
-                                            <h4 class="uppercase mt-5 text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-400 to-{{ app_color() }}-900">Vip Platinum</h4>
-                                            <p class="mt-4 text-gray-500">All the basic features you need to take your project to the next level.</p>
+                                            <h4 class="uppercase mt-5 text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ $ticket->color }}-400 to-{{ $ticket->color }}-900">{{ $ticket->name }}</h4>
+                                            <p class="mt-4 text-gray-500">{{ $ticket->description }}</p>
                                         </div>
                                         <ul class="px-3 pt-8 space-y-3">
                                             <li class="flex font-medium text-gray-500">
@@ -76,7 +76,7 @@
                                                 Email Support
                                             </li>
                                         </ul>
-                                        <a href="#_" class="flex items-center justify-center w-full h-12 mt-8 font-medium text-white bg-{{ app_color() }}-500 border-2 border-{{ app_color() }}-500 rounded-full">
+                                        <a href="#_" class="flex items-center justify-center w-full h-12 mt-8 font-medium text-white bg-{{ $ticket->color }}-500 border-2 border-{{ $ticket->color }}-500 rounded-full">
                                             Get the Basic Plan
                                         </a>
                                     </div>

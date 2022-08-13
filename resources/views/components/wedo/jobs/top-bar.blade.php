@@ -64,35 +64,38 @@
 
             class="border-t border-secondary-200 bg-secondary-200 py-10" id="disclosure-1">
             <div class="max-w-7xl mx-auto grid grid-cols-2 gap-x-4 px-4 text-sm sm:px-6 md:gap-x-6 lg:px-8">
-                <div class="grid grid-cols-1 gap-y-10 auto-rows-min">
-                    <fieldset>
-                        <legend class="block font-medium">{{ __('Job Type') }}</legend>
-                        <div class="pt-6 space-y-6 sm:pt-4 sm:space-y-4">
-                            @forelse(app_job_types() as $jobType)
-                                <div class="flex items-center text-base sm:text-sm">
-                                    <input x-model="selected" id="area-{{ $jobType->id }}" value="{{ $jobType->id }}" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                                    <label for="area-{{ $jobType->id }}" class="ml-3 min-w-0 flex-1 text-gray-600"> {{ $jobType->name }} </label>
-                                </div>
-                            @empty
-                                No Results
-                            @endforelse
-                        </div>
-                    </fieldset>
-                </div>
-                <div class="grid grid-cols-1 gap-y-10 auto-rows-min">
-                    <fieldset>
-                        <legend class="block font-medium">{{ __('Area') }}</legend>
-                        <div class="pt-6 space-y-6 sm:pt-4 sm:space-y-4">
-                            @forelse(app_areas() as $area)
-                                <div class="flex items-center text-base sm:text-sm">
-                                    <input x-model="selected" id="area-{{ $area->id }}" value="{{ $area->id }}" type="checkbox" class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                                    <label for="area-{{ $area->id }}" class="ml-3 min-w-0 flex-1 text-gray-600"> {{ $area->name }} </label>
-                                </div>
-                            @empty
-                                No Results
-                            @endforelse
-                        </div>
-                    </fieldset>
+                <div class="col-span-2 gap-y-10 auto-rows-min">
+                    <ul role="list" class="mt-6 space-y-8">
+                        @forelse(\App\Models\Event::all() as $event)
+                            <li class="flow-root">
+                                <input x-model="selected" id="area-{{ $event->id }}" value="{{ $event->id }}" type="checkbox" class="hidden">
+
+                                <label for="area-{{ $event->id }}"
+                                       @class([
+                                            'cursor-pointer -m-3 p-3 flex hover:bg-gray-100 transition ease-in-out duration-150',
+                                            'border-' . app_color() . '-500 ring-1 ring-' . app_color() . '-400' => in_array($event->id, $filters['events']),
+                                        ])>
+                                    <div class="hidden sm:block flex-shrink-0">
+                                        <img class="w-32 h-20 object-cover rounded-md" src="{{ $event->avatar_url }}" alt="{{ $event->name }}">
+                                    </div>
+                                    <div class="min-w-0 flex-1 sm:ml-8">
+                                        <h4 class="text-base font-medium text-gray-900 truncate">{{ $event->name }}</h4>
+                                        <p class="mt-1 text-sm text-gray-500">{{ $event->description }}</p>
+                                    </div>
+                                    <svg
+                                        @class([
+                                            'h-5 w-5 text-' . app_color() . '-400',
+                                            'invisible' => !in_array($event->id, $filters['events']),
+                                        ])
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                </label>
+                            </li>
+                        @empty
+                            No Results
+                        @endforelse
+                    </ul>
                 </div>
             </div>
         </div>

@@ -24,6 +24,7 @@ class Browse extends Component
     public array $filters = [
         'search' => null,
         'category' => null,
+        'events' => [],
         'categories' => [],
         'countries' => [],
         'divisions' => [],
@@ -54,12 +55,15 @@ class Browse extends Component
 
     public function getShowQueryProperty()
     {
-        return Ticket::find($this->show);
+        return Ticket::query()
+            ->find($this->show);
     }
 
     public function getRowsQueryProperty()
     {
-        return Ticket::all();
+        return Ticket::query()
+            ->when($this->filters['events'], fn($query, $events) => $query->whereIn('event_id', $events))
+            ->get();
     }
 
     public function getRowsProperty()

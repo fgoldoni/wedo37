@@ -6,7 +6,7 @@ use App\Http\Services\Contracts\ApiInterface;
 use Illuminate\Database\Eloquent\Model;
 use Sushi\Sushi;
 
-class Ticket extends Model
+class Event extends Model
 {
     use Sushi;
 
@@ -17,17 +17,15 @@ class Ticket extends Model
         $tickets = [];
 
         $items = $this->cache(
-            fn () => app()->make(ApiInterface::class)->get('/tickets')->data,
-            cache_path('tickets')
+            fn () => app()->make(ApiInterface::class)->get('/events')->data,
+            cache_path('events')
         );
 
         foreach ($items as $item) {
             $tickets[] = [
                 'id' => $item->id,
                 'name' => $item->name,
-                'price' => $item->price,
-                'event_id' => $item->event_id,
-                'color' => $item->color,
+                'description' => $item->description,
                 'avatar_url' => $item->avatar_url,
             ];
         }
