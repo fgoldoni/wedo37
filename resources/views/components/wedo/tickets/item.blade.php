@@ -53,13 +53,13 @@
                     Email Support
                 </li>
             </ul>
-            <button type="button" wire:click="show({{ $row->id }})" class="hover:scale-105 hover:shadow-2xl ease-in-out duration-150  flex items-center justify-center w-full h-12 mt-8 font-medium text-{{ $row->color }}-600 border-2 border-{{ $row->color }}-500 rounded-full">
+            <button type="button" wire:click="show({{ $row->id }})" class="hidden hover:scale-105 hover:shadow-2xl ease-in-out duration-150 lg:flex items-center justify-center w-full h-12 mt-8 font-medium text-{{ $row->color }}-600 border-2 border-{{ $row->color }}-500 rounded-md">
                 <x-wedo.loader wire:loading wire:target="show({{ $row->id }})"></x-wedo.loader>
                 <x-heroicon-o-ticket wire:loading.remove wire:target="show({{ $row->id }})" class="flex-shrink-0 mr-2 h-5 w-5"/>
                 Select &#8594;
             </button>
 
-            <a href="{{ route('tickets.show', $row->id) }}" class="hover:scale-105 hover:shadow-2xl ease-in-out duration-150  flex items-center justify-center w-full h-12 mt-8 font-medium text-{{ $row->color }}-600 border-2 border-{{ $row->color }}-500 rounded-full">
+            <a href="{{ route('tickets.show', $row->id) }}" class="lg:hidden hover:scale-105 hover:shadow-2xl ease-in-out duration-150  flex items-center justify-center w-full h-12 mt-8 font-medium text-{{ $row->color }}-600 border-2 border-{{ $row->color }}-500 rounded-md">
                 <x-wedo.loader wire:loading wire:target="show({{ $row->id }})"></x-wedo.loader>
                 <x-heroicon-o-ticket wire:loading.remove wire:target="show({{ $row->id }})" class="flex-shrink-0 mr-2 h-5 w-5"/>
                  Link Select &#8594;
