@@ -38,7 +38,7 @@ class Browse extends Component
     {
         $this->useCachedRows();
 
-        $this->ticket = $this->show ? $this->cache(fn () => $this->showQuery, 'current-ticket-' . $this->show) : null;
+        $this->ticket = $this->show ? Ticket::find($this->show) : null;
     }
 
     public function show(int $id)
