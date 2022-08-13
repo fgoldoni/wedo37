@@ -18,7 +18,7 @@
 
         <div class="col-span-1 lg:col-span-1">
             <div class="grid grid-cols-1">
-                <x-wedo.tickets.list :rows="$rows"></x-wedo.tickets.list>
+                <x-wedo.tickets.list :rows="$rows" :currentTicket="$show"></x-wedo.tickets.list>
             </div>
         </div>
 

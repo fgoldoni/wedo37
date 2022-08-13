@@ -1,10 +1,29 @@
-@props(['row'])
+@props(['row', 'currentTicket'])
 
 <div>
 
     <!-- Section 1 -->
-    <section class="relative py-2">
-        <div class="p-10 bg-white border-t-4 border-{{ $row->color }}-400 md:mt-0 hover:shadow-xl hover:-translate-y-1 ease-in-out delay-150 duration-300">
+    <section class="relative p-2">
+        <div
+            @class([
+                'p-10 bg-white md:mt-0 hover:shadow-xl hover:-translate-y-1 ease-in-out delay-150 duration-300',
+                'border-t-4 border-' . $row->color . '-400' => !($row->id === $currentTicket),
+                'shadow-xl -translate-y-1' => ($row->id === $currentTicket),
+            ])>
+            @if($row->id === $currentTicket)
+                <div class="pointer-events-none absolute inset-0 rounded-lg border-2 border-{{ $row->color }}-600" aria-hidden="true"></div>
+                <div class="absolute inset-x-0 top-0 transform translate-y-px">
+                    <div class="flex justify-center transform -translate-y-1/2">
+                        <span class="inline-flex rounded-full bg-{{ $row->color }}-600 px-4 py-1 text-sm font-semibold tracking-wider uppercase text-white">
+                            <svg class="h-5 w-5 text-{{ app_color() }}-400'"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            @endif
+
             <div class="flex flex-col pb-8 border-b border-gray-200">
                 <h3 class="flex items-center text-{{ $row->color }}-400">
                     <span class="flex items-start text-4xl tracking-tight sm:text-5xl">
@@ -12,6 +31,7 @@
                       <span class="font-semibold"> {{ $row->price }} </span>
                     </span>
                 </h3>
+
                 <h4 class="uppercase mt-5 text-2xl font-medium text-transparent bg-clip-text bg-gradient-to-r from-{{ $row->color }}-400 to-{{ $row->color }}-900">{{ $row->name }}</h4>
                 <p class="mt-4 text-gray-500">{{ $row->description }}</p>
             </div>
