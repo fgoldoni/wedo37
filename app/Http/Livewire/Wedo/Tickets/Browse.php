@@ -41,22 +41,16 @@ class Browse extends Component
         $this->ticket = $this->show ? $this->cache(fn () => $this->showQuery, 'current-ticket-' . $this->show) : null;
     }
 
-    public function updatedShow($value)
+    public function show(int $id)
     {
-        $this->useCachedRows();
+        $this->show = $id;
 
-        $this->ticket = $this->cache(fn () => $this->showQuery, 'current-job-' . $value);
+        $this->ticket = Ticket::find($id);
     }
 
     public function resetFilters()
     {
         $this->reset('filters', 'show');
-    }
-
-    public function getShowQueryProperty()
-    {
-        return Ticket::query()
-            ->find($this->show);
     }
 
     public function getRowsQueryProperty()

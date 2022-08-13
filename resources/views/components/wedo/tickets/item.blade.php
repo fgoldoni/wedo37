@@ -53,8 +53,10 @@
                     Email Support
                 </li>
             </ul>
-            <button type="button" wire:click="$set('show', {{ $row->id }})" class="hover:scale-105 hover:shadow-2xl ease-in-out duration-150  flex items-center justify-center w-full h-12 mt-8 font-medium text-{{ $row->color }}-600 border-2 border-{{ $row->color }}-500 rounded-full">
-                Get a Free Plan
+            <button type="button" wire:click="show({{ $row->id }})" class="hover:scale-105 hover:shadow-2xl ease-in-out duration-150  flex items-center justify-center w-full h-12 mt-8 font-medium text-{{ $row->color }}-600 border-2 border-{{ $row->color }}-500 rounded-full">
+                <x-wedo.loader wire:loading wire:target="show({{ $row->id }})"></x-wedo.loader>
+                <x-heroicon-o-ticket wire:loading.remove wire:target="show({{ $row->id }})" class="flex-shrink-0 mr-2 h-5 w-5"/>
+                Select &#8594;
             </button>
         </div>
     </section>
