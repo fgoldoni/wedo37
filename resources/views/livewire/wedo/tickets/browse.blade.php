@@ -28,7 +28,7 @@
                 <!-- This example requires Tailwind CSS v2.0+ -->
                     <!-- This example requires Tailwind CSS v2.0+ -->
                     <div class="bg-white">
-                        <div class="pt-12 sm:pt-16 lg:pt-20">
+                        <div class="">
                             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                                 <div class="text-center">
                                     <h2 class="flex flex-shrink-0 justify-center">

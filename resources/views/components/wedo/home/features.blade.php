@@ -58,7 +58,7 @@
             <div class="flex flex-col items-center p-10 md:flex-row">
                 <div class="w-full text-white md:w-2/3">
                     <div class="flex items-center">
-                        <p class="flex items-start text-lg font-bold leading-none text-transparent text-7xl bg-clip-text bg-gradient-to-r from-{{ app_color() }}-100 to-{{ app_color() }}-500"><span class="mt-2 text-4xl">€</span>25</p>
+                        <p class="flex items-start text-lg font-bold leading-none text-transparent text-7xl bg-clip-text bg-gradient-to-r from-{{ app_color() }}-100 to-{{ app_color() }}-500"><span class="mt-2 text-4xl">€</span>{{ app_event()?->tickets[2]->price }}</p>
                     </div>
 
                 </div>
