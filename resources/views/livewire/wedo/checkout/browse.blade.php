@@ -11,14 +11,14 @@
                         <div>
                             <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
                             <div class="mt-1">
-                                <input type="text" id="first-name" name="first-name" autocomplete="given-name" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <input type="text" id="first-name" name="first-name" autocomplete="given-name" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-{{ app_color() }}-500 focus:border-{{ app_color() }}-500 sm:text-sm">
                             </div>
                         </div>
 
                         <div>
                             <label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
                             <div class="mt-1">
-                                <input type="text" id="last-name" name="last-name" autocomplete="family-name" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <input type="text" id="last-name" name="last-name" autocomplete="family-name" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-{{ app_color() }}-500 focus:border-{{ app_color() }}-500 sm:text-sm">
                             </div>
                         </div>
 
@@ -26,7 +26,7 @@
                             <label for="company" class="block text-sm font-medium text-gray-700">Email address
                             </label>
                             <div class="mt-1">
-                                <input type="text" name="company" id="company" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <input type="text" name="company" id="company" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-{{ app_color() }}-500 focus:border-{{ app_color() }}-500 sm:text-sm">
                             </div>
                         </div>
                     </div>
@@ -40,17 +40,17 @@
                         <legend class="sr-only">Payment type</legend>
                         <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
                             <div class="flex items-center">
-                                <input id="credit-card" name="payment-type" type="radio" checked class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                <input id="credit-card" name="payment-type" type="radio" checked class="focus:ring-{{ app_color() }}-500 h-4 w-4 text-{{ app_color() }}-600 border-gray-300">
                                 <label for="credit-card" class="ml-3 block text-sm font-medium text-gray-700"> Credit card </label>
                             </div>
 
                             <div class="flex items-center">
-                                <input id="paypal" name="payment-type" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                <input id="paypal" name="payment-type" type="radio" class="focus:ring-{{ app_color() }}-500 h-4 w-4 text-{{ app_color() }}-600 border-gray-300">
                                 <label for="paypal" class="ml-3 block text-sm font-medium text-gray-700"> PayPal </label>
                             </div>
                         </div>
                         <div class="mt-10 pt-6 border-t border-gray-200 sm:flex sm:items-center sm:justify-between">
-                            <button type="submit" class="w-full bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500 sm:ml-6 sm:order-last sm:w-auto">
+                            <button type="submit" class="hover:scale-105 hover:shadow-2xl ease-in-out duration-150 w-full bg-{{ app_color() }}-600 border border-transparent rounded-md shadow-sm py-2 px-4 text-sm font-medium text-white hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-{{ app_color() }}-500 sm:ml-6 sm:order-last sm:w-auto">
                                 {{ __('Continue') }}
                             </button>
                             <p class="mt-4 text-center text-sm text-gray-500 sm:mt-0 sm:text-left">You won't be charged until the next step.</p>
@@ -97,7 +97,7 @@
 
                                     <div class="ml-4">
                                         <label for="quantity" class="sr-only">Quantity</label>
-                                        <select id="quantity" name="quantity" class="rounded-md border border-gray-300 text-base font-medium text-gray-700 text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                        <select id="quantity" name="quantity" class="rounded-md border border-gray-300 text-base font-medium text-gray-700 text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-{{ app_color() }}-500 focus:border-{{ app_color() }}-500 sm:text-sm">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
