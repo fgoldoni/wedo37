@@ -102,30 +102,12 @@
                 </div>
 
                 <!-- Payment -->
-                <div class="mt-10 border-t border-gray-200 pt-10">
-                    <h2 class="text-lg font-medium text-gray-900">Payment</h2>
-
-                    <fieldset class="mt-4">
-                        <legend class="sr-only">Payment type</legend>
-                        <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
-                            <div class="flex items-center">
-                                <input id="credit-card" name="payment-type" type="radio" checked class="focus:ring-{{ app_color() }}-500 h-4 w-4 text-{{ app_color() }}-600 border-gray-300">
-                                <label for="credit-card" class="ml-3 block text-sm font-medium text-gray-700"> Credit card </label>
-                            </div>
-
-                            <div class="flex items-center">
-                                <input id="paypal" name="payment-type" type="radio" class="focus:ring-{{ app_color() }}-500 h-4 w-4 text-{{ app_color() }}-600 border-gray-300">
-                                <label for="paypal" class="ml-3 block text-sm font-medium text-gray-700"> PayPal </label>
-                            </div>
-                        </div>
-                        <div class="mt-10 pt-6 border-t border-gray-200 sm:flex sm:items-center sm:justify-between">
-                            <button type="submit" wire:loading.attr="disabled" wire:target="save" class="hover:scale-105 hover:shadow-2xl ease-in-out duration-150 w-full bg-{{ app_color() }}-600 border border-transparent rounded-md shadow-sm py-2 px-4 text-sm font-medium text-white hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-{{ app_color() }}-500 sm:ml-6 sm:order-last sm:w-auto">
-                                <x-wedo.loader wire:loading wire:target="save"/>
-                                {{ __('Continue') }}
-                            </button>
-                            <p class="mt-4 text-center text-sm text-gray-500 sm:mt-0 sm:text-left">You won't be charged until the next step.</p>
-                        </div>
-                    </fieldset>
+                <div class="mt-10 pt-6 border-t border-gray-200 sm:flex sm:items-center sm:justify-between">
+                    <button type="submit" wire:loading.attr="disabled" wire:target="save" class="hover:scale-105 hover:shadow-2xl ease-in-out duration-150 w-full bg-{{ app_color() }}-600 border border-transparent rounded-md shadow-sm py-2 px-4 text-sm font-medium text-white hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-{{ app_color() }}-500 sm:ml-6 sm:order-last sm:w-auto">
+                        <x-wedo.loader wire:loading wire:target="save"/>
+                        {{ __('Continue') }}
+                    </button>
+                    <p class="mt-4 text-center text-sm text-gray-500 sm:mt-0 sm:text-left">You won't be charged until the next step.</p>
                 </div>
             </div>
 
