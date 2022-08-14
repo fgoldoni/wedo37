@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Livewire\Wedo\Tickets;
 
+use App\Http\Livewire\Wedo\Applicants\Item;
+use App\Http\Livewire\Wedo\Carts\Bag;
 use App\Http\Livewire\Wedo\Modals\Popup\Add;
 use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Http\Services\Contracts\ApiInterface;
@@ -52,6 +54,8 @@ class Browse extends Component
         ]);
 
         session()->put('cart-' . request()->ip(), $response->data);
+
+        $this->emitTo(Bag::class, 'refreshComponent');
 
         $this->emit('openModal', 'wedo.modals.popup.add');
     }

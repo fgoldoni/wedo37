@@ -33,7 +33,7 @@
                             </div>
                             <a href="javascript:;" wire:click="add({{ $ticket->id }})" class="hover:scale-105 hover:shadow-2xl ease-in-out duration-150 flex items-center justify-center w-full px-6 py-3 my-8 text-lg text-white bg-{{ app_color() }}-600 rounded-md hover:bg-{{ app_color() }}-700 sm:w-auto">
                                 <x-wedo.loader wire:loading wire:target="add({{ $ticket->id }})"></x-wedo.loader>
-                                <x-heroicon-o-check wire:loading.remove  class="w-6 h-6 mr-2"></x-heroicon-o-check>
+                                <x-heroicon-o-check wire:loading.remove wire:target="add({{ $ticket->id }})" class="w-6 h-6 mr-2"></x-heroicon-o-check>
                                 {{ __('Select') }}
                             </a>
                             <div class="space-y-4 lg:pl-2">

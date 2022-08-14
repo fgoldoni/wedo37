@@ -57,7 +57,7 @@
                     {{ __('layout.navigation.applications') }}
                 </x-responsive-nav-link>
             @else
-                <div class="flex items-center">
+                <div class="flex items-center mr-3">
                     <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
                         {{ __('layout.navigation.sign_in') }}
                     </x-responsive-nav-link>
