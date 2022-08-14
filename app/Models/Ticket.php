@@ -12,6 +12,8 @@ class Ticket extends Model
 
     use WithCachedRows;
 
+    public static string $apiModel = 'Modules\Tickets\Entities\Ticket';
+
     public function getRows(): array
     {
         $tickets = [];

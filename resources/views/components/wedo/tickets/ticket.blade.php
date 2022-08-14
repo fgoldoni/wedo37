@@ -31,11 +31,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="{{ route('carts.index', ['ticketId' => $ticket->id]) }}" class="hover:scale-105 hover:shadow-2xl ease-in-out duration-150 flex items-center justify-center w-full px-6 py-3 my-8 text-lg text-white bg-{{ app_color() }}-600 rounded-md hover:bg-{{ app_color() }}-700 sm:w-auto">
-                                {{ __('Continue') }}
-                                <svg class="w-6 h-6 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                </svg>
+                            <a href="javascript:;" wire:click="add({{ $ticket->id }})" class="hover:scale-105 hover:shadow-2xl ease-in-out duration-150 flex items-center justify-center w-full px-6 py-3 my-8 text-lg text-white bg-{{ app_color() }}-600 rounded-md hover:bg-{{ app_color() }}-700 sm:w-auto">
+                                <x-wedo.loader wire:loading wire:target="add({{ $ticket->id }})"></x-wedo.loader>
+                                <x-heroicon-o-check wire:loading.remove  class="w-6 h-6 mr-2"></x-heroicon-o-check>
+                                {{ __('Select') }}
                             </a>
                             <div class="space-y-4 lg:pl-2">
                                 <p class="mb-3 text-lg font-semibold text-gray-800">Everything in Basic, plus...</p>

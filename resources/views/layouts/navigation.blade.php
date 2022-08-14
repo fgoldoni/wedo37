@@ -23,11 +23,13 @@
             </div>
             @auth
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
+                    <x-wedo.navigation.bag class="mr-3"></x-wedo.navigation.bag>
                     <x-wedo.jobs.user-dropdown class="text-gray-700"></x-wedo.jobs.user-dropdown>
                 </div>
             @else
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
-                    <a href="{{ route('login') }}" class="max-w-xs bg-white flex items-center focus:outline-none border-l border-gray-300 pl-4">
+                    <x-wedo.navigation.bag></x-wedo.navigation.bag>
+                    <a href="{{ route('login') }}" class="ml-3 max-w-xs bg-white flex items-center focus:outline-none border-l border-gray-300 pl-4">
                         <span class="sr-only">Open user menu</span>
                         <p class="mr-2 text-sm text-gray-600 text-right">
                             {{ __('layout.navigation.sign_in') }}
@@ -55,18 +57,27 @@
                     {{ __('layout.navigation.applications') }}
                 </x-responsive-nav-link>
             @else
-                <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
-                    {{ __('layout.navigation.sign_in') }}
-                </x-responsive-nav-link>
+                <div class="flex items-center">
+                    <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                        {{ __('layout.navigation.sign_in') }}
+                    </x-responsive-nav-link>
+                    <x-wedo.navigation.bag></x-wedo.navigation.bag>
+                </div>
             @endauth
         </div>
         @auth
             <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="px-4">
-                <div class="font-medium text-base text-gray-800"> {{ __('layout.navigation.signed_in_as') }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()?->email }}</div>
-            </div>
-            <div class="mt-3 space-y-1">
+                <div class="flex items-center px-4">
+                    <div class="flex-shrink-0">
+                        <img class="h-10 w-10 rounded-full" src="{{ Auth::user()?->profile_photo_url }}" alt="">
+                    </div>
+                    <div class="ml-3">
+                        <div class="text-base font-medium text-gray-800">{{ Auth::user()?->name }}</div>
+                        <div class="text-sm font-medium text-gray-500">{{ Auth::user()?->email }}</div>
+                    </div>
+                    <x-wedo.navigation.bag></x-wedo.navigation.bag>
+                </div>
+                <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('accounts.index')" :active="request()->routeIs('accounts.index')">
                     {{ __('layout.navigation.personal_account') }}
                 </x-responsive-nav-link>
@@ -80,7 +91,7 @@
                     {{ __('layout.navigation.shortlisted') }}
                 </x-responsive-nav-link>
             </div>
-            <div class="mt-3 space-y-1">
+                <div class="mt-3 space-y-1">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">

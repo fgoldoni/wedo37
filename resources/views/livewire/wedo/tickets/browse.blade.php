@@ -7,14 +7,46 @@
     <div class="grid grid-cols-1 lg:gap-4 lg:grid-cols-3">
 
         <div class="col-span-1 lg:col-span-3 py-4">
-            <div class="px-4 space-y-2 sm:px-0 sm:flex sm:items-baseline sm:justify-between sm:space-y-0">
-                <div class="flex sm:items-baseline sm:space-x-4">
-                    <h1 class="text-base font-medium tracking-tight text-gray-500 sm:text-xl">About {{ count($rows) }} results ...</h1>
-                    <a onclick="Livewire.emit('openModal', 'wedo.modals.popup.wedo')" href="javascript:;" class="hidden text-sm font-medium text-{{ app_color() }}-600 hover:text-{{ app_color() }}-500 sm:block">Quickly apply to thousands of jobs<span aria-hidden="true"> &rarr;</span></a>
+            <div>
+                <div class="sm:hidden">
+                    <label for="tabs" class="sr-only">Select a tab</label>
+                    <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
+                    <select id="tabs" name="tabs" class="block w-full focus:ring-{{ app_color() }}-500 focus:border-{{ app_color() }}-500 border-gray-300 rounded-md">
+                        <option selected>My Account</option>
+
+                        <option>Company</option>
+
+                        <option>Team Members</option>
+
+                        <option>Billing</option>
+                    </select>
                 </div>
-                <a onclick="Livewire.emit('openModal', 'wedo.modals.popup.wedo')" href="javascript:;" class="text-sm font-medium text-{{ app_color() }}-600 hover:text-{{ app_color() }}-500 sm:hidden">Quickly apply to thousands of jobs<span aria-hidden="true"> &rarr;</span></a>
+                <div class="hidden sm:block">
+                    <nav class="relative z-0 rounded-lg shadow flex divide-x divide-gray-200" aria-label="Tabs">
+                        <!-- Current: "text-gray-900", Default: "text-gray-500 hover:text-gray-700" -->
+                        <a href="#" class="uppercase text-{{ app_color() }}-600 group rounded-l-lg group relative min-w-0 flex-1 overflow-hidden bg-white py-4 px-4 text-sm font-medium text-center hover:bg-gray-50 focus:z-10" aria-current="page">
+                            <span class="inline-flex items-center">
+                                <x-heroicon-o-ticket class="text-{{ app_color() }}-500 -ml-0.5 mr-2 h-5 w-5"></x-heroicon-o-ticket>
+                                <span>Tickets - {{ app_event()->artist }}</span>
+                            </span>
+                            <span aria-hidden="true" class="bg-{{ app_color() }}-500 absolute inset-x-0 bottom-0 h-0.5"></span>
+                        </a>
+
+                        <a href="#" class="uppercase text-gray-500 hover:text-gray-700 group hover:border-gray-300 group relative min-w-0 flex-1 overflow-hidden bg-white py-4 px-4 text-sm font-medium text-center hover:bg-gray-50 focus:z-10">
+                            <span class="inline-flex items-center">
+                                <x-heroicon-o-view-list class="text-gray-400 group-hover:text-gray-500 -ml-0.5 mr-2 h-5 w-5"></x-heroicon-o-view-list>
+                                 <span>Extra - {{ app_event()->artist }}</span>
+                            </span>
+                            <span aria-hidden="true" class="bg-transparent absolute inset-x-0 bottom-0 h-0.5"></span>
+                        </a>
+                    </nav>
+                </div>
             </div>
+
+
         </div>
+
+
 
         <div class="col-span-1 lg:col-span-1">
             <div class="grid grid-cols-1">

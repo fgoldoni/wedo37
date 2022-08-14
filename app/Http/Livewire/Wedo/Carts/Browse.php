@@ -23,13 +23,13 @@ class Browse extends Component
 
     public ?Ticket $ticket = null;
 
-    public ?string $name;
+    public ?string $name = null;
 
-    public ?string $email;
+    public ?string $email = null;
 
-    public ?string $phone;
+    public ?string $phone = null;
 
-    public ?string $address;
+    public ?string $address = null;
 
     protected $queryString = ['ticketId'];
 
@@ -45,13 +45,13 @@ class Browse extends Component
 
     public function mount()
     {
-        $this->name = 'full name';
+        $this->name = auth()->user()?->name;
 
-        $this->email = 'test@test.com';
+        $this->email = auth()->user()?->email;
 
-        $this->phone = '015888888888';
+        $this->phone = auth()->user()?->phone;
 
-        $this->address = 'Niendorfer Straße 43, 22529 Hamburg';
+        $this->address = auth()->user()?->address;
 
         $this->ticket = Ticket::find($this->ticketId);
     }
@@ -75,10 +75,6 @@ class Browse extends Component
             'token' => $response->token,
             'to' => route('checkout.index'),
         ]);
-
-        dd($response);
-
-        $this->notification()->success(__('Updated'), $response->message);
     }
 
     public function render()

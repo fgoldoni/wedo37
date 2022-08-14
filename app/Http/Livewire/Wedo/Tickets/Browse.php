@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Livewire\Wedo\Tickets;
 
+use App\Http\Livewire\Wedo\Modals\Popup\Add;
 use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Http\Services\Contracts\ApiInterface;
 use App\Models\Ticket;
@@ -16,8 +17,6 @@ class Browse extends Component
     private ApiInterface $api;
 
     protected $queryString = ['filters', 'show'];
-
-    private ?Ticket $ticket = null;
 
     public ?int $show = null;
 
@@ -37,15 +36,24 @@ class Browse extends Component
     public function mount()
     {
         $this->useCachedRows();
-
-        $this->ticket = $this->show ? Ticket::find($this->show) : null;
     }
 
     public function show(int $id)
     {
         $this->show = $id;
 
-        $this->ticket = Ticket::find($id);
+    }
+
+    public function add(int $id)
+    {
+        $response = app()->make(ApiInterface::class)->post('/carts', [
+            'model' => Ticket::$apiModel,
+            'id' => $id,
+        ]);
+
+        session()->put('cart-' . request()->ip(), $response->data);
+
+        $this->emit('openModal', 'wedo.modals.popup.add');
     }
 
     public function resetFilters()
@@ -60,6 +68,11 @@ class Browse extends Component
             ->get();
     }
 
+    public function getRowProperty()
+    {
+        return $this->show ? Ticket::find($this->show) : null;
+    }
+
     public function getRowsProperty()
     {
         return $this->cache(fn () => $this->rowsQuery);
@@ -67,6 +80,6 @@ class Browse extends Component
 
     public function render()
     {
-        return view('livewire.wedo.tickets.browse', ['rows' => $this->rows, 'ticket' => $this->ticket]);
+        return view('livewire.wedo.tickets.browse', ['rows' => $this->rows, 'ticket' => $this->row]);
     }
 }

@@ -52,7 +52,7 @@
                                             <dt class="font-medium text-gray-900">Delivery address</dt>
                                             <dd class="mt-3 text-gray-500">
                                                 <span class="block">{{ auth()->user()->name }}</span>
-                                                <span class="block">{{ auth()->user()->address }}</span>
+                                                <span class="block whitespace-pre-wrap">{!! auth()->user()->address !!} </span>
                                             </dd>
                                         </div>
                                         <div>

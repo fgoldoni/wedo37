@@ -9,9 +9,9 @@
 
                     <div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
 
-                        <x-wedo.input.group label="{{ __('Full name') }}" for="name"  class="col-span-1 sm:col-span-2" :error="$errors->first('name')" isRequired inline>
+                        <x-wedo.input.group label="{{ __('Name') }}" for="name"  class="col-span-1 sm:col-span-2" :error="$errors->first('name')" isRequired inline>
 
-                            <x-wedo.input.text wire:model.defer="name" type="text" name="name" id="name" placeholder="{{ __('Full name') }}" autocomplete="off" required/>
+                            <x-wedo.input.text wire:model.defer="name" type="text" name="name" id="name" placeholder="{{ __('Name') }}" autocomplete="off" required/>
 
                         </x-wedo.input.group>
 
@@ -28,9 +28,9 @@
                         </x-wedo.input.group>
 
                         <x-wedo.disclosure title="Shipping information" class="border-t border-gray-200 mt-8 mb-8">
-                            <x-wedo.input.group label="{{ __('Full address') }}" for="address"  class="col-span-1 sm:col-span-2" :error="$errors->first('address')" optional inline>
+                            <x-wedo.input.group label="{{ __('Friendly Address') }}" for="address"  class="col-span-1 sm:col-span-2" :error="$errors->first('address')" optional inline>
 
-                                <x-wedo.input.text wire:model.defer="address" type="text" name="address" id="address" placeholder="{{ __('Address') }}" autocomplete="off"/>
+                                <x-wedo.input.textarea wire:model.defer="address"  name="address" id="address" placeholder="{{ __('Friendly Address') }}" autocomplete="off"/>
 
                             </x-wedo.input.group>
 
