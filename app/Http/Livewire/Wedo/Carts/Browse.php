@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Wedo\Checkout;
+namespace App\Http\Livewire\Wedo\Carts;
 
 use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Http\Services\Contracts\ApiInterface;
@@ -68,9 +68,12 @@ class Browse extends Component
             'ticketId' => $this->ticketId,
         ]);
 
+        session()->put('cart-' . $response->user_id, $response->data);
+        session()->put('intent-' . $response->user_id, $response->intent);
+
         return $this->redirectRoute('login.token', [
             'token' => $response->token,
-            'to' => route('checkout.index', ['ticketId' => $this->ticketId]),
+            'to' => route('checkout.index'),
         ]);
 
         dd($response);
@@ -80,6 +83,6 @@ class Browse extends Component
 
     public function render()
     {
-        return view('livewire.wedo.checkout.browse');
+        return view('livewire.wedo.carts.browse');
     }
 }

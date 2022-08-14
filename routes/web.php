@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AccountsController;
 use App\Http\Controllers\Wedo\ApplicantsController;
 use App\Http\Controllers\Wedo\BillingsController;
+use App\Http\Controllers\Wedo\CartsController;
 use App\Http\Controllers\Wedo\CheckoutController;
 use App\Http\Controllers\Wedo\JobController;
 use App\Http\Controllers\Wedo\LoginController;
@@ -74,7 +75,11 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::resource('shortlisted', ShortlistedController::class);
 });
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => ['web', 'auth']], function () {
     Route::resource('checkout', CheckoutController::class);
+});
+
+Route::group(['middleware' => ['web']], function () {
+    Route::resource('carts', CartsController::class);
 });
 

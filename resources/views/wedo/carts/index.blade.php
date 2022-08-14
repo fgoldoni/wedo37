@@ -1,5 +1,5 @@
 <x-app-layout>
-    @livewire('wedo.checkout.browse')
+    @livewire('wedo.carts.browse')
     <section aria-labelledby="policies-heading" class="bg-gray-50 border-t border-gray-200">
         <h2 id="policies-heading" class="sr-only">Our policies</h2>
 

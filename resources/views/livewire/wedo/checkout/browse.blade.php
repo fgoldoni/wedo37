@@ -2,38 +2,9 @@
     <div class="max-w-2xl mx-auto pt-16 pb-24 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <h2 class="sr-only">Checkout</h2>
 
-        <form class="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
-            <div>
-                <div>
-                    <h2 class="text-lg font-medium text-gray-900">Contact information</h2>
-
-                    <div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
-                        <div>
-                            <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
-                            <div class="mt-1">
-                                <input type="text" id="first-name" name="first-name" autocomplete="given-name" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-{{ app_color() }}-500 focus:border-{{ app_color() }}-500 sm:text-sm">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
-                            <div class="mt-1">
-                                <input type="text" id="last-name" name="last-name" autocomplete="family-name" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-{{ app_color() }}-500 focus:border-{{ app_color() }}-500 sm:text-sm">
-                            </div>
-                        </div>
-
-                        <div class="sm:col-span-2">
-                            <label for="company" class="block text-sm font-medium text-gray-700">Email address
-                            </label>
-                            <div class="mt-1">
-                                <input type="text" name="company" id="company" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-{{ app_color() }}-500 focus:border-{{ app_color() }}-500 sm:text-sm">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Payment -->
-                <div class="mt-10 border-t border-gray-200 pt-10">
+        <form wire:submit.prevent="save" class="lg:grid lg:grid-cols-3 lg:gap-x-12 xl:gap-x-16">
+            <div class="lg:col-span-2 bg-white border border-gray-200 shadow-xl">
+                <div class="pt-10 px-4 sm:px-6">
                     <h2 class="text-lg font-medium text-gray-900">Payment</h2>
 
                     <fieldset class="mt-4">
@@ -50,86 +21,100 @@
                             </div>
                         </div>
                         <div class="mt-10 pt-6 border-t border-gray-200 sm:flex sm:items-center sm:justify-between">
-                            <button type="submit" class="hover:scale-105 hover:shadow-2xl ease-in-out duration-150 w-full bg-{{ app_color() }}-600 border border-transparent rounded-md shadow-sm py-2 px-4 text-sm font-medium text-white hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-{{ app_color() }}-500 sm:ml-6 sm:order-last sm:w-auto">
+                            <button type="submit" wire:loading.attr="disabled" wire:target="save" class="hover:scale-105 hover:shadow-2xl ease-in-out duration-150 w-full bg-{{ app_color() }}-600 border border-transparent rounded-md shadow-sm py-2 px-4 text-sm font-medium text-white hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-{{ app_color() }}-500 sm:ml-6 sm:order-last sm:w-auto">
+                                <x-wedo.loader wire:loading wire:target="save"/>
                                 {{ __('Continue') }}
                             </button>
                             <p class="mt-4 text-center text-sm text-gray-500 sm:mt-0 sm:text-left">You won't be charged until the next step.</p>
                         </div>
                     </fieldset>
                 </div>
+                <section class="mt-6">
+                    <h2 id="products-heading" class="sr-only">Products purchased</h2>
+                    <div class="space-y-8">
+                        <div class="bg-white border-t border-b border-gray-200 shadow-sm sm:border sm:rounded-lg">
+                            <div class="py-6 px-4 sm:px-6 lg:grid lg:grid-cols-12 lg:gap-x-8 lg:p-8">
+                                <div class="mt-6 lg:mt-0 lg:col-span-12">
+                                    <dl class="grid grid-cols-2 gap-x-6 text-sm">
+                                        <div>
+                                            <dt class="font-medium text-gray-900">Delivery address</dt>
+                                            <dd class="mt-3 text-gray-500">
+                                                <span class="block">{{ auth()->user()->name }}</span>
+                                                <span class="block">{{ auth()->user()->address }}</span>
+                                            </dd>
+                                        </div>
+                                        <div>
+                                            <dt class="font-medium text-gray-900">Shipping updates</dt>
+                                            <dd class="mt-3 text-gray-500 space-y-3">
+                                                <p>{{ auth()->user()->email }}</p>
+                                                <p>{{ auth()->user()->phone }}</p>
+                                                <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Edit</button>
+                                            </dd>
+                                        </div>
+                                    </dl>
+                                </div>
+                            </div>
+
+                            <div class="border-t border-gray-200 py-6 px-4 sm:px-6 lg:p-8">
+                                <h4 class="sr-only">Status</h4>
+                                <p class="text-sm font-medium text-gray-900">Preparing to ship on <time datetime="2021-03-24">March 24, 2021</time></p>
+                                <div class="mt-6" aria-hidden="true">
+                                    <div class="bg-gray-200 rounded-full overflow-hidden">
+                                        <div class="h-2 bg-indigo-600 rounded-full" style="width: calc((2 * 2 + 1) / 8 * 100%)"></div>
+                                    </div>
+                                    <div class="hidden sm:grid grid-cols-4 text-sm font-medium text-gray-600 mt-6">
+                                        <div class="text-indigo-600">Ticket placed</div>
+                                        <div class="text-center text-indigo-600">Processing</div>
+                                        <div class="text-center text-indigo-600">Payment</div>
+                                        <div class="text-right">Confirmation</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
 
-            <!-- Order summary -->
-            <div class="mt-10 lg:mt-0">
-                <h2 class="text-lg font-medium text-gray-900">Order summary</h2>
-
-                <div class="mt-4 bg-white border border-gray-200 rounded-lg shadow-sm">
-                    <h3 class="sr-only">Items in your cart</h3>
-                    <ul role="list" class="divide-y divide-gray-200">
-                        <li class="flex py-6 px-4 sm:px-6">
-                            <div class="flex-shrink-0">
-                                <img src="https://tailwindui.com/img/ecommerce-images/checkout-page-02-product-01.jpg" alt="Front of men&#039;s Basic Tee in black." class="w-20 rounded-md">
+            <div>
+                <div class="bg-white border border-gray-200 rounded-lg shadow-sm">
+                    <dl class="py-6 px-4 space-y-6 sm:px-6">
+                        @php
+                            $total = 0;
+                        @endphp
+                        @foreach(session('cart-' . auth()->user()->id) as $cart)
+                            @php
+                                $total = $cart->price * $cart->quantity;
+                            @endphp
+                            <div class="flex items-center justify-between">
+                                <dt class="text-sm uppercase">{{ $cart?->name }}</dt>
+                                <dd class="text-sm font-medium text-gray-900">$ {{ $cart?->price }}</dd>
                             </div>
+                        @endforeach
 
-                            <div class="ml-6 flex-1 flex flex-col">
-                                <div class="flex">
-                                    <div class="min-w-0 flex-1">
-                                        <h4 class="text-sm">
-                                            <a href="#" class="font-medium text-gray-700 hover:text-gray-800"> Basic Tee </a>
-                                        </h4>
-                                        <p class="mt-1 text-sm text-gray-500">Black</p>
-                                        <p class="mt-1 text-sm text-gray-500">Large</p>
-                                    </div>
-
-                                    <div class="ml-4 flex-shrink-0 flow-root">
-                                        <button type="button" class="-m-2.5 bg-white p-2.5 flex items-center justify-center text-gray-400 hover:text-gray-500">
-                                            <span class="sr-only">Remove</span>
-                                            <!-- Heroicon name: solid/trash -->
-                                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="flex-1 pt-2 flex items-end justify-between">
-                                    <p class="mt-1 text-sm font-medium text-gray-900">$32.00</p>
-
-                                    <div class="ml-4">
-                                        <label for="quantity" class="sr-only">Quantity</label>
-                                        <select id="quantity" name="quantity" class="rounded-md border border-gray-300 text-base font-medium text-gray-700 text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-{{ app_color() }}-500 focus:border-{{ app_color() }}-500 sm:text-sm">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- More products... -->
-                    </ul>
-                    <dl class="border-t border-gray-200 py-6 px-4 space-y-6 sm:px-6">
-                        <div class="flex items-center justify-between">
-                            <dt class="text-sm">Subtotal</dt>
-                            <dd class="text-sm font-medium text-gray-900">$64.00</dd>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <dt class="text-sm">Shipping</dt>
-                            <dd class="text-sm font-medium text-gray-900">$5.00</dd>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <dt class="text-sm">Taxes</dt>
-                            <dd class="text-sm font-medium text-gray-900">$5.52</dd>
-                        </div>
                         <div class="flex items-center justify-between border-t border-gray-200 pt-6">
                             <dt class="text-base font-medium">Total</dt>
-                            <dd class="text-base font-medium text-gray-900">$75.52</dd>
+                            <dd class="text-base font-medium text-gray-900">$ {{ $total }}</dd>
+                        </div>
+                    </dl>
+                    <dl class="mt-16 grid grid-cols-2 gap-x-4 text-sm text-gray-600 border-t border-gray-200 py-6 px-4 space-y-6 sm:px-6">
+                        <div>
+                            <dt class="font-medium text-gray-900">Shipping Address</dt>
+                            <dd class="mt-2">
+                                <address class="not-italic">
+                                    <span class="block">{{ auth()->user()->name }}</span>
+                                    <span class="block">{{ auth()->user()->address }}</span>
+                                </address>
+                            </dd>
+                        </div>
+                        <div>
+                            <dt class="font-medium text-gray-900">Payment Information</dt>
+                            <dd class="mt-2 space-y-2 sm:flex sm:space-y-0 sm:space-x-4">
+                                <div class="flex-auto">
+                                    <p class="text-gray-900">{{ auth()->user()->email }}</p>
+                                    <p>{{ auth()->user()->phone }}</p>
+                                    <p>&nbsp;</p>
+                                </div>
+                            </dd>
                         </div>
                     </dl>
                 </div>
