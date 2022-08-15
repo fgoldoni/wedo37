@@ -160,10 +160,36 @@
                                 </div>
                             </dl>
 
-                            <div class="fixed bottom-0 inset-x-0 flex flex-col-reverse text-sm font-medium text-gray-900 lg:hidden">
+                            <div
+                                x-data="{
+                                    open: false,
+                                    focus: false,
+                                    onEscape() {
+                                        this.open = !1,
+                                        this.$refs.button.focus()
+                                   },
+                                    onClosePopoverGroup (e) {
+                                        e.detail.contains(this.$el) && (this.open=!1)
+                                    },
+                                    toggle (e) {
+                                        this.open = !this.open,
+                                        this.open ? this.restoreEl = e.currentTarget : this.restoreEl && this.restoreEl.focus()
+                                   },
+
+                                }"
+                                @keydown.escape="onEscape"
+                                @close-popover-group.window="onClosePopoverGroup"
+
+                                class="fixed bottom-0 inset-x-0 flex flex-col-reverse text-sm font-medium text-gray-900 lg:hidden">
                                 <div class="relative z-10 bg-white border-t border-gray-200 px-4 sm:px-6">
                                     <div class="max-w-lg mx-auto">
-                                        <button type="button" class="w-full flex items-center py-6 font-medium" aria-expanded="false">
+                                        <button
+                                            @click="toggle"
+                                            @mousedown="if (open) $event.preventDefault()"
+                                            type="button"
+                                            x-ref="button"
+                                            class="w-full flex items-center py-6 font-medium"
+                                            aria-expanded="false">
                                             <span class="text-base mr-auto">Total</span>
                                             <span class="text-base mr-2">$361.80</span>
                                             <!-- Heroicon name: solid/chevron-up -->
@@ -185,7 +211,18 @@
                                         From: "opacity-100"
                                         To: "opacity-0"
                                     -->
-                                    <div class="fixed inset-0 bg-black bg-opacity-25" aria-hidden="true"></div>
+                                    <div
+                                        x-show="open"
+                                        x-transition:enter="transition-opacity ease-linear duration-300"
+                                        x-transition:enter-start="opacity-0"
+                                        x-transition:enter-end="opacity-100"
+                                        x-transition:leave="transition-opacity ease-linear duration-300"
+                                        x-transition:leave-start="opacity-100"
+                                        x-transition:leave-end="opacity-0"
+                                        class="fixed inset-0 bg-black bg-opacity-25"
+                                        @click="toggle"
+                                        x-cloak
+                                    ></div>
 
                                     <!--
                                       Mobile summary, show/hide based on mobile summary state.
@@ -197,7 +234,18 @@
                                         From: "translate-y-0"
                                         To: "translate-y-full"
                                     -->
-                                    <div class="relative bg-white px-4 py-6 sm:px-6">
+                                    <div x-show="open"
+                                         x-transition:enter="transition ease-in-out duration-300 transform"
+                                         x-transition:enter-start="translate-y-full"
+                                         x-transition:enter-end="translate-y-0"
+                                         x-transition:leave="transition ease-in-out duration-300 transform"
+                                         x-transition:leave-start="translate-y-0"
+                                         x-transition:leave-end="translate-y-full"
+                                         class="relative bg-white px-4 py-6 sm:px-6"
+                                         x-ref="panel"
+                                         @click.away="open = false"
+                                         x-cloak>
+
                                         <dl class="max-w-lg mx-auto space-y-6">
                                             <div class="flex items-center justify-between">
                                                 <dt class="text-gray-600">Subtotal</dt>
