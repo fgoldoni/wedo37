@@ -19,14 +19,12 @@ class Browse extends Component
 
     use WithCachedRows;
 
+    protected $listeners = [ 'refreshComponent' => '$refresh'];
+
     public function rules(): array
     {
         return [
         ];
-    }
-
-    public function mount()
-    {
     }
 
     public function remove(int $id)
