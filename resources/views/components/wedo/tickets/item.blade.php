@@ -6,41 +6,41 @@
     <section class="relative p-2">
         <div
             @class([
-                'p-10 bg-white border-' . $row->color . '-400 md:mt-0 hover:shadow-xl hover:-translate-y-1 ease-in-out delay-150 duration-300',
+                'p-10 bg-gray-50 border-' . $row->color . '-400 md:mt-0 hover:shadow-xl hover:-translate-y-1 ease-in-out delay-150 duration-300',
                 'border-t-0' => !($row->id === $currentTicket),
                 'border-t-2 shadow-2xl -translate-y-2' => ($row->id === $currentTicket),
             ])>
 
             <div class="flex flex-col pb-8 border-b border-gray-200">
-                <h3 class="flex items-center text-{{ $row->color }}-400">
+                <h3 class="flex items-center text-{{ $row->color }}-900">
                     <span class="flex items-start text-4xl tracking-tight sm:text-5xl">
                       <span class="mr-2 text-2xl font-medium"> $ </span>
                       <span class="font-semibold"> {{ $row->price }} </span>
                     </span>
                 </h3>
 
-                <h4 class="uppercase mt-5 text-2xl font-medium text-transparent bg-clip-text bg-gradient-to-r from-{{ $row->color }}-400 to-{{ $row->color }}-900">{{ $row->name }}</h4>
+                <h4 class="uppercase mt-5 text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ $row->color }}-400 to-{{ $row->color }}-900">{{ $row->name }}</h4>
                 <p class="mt-4 text-gray-500">{{ $row->description }}</p>
             </div>
             <ul class="px-3 pt-8 space-y-3">
                 <li class="flex font-medium text-gray-500">
-                    <svg class="w-6 h-6 mr-1.5 text-{{ $row->color }}-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    <x-heroicon-s-check-circle class="w-6 h-6 mr-1.5 text-{{ $row->color }}-400"></x-heroicon-s-check-circle>
                     Unlimited Access
                 </li>
                 <li class="flex font-medium text-gray-500">
-                    <svg class="w-6 h-6 mr-1.5 text-{{ $row->color }}-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    <x-heroicon-s-check-circle class="w-6 h-6 mr-1.5 text-{{ $row->color }}-400"></x-heroicon-s-check-circle>
                     5 Team Members
                 </li>
                 <li class="flex font-medium text-gray-500">
-                    <svg class="w-6 h-6 mr-1.5 text-{{ $row->color }}-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    <x-heroicon-s-check-circle class="w-6 h-6 mr-1.5 text-{{ $row->color }}-400"></x-heroicon-s-check-circle>
                     10,000 Api Calls
                 </li>
                 <li class="flex font-medium text-gray-500">
-                    <svg class="w-6 h-6 mr-1.5 text-{{ $row->color }}-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    <x-heroicon-s-check-circle class="w-6 h-6 mr-1.5 text-{{ $row->color }}-400"></x-heroicon-s-check-circle>
                     Email Support
                 </li>
             </ul>
-            <button type="button" wire:click="show({{ $row->id }})" class="hidden hover:scale-105 hover:shadow-2xl ease-in-out duration-150 lg:flex items-center justify-center w-full h-12 mt-8 font-medium text-{{ app_color() }}-600 border border-{{ app_color() }}-500 rounded-md">
+            <button type="button" wire:click="show({{ $row->id }})" class="hidden hover:scale-105 hover:shadow-2xl ease-in-out duration-150 lg:flex items-center justify-center w-full h-12 mt-8 font-medium text-gray-600 border border-gray-500 rounded-md">
                 <x-wedo.loader wire:loading wire:target="show({{ $row->id }})"></x-wedo.loader>
                 <x-heroicon-o-ticket wire:loading.remove wire:target="show({{ $row->id }})" class="flex-shrink-0 mr-2 h-5 w-5"/>
                 {{ __('Details') }}
@@ -49,7 +49,7 @@
                 </svg>
             </button>
 
-            <a href="{{ route('tickets.show', $row->id) }}" class="lg:hidden hover:scale-105 hover:shadow-2xl ease-in-out duration-150  flex items-center justify-center w-full h-12 mt-8 font-medium text-{{ app_color() }}-600 border border-{{ app_color() }}-500 rounded-md">
+            <a href="{{ route('tickets.show', $row->id) }}" class="lg:hidden hover:scale-105 hover:shadow-2xl ease-in-out duration-150  flex items-center justify-center w-full h-12 mt-8 font-medium text-gray-600 border border-gray-500 rounded-md">
                 <x-wedo.loader wire:loading wire:target="show({{ $row->id }})"></x-wedo.loader>
                 <x-heroicon-o-ticket wire:loading.remove wire:target="show({{ $row->id }})" class="flex-shrink-0 mr-2 h-5 w-5"/>
                 {{ __('Details') }}

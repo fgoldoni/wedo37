@@ -4,7 +4,7 @@
         <h2 class="sr-only">Checkout</h2>
         <!-- This example requires Tailwind CSS v2.0+ -->
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
-            <div class="col-span-1 lg:col-span-2 bg-white p-4 sm:p-6">
+            <div class="col-span-1 lg:col-span-2 bg-gray-50 p-4 sm:p-6">
                 <form class="px-4 sm:px-6 lg:pb-16 lg:px-0 lg:row-start-1 lg:col-start-1">
                     <div class="max-w-lg mx-auto lg:max-w-none">
                         <section aria-labelledby="contact-info-heading">
