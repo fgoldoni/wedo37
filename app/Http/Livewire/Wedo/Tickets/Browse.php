@@ -60,6 +60,20 @@ class Browse extends Component
         $this->emit('openModal', 'wedo.modals.popup.add');
     }
 
+    public function continue(int $id)
+    {
+        $response = app()->make(ApiInterface::class)->post('/carts', [
+            'model' => Ticket::$apiModel,
+            'id' => $id,
+        ]);
+
+        session()->put('cart-' . request()->ip(), $response->data);
+
+        $this->emitTo(Bag::class, 'refreshComponent');
+
+        return $this->redirectRoute('carts.index');
+    }
+
     public function resetFilters()
     {
         $this->reset('filters', 'show');

@@ -30,8 +30,7 @@
                     @endif
                     @if($apply)
                         <x-wedo.button onclick="Livewire.emit('openModal', 'wedo.modals.popup.application', {{ json_encode(['id' => $item->id]) }})">
-                            <x-heroicon-o-lightning-bolt class="-ml-1 mr-2 h-5 w-5 text-white"/>
-                            <span>Quick Apply</span>
+                            <span>Add to Basket</span>
                         </x-wedo.button>
                    @endif
                 </div>

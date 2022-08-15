@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Livewire\Wedo\Tickets;
 
+use App\Http\Livewire\Wedo\Carts\Bag;
 use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Http\Services\Contracts\ApiInterface;
 use App\Models\Ticket;
@@ -22,6 +23,20 @@ class Item extends Component
 
     public function mount()
     {
+    }
+
+    public function add(int $id)
+    {
+        $response = app()->make(ApiInterface::class)->post('/carts', [
+            'model' => Ticket::$apiModel,
+            'id' => $id,
+        ]);
+
+        session()->put('cart-' . request()->ip(), $response->data);
+
+        $this->emitTo(Bag::class, 'refreshComponent');
+
+        $this->emit('openModal', 'wedo.modals.popup.extra');
     }
 
     public function resetFilters()
