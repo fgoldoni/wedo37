@@ -11,7 +11,7 @@
                 <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Added to Basket</h3>
                 <div class="mt-2">
                     <p class="text-sm text-gray-500">
-                        A new item has been added to your Basket. You now have 18 items in your Basket.
+                        A new item has been added to your Basket. You now have {{ session('cart-' . request()->ip())->total_quantity }} items in your Basket.
                     </p>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                 Go to Basket
             </a>
             <button type="button" wire:click="$emit('closeModal')" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-500 sm:mt-0 sm:col-start-1 sm:text-sm">
-                Continue Browse
+                Browse Tickets
             </button>
         </div>
     </div>

@@ -21,7 +21,7 @@
                                                 </div>
                                             </div>
                                             <div class="mt-5 sm:mt-0 sm:ml-6 sm:flex-shrink-0 sm:flex sm:items-center">
-                                                <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm">Continue</button>
+                                                <button type="button" wire:click="checkout" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm">Continue</button>
                                             </div>
                                         </div>
                                     </div>
@@ -85,12 +85,14 @@
                                 </div>
 
                                 <div class="mt-10">
-                                    <button type="submit" class="w-full bg-indigo-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500">Checkout</button>
+                                    <button type="button" wire:click="checkout" class="w-full bg-indigo-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500">
+                                        Continue
+                                    </button>
                                 </div>
 
                                 <div class="mt-6 text-sm text-center text-gray-500">
                                     <p>
-                                        or <a href="#" class="text-indigo-600 font-medium hover:text-indigo-500">Continue Shopping<span aria-hidden="true"> &rarr;</span></a>
+                                        or <a href="{{ route('tickets.index') }}" class="text-indigo-600 font-medium hover:text-indigo-500">Browse Tickets<span aria-hidden="true"> &rarr;</span></a>
                                     </p>
                                 </div>
                             </section>
@@ -160,7 +162,7 @@
                             </dl>
 
                             <div class="mt-6">
-                                <button type="submit" class="w-full bg-indigo-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500">Checkout</button>
+                                <button type="button" wire:click="checkout" class="w-full bg-indigo-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500">Continue</button>
                             </div>
                         </section>
                     </div>

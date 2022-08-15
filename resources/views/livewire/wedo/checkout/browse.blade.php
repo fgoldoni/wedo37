@@ -1,254 +1,228 @@
-<div class="bg-gray-50">
+<main class="max-w-7xl mx-auto pb-10 lg:py-12 lg:px-8">
+
     <div class="max-w-2xl mx-auto pt-16 pb-24 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <h2 class="sr-only">Checkout</h2>
+        <!-- This example requires Tailwind CSS v2.0+ -->
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+            <div class="col-span-1 lg:col-span-2 bg-white p-4 sm:p-6">
+                <form class="px-4 sm:px-6 lg:pb-16 lg:px-0 lg:row-start-1 lg:col-start-1">
+                    <div class="max-w-lg mx-auto lg:max-w-none">
+                        <section aria-labelledby="contact-info-heading">
+                            <h2 id="contact-info-heading" class="text-lg font-medium text-gray-900">Contact information</h2>
 
-        <form wire:submit.prevent="save" class="lg:grid lg:grid-cols-3 lg:gap-x-12 xl:gap-x-16">
-            <div class="lg:col-span-2 bg-white border border-gray-200 shadow-xl">
-                <div class="pt-10 px-4 sm:px-6">
-                    <h2 class="text-lg font-medium text-gray-900">Payment</h2>
-
-                    <fieldset class="mt-4">
-                        <legend class="sr-only">Payment type</legend>
-                        <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
-                            <div class="flex items-center">
-                                <input id="credit-card" name="payment-type" type="radio" checked class="focus:ring-{{ app_color() }}-500 h-4 w-4 text-{{ app_color() }}-600 border-gray-300">
-                                <label for="credit-card" class="ml-3 block text-sm font-medium text-gray-700"> Credit card </label>
+                            <div class="mt-6">
+                                <label for="email-address" class="block text-sm font-medium text-gray-700">Email address</label>
+                                <div class="mt-1">
+                                    <input type="email" id="email-address" name="email-address" autocomplete="email" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                </div>
                             </div>
+                        </section>
 
-                            <div class="flex items-center">
-                                <input id="paypal" name="payment-type" type="radio" class="focus:ring-{{ app_color() }}-500 h-4 w-4 text-{{ app_color() }}-600 border-gray-300">
-                                <label for="paypal" class="ml-3 block text-sm font-medium text-gray-700"> PayPal </label>
+                        <section aria-labelledby="payment-heading" class="mt-10">
+                            <h2 id="payment-heading" class="text-lg font-medium text-gray-900">Payment details</h2>
+
+                            <div class="mt-6 grid grid-cols-3 sm:grid-cols-4 gap-y-6 gap-x-4">
+                                <div class="col-span-3 sm:col-span-4">
+                                    <label for="name-on-card" class="block text-sm font-medium text-gray-700">Name on card</label>
+                                    <div class="mt-1">
+                                        <input type="text" id="name-on-card" name="name-on-card" autocomplete="cc-name" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    </div>
+                                </div>
+
+                                <div class="col-span-3 sm:col-span-4">
+                                    <label for="card-number" class="block text-sm font-medium text-gray-700">Card number</label>
+                                    <div class="mt-1">
+                                        <input type="text" id="card-number" name="card-number" autocomplete="cc-number" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    </div>
+                                </div>
+
+                                <div class="col-span-2 sm:col-span-3">
+                                    <label for="expiration-date" class="block text-sm font-medium text-gray-700">Expiration date (MM/YY)</label>
+                                    <div class="mt-1">
+                                        <input type="text" name="expiration-date" id="expiration-date" autocomplete="cc-exp" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="cvc" class="block text-sm font-medium text-gray-700">CVC</label>
+                                    <div class="mt-1">
+                                        <input type="text" name="cvc" id="cvc" autocomplete="csc" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </section>
+
+                        <section aria-labelledby="shipping-heading" class="mt-10">
+                            <h2 id="shipping-heading" class="text-lg font-medium text-gray-900">Shipping address</h2>
+
+                            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-3">
+                                <div class="sm:col-span-3">
+                                    <label for="company" class="block text-sm font-medium text-gray-700">Company</label>
+                                    <div class="mt-1">
+                                        <input type="text" id="company" name="company" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    </div>
+                                </div>
+
+                                <div class="sm:col-span-3">
+                                    <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
+                                    <div class="mt-1">
+                                        <input type="text" id="address" name="address" autocomplete="street-address" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    </div>
+                                </div>
+
+                                <div class="sm:col-span-3">
+                                    <label for="apartment" class="block text-sm font-medium text-gray-700">Apartment, suite, etc.</label>
+                                    <div class="mt-1">
+                                        <input type="text" id="apartment" name="apartment" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+                                    <div class="mt-1">
+                                        <input type="text" id="city" name="city" autocomplete="address-level2" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="region" class="block text-sm font-medium text-gray-700">State / Province</label>
+                                    <div class="mt-1">
+                                        <input type="text" id="region" name="region" autocomplete="address-level1" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="postal-code" class="block text-sm font-medium text-gray-700">Postal code</label>
+                                    <div class="mt-1">
+                                        <input type="text" id="postal-code" name="postal-code" autocomplete="postal-code" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section aria-labelledby="billing-heading" class="mt-10">
+                            <h2 id="billing-heading" class="text-lg font-medium text-gray-900">Billing information</h2>
+
+                            <div class="mt-6 flex items-center">
+                                <input id="same-as-shipping" name="same-as-shipping" type="checkbox" checked class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                                <div class="ml-2">
+                                    <label for="same-as-shipping" class="text-sm font-medium text-gray-900">Same as shipping information</label>
+                                </div>
+                            </div>
+                        </section>
+
                         <div class="mt-10 pt-6 border-t border-gray-200 sm:flex sm:items-center sm:justify-between">
-                            <button type="submit" wire:loading.attr="disabled" wire:target="save" class="hover:scale-105 hover:shadow-2xl ease-in-out duration-150 w-full bg-{{ app_color() }}-600 border border-transparent rounded-md shadow-sm py-2 px-4 text-sm font-medium text-white hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-{{ app_color() }}-500 sm:ml-6 sm:order-last sm:w-auto">
-                                <x-wedo.loader wire:loading wire:target="save"/>
-                                {{ __('Continue') }}
-                            </button>
+                            <button type="submit" class="w-full bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500 sm:ml-6 sm:order-last sm:w-auto">Continue</button>
                             <p class="mt-4 text-center text-sm text-gray-500 sm:mt-0 sm:text-left">You won't be charged until the next step.</p>
                         </div>
-                    </fieldset>
-                </div>
-                <section aria-labelledby="products-heading" class="mt-6">
-                    <h2 id="products-heading" class="sr-only">Products purchased</h2>
-
-                    <div class="space-y-8">
-                        <div class="bg-white border-t border-b border-gray-200 shadow-sm sm:border sm:rounded-lg">
-                            <div class="py-6 px-4 sm:px-6 lg:grid lg:grid-cols-12 lg:gap-x-8 lg:p-8">
-                                <div class="sm:flex lg:col-span-7">
-                                    <div class="mt-6 sm:mt-0">
-                                        @foreach(session('cart-' . auth()->user()->id)->items as $cart)
-                                            <h3 class="uppercase text-base font-medium text-gray-900">
-                                                <a href="#">{{ $cart->name }}</a>
-                                            </h3>
-                                            <p class="mt-2 text-sm font-medium text-gray-900">$ {{ $cart->price }}</p>
-                                        @endforeach
-                                    </div>
-                                </div>
-
-                                <div class="mt-6 lg:mt-0 lg:col-span-5">
-                                    <dl class="grid grid-cols-2 gap-x-6 text-sm">
-                                        <div>
-                                            <dt class="font-medium text-gray-900">Delivery address</dt>
-                                            <dd class="mt-3 text-gray-500">
-                                                <span class="block">{{ auth()->user()->name }}</span>
-                                                <span class="block whitespace-pre-wrap">{!! auth()->user()->address !!} </span>
-                                            </dd>
-                                        </div>
-                                        <div>
-                                            <dt class="font-medium text-gray-900">Shipping updates</dt>
-                                            <dd class="mt-3 text-gray-500 space-y-3">
-                                                <p>{{ auth()->user()->email }}</p>
-                                                <p>{{ auth()->user()->phone }}</p>
-                                                <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Edit</button>
-                                            </dd>
-                                        </div>
-                                    </dl>
-                                </div>
-                            </div>
-
-                            <div class="border-t border-gray-200 py-6 px-4 sm:px-6 lg:p-8">
-                                <h4 class="sr-only">Status</h4>
-                                <p class="text-sm font-medium text-gray-900">Preparing to ship on <time datetime="2021-03-24">March 24, 2021</time></p>
-                                <div class="mt-6" aria-hidden="true">
-                                    <div class="bg-gray-200 rounded-full overflow-hidden">
-                                        <div class="h-2 bg-indigo-600 rounded-full" style="width: calc((2 * 2 + 1) / 8 * 100%)"></div>
-                                    </div>
-                                    <div class="hidden sm:grid grid-cols-4 text-sm font-medium text-gray-600 mt-6">
-                                        <div class="text-indigo-600">Ticket placed</div>
-                                        <div class="text-center text-indigo-600">Processing</div>
-                                        <div class="text-center">Payment Method</div>
-                                        <div class="text-right">Confirmation</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- More products... -->
                     </div>
-                </section>
+                </form>
             </div>
-
             <div class="col-span-1">
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="col-span-1">
+                        <section aria-labelledby="summary-heading" class="mt-16 bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5">
+                            <h2 id="summary-heading" class="text-lg font-medium text-gray-900">Order summary</h2>
 
-                <section aria-labelledby="timeline-title" class="lg:col-start-3 mt-6 sm:mt-2 2xl:mt-5">
-
-                    <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:px-6">
-
-                        <h2 id="timeline-title" class="text-lg font-medium text-gray-900">Tips for candidates</h2>
-
-                        <div class="mt-6 flow-root">
-
-                            <ul role="list" class="-mb-8">
-
-                                <li>
-
-                                    <div class="relative pb-8">
-
-                                        <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
-
-                                        <div class="relative flex space-x-3">
-                                            <div>
-
-                                                    <span class="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center ring-8 ring-white">
-
-                                              <svg class="w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-
-                                                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-
-                                              </svg>
-
-                                          </span>
-
-                                            </div>
-
-                                            <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
-
-                                                <div>
-
-                                                    <p class="text-sm text-gray-500">Check if the offer matches your profile</p>
-
-                                                </div>
-
-                                                <div class="text-right text-sm whitespace-nowrap text-gray-500">
-
-                                                    <time datetime="2020-09-20">#1</time>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
+                            <ul role="list" class="text-sm font-medium text-gray-900 divide-y divide-gray-200">
+                                <li class="flex items-start py-6 space-x-4">
+                                    <img src="https://tailwindui.com/img/ecommerce-images/checkout-page-04-product-01.jpg" alt="Moss green canvas compact backpack with double top zipper, zipper front pouch, and matching carry handle and backpack straps." class="flex-none w-20 h-20 rounded-md object-center object-cover">
+                                    <div class="flex-auto space-y-1">
+                                        <h3>Micro Backpack</h3>
+                                        <p class="text-gray-500">Moss</p>
+                                        <p class="text-gray-500">5L</p>
                                     </div>
-
+                                    <p class="flex-none text-base font-medium">$70.00</p>
                                 </li>
 
-                                <li>
-
-                                    <div class="relative pb-8">
-
-                                        <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
-
-                                        <div class="relative flex space-x-3">
-                                            <div>
-
-                                            <span class="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center ring-8 ring-white">
-
-
-                                                <svg class="w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-
-                                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-
-                                                </svg>
-
-                                            </span>
-                                            </div>
-
-                                            <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
-
-                                                <div>
-
-                                                    <p class="text-sm text-gray-500">Check the closing date</p>
-
-                                                </div>
-
-                                                <div class="text-right text-sm whitespace-nowrap text-gray-500">
-
-                                                    <time datetime="2020-09-22">#2</time>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </li>
-
-                                <li>
-
-                                    <div class="relative pb-8">
-
-                                        <div class="relative flex space-x-3">
-
-                                            <div>
-
-                                            <span class="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center ring-8 ring-white">
-
-                                                <svg class="w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-
-                                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-
-                                                </svg>
-
-                                            </span>
-
-                                            </div>
-
-                                            <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
-
-                                                <div>
-
-                                                    <p class="text-sm text-gray-500">Meet the employer in a professional location</p>
-
-                                                </div>
-
-                                                <div class="text-right text-sm whitespace-nowrap text-gray-500">
-
-                                                    <time datetime="2020-10-04">#3</time>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </li>
-
+                                <!-- More products... -->
                             </ul>
 
-                        </div>
+                            <dl class="hidden text-sm font-medium text-gray-900 space-y-6 border-t border-gray-200 pt-6 lg:block">
+                                <div class="flex items-center justify-between">
+                                    <dt class="text-gray-600">Subtotal</dt>
+                                    <dd>$320.00</dd>
+                                </div>
 
-                        <div class="mt-6 flex flex-col justify-stretch">
+                                <div class="flex items-center justify-between">
+                                    <dt class="text-gray-600">Shipping</dt>
+                                    <dd>$15.00</dd>
+                                </div>
 
-                            <button type="button" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Get started</button>
+                                <div class="flex items-center justify-between">
+                                    <dt class="text-gray-600">Taxes</dt>
+                                    <dd>$26.80</dd>
+                                </div>
 
-                        </div>
+                                <div class="flex items-center justify-between border-t border-gray-200 pt-6">
+                                    <dt class="text-base">Total</dt>
+                                    <dd class="text-base">$361.80</dd>
+                                </div>
+                            </dl>
 
-                        <div class="mt-6 flex items-center justify-center">
+                            <div class="fixed bottom-0 inset-x-0 flex flex-col-reverse text-sm font-medium text-gray-900 lg:hidden">
+                                <div class="relative z-10 bg-white border-t border-gray-200 px-4 sm:px-6">
+                                    <div class="max-w-lg mx-auto">
+                                        <button type="button" class="w-full flex items-center py-6 font-medium" aria-expanded="false">
+                                            <span class="text-base mr-auto">Total</span>
+                                            <span class="text-base mr-2">$361.80</span>
+                                            <!-- Heroicon name: solid/chevron-up -->
+                                            <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
 
-                            {!! app_event()->iframe !!}
+                                <div>
+                                    <!--
+                                      Mobile summary overlay, show/hide based on mobile summary state.
 
-                        </div>
+                                      Entering: "transition-opacity ease-linear duration-300"
+                                        From: "opacity-0"
+                                        To: "opacity-100"
+                                      Leaving: "transition-opacity ease-linear duration-300"
+                                        From: "opacity-100"
+                                        To: "opacity-0"
+                                    -->
+                                    <div class="fixed inset-0 bg-black bg-opacity-25" aria-hidden="true"></div>
 
+                                    <!--
+                                      Mobile summary, show/hide based on mobile summary state.
+
+                                      Entering: "transition ease-in-out duration-300 transform"
+                                        From: "translate-y-full"
+                                        To: "translate-y-0"
+                                      Leaving: "transition ease-in-out duration-300 transform"
+                                        From: "translate-y-0"
+                                        To: "translate-y-full"
+                                    -->
+                                    <div class="relative bg-white px-4 py-6 sm:px-6">
+                                        <dl class="max-w-lg mx-auto space-y-6">
+                                            <div class="flex items-center justify-between">
+                                                <dt class="text-gray-600">Subtotal</dt>
+                                                <dd>$320.00</dd>
+                                            </div>
+
+                                            <div class="flex items-center justify-between">
+                                                <dt class="text-gray-600">Shipping</dt>
+                                                <dd>$15.00</dd>
+                                            </div>
+
+                                            <div class="flex items-center justify-between">
+                                                <dt class="text-gray-600">Taxes</dt>
+                                                <dd>$26.80</dd>
+                                            </div>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                     </div>
-
-                </section>
+                </div>
             </div>
-        </form>
-    </div>
-</div>
+        </div>
 
+    </div>
+
+</main>

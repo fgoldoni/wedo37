@@ -78,8 +78,13 @@ class Browse extends Component
         $this->notification()->success(__('Updated'), $response->message);
     }
 
+    public function getRowsProperty()
+    {
+        return session('cart-' . request()->ip());
+    }
+
     public function render()
     {
-        return view('livewire.wedo.checkout.browse');
+        return view('livewire.wedo.checkout.browse', ['carts' => $this->rows]);
     }
 }

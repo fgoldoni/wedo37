@@ -34,6 +34,11 @@ class Browse extends Component
         return session('cart-' . request()->ip());
     }
 
+    public function checkout()
+    {
+        return $this->redirectRoute('checkout.index');
+    }
+
     public function render()
     {
         return view('livewire.wedo.carts.browse', ['carts' => $this->rows]);

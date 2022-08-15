@@ -75,7 +75,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::resource('shortlisted', ShortlistedController::class);
 });
 
-Route::group(['middleware' => ['web', 'auth']], function () {
+Route::group(['middleware' => ['web']], function () {
     Route::resource('checkout', CheckoutController::class);
 });
 
