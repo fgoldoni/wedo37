@@ -3,7 +3,7 @@
     <div class="pt-12 px-4 sm:px-6 lg:px-8 lg:pt-20">
         <div class="text-center">
             <h2 class="text-xl leading-6 font-semibold text-gray-700">{{ app_event()->start }}</h2>
-            <p class="mt-2 text-3xl tracking-tight font-bold text-gray-900 sm:text-4xl sm:tracking-tight lg:text-5xl lg:tracking-tight">{{ app_event()->artist }}</p>
+            <p class="uppercase mt-2 text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl sm:tracking-tight lg:text-5xl lg:tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900">{{ app_event()->artist }}</p>
             <p class="mt-3 max-w-4xl mx-auto text-xl text-gray-700 sm:mt-5 sm:text-2xl whitespace-pre-wrap">{{ app_event()->address }}</p>
         </div>
     </div>
@@ -14,10 +14,10 @@
                 <div class="relative">
                     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div class="relative p-10 mt-10 bg-white rounded-lg shadow-xl md:mt-0">
-                            <div class="pointer-events-none absolute inset-0 rounded-lg border-2 border-{{ $ticket->color }}-600" aria-hidden="true"></div>
+                            <div class="pointer-events-none absolute inset-0 rounded-lg border-t border-{{ $ticket->color }}-600" aria-hidden="true"></div>
                             <div class="absolute inset-x-0 top-0 transform translate-y-px">
                                 <div class="flex justify-center transform -translate-y-1/2">
-                                    <span class="inline-flex rounded-full bg-{{ $ticket->color }}-600 px-4 py-1 text-base font-semibold text-white"> Most popular </span>
+                                    <span class="inline-flex rounded-full bg-{{ $ticket->color }}-600 px-4 py-1 text-base font-semibold text-white"> Available </span>
                                 </div>
                             </div>
                             <div class="bg-white rounded-t-lg px-6 pt-12 pb-10">
@@ -34,7 +34,7 @@
                             <a href="javascript:;" wire:click="add({{ $ticket->id }})" class="hover:scale-105 hover:shadow-2xl ease-in-out duration-150 flex items-center justify-center w-full px-6 py-3 my-8 text-lg text-white bg-{{ app_color() }}-600 rounded-md hover:bg-{{ app_color() }}-700 sm:w-auto">
                                 <x-wedo.loader wire:loading wire:target="add({{ $ticket->id }})"></x-wedo.loader>
                                 <x-heroicon-o-check wire:loading.remove wire:target="add({{ $ticket->id }})" class="w-6 h-6 mr-2"></x-heroicon-o-check>
-                                {{ __('Select') }}
+                                {{ __('Add to Basket') }}
                             </a>
                             <div class="space-y-4 lg:pl-2">
                                 <p class="mb-3 text-lg font-semibold text-gray-800">Everything in Basic, plus...</p>
