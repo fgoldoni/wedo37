@@ -29,6 +29,17 @@ class Browse extends Component
     {
     }
 
+    public function remove(int $id)
+    {
+        $response = app()->make(ApiInterface::class)->delete('/carts/' . $id);
+
+        session()->put('cart-' . request()->ip(), $response->data);
+
+        $this->emitTo(Bag::class, 'refreshComponent');
+
+        $this->notification()->info(__('Great!!'), $response->message);
+    }
+
     public function getRowsProperty()
     {
         return session('cart-' . request()->ip());

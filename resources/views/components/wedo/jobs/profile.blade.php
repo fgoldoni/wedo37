@@ -16,7 +16,7 @@
             </div>
             <div class="mt-6 sm:flex-1 sm:min-w-0 sm:flex sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
                 <div class="sm:hidden 2xl:block mt-6 min-w-0 flex-1">
-                    <h1 class="uppercase text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-{{ $item->color }}-500 to-{{ $item->color }}-900 truncate">{{ app_event()->name }}</h1>
+                    <h1 class="uppercase text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900 truncate">{{ app_event()->name }}</h1>
                 </div>
                 <div class="mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
                     @if($phone)
@@ -29,7 +29,8 @@
                         <x-wedo.jobs.applicant-status status="{{ $status }}"></x-wedo.jobs.applicant-status>
                     @endif
                     @if($apply)
-                        <x-wedo.button onclick="Livewire.emit('openModal', 'wedo.modals.popup.application', {{ json_encode(['id' => $item->id]) }})">
+                        <x-wedo.button wire:click="add({{ $item->id }})">
+                            <x-wedo.loader wire:loading wire:target="add({{ $item->id }})"></x-wedo.loader>
                             <span>Add to Basket</span>
                         </x-wedo.button>
                    @endif

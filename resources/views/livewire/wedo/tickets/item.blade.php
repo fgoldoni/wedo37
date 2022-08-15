@@ -1,6 +1,11 @@
 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
     <article class="mb-8">
         <x-wedo.jobs.profile :item="$ticket" apply :phone="app_event()->phone"></x-wedo.jobs.profile>
+
+        <div class="my-8 sm:px-6 lg:px-8">
+            <x-wedo.navigation.breadcrumb :parent="__('layout.navigation.browse_tickets')" :item="$ticket->name"></x-wedo.navigation.breadcrumb>
+        </div>
+
         <div class="grid grid-cols-1 gap-6 md:grid-cols-3 max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <div class="col-span-1 md:col-span-2 mt-6 sm:mt-2 2xl:mt-5">

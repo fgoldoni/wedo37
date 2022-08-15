@@ -25,7 +25,7 @@
                                     <h3 class="uppercase text-center text-3xl tracking-tight font-semibold text-transparent bg-clip-text bg-gradient-to-r from-{{ $ticket->color }}-500 to-{{ $ticket->color }}-900 sm:-mx-6" id="tier-growth">{{ $ticket->name }}</h3>
                                     <div class="mt-4 flex items-center justify-center">
                                         <span class="px-3 flex items-start text-6xl tracking-tight text-gray-900 sm:text-6xl sm:tracking-tight">
-                                          <span class="mt-2 mr-2 text-4xl tracking-tight font-medium"> $ </span>
+                                          <span class="mt-2 mr-2 text-4xl tracking-tight font-medium"> € </span>
                                           <span class="font-bold"> {{ $ticket->price }} </span>
                                         </span>
                                     </div>
@@ -79,7 +79,7 @@
                                                 <h4 class="text-sm">
                                                     <a href="#" class="font-medium text-gray-700 hover:text-gray-800"> Artwork Tee </a>
                                                 </h4>
-                                                <p class="ml-4 text-sm font-medium text-gray-900">$32.00</p>
+                                                <p class="ml-4 text-sm font-medium text-gray-900">€ 32.00</p>
                                             </div>
                                             <p class="mt-1 text-sm text-gray-500">Mint</p>
                                             <p class="mt-1 text-sm text-gray-500">Medium</p>
@@ -116,7 +116,7 @@
                                 <dl class="space-y-4">
                                     <div class="flex items-center justify-between">
                                         <dt class="text-base font-medium text-gray-900">Subtotal</dt>
-                                        <dd class="ml-4 text-base font-medium text-gray-900">$96.00</dd>
+                                        <dd class="ml-4 text-base font-medium text-gray-900">€ 96.00</dd>
                                     </div>
                                 </dl>
                                 <p class="mt-1 text-sm text-gray-500">Shipping and taxes will be calculated at checkout.</p>

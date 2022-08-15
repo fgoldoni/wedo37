@@ -14,7 +14,7 @@
             <div class="flex flex-col pb-8 border-b border-gray-200">
                 <h3 class="flex items-center text-{{ $row->color }}-900">
                     <span class="flex items-start text-4xl tracking-tight sm:text-5xl">
-                      <span class="mr-2 text-2xl font-medium"> $ </span>
+                      <span class="mr-2 text-2xl font-medium"> € </span>
                       <span class="font-semibold"> {{ $row->price }} </span>
                     </span>
                 </h3>
