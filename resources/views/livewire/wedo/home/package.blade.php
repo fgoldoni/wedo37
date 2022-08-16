@@ -7,10 +7,10 @@
 
             @foreach($tickets as $ticket)
                 <div class="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group md:col-span-6 xl:col-span-4">
-                    <a href="#_" class="block w-full transition duration-300 ease-in-out transform bg-center bg-cover h-96 hover:scale-110" style="background-image:url('https://cdn.devdojo.com/images/may2021/quench-satisfying.jpg')">
+                    <a href="{{ route('tickets.show', $ticket->id) }}" class="block w-full transition duration-300 ease-in-out transform bg-center bg-cover h-96 hover:scale-110" style="background-image:url('https://cdn.devdojo.com/images/may2021/quench-satisfying.jpg')">
                     </a>
                     <div class="relative z-20 w-full h-auto py-8 text-white bg-purple-500 border-t-0 border-yellow-200 px-7">
-                        <a href="#_" class="hover:scale-125 ease-in-out duration-150 inline-block text-xs font-semibold absolute top-0 -mt-3.5 rounded-full px-4 py-2 uppercase text-purple-500 bg-white">Continue ...</a>
+                        <a href="{{ route('tickets.show', $ticket->id) }}" class="hover:scale-125 ease-in-out duration-150 inline-block text-xs font-semibold absolute top-0 -mt-3.5 rounded-full px-4 py-2 uppercase text-purple-500 bg-white">{{ __('Details') }}</a>
                         <h2 class="uppercase mb-5 text-5xl font-bold"><a href="#_">{{ Str::limit($ticket->name, 18, '...') }}</a></h2>
                         <p class="mb-2 text-lg font-normal text-purple-100 opacity-100">FROM {{ $ticket->price }} Euro</p>
                     </div>

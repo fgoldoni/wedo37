@@ -3,7 +3,9 @@
     <div class="px-12 mx-auto text-center max-w-7xl">
         <div class="space-y-12 md:text-left">
             <div class="mb-20 space-y-5 sm:mx-auto sm:max-w-xl md:max-w-2xl sm:space-y-4 lg:max-w-5xl">
-                <h2 class="relative text-4xl font-extrabold tracking-tight sm:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900">PARTNERS & SPONSORS 🤝</h2>
+                <h2 class="relative text-4xl font-extrabold tracking-tight sm:text-5xl">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900">PARTNERS & SPONSORS</span> 🤝
+                </h2>
             </div>
             <div class="mx-auto space-y-16 sm:grid sm:grid-cols-2 sm:gap-16 sm:space-y-0 lg:grid-cols-3 lg:max-w-5xl">
 
