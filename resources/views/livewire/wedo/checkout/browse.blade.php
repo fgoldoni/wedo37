@@ -11,7 +11,7 @@
                     </x-slot>
 
                     <x-slot name="description">
-                        {{ __('This information will be displayed publicly so be careful what you share.') }}
+                        {{ __('You won\'t be charged until the next step.') }}
                     </x-slot>
 
                     <x-slot name="form">
