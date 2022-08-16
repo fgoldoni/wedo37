@@ -110,16 +110,29 @@
 
                         <!-- Order summary -->
                         <section aria-labelledby="summary-heading" class="mt-10">
-                            <h2 id="summary-heading" class="sr-only">Order summary</h2>
+                            <div class="bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8">
+                                <h2 id="summary-heading" class="sr-only">Order summary</h2>
 
-                            <div>
-                                <dl class="space-y-4">
-                                    <div class="flex items-center justify-between">
-                                        <dt class="text-base font-medium text-gray-900">Subtotal</dt>
-                                        <dd class="ml-4 text-base font-medium text-gray-900">€ 96.00</dd>
-                                    </div>
-                                </dl>
-                                <p class="mt-1 text-sm text-gray-500">Shipping and taxes will be calculated at checkout.</p>
+                                <div class="flow-root">
+                                    <dl class="-my-4 text-sm divide-y divide-gray-200">
+                                        <div class="py-4 flex items-center justify-between">
+                                            <dt class="text-gray-600">Subtotal</dt>
+                                            <dd class="font-medium text-gray-900">$99.00</dd>
+                                        </div>
+                                        <div class="py-4 flex items-center justify-between">
+                                            <dt class="text-gray-600">Shipping</dt>
+                                            <dd class="font-medium text-gray-900">$5.00</dd>
+                                        </div>
+                                        <div class="py-4 flex items-center justify-between">
+                                            <dt class="text-gray-600">Tax</dt>
+                                            <dd class="font-medium text-gray-900">$8.32</dd>
+                                        </div>
+                                        <div class="py-4 flex items-center justify-between">
+                                            <dt class="text-base font-medium text-gray-900">Order total</dt>
+                                            <dd class="text-base font-medium text-gray-900">$112.32</dd>
+                                        </div>
+                                    </dl>
+                                </div>
                             </div>
 
                             <div class="mt-10">
