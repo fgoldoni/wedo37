@@ -45,7 +45,7 @@ class Browse extends Component
 
     public function mount()
     {
-        $this->name = 'full name';
+        $this->name = 'Full name';
 
         $this->email = 'test@test.com';
 

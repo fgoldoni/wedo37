@@ -15,7 +15,6 @@
                 </h4>
                 <p class="ml-4 text-sm font-medium text-gray-900">€ {{ $item->price }}</p>
             </div>
-            <p class="mt-1 text-sm text-gray-500">{{ $item->attributes->event->name }}</p>
             <p class="mt-2 text-sm text-{{ app_color() }}-500 underline">{{ $item->attributes->user->name }}</p>
         </div>
 

@@ -22,7 +22,7 @@
                                                 </div>
                                             </div>
                                             <div class="mt-5 sm:mt-0 sm:ml-6 sm:flex-shrink-0 sm:flex sm:items-center">
-                                                <button type="button" wire:click="checkout" class="btn inline-flex items-center px-4 py-2 border border-transparent shadow-sm font-medium rounded-md text-white bg-{{ app_color() }}-600 hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-500 sm:text-sm">Continue</button>
+                                                <button type="button" wire:click="checkout" class="btn-base inline-flex items-center px-4 py-2 border border-transparent shadow-sm font-medium rounded-md text-white bg-{{ app_color() }}-600 hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-500 sm:text-sm">Continue</button>
                                             </div>
                                         </div>
                                     </div>
@@ -53,7 +53,7 @@
                                 </div>
 
                                 <div class="mt-10">
-                                    <button type="button" wire:click="checkout" class="btn w-full bg-{{ app_color() }}-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-{{ app_color() }}-500">
+                                    <button type="button" wire:click="checkout" class="btn-base w-full bg-{{ app_color() }}-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-{{ app_color() }}-500">
                                         Continue
                                     </button>
                                 </div>
@@ -130,10 +130,6 @@
                                     <dd class="text-base font-medium text-gray-900">€ {{ $carts?->total }}</dd>
                                 </div>
                             </dl>
-
-                            <div class="mt-6">
-                                <button type="button" wire:click="checkout" class="btn w-full bg-{{ app_color() }}-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-{{ app_color() }}-500">Continue</button>
-                            </div>
                         </section>
                     </div>
                 </div>
@@ -146,7 +142,7 @@
             <h3 class="uppercase mt-2 text-sm font-medium text-gray-900">No Basket</h3>
             <p class="mt-1 text-sm text-gray-500">Get started by creating a new basket.</p>
             <div class="mt-6">
-                <a href="{{ route('tickets.index') }}" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-{{ app_color() }}-600 hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-500">
+                <a href="{{ route('tickets.index') }}" class="btn-base inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-{{ app_color() }}-600 hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-500">
                     <x-heroicon-o-shopping-bag class="-ml-1 mr-2 h-5 w-5"></x-heroicon-o-shopping-bag>
                     {{ __('layout.navigation.browse_tickets') }}
                 </a>
