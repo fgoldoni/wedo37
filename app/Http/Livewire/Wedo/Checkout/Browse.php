@@ -19,10 +19,6 @@ class Browse extends Component
 
     use WithCachedRows;
 
-    public ?int $ticketId = null;
-
-    public ?Ticket $ticket = null;
-
     public ?string $name;
 
     public ?string $email;
@@ -30,8 +26,6 @@ class Browse extends Component
     public ?string $phone;
 
     public ?string $address;
-
-    protected $queryString = ['ticketId'];
 
     public function rules(): array
     {
@@ -53,29 +47,26 @@ class Browse extends Component
 
         $this->address = 'Niendorfer Straße 43, 22529 Hamburg';
 
-        $this->ticket = Ticket::find($this->ticketId);
     }
 
     public function save()
     {
         $this->validate();
 
-        $response = app()->make(ApiInterface::class)->post('/carts', [
+        $response = app()->make(ApiInterface::class)->post('/checkouts', [
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
             'address' => $this->address,
-            'ticketId' => $this->ticketId,
         ]);
+
+        $this->notification()->success(__('Great'), $response->message);
 
         return $this->redirectRoute('login.token', [
             'token' => $response->token,
-            'to' => route('checkout.index', ['ticketId' => $this->ticketId]),
+            'to' => route('checkout.index'),
         ]);
 
-        dd($response);
-
-        $this->notification()->success(__('Updated'), $response->message);
     }
 
     public function getRowsProperty()
