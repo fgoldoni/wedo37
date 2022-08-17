@@ -13,8 +13,6 @@ use WireUi\Traits\Actions;
 
 class Browse extends Component
 {
-    use WithFileUploads;
-
     use Actions;
 
     use WithCachedRows;
@@ -60,14 +58,17 @@ class Browse extends Component
             'address' => $this->address,
         ]);
 
+
         $this->notification()->success(__('Great'), $response->message);
 
         return $this->redirectRoute('login.token', [
             'token' => $response->token,
-            'to' => route('checkout.index'),
+            'to' => route('payments.index'),
         ]);
 
     }
+
+
 
     public function getRowsProperty()
     {

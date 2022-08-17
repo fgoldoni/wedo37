@@ -127,6 +127,7 @@ return [
         'browse_tickets' => 'Browse Tickets',
         'browse_extras' => 'Browse Extras',
         'carts' => 'Basket',
+        'payments' => 'Payments',
         'sign_in' => 'Login Link',
         'resumes' => 'My Resumes',
         'applications' => 'My Applications',
