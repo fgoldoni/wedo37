@@ -1,10 +1,11 @@
 <main class="max-w-7xl mx-auto sm:px-6 lg:px-8">
     @if($carts && $carts->total_quantity)
-        <x-wedo.basket :carts="$carts"  text="You won't be charged until the next step."></x-wedo.basket>
+        <x-wedo.basket :carts="$carts" :back="route('carts.index')" :back-name="__('layout.navigation.carts')" :link="__('Contact information')"></x-wedo.basket>
 
         <h2 class="sr-only">Checkout</h2>
-        <!-- This example requires Tailwind CSS v2.0+ -->
+
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+
             <div class="col-span-1 lg:col-span-2">
                 <x-wedo.form-section submit="save">
                     <x-slot name="title">
@@ -17,16 +18,16 @@
 
                     <x-slot name="form">
 
-                        <div class="col-span-4 sm:col-span-2">
-                            <x-wedo.input.group for="name" :error="$errors->first('name')" isRequired inline>
+                        <div class="col-span-4">
+                            <x-wedo.input.group label="{{ __('Name') }}" for="name" :error="$errors->first('name')" isRequired>
 
                                 <x-wedo.input.text value="{{ $name }}" type="text" name="name" id="name" placeholder="{{ __('Name') }}" autocomplete="off" required/>
 
                             </x-wedo.input.group>
                         </div>
 
-                        <div class="col-span-4 sm:col-span-2">
-                            <x-wedo.input.group for="email" :error="$errors->first('email')" isRequired inline>
+                        <div class="col-span-4">
+                            <x-wedo.input.group label="{{ __('Email address') }}"  for="email" :error="$errors->first('email')" isRequired>
 
                                 <x-wedo.input.text value="{{ $email }}" type="email" name="email" id="email" placeholder="{{ __('Email address') }}" autocomplete="off" required/>
 
@@ -67,8 +68,6 @@
                 <div class="grid grid-cols-1 gap-4">
                     <div class="col-span-1">
                         <section aria-labelledby="summary-heading" class="mt-16 bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5">
-                            <h2 id="summary-heading" class="text-lg font-medium text-gray-900">{{ __('Basket') }}</h2>
-
                             <ul role="list" class="text-sm font-medium text-gray-900 divide-y divide-gray-200">
                                 @forelse ($carts?->items as $item)
                                     <x-wedo.carts.item :item="$item->attributes" :model="\App\Models\Ticket::$apiModel" wire:key="item-{{ $item->id }}"></x-wedo.carts.item>

@@ -1,6 +1,6 @@
 <main class="max-w-7xl mx-auto sm:px-6 lg:px-8">
     @if($carts && $carts->total_quantity)
-        <x-wedo.basket :carts="$carts"></x-wedo.basket>
+        <x-wedo.basket :carts="$carts" action :link="__('Basket')"></x-wedo.basket>
 
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 bg-white">
             <div class="col-span-1 lg:col-span-3">
