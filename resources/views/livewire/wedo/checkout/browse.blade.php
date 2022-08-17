@@ -1,6 +1,7 @@
-<main class="max-w-7xl mx-auto pb-10 lg:py-12 lg:px-8">
+<main class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    @if($carts && $carts->total_quantity)
+        <x-wedo.basket :carts="$carts"  text="You won't be charged until the next step."></x-wedo.basket>
 
-    <div class="max-w-2xl mx-auto pt-16 pb-24 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <h2 class="sr-only">Checkout</h2>
         <!-- This example requires Tailwind CSS v2.0+ -->
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -56,7 +57,7 @@
 
                     <x-slot name="actions">
                         <x-wedo.button type="submit">
-                            <x-wedo.loader wire:loading wire:target="updateProfileInformation"></x-wedo.loader>
+                            <x-wedo.loader wire:loading wire:target="save"></x-wedo.loader>
                             Save
                         </x-wedo.button>
                     </x-slot>
@@ -69,15 +70,11 @@
                             <h2 id="summary-heading" class="text-lg font-medium text-gray-900">{{ __('Basket') }}</h2>
 
                             <ul role="list" class="text-sm font-medium text-gray-900 divide-y divide-gray-200">
-                                @foreach($carts?->items as $item)
-                                    <li class="flex items-start py-6 space-x-4">
-                                        <img src="{{ $item->attributes->avatar_url }}" alt="{{ $item->name }}" class="btn-img flex-none w-20 h-20 rounded-md object-center object-cover">
-                                        <div class="flex-auto space-y-1 uppercase text-transparent bg-clip-text bg-gradient-to-r from-{{ $item->attributes->color }}-400 to-{{ $item->attributes->color }}-900">
-                                            <h3>{{ $item->quantity }} * {{ $item->name }}</h3>
-                                        </div>
-                                        <p class="flex-none text-base font-medium">€ {{ $item->price }}</p>
-                                    </li>
-                                @endforeach
+                                @forelse ($carts?->items as $item)
+                                    <x-wedo.carts.item :item="$item->attributes" :model="\App\Models\Ticket::$apiModel" wire:key="item-{{ $item->id }}"></x-wedo.carts.item>
+                                @empty
+                                    <p>No Items</p>
+                                @endforelse
                             </ul>
 
                             <dl class="hidden text-sm font-medium text-gray-900 space-y-6 border-t border-gray-200 pt-6 lg:block">
@@ -94,21 +91,21 @@
 
                             <div
                                 x-data="{
-                                    open: false,
-                                    focus: false,
-                                    onEscape() {
-                                        this.open = !1,
-                                        this.$refs.button.focus()
-                                   },
-                                    onClosePopoverGroup (e) {
-                                        e.detail.contains(this.$el) && (this.open=!1)
-                                    },
-                                    toggle (e) {
-                                        this.open = !this.open,
-                                        this.open ? this.restoreEl = e.currentTarget : this.restoreEl && this.restoreEl.focus()
-                                   },
+                                        open: false,
+                                        focus: false,
+                                        onEscape() {
+                                            this.open = !1,
+                                            this.$refs.button.focus()
+                                       },
+                                        onClosePopoverGroup (e) {
+                                            e.detail.contains(this.$el) && (this.open=!1)
+                                        },
+                                        toggle (e) {
+                                            this.open = !this.open,
+                                            this.open ? this.restoreEl = e.currentTarget : this.restoreEl && this.restoreEl.focus()
+                                       },
 
-                                }"
+                                    }"
                                 @keydown.escape="onEscape"
                                 @close-popover-group.window="onClosePopoverGroup"
 
@@ -200,7 +197,19 @@
                 </div>
             </div>
         </div>
+    @else
+        <div class="text-center max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
+            <x-heroicon-o-shopping-bag class="mx-auto h-12 w-12 text-gray-400"></x-heroicon-o-shopping-bag>
 
-    </div>
+            <h3 class="uppercase mt-2 text-sm font-medium text-gray-900">No Basket</h3>
+            <p class="mt-1 text-sm text-gray-500">Get started by creating a new basket.</p>
+            <div class="mt-6">
+                <a href="{{ route('tickets.index') }}" class="btn-base inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-{{ app_color() }}-600 hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-500">
+                    <x-heroicon-o-shopping-bag class="-ml-1 mr-2 h-5 w-5"></x-heroicon-o-shopping-bag>
+                    {{ __('layout.navigation.browse_tickets') }}
+                </a>
+            </div>
+        </div>
+    @endif
 
 </main>

@@ -12,7 +12,7 @@
         {{ $slot }}
     </a>
 @else
-    <button {{ $disabled ? 'disabled' : '' }} {{ $attributes->merge(['class' => "uppercase inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-" . app_color() . "-600 hover:bg-" . app_color() . "-700 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-900 focus:ring-" . app_color() . "-500 disabled:opacity-50 disabled:cursor-wait"]) }}>
+    <button {{ $disabled ? 'disabled' : '' }} {{ $attributes->merge(['class' => "uppercase btn-base inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-" . app_color() . "-600 hover:bg-" . app_color() . "-700 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-900 focus:ring-" . app_color() . "-500 disabled:opacity-50 disabled:cursor-wait"]) }}>
         {{ $slot }}
     </button>
 @endif

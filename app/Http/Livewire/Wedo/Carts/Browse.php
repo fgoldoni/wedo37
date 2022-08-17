@@ -29,6 +29,24 @@ class Browse extends Component
 
     public function remove(int $id)
     {
+        $this->dialog()->confirm([
+            'title' => 'Are you Sure ?',
+            'description' => 'Remove item from Basket',
+            'icon' => 'error',
+            'accept' => [
+                'label' => 'Yes, remove it',
+                'method' => 'delete',
+                'params' => $id,
+            ],
+            'reject' => [
+                'label' => 'No, cancel',
+            ],
+        ]);
+    }
+
+    public function delete(int $id)
+    {
+        $this->dialog();
         $response = app()->make(ApiInterface::class)->delete('/carts/' . $id);
 
         session()->put('cart-' . request()->ip(), $response->data);

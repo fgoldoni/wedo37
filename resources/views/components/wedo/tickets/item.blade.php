@@ -1,4 +1,4 @@
-@props(['row', 'currentTicket'])
+@props(['row', 'currentTicket' => null])
 
 <div>
 
@@ -20,7 +20,6 @@
                 </h3>
 
                 <h4 class="uppercase mt-5 text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ $row->color }}-400 to-{{ $row->color }}-900">{{ $row->name }}</h4>
-                <p class="mt-4 text-gray-500">{{ $row->description }}</p>
             </div>
             <ul class="px-3 pt-8 space-y-3">
                 <li class="flex font-medium text-gray-500">

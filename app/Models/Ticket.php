@@ -27,6 +27,7 @@ class Ticket extends Model
             $tickets[] = [
                 'id' => $item->id,
                 'name' => $item->name,
+                'description' => $item->description,
                 'price' => $item->price,
                 'type' => $item->type,
                 'event_id' => $item->event_id,

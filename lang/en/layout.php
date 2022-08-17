@@ -125,6 +125,7 @@ return [
         'signed_in_as' => 'Signed in as',
         'personal_account' => 'Personal Account',
         'browse_tickets' => 'Browse Tickets',
+        'browse_extras' => 'Browse Extras',
         'carts' => 'Basket',
         'sign_in' => 'Login Link',
         'resumes' => 'My Resumes',

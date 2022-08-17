@@ -2,9 +2,9 @@
 <div class="bg-gray-900">
     <div class="pt-12 px-4 sm:px-6 lg:px-8 lg:pt-20">
         <div class="text-center">
-            <h2 class="text-xl leading-6 font-semibold text-gray-300">{{ app_event()->start }}</h2>
+            <h2 class="text-xl leading-6 font-semibold text-gray-300">{{ app_team_name() }}</h2>
             <p class="uppercase mt-2 text-3xl tracking-tight font-extrabold sm:text-4xl sm:tracking-tight lg:text-5xl lg:tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-900">{{ app_event()->artist }}</p>
-            <p class="mt-3 max-w-4xl mx-auto text-xl text-gray-300 sm:mt-5 sm:text-2xl whitespace-pre-wrap">{{ app_event()->address }}</p>
+            <p class="mt-3 max-w-4xl mx-auto text-xl text-gray-300 sm:mt-5 sm:text-2xl whitespace-pre-wrap">{{ $ticket->description }}</p>
         </div>
     </div>
     <div class="mt-16 bg-white pb-12 lg:mt-20 lg:pb-20">
