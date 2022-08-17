@@ -67,8 +67,8 @@
             <div class="col-span-1">
                 <div class="grid grid-cols-1 gap-4">
                     <div class="col-span-1">
-                        <section aria-labelledby="summary-heading" class="mt-16 bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5">
-                            <ul role="list" class="text-sm font-medium text-gray-900 divide-y divide-gray-200">
+                        <section aria-labelledby="summary-heading" class="mt-16 bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:mt-0 lg:col-span-5">
+                            <ul role="list" class="text-sm font-medium text-gray-900 divide-y divide-gray-200 pr-2 scrollbar-thin scrollbar-thumb-secondary-400 scrollbar-track-secondary-200 overflow-y-auto max-height">
                                 @forelse ($carts?->items as $item)
                                     <x-wedo.carts.item :item="$item->attributes" :model="\App\Models\Ticket::$apiModel" wire:key="item-{{ $item->id }}"></x-wedo.carts.item>
                                 @empty
