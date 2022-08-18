@@ -12,14 +12,37 @@
 
             <div class="col-span-1 lg:col-span-2">
                 <div class="grid grid-cols-1 gap-8">
+                    <!-- This example requires Tailwind CSS v2.0+ -->
+                    <!-- This example requires Tailwind CSS v2.0+ -->
+                    <div class="bg-white shadow sm:rounded-lg">
+                        <div class="px-4 py-5 sm:p-6">
+                            <div class="sm:flex sm:items-start sm:justify-between">
+                                <div>
+                                    <h3 class="text-lg leading-6 font-medium text-gray-900">Manage subscription</h3>
+                                    <div class="mt-2 max-w-xl text-sm text-gray-500">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae voluptatibus corrupti atque repudiandae nam.</p>
+                                    </div>
+                                </div>
+                                <div class="mt-5 sm:mt-0 sm:ml-6 sm:flex-shrink-0 sm:flex sm:items-center">
+                                    <button type="button" class="text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 mr-2 mb-2">
+                                        <svg class="mr-2 -ml-1 w-4 h-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="paypal" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M111.4 295.9c-3.5 19.2-17.4 108.7-21.5 134-.3 1.8-1 2.5-3 2.5H12.3c-7.6 0-13.1-6.6-12.1-13.9L58.8 46.6c1.5-9.6 10.1-16.9 20-16.9 152.3 0 165.1-3.7 204 11.4 60.1 23.3 65.6 79.5 44 140.3-21.5 62.6-72.5 89.5-140.1 90.3-43.4 .7-69.5-7-75.3 24.2zM357.1 152c-1.8-1.3-2.5-1.8-3 1.3-2 11.4-5.1 22.5-8.8 33.6-39.9 113.8-150.5 103.9-204.5 103.9-6.1 0-10.1 3.3-10.9 9.4-22.6 140.4-27.1 169.7-27.1 169.7-1 7.1 3.5 12.9 10.6 12.9h63.5c8.6 0 15.7-6.3 17.4-14.9 .7-5.4-1.1 6.1 14.4-91.3 4.6-22 14.3-19.7 29.3-19.7 71 0 126.4-28.8 142.9-112.3 6.5-34.8 4.6-71.4-23.8-92.6z"></path></svg>
+                                        Check out with PayPal
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
                     <x-wedo.form-section submit="save">
                         <x-slot name="title">
                             <div class="flex items-center space-x-3 lg:pl-2">
                                 <div class="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-green-600" aria-hidden="true"></div>
                                 <a href="#" class="uppercase cursor-pointer hover:ml-1 transition-all ease-out duration-200 truncate hover:text-gray-600">
-                              <span>
-                               {{ __('Credit Card') }}
-                              </span>
+                                  <span>
+                                   {{ __('Credit Card') }}
+                                  </span>
                                 </a>
                                 <div class="flex items-center justify-between sm:grid sm:grid-cols-3 gap-6">
                                     <div class="h-8 w-8 bg-white sm:translate-x-12 md:translate-x-0 rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center">
@@ -30,48 +53,6 @@
                                     </div>
                                     <div class="h-8 w-8 bg-white sm:translate-x-12 md:translate-x-0 rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center">
                                         <img  class="h-6 w-6" src="{{ asset('images/svg/payment.svg') }}" alt="paypal">
-                                    </div>
-                                </div>
-                            </div>
-                        </x-slot>
-
-                        <x-slot name="description">
-                        </x-slot>
-
-                        <x-slot name="form">
-                            <div class="col-span-4">
-                                <x-wedo.input.group label="{{ __('Name') }}" for="card-holder-name" :error="$errors->first('card-holder-name')" isRequired>
-
-                                    <x-wedo.input.text value="{{ $name }}" type="text" name="card-holder-name" id="card-holder-name" placeholder="{{ __('Name') }}" autocomplete="off" required/>
-
-                                </x-wedo.input.group>
-                            </div>
-
-                            <div class="col-span-4" wire:ignore>
-
-                                <x-wedo.label for="card-element" class="mb-5"> {{__('Credit Card')}} </x-wedo.label>
-
-                                <div id="card-element"></div>
-
-                                <div id="card-errors" class="mt-5 text-sm text-red-600"></div>
-
-                            </div>
-                        </x-slot>
-
-                        <x-slot name="actions">
-                            <x-wedo.button  type="button" wire:loading.attr="disabled" id="card-button">
-                                <x-wedo.loader wire:loading></x-wedo.loader>
-                                {{ __('Save') }}
-                            </x-wedo.button>
-                        </x-slot>
-                    </x-wedo.form-section>
-                    <x-wedo.form-section submit="save">
-                        <x-slot name="title">
-                            <div class="flex items-center space-x-3 lg:pl-2">
-                                <div class="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-green-600" aria-hidden="true"></div>
-                                <div class="flex items-center justify-between sm:grid sm:grid-cols-3 gap-6">
-                                    <div class="h-20 w-20 bg-white sm:translate-x-12 md:translate-x-0 rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center">
-                                        <img  class="h-16 w-16" src="{{ asset('images/svg/paypal-2.svg') }}" alt="paypal">
                                     </div>
                                 </div>
                             </div>
@@ -256,7 +237,6 @@
         </div>
     @endif
 
-DDDDdd
     @pushOnce('scripts')
     <script src="https://js.stripe.com/v3/"></script>
 
