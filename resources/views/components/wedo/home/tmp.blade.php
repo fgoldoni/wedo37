@@ -19,10 +19,10 @@
 
   ```
   <html class="h-full bg-white">
-  <body class="h-full overflow-hidden">
+  <body class="h-full">
   ```
 -->
-<div class="h-full flex">
+<div class="min-h-full">
     <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
     <div class="relative z-40 lg:hidden" role="dialog" aria-modal="true">
         <!--
@@ -48,7 +48,7 @@
                 From: "translate-x-0"
                 To: "-translate-x-full"
             -->
-            <div class="relative flex-1 flex flex-col max-w-xs w-full bg-white focus:outline-none">
+            <div class="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-white">
                 <!--
                   Close button, show/hide based on off-canvas menu state.
 
@@ -69,921 +69,395 @@
                     </button>
                 </div>
 
-                <div class="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
-                    <div class="flex-shrink-0 flex items-center px-4">
-                        <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark.svg?color=pink&shade=500" alt="Workflow">
-                    </div>
-                    <nav aria-label="Sidebar" class="mt-5">
-                        <div class="px-2 space-y-1">
-                            <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
-                            <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md">
+                <div class="flex-shrink-0 flex items-center px-4">
+                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark.svg?color=purple&shade=500" alt="Workflow">
+                </div>
+                <div class="mt-5 flex-1 h-0 overflow-y-auto">
+                    <nav class="px-2">
+                        <div class="space-y-1">
+                            <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-600 hover:text-gray-900 hover:bg-gray-50" -->
+                            <a href="#" class="bg-gray-100 text-gray-900 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md" aria-current="page">
                                 <!--
                                   Heroicon name: outline/home
 
                                   Current: "text-gray-500", Default: "text-gray-400 group-hover:text-gray-500"
                                 -->
-                                <svg class="text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                <svg class="text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                                 </svg>
-                                Dashboard
+                                Home
                             </a>
 
-                            <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md">
-                                <!-- Heroicon name: outline/calendar -->
-                                <svg class="text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            <a href="#" class="text-gray-600 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md">
+                                <!-- Heroicon name: outline/view-list -->
+                                <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                                 </svg>
-                                Calendar
+                                My tasks
                             </a>
 
-                            <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md">
-                                <!-- Heroicon name: outline/user-group -->
-                                <svg class="text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            <a href="#" class="text-gray-600 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md">
+                                <!-- Heroicon name: outline/clock -->
+                                <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                                Teams
-                            </a>
-
-                            <a href="#" class="bg-gray-100 text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md" aria-current="page">
-                                <!-- Heroicon name: outline/search-circle -->
-                                <svg class="text-gray-500 mr-4 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 16l2.879-2.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                Directory
-                            </a>
-
-                            <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md">
-                                <!-- Heroicon name: outline/speakerphone -->
-                                <svg class="text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
-                                </svg>
-                                Announcements
-                            </a>
-
-                            <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md">
-                                <!-- Heroicon name: outline/map -->
-                                <svg class="text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                                </svg>
-                                Office Map
+                                Recent
                             </a>
                         </div>
-                        <hr class="border-t border-gray-200 my-5" aria-hidden="true">
-                        <div class="px-2 space-y-1">
-                            <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md">
-                                <!-- Heroicon name: outline/view-grid-add -->
-                                <svg class="text-gray-400 group-hover:text-gray-500 mr-4 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z" />
-                                </svg>
-                                Apps
-                            </a>
+                        <div class="mt-8">
+                            <h3 class="px-3 text-sm font-medium text-gray-500" id="mobile-teams-headline">Teams</h3>
+                            <div class="mt-1 space-y-1" role="group" aria-labelledby="mobile-teams-headline">
+                                <a href="#" class="group flex items-center px-3 py-2 text-base leading-5 font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50">
+                                    <span class="w-2.5 h-2.5 mr-4 bg-indigo-500 rounded-full" aria-hidden="true"></span>
+                                    <span class="truncate"> Engineering </span>
+                                </a>
 
-                            <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md">
-                                <!-- Heroicon name: outline/cog -->
-                                <svg class="text-gray-400 group-hover:text-gray-500 mr-4 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                </svg>
-                                Settings
-                            </a>
+                                <a href="#" class="group flex items-center px-3 py-2 text-base leading-5 font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50">
+                                    <span class="w-2.5 h-2.5 mr-4 bg-green-500 rounded-full" aria-hidden="true"></span>
+                                    <span class="truncate"> Human Resources </span>
+                                </a>
+
+                                <a href="#" class="group flex items-center px-3 py-2 text-base leading-5 font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50">
+                                    <span class="w-2.5 h-2.5 mr-4 bg-yellow-500 rounded-full" aria-hidden="true"></span>
+                                    <span class="truncate"> Customer Success </span>
+                                </a>
+                            </div>
                         </div>
                     </nav>
-                </div>
-                <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
-                    <a href="#" class="flex-shrink-0 group block">
-                        <div class="flex items-center">
-                            <div>
-                                <img class="inline-block h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                            </div>
-                            <div class="ml-3">
-                                <p class="text-base font-medium text-gray-700 group-hover:text-gray-900">Tom Cook</p>
-                                <p class="text-sm font-medium text-gray-500 group-hover:text-gray-700">View profile</p>
-                            </div>
-                        </div>
-                    </a>
                 </div>
             </div>
 
             <div class="flex-shrink-0 w-14" aria-hidden="true">
-                <!-- Force sidebar to shrink to fit close icon -->
+                <!-- Dummy element to force sidebar to shrink to fit close icon -->
             </div>
         </div>
     </div>
 
     <!-- Static sidebar for desktop -->
-    <div class="hidden lg:flex lg:flex-shrink-0">
-        <div class="flex flex-col w-64">
-            <!-- Sidebar component, swap this element with another sidebar if you like -->
-            <div class="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-gray-100">
-                <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-                    <div class="flex items-center flex-shrink-0 px-4">
-                        <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark.svg?color=pink&shade=500" alt="Workflow">
-                    </div>
-                    <nav class="mt-5 flex-1" aria-label="Sidebar">
-                        <div class="px-2 space-y-1">
-                            <!-- Current: "bg-gray-200 text-gray-900", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
-                            <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                <!--
-                                  Heroicon name: outline/home
-
-                                  Current: "text-gray-500", Default: "text-gray-400 group-hover:text-gray-500"
-                                -->
-                                <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                                </svg>
-                                Dashboard
-                            </a>
-
-                            <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                <!-- Heroicon name: outline/calendar -->
-                                <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                </svg>
-                                Calendar
-                            </a>
-
-                            <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                <!-- Heroicon name: outline/user-group -->
-                                <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                                Teams
-                            </a>
-
-                            <a href="#" class="bg-gray-200 text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md" aria-current="page">
-                                <!-- Heroicon name: outline/search-circle -->
-                                <svg class="text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 16l2.879-2.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                Directory
-                            </a>
-
-                            <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                <!-- Heroicon name: outline/speakerphone -->
-                                <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
-                                </svg>
-                                Announcements
-                            </a>
-
-                            <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                <!-- Heroicon name: outline/map -->
-                                <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                                </svg>
-                                Office Map
-                            </a>
-                        </div>
-                        <hr class="border-t border-gray-200 my-5" aria-hidden="true">
-                        <div class="flex-1 px-2 space-y-1">
-                            <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                <!-- Heroicon name: outline/view-grid-add -->
-                                <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z" />
-                                </svg>
-                                Apps
-                            </a>
-
-                            <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                <!-- Heroicon name: outline/cog -->
-                                <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                </svg>
-                                Settings
-                            </a>
-                        </div>
-                    </nav>
-                </div>
-                <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
-                    <a href="#" class="flex-shrink-0 w-full group block">
-                        <div class="flex items-center">
-                            <div>
-                                <img class="inline-block h-9 w-9 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                            </div>
-                            <div class="ml-3">
-                                <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">Tom Cook</p>
-                                <p class="text-xs font-medium text-gray-500 group-hover:text-gray-700">View profile</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
+    <div class="hidden lg:flex lg:flex-col lg:w-64 lg:fixed lg:inset-y-0 lg:border-r lg:border-gray-200 lg:pt-5 lg:pb-4 lg:bg-gray-100">
+        <div class="flex items-center flex-shrink-0 px-6">
+            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark.svg?color=purple&shade=500" alt="Workflow">
         </div>
-    </div>
-    <div class="flex flex-col min-w-0 flex-1 overflow-hidden">
-        <div class="lg:hidden">
-            <div class="flex items-center justify-between bg-gray-50 border-b border-gray-200 px-4 py-1.5">
+        <!-- Sidebar component, swap this element with another sidebar if you like -->
+        <div class="mt-6 h-0 flex-1 flex flex-col overflow-y-auto">
+            <!-- User account dropdown -->
+            <div class="px-3 relative inline-block text-left">
                 <div>
-                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark.svg?color=pink&shade=500" alt="Workflow">
-                </div>
-                <div>
-                    <button type="button" class="-mr-3 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-600">
-                        <span class="sr-only">Open sidebar</span>
-                        <!-- Heroicon name: outline/menu -->
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
+                    <button type="button" class="group w-full bg-gray-100 rounded-md px-3.5 py-2 text-sm text-left font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-purple-500" id="options-menu-button" aria-expanded="false" aria-haspopup="true">
+            <span class="flex w-full justify-between items-center">
+              <span class="flex min-w-0 items-center justify-between space-x-3">
+                <img class="w-10 h-10 bg-gray-300 rounded-full flex-shrink-0" src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" alt="">
+                <span class="flex-1 flex flex-col min-w-0">
+                  <span class="text-gray-900 text-sm font-medium truncate">Jessy Schwarz</span>
+                  <span class="text-gray-500 text-sm truncate">@jessyschwarz</span>
+                </span>
+              </span>
+                <!-- Heroicon name: solid/selector -->
+              <svg class="flex-shrink-0 h-5 w-5 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </span>
                     </button>
                 </div>
+
+                <!--
+                  Dropdown menu, show/hide based on menu state.
+
+                  Entering: "transition ease-out duration-100"
+                    From: "transform opacity-0 scale-95"
+                    To: "transform opacity-100 scale-100"
+                  Leaving: "transition ease-in duration-75"
+                    From: "transform opacity-100 scale-100"
+                    To: "transform opacity-0 scale-95"
+                -->
+                <div class="z-10 mx-3 origin-top absolute right-0 left-0 mt-1 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-200 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu-button" tabindex="-1">
+                    <div class="py-1" role="none">
+                        <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="options-menu-item-0">View profile</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="options-menu-item-1">Settings</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="options-menu-item-2">Notifications</a>
+                    </div>
+                    <div class="py-1" role="none">
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="options-menu-item-3">Get desktop app</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="options-menu-item-4">Support</a>
+                    </div>
+                    <div class="py-1" role="none">
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="options-menu-item-5">Logout</a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="flex-1 relative z-0 flex overflow-hidden">
-            <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last">
-                <!-- Breadcrumb -->
-                <nav class="flex items-start px-4 py-3 sm:px-6 lg:px-8 xl:hidden" aria-label="Breadcrumb">
-                    <a href="#" class="inline-flex items-center space-x-3 text-sm font-medium text-gray-900">
-                        <!-- Heroicon name: solid/chevron-left -->
-                        <svg class="-ml-2 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+            <!-- Sidebar Search -->
+            <div class="px-3 mt-5">
+                <label for="search" class="sr-only">Search</label>
+                <div class="mt-1 relative rounded-md shadow-sm">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none" aria-hidden="true">
+                        <!-- Heroicon name: solid/search -->
+                        <svg class="mr-3 h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                         </svg>
-                        <span>Directory</span>
+                    </div>
+                    <input type="text" name="search" id="search" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-9 sm:text-sm border-gray-300 rounded-md" placeholder="Search">
+                </div>
+            </div>
+            <!-- Navigation -->
+            <nav class="px-3 mt-6">
+                <div class="space-y-1">
+                    <!-- Current: "bg-gray-200 text-gray-900", Default: "text-gray-700 hover:text-gray-900 hover:bg-gray-50" -->
+                    <a href="#" class="bg-gray-200 text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md" aria-current="page">
+                        <!--
+                          Heroicon name: outline/home
+
+                          Current: "text-gray-500", Default: "text-gray-400 group-hover:text-gray-500"
+                        -->
+                        <svg class="text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                        Home
                     </a>
-                </nav>
 
-                <article>
-                    <!-- Profile header -->
-                    <div>
-                        <div>
-                            <img class="h-32 w-full object-cover lg:h-48" src="https://images.unsplash.com/photo-1444628838545-ac4016a5418a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="">
-                        </div>
-                        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div class="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
-                                <div class="flex">
-                                    <img class="h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32" src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
-                                </div>
-                                <div class="mt-6 sm:flex-1 sm:min-w-0 sm:flex sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
-                                    <div class="sm:hidden 2xl:block mt-6 min-w-0 flex-1">
-                                        <h1 class="text-2xl font-bold text-gray-900 truncate">Ricardo Cooper</h1>
-                                    </div>
-                                    <div class="mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
-                                        <button type="button" class="inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
-                                            <!-- Heroicon name: solid/mail -->
-                                            <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                                            </svg>
-                                            <span>Message</span>
-                                        </button>
-                                        <button type="button" class="inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
-                                            <!-- Heroicon name: solid/phone -->
-                                            <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                                            </svg>
-                                            <span>Call</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="hidden sm:block 2xl:hidden mt-6 min-w-0 flex-1">
-                                <h1 class="text-2xl font-bold text-gray-900 truncate">Ricardo Cooper</h1>
-                            </div>
-                        </div>
+                    <a href="#" class="text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                        <!-- Heroicon name: outline/view-list -->
+                        <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                        </svg>
+                        My tasks
+                    </a>
+
+                    <a href="#" class="text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                        <!-- Heroicon name: outline/clock -->
+                        <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Recent
+                    </a>
+                </div>
+                <div class="mt-8">
+                    <!-- Secondary navigation -->
+                    <h3 class="px-3 text-sm font-medium text-gray-500" id="desktop-teams-headline">Teams</h3>
+                    <div class="mt-1 space-y-1" role="group" aria-labelledby="desktop-teams-headline">
+                        <a href="#" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50">
+                            <span class="w-2.5 h-2.5 mr-4 bg-indigo-500 rounded-full" aria-hidden="true"></span>
+                            <span class="truncate"> Engineering </span>
+                        </a>
+
+                        <a href="#" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50">
+                            <span class="w-2.5 h-2.5 mr-4 bg-green-500 rounded-full" aria-hidden="true"></span>
+                            <span class="truncate"> Human Resources </span>
+                        </a>
+
+                        <a href="#" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50">
+                            <span class="w-2.5 h-2.5 mr-4 bg-yellow-500 rounded-full" aria-hidden="true"></span>
+                            <span class="truncate"> Customer Success </span>
+                        </a>
                     </div>
-
-                    <!-- Tabs -->
-                    <div class="mt-6 sm:mt-2 2xl:mt-5">
-                        <div class="border-b border-gray-200">
-                            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                                <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-                                    <!-- Current: "border-pink-500 text-gray-900", Default: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" -->
-                                    <a href="#" class="border-pink-500 text-gray-900 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" aria-current="page"> Profile </a>
-
-                                    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm"> Calendar </a>
-
-                                    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm"> Recognition </a>
-                                </nav>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Main column -->
+    <div class="lg:pl-64 flex flex-col">
+        <!-- Search header -->
+        <div class="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white border-b border-gray-200 lg:hidden">
+            <!-- Sidebar toggle, controls the 'sidebarOpen' sidebar state. -->
+            <button type="button" class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500 lg:hidden">
+                <span class="sr-only">Open sidebar</span>
+                <!-- Heroicon name: outline/menu-alt-1 -->
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h8m-8 6h16" />
+                </svg>
+            </button>
+            <div class="flex-1 flex justify-between px-4 sm:px-6 lg:px-8">
+                <div class="flex-1 flex">
+                    <form class="w-full flex md:ml-0" action="#" method="GET">
+                        <label for="search-field" class="sr-only">Search</label>
+                        <div class="relative w-full text-gray-400 focus-within:text-gray-600">
+                            <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+                                <!-- Heroicon name: solid/search -->
+                                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                </svg>
                             </div>
+                            <input id="search-field" name="search-field" class="block w-full h-full pl-8 pr-3 py-2 border-transparent text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-transparent focus:placeholder-gray-400 sm:text-sm" placeholder="Search" type="search">
                         </div>
-                    </div>
-
-                    <!-- Description list -->
-                    <div class="mt-6 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-                            <div class="sm:col-span-1">
-                                <dt class="text-sm font-medium text-gray-500">Phone</dt>
-                                <dd class="mt-1 text-sm text-gray-900">(555) 123-4567</dd>
-                            </div>
-
-                            <div class="sm:col-span-1">
-                                <dt class="text-sm font-medium text-gray-500">Email</dt>
-                                <dd class="mt-1 text-sm text-gray-900">ricardocooper@example.com</dd>
-                            </div>
-
-                            <div class="sm:col-span-1">
-                                <dt class="text-sm font-medium text-gray-500">Title</dt>
-                                <dd class="mt-1 text-sm text-gray-900">Senior Front-End Developer</dd>
-                            </div>
-
-                            <div class="sm:col-span-1">
-                                <dt class="text-sm font-medium text-gray-500">Team</dt>
-                                <dd class="mt-1 text-sm text-gray-900">Product Development</dd>
-                            </div>
-
-                            <div class="sm:col-span-1">
-                                <dt class="text-sm font-medium text-gray-500">Location</dt>
-                                <dd class="mt-1 text-sm text-gray-900">San Francisco</dd>
-                            </div>
-
-                            <div class="sm:col-span-1">
-                                <dt class="text-sm font-medium text-gray-500">Sits</dt>
-                                <dd class="mt-1 text-sm text-gray-900">Oasis, 4th floor</dd>
-                            </div>
-
-                            <div class="sm:col-span-1">
-                                <dt class="text-sm font-medium text-gray-500">Salary</dt>
-                                <dd class="mt-1 text-sm text-gray-900">$145,000</dd>
-                            </div>
-
-                            <div class="sm:col-span-1">
-                                <dt class="text-sm font-medium text-gray-500">Birthday</dt>
-                                <dd class="mt-1 text-sm text-gray-900">June 8, 1990</dd>
-                            </div>
-
-                            <div class="sm:col-span-2">
-                                <dt class="text-sm font-medium text-gray-500">About</dt>
-                                <dd class="mt-1 max-w-prose text-sm text-gray-900 space-y-5">
-                                    <p>Tincidunt quam neque in cursus viverra orci, dapibus nec tristique. Nullam ut sit dolor consectetur urna, dui cras nec sed. Cursus risus congue arcu aenean posuere aliquam.</p>
-                                    <p>Et vivamus lorem pulvinar nascetur non. Pulvinar a sed platea rhoncus ac mauris amet. Urna, sem pretium sit pretium urna, senectus vitae. Scelerisque fermentum, cursus felis dui suspendisse velit pharetra. Augue et duis cursus maecenas eget quam lectus. Accumsan vitae nascetur pharetra rhoncus praesent dictum risus suspendisse.</p>
-                                </dd>
-                            </div>
-                        </dl>
-                    </div>
-
-                    <!-- Team member list -->
-                    <div class="mt-8 max-w-5xl mx-auto px-4 pb-12 sm:px-6 lg:px-8">
-                        <h2 class="text-sm font-medium text-gray-500">Team members</h2>
-                        <div class="mt-1 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                            <div class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-pink-500">
-                                <div class="flex-shrink-0">
-                                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <a href="#" class="focus:outline-none">
-                                        <span class="absolute inset-0" aria-hidden="true"></span>
-                                        <p class="text-sm font-medium text-gray-900">Leslie Alexander</p>
-                                        <p class="text-sm text-gray-500 truncate">Co-Founder / CEO</p>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-pink-500">
-                                <div class="flex-shrink-0">
-                                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <a href="#" class="focus:outline-none">
-                                        <span class="absolute inset-0" aria-hidden="true"></span>
-                                        <p class="text-sm font-medium text-gray-900">Michael Foster</p>
-                                        <p class="text-sm text-gray-500 truncate">Co-Founder / CTO</p>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-pink-500">
-                                <div class="flex-shrink-0">
-                                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <a href="#" class="focus:outline-none">
-                                        <span class="absolute inset-0" aria-hidden="true"></span>
-                                        <p class="text-sm font-medium text-gray-900">Dries Vincent</p>
-                                        <p class="text-sm text-gray-500 truncate">Manager, Business Relations</p>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-pink-500">
-                                <div class="flex-shrink-0">
-                                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <a href="#" class="focus:outline-none">
-                                        <span class="absolute inset-0" aria-hidden="true"></span>
-                                        <p class="text-sm font-medium text-gray-900">Lindsay Walton</p>
-                                        <p class="text-sm text-gray-500 truncate">Front-end Developer</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </main>
-            <aside class="hidden xl:order-first xl:flex xl:flex-col flex-shrink-0 w-96 border-r border-gray-200">
-                <div class="px-6 pt-6 pb-4">
-                    <h2 class="text-lg font-medium text-gray-900">Directory</h2>
-                    <p class="mt-1 text-sm text-gray-600">Search directory of 3,018 employees</p>
-                    <form class="mt-6 flex space-x-4" action="#">
-                        <div class="flex-1 min-w-0">
-                            <label for="search" class="sr-only">Search</label>
-                            <div class="relative rounded-md shadow-sm">
-                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <!-- Heroicon name: solid/search -->
-                                    <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                                <input type="search" name="search" id="search" class="focus:ring-pink-500 focus:border-pink-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md" placeholder="Search">
-                            </div>
-                        </div>
-                        <button type="submit" class="inline-flex justify-center px-3.5 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
-                            <!-- Heroicon name: solid/filter -->
-                            <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="sr-only">Search</span>
-                        </button>
                     </form>
                 </div>
-                <!-- Directory list -->
-                <nav class="flex-1 min-h-0 overflow-y-auto" aria-label="Directory">
-                    <div class="relative">
-                        <div class="z-10 sticky top-0 border-t border-b border-gray-200 bg-gray-50 px-6 py-1 text-sm font-medium text-gray-500">
-                            <h3>A</h3>
+                <div class="flex items-center">
+                    <!-- Profile dropdown -->
+                    <div class="ml-3 relative">
+                        <div>
+                            <button type="button" class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                <span class="sr-only">Open user menu</span>
+                                <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                            </button>
                         </div>
-                        <ul role="list" class="relative z-0 divide-y divide-gray-200">
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Leslie Abbott</p>
-                                            <p class="text-sm text-gray-500 truncate">Co-Founder / CEO</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
 
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Hector Adams</p>
-                                            <p class="text-sm text-gray-500 truncate">VP, Marketing</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
+                        <!--
+                          Dropdown menu, show/hide based on menu state.
 
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1520785643438-5bf77931f493?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Blake Alexander</p>
-                                            <p class="text-sm text-gray-500 truncate">Account Coordinator</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Fabricio Andrews</p>
-                                            <p class="text-sm text-gray-500 truncate">Senior Art Director</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="relative">
-                        <div class="z-10 sticky top-0 border-t border-b border-gray-200 bg-gray-50 px-6 py-1 text-sm font-medium text-gray-500">
-                            <h3>B</h3>
+                          Entering: "transition ease-out duration-100"
+                            From: "transform opacity-0 scale-95"
+                            To: "transform opacity-100 scale-100"
+                          Leaving: "transition ease-in duration-75"
+                            From: "transform opacity-100 scale-100"
+                            To: "transform opacity-0 scale-95"
+                        -->
+                        <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-200 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                            <div class="py-1" role="none">
+                                <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="user-menu-item-0">View profile</a>
+                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="user-menu-item-2">Notifications</a>
+                            </div>
+                            <div class="py-1" role="none">
+                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="user-menu-item-3">Get desktop app</a>
+                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="user-menu-item-4">Support</a>
+                            </div>
+                            <div class="py-1" role="none">
+                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="user-menu-item-5">Logout</a>
+                            </div>
                         </div>
-                        <ul role="list" class="relative z-0 divide-y divide-gray-200">
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1501031170107-cfd33f0cbdcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Angela Beaver</p>
-                                            <p class="text-sm text-gray-500 truncate">Chief Strategy Officer</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1506980595904-70325b7fdd90?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Yvette Blanchard</p>
-                                            <p class="text-sm text-gray-500 truncate">Studio Artist</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1513910367299-bce8d8a0ebf6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Lawrence Brooks</p>
-                                            <p class="text-sm text-gray-500 truncate">Content Specialist</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
                     </div>
-
-                    <div class="relative">
-                        <div class="z-10 sticky top-0 border-t border-b border-gray-200 bg-gray-50 px-6 py-1 text-sm font-medium text-gray-500">
-                            <h3>C</h3>
-                        </div>
-                        <ul role="list" class="relative z-0 divide-y divide-gray-200">
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1517070208541-6ddc4d3efbcb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Jeffrey Clark</p>
-                                            <p class="text-sm text-gray-500 truncate">Senior Art Director</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Kathryn Cooper</p>
-                                            <p class="text-sm text-gray-500 truncate">Associate Creative Director</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="relative">
-                        <div class="z-10 sticky top-0 border-t border-b border-gray-200 bg-gray-50 px-6 py-1 text-sm font-medium text-gray-500">
-                            <h3>E</h3>
-                        </div>
-                        <ul role="list" class="relative z-0 divide-y divide-gray-200">
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1509783236416-c9ad59bae472?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Alicia Edwards</p>
-                                            <p class="text-sm text-gray-500 truncate">Junior Copywriter</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Benjamin Emerson</p>
-                                            <p class="text-sm text-gray-500 truncate">Director, Print Operations</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1504703395950-b89145a5425b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Jillian Erics</p>
-                                            <p class="text-sm text-gray-500 truncate">Designer</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Chelsea Evans</p>
-                                            <p class="text-sm text-gray-500 truncate">Human Resources Manager</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="relative">
-                        <div class="z-10 sticky top-0 border-t border-b border-gray-200 bg-gray-50 px-6 py-1 text-sm font-medium text-gray-500">
-                            <h3>G</h3>
-                        </div>
-                        <ul role="list" class="relative z-0 divide-y divide-gray-200">
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Michael Gillard</p>
-                                            <p class="text-sm text-gray-500 truncate">Co-Founder / CTO</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Dries Giuessepe</p>
-                                            <p class="text-sm text-gray-500 truncate">Manager, Business Relations</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="relative">
-                        <div class="z-10 sticky top-0 border-t border-b border-gray-200 bg-gray-50 px-6 py-1 text-sm font-medium text-gray-500">
-                            <h3>M</h3>
-                        </div>
-                        <ul role="list" class="relative z-0 divide-y divide-gray-200">
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1507101105822-7472b28e22ac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Jenny Harrison</p>
-                                            <p class="text-sm text-gray-500 truncate">Studio Artist</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Lindsay Hatley</p>
-                                            <p class="text-sm text-gray-500 truncate">Front-end Developer</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Anna Hill</p>
-                                            <p class="text-sm text-gray-500 truncate">Partner, Creative</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="relative">
-                        <div class="z-10 sticky top-0 border-t border-b border-gray-200 bg-gray-50 px-6 py-1 text-sm font-medium text-gray-500">
-                            <h3>S</h3>
-                        </div>
-                        <ul role="list" class="relative z-0 divide-y divide-gray-200">
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Courtney Samuels</p>
-                                            <p class="text-sm text-gray-500 truncate">Designer</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Tom Simpson</p>
-                                            <p class="text-sm text-gray-500 truncate">Director, Product Development</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="relative">
-                        <div class="z-10 sticky top-0 border-t border-b border-gray-200 bg-gray-50 px-6 py-1 text-sm font-medium text-gray-500">
-                            <h3>T</h3>
-                        </div>
-                        <ul role="list" class="relative z-0 divide-y divide-gray-200">
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Floyd Thompson</p>
-                                            <p class="text-sm text-gray-500 truncate">Principal Designer</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Leonard Timmons</p>
-                                            <p class="text-sm text-gray-500 truncate">Senior Designer</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Whitney Trudeau</p>
-                                            <p class="text-sm text-gray-500 truncate">Copywriter</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="relative">
-                        <div class="z-10 sticky top-0 border-t border-b border-gray-200 bg-gray-50 px-6 py-1 text-sm font-medium text-gray-500">
-                            <h3>W</h3>
-                        </div>
-                        <ul role="list" class="relative z-0 divide-y divide-gray-200">
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Kristin Watson</p>
-                                            <p class="text-sm text-gray-500 truncate">VP, Human Resources</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Emily Wilson</p>
-                                            <p class="text-sm text-gray-500 truncate">VP, User Experience</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="relative">
-                        <div class="z-10 sticky top-0 border-t border-b border-gray-200 bg-gray-50 px-6 py-1 text-sm font-medium text-gray-500">
-                            <h3>Y</h3>
-                        </div>
-                        <ul role="list" class="relative z-0 divide-y divide-gray-200">
-                            <li>
-                                <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1505840717430-882ce147ef2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <a href="#" class="focus:outline-none">
-                                            <!-- Extend touch target to entire panel -->
-                                            <span class="absolute inset-0" aria-hidden="true"></span>
-                                            <p class="text-sm font-medium text-gray-900">Emma Young</p>
-                                            <p class="text-sm text-gray-500 truncate">Senior Front-end Developer</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </aside>
+                </div>
+            </div>
         </div>
+        <main class="flex-1">
+            <!-- Page title & actions -->
+            <div class="border-b border-gray-200 px-4 py-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8">
+                <div class="flex-1 min-w-0">
+                    <h1 class="text-lg font-medium leading-6 text-gray-900 sm:truncate">Home</h1>
+                </div>
+                <div class="mt-4 flex sm:mt-0 sm:ml-4">
+                    <button type="button" class="order-1 ml-3 inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 sm:order-0 sm:ml-0">Share</button>
+                    <button type="button" class="order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 sm:order-1 sm:ml-3">Create</button>
+                </div>
+            </div>
+            <!-- Pinned projects -->
+            <div class="px-4 mt-6 sm:px-6 lg:px-8">
+                <h2 class="text-gray-900 text-sm font-medium">Pinned Projects</h2>
+                <ul role="list" class="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2 xl:grid-cols-4 mt-3">
+                    <li class="relative col-span-1 flex shadow-sm rounded-md">
+                        <div class="flex-shrink-0 flex items-center justify-center w-16 bg-pink-600 text-white text-sm font-medium rounded-l-md">GA</div>
+                        <div class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
+                            <div class="flex-1 px-4 py-2 text-sm truncate">
+                                <a href="#" class="text-gray-900 font-medium hover:text-gray-600"> GraphQL API </a>
+                                <p class="text-gray-500">12 Members</p>
+                            </div>
+                            <div class="flex-shrink-0 pr-2">
+                                <button type="button" class="w-8 h-8 bg-white inline-flex items-center justify-center text-gray-400 rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500" id="pinned-project-options-menu-0-button" aria-expanded="false" aria-haspopup="true">
+                                    <span class="sr-only">Open options</span>
+                                    <!-- Heroicon name: solid/dots-vertical -->
+                                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                                    </svg>
+                                </button>
+
+                                <!--
+                                  Dropdown menu, show/hide based on menu state.
+
+                                  Entering: "transition ease-out duration-100"
+                                    From: "transform opacity-0 scale-95"
+                                    To: "transform opacity-100 scale-100"
+                                  Leaving: "transition ease-in duration-75"
+                                    From: "transform opacity-100 scale-100"
+                                    To: "transform opacity-0 scale-95"
+                                -->
+                                <div class="z-10 mx-3 origin-top-right absolute right-10 top-3 w-48 mt-1 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-200 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="pinned-project-options-menu-0-button" tabindex="-1">
+                                    <div class="py-1" role="none">
+                                        <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="pinned-project-options-menu-0-item-0">View</a>
+                                    </div>
+                                    <div class="py-1" role="none">
+                                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="pinned-project-options-menu-0-item-1">Removed from pinned</a>
+                                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="pinned-project-options-menu-0-item-2">Share</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- More items... -->
+                </ul>
+            </div>
+
+            <!-- Projects list (only on smallest breakpoint) -->
+            <div class="mt-10 sm:hidden">
+                <div class="px-4 sm:px-6">
+                    <h2 class="text-gray-900 text-sm font-medium">Projects</h2>
+                </div>
+                <ul role="list" class="mt-3 border-t border-gray-200 divide-y divide-gray-100">
+                    <li>
+                        <a href="#" class="group flex items-center justify-between px-4 py-4 hover:bg-gray-50 sm:px-6">
+              <span class="flex items-center truncate space-x-3">
+                <span class="w-2.5 h-2.5 flex-shrink-0 rounded-full bg-pink-600" aria-hidden="true"></span>
+                <span class="font-medium truncate text-sm leading-6">
+                  GraphQL API
+                  <span class="truncate font-normal text-gray-500">in Engineering</span>
+                </span>
+              </span>
+                            <!-- Heroicon name: solid/chevron-right -->
+                            <svg class="ml-4 h-5 w-5 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </li>
+
+                    <!-- More projects... -->
+                </ul>
+            </div>
+
+            <!-- Projects table (small breakpoint and up) -->
+            <div class="hidden mt-8 sm:block">
+                <div class="align-middle inline-block min-w-full border-b border-gray-200">
+                    <table class="min-w-full">
+                        <thead>
+                        <tr class="border-t border-gray-200">
+                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-sm font-semibold text-gray-900" scope="col">
+                                <span class="lg:pl-2">Project</span>
+                            </th>
+                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-sm font-semibold text-gray-900" scope="col">Members</th>
+                            <th class="hidden md:table-cell px-6 py-3 border-b border-gray-200 bg-gray-50 text-right text-sm font-semibold text-gray-900" scope="col">Last updated</th>
+                            <th class="pr-6 py-3 border-b border-gray-200 bg-gray-50 text-right text-sm font-semibold text-gray-900" scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-100">
+                        <tr>
+                            <td class="px-6 py-3 max-w-0 w-full whitespace-nowrap text-sm font-medium text-gray-900">
+                                <div class="flex items-center space-x-3 lg:pl-2">
+                                    <div class="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-pink-600" aria-hidden="true"></div>
+                                    <a href="#" class="truncate hover:text-gray-600">
+                      <span>
+                        GraphQL API
+                        <span class="text-gray-500 font-normal">in Engineering</span>
+                      </span>
+                                    </a>
+                                </div>
+                            </td>
+                            <td class="px-6 py-3 text-sm text-gray-500 font-medium">
+                                <div class="flex items-center space-x-2">
+                                    <div class="flex flex-shrink-0 -space-x-1">
+                                        <img class="max-w-none h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Dries Vincent">
+
+                                        <img class="max-w-none h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Lindsay Walton">
+
+                                        <img class="max-w-none h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Courtney Henry">
+
+                                        <img class="max-w-none h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Tom Cook">
+                                    </div>
+
+                                    <span class="flex-shrink-0 text-xs leading-5 font-medium">+8</span>
+                                </div>
+                            </td>
+                            <td class="hidden md:table-cell px-6 py-3 whitespace-nowrap text-sm text-gray-500 text-right">March 17, 2020</td>
+                            <td class="px-6 py-3 whitespace-nowrap text-right text-sm font-medium">
+                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                            </td>
+                        </tr>
+
+                        <!-- More projects... -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
     </div>
 </div>

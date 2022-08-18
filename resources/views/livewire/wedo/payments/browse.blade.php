@@ -9,14 +9,54 @@
             <div class="col-span-1 lg:col-span-2">
                 <x-wedo.form-section submit="save">
                     <x-slot name="title">
-                        {{ __('Payment') }}
+                        <div class="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-pink-600" aria-hidden="true"></div>
+                        <a href="#" class="truncate hover:text-gray-600">
+                      <span>
+                        GraphQL API
+                        <span class="text-gray-500 font-normal">in Engineering</span>
+                      </span>
+                        </a>
+            </div>
                     </x-slot>
 
                     <x-slot name="description">
-                        {{ __('You won\'t be charged until the next step.') }}
                     </x-slot>
 
                     <x-slot name="form">
+                        <div class="col-span-4">
+                            <div class="px-4 py-5 sm:p-6">
+                                <div class="shrink-0">
+                                    <svg class="h-12 w-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 95.779 40.164">
+                                        <g transform="translate(24.946 -325.034)">
+                                            <g transform="translate(-38.97 315.774) scale(.26458)">
+                                                <path d="M414 113.4c0-25.6-12.4-45.8-36.1-45.8-23.8 0-38.2 20.2-38.2 45.6 0 30.1 17 45.3 41.4 45.3 11.9 0 20.9-2.7 27.7-6.5v-20c-6.8 3.4-14.6 5.5-24.5 5.5-9.7 0-18.3-3.4-19.4-15.2h48.9c0-1.3.2-6.5.2-8.9zm-49.4-9.5c0-11.3 6.9-16 13.2-16 6.1 0 12.6 4.7 12.6 16z" class="st0" clip-rule="evenodd" fill="#6772e5" fill-rule="evenodd"></path>
+                                                <path d="M301.1 67.6c-9.8 0-16.1 4.6-19.6 7.8l-1.3-6.2h-22v116.6l25-5.3.1-28.3c3.6 2.6 8.9 6.3 17.7 6.3 17.9 0 34.2-14.4 34.2-46.1-.1-29-16.6-44.8-34.1-44.8zm-6 68.9c-5.9 0-9.4-2.1-11.8-4.7l-.1-37.1c2.6-2.9 6.2-4.9 11.9-4.9 9.1 0 15.4 10.2 15.4 23.3 0 13.4-6.2 23.4-15.4 23.4z" class="st0" clip-rule="evenodd" fill="#6772e5" fill-rule="evenodd"></path>
+                                                <path clip-rule="evenodd" fill="#6772e5" fill-rule="evenodd" d="M248.9 56.3V36l-25.1 5.3v20.4z"></path>
+                                                <path class="st0" clip-rule="evenodd" fill="#6772e5" fill-rule="evenodd" d="M223.8 69.3h25.1v87.5h-25.1z"></path>
+                                                <path d="M196.9 76.7l-1.6-7.4h-21.6v87.5h25V97.5c5.9-7.7 15.9-6.3 19-5.2v-23c-3.2-1.2-14.9-3.4-20.8 7.4z" class="st0" clip-rule="evenodd" fill="#6772e5" fill-rule="evenodd"></path>
+                                                <path d="M146.9 47.6l-24.4 5.2-.1 80.1c0 14.8 11.1 25.7 25.9 25.7 8.2 0 14.2-1.5 17.5-3.3V135c-3.2 1.3-19 5.9-19-8.9V90.6h19V69.3h-19z" class="st0" clip-rule="evenodd" fill="#6772e5" fill-rule="evenodd"></path>
+                                                <path d="M79.3 94.7c0-3.9 3.2-5.4 8.5-5.4 7.6 0 17.2 2.3 24.8 6.4V72.2c-8.3-3.3-16.5-4.6-24.8-4.6C67.5 67.6 54 78.2 54 95.9c0 27.6 38 23.2 38 35.1 0 4.6-4 6.1-9.6 6.1-8.3 0-18.9-3.4-27.3-8v23.8c9.3 4 18.7 5.7 27.3 5.7 20.8 0 35.1-10.3 35.1-28.2-.1-29.8-38.2-24.5-38.2-35.7z" class="st0" clip-rule="evenodd" fill="#6772e5" fill-rule="evenodd"></path>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="mt-4">
+                                    <p class="text-secondary-500 text-sm leading-5 dark:text-secondary-400">
+                                        This provider allows you to integrate Laravel Cashier into your store to allow your customers to make payments, subscriptions using Stripe.
+                                        <a href="https://laravel.com/docs/billing" target="_blank" class="text-primary-600 hover:text-primary-500">Learn more about Laravel Cashier</a>
+                                    </p>
+                                    <span class="mt-4 inline-flex rounded-md shadow-sm">
+                                <button class="inline-flex items-center px-4 py-2 border border-secondary-300 dark:border-secondary-700 shadow-sm text-sm font-medium rounded-md text-secondary-700 dark:text-white bg-white dark:bg-secondary-700 hover:bg-secondary-50 dark:hover:bg-secondary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 dark:focus:ring-offset-secondary-900" wire:click="enabledStripe" wire.loading.attr="disabled" type="button">
+        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-secondary-600 dark:text-secondary-300" wire:loading="wire:loading" wire:target="enabledStripe" fill="none" viewBox="0 0 24 24">
+    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+</svg>
+                                    Enabled Stripe Payment
+    </button>
+                            </span>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-span-4">
                             <x-wedo.input.group label="{{ __('Name') }}" for="card-holder-name" :error="$errors->first('card-holder-name')" isRequired>
 
@@ -27,7 +67,7 @@
 
                         <div class="col-span-4" wire:ignore>
 
-                            <x-label for="card-element" class="mb-5"> {{__('Credit Card')}} </x-label>
+                            <x-wedo.label for="card-element" class="mb-5"> {{__('Credit Card')}} </x-wedo.label>
 
                             <div id="card-element"></div>
 
@@ -200,7 +240,22 @@ DDDDdd
 
         const elements = stripe.elements();
 
-        const cardElement = elements.create('card');
+        const cardElement = elements.create('card', {
+            classes : {
+                    base: 'StripeElement bg-gray-100 px-4 py-4 rounded-md shadow-lg'
+            },
+            style: {
+                base: {
+                    fontWeight: '500',
+                    fontFamily: 'Open Sans, Segoe UI, sans-serif',
+                    fontSize: '20px',
+                    fontSmoothing: 'antialiased',
+                    ':hover': {
+                        borderColor: '#164e63',
+                    }
+                }
+            },
+        });
 
         cardElement.mount('#card-element');
 

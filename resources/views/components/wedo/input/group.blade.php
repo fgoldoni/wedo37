@@ -11,7 +11,7 @@
 <div {{ $attributes }}>
     @if($label)
         <div class="flex items-center justify-between">
-            <label for="{{ $for }}" class="block text-sm font-medium leading-5 text-secondary-700 dark:text-secondary-300">
+            <label for="{{ $for }}" class="block text-base font-medium leading-5 text-secondary-700 dark:text-secondary-300">
                 {{ __($label) }} @if($isRequired) <span class="text-rose-500">*</span> @endif
             </label>
             @if($optional)
