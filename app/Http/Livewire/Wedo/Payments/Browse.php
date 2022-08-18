@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Wedo\Payments;
 
+use App\Http\Livewire\Wedo\Carts\Bag;
 use App\Http\Services\Contracts\ApiInterface;
 use Livewire\Component;
 use WireUi\Traits\Actions;
@@ -23,7 +24,13 @@ class Browse extends Component
             'paymentMethod' => $paymentMethod,
         ]);
 
+        session()->forget('cart-' . request()->ip());
+
+        $this->emitTo(Bag::class, 'refreshComponent');
+
         $this->notification()->success(__('Updated'), $response->message);
+
+        return $this->redirectRoute('orders.show', 1);
     }
 
     public function getRowsProperty()
