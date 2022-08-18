@@ -20,9 +20,14 @@ class Browse extends Component
 
     public function setPayment($paymentMethod)
     {
-        $response = app()->make(ApiInterface::class)->post('/payments', [
-            'paymentMethod' => $paymentMethod,
-        ]);
+        try {
+            $response = app()->make(ApiInterface::class)->post('/payments', [
+                'paymentMethod' => $paymentMethod,
+            ]);
+        } catch (\Exception $e) {
+            session()->flash('error', $e->getMessage());
+            return $this->redirectRoute('payments.index');
+        }
 
         session()->forget('cart-' . request()->ip());
 
@@ -30,7 +35,7 @@ class Browse extends Component
 
         $this->notification()->success(__('Updated'), $response->message);
 
-        return $this->redirectRoute('orders.show', 1);
+        return $this->redirectRoute('confirmation.index');
     }
 
     public function getRowsProperty()

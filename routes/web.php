@@ -5,6 +5,7 @@ use App\Http\Controllers\Wedo\ApplicantsController;
 use App\Http\Controllers\Wedo\BillingsController;
 use App\Http\Controllers\Wedo\CartsController;
 use App\Http\Controllers\Wedo\CheckoutController;
+use App\Http\Controllers\Wedo\ConfirmationController;
 use App\Http\Controllers\Wedo\JobController;
 use App\Http\Controllers\Wedo\LoginController;
 use App\Http\Controllers\Wedo\OrdersController;
@@ -91,5 +92,9 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
 Route::group(['middleware' => ['web', 'auth']], function () {
     Route::resource('orders', OrdersController::class);
+});
+
+Route::group(['middleware' => ['web', 'auth']], function () {
+    Route::resource('confirmation', ConfirmationController::class);
 });
 
