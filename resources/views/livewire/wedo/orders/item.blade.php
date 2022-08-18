@@ -1,5 +1,6 @@
 <main class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-    <x-wedo.basket :link="__('Order')"></x-wedo.basket>
+    <x-wedo.basket :back="route('orders.index')" :back-name="__('Browse orders')" :link="__('Order')"></x-wedo.basket>
+
 
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
 
