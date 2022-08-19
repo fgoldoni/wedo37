@@ -39,7 +39,7 @@
                             <dd class="font-medium text-gray-900"><time datetime="2021-03-22">{{ $order->created_at }}</time></dd>
                         </dl>
                         <div class="mt-4 sm:mt-0">
-                            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">View invoice<span aria-hidden="true"> &rarr;</span></a>
+                            <a href="#" class="font-medium text-{{ app_color() }}-600 hover:text-{{ app_color() }}-500">View invoice<span aria-hidden="true"> &rarr;</span></a>
                         </div>
                     </div>
 
@@ -108,24 +108,23 @@
                                                 </dd>
                                             </div>
                                             <div>
-                                                <dt class="font-medium text-gray-900">Shipping updates</dt>
+                                                <dt class="font-medium text-gray-900">{{ __('Duration') }}</dt>
                                                 <dd class="mt-3 text-gray-500 space-y-3">
-                                                    <p>f•••@example.com</p>
-                                                    <p>1•••••••••40</p>
-                                                    <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Edit</button>
+                                                    <p>{{ $item->event->start }}</p>
+                                                    <p> {{ $item->event->end }}</p>
                                                 </dd>
                                             </div>
                                         </dl>
                                         <p class="font-medium text-gray-900 mt-6 md:mt-10">Start on <time datetime="2021-03-24">{{ $item->event->start }}</time></p>
                                         <div class="mt-6">
                                             <div class="bg-gray-200 rounded-full overflow-hidden">
-                                                <div class="h-2 bg-indigo-600 rounded-full" style="width: calc(1 * 100%)"></div>
+                                                <div class="h-2 bg-{{ app_color() }}-600 rounded-full" style="width: calc(1 * 100%)"></div>
                                             </div>
                                             <div class="hidden sm:grid grid-cols-4 font-medium text-gray-600 mt-6">
-                                                <div class="text-indigo-600">Ticket placed</div>
-                                                <div class="text-center text-indigo-600">Processing</div>
-                                                <div class="text-center text-indigo-600">Contact information</div>
-                                                <div class="text-right text-indigo-600">Payment</div>
+                                                <div class="text-{{ app_color() }}-600">Ticket placed</div>
+                                                <div class="text-center text-{{ app_color() }}-600">Processing</div>
+                                                <div class="text-center text-{{ app_color() }}-600">Contact information</div>
+                                                <div class="text-right text-{{ app_color() }}-600">Payment</div>
                                             </div>
                                         </div>
                                     </div>
@@ -177,7 +176,7 @@
                                 @endforelse
                                 <div class="pt-4 flex items-center justify-between">
                                     <dt class="font-medium text-gray-900 uppercase">Total</dt>
-                                    <dd class="font-medium text-indigo-600">€  {{ number_format($order->total, 2,'.', ' ')  }}</dd>
+                                    <dd class="font-medium text-{{ app_color() }}-600">€  {{ number_format($order->total, 2,'.', ' ')  }}</dd>
                                 </div>
                             </dl>
                         </div>

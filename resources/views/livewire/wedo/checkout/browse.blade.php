@@ -21,7 +21,7 @@
                         <div class="col-span-4">
                             <x-wedo.input.group label="{{ __('Name') }}" for="name" :error="$errors->first('name')" isRequired>
 
-                                <x-wedo.input.text value="{{ $name }}" type="text" name="name" id="name" placeholder="{{ __('Name') }}" autocomplete="off" required/>
+                                <x-wedo.input.text wire:model.lazy="name" type="text" name="name" id="name" placeholder="{{ __('Name') }}" autocomplete="off" required/>
 
                             </x-wedo.input.group>
                         </div>
@@ -29,7 +29,7 @@
                         <div class="col-span-4">
                             <x-wedo.input.group label="{{ __('Email address') }}"  for="email" :error="$errors->first('email')" isRequired>
 
-                                <x-wedo.input.text value="{{ $email }}" type="email" name="email" id="email" placeholder="{{ __('Email address') }}" autocomplete="off" required/>
+                                <x-wedo.input.text wire:model.lazy="email" type="email" name="email" id="email" placeholder="{{ __('Email address') }}" autocomplete="off" required/>
 
                             </x-wedo.input.group>
                         </div>

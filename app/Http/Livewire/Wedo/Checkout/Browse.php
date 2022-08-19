@@ -7,6 +7,7 @@ use App\Http\Services\Contracts\ApiInterface;
 use App\Models\Ticket;
 use App\Rules\Phone;
 use App\Rules\RealEmail;
+use App\Services\WedoAuthService;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use WireUi\Traits\Actions;
@@ -57,6 +58,11 @@ class Browse extends Component
             'phone' => $this->phone,
             'address' => $this->address,
         ]);
+
+        if(session()->has('token')) {
+            $this->forget(WedoAuthService::cacheKey(session('token')));
+        }
+
 
         return $this->redirectRoute('login.token', [
             'token' => $response->token,
