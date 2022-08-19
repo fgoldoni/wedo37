@@ -38,14 +38,13 @@ class Browse extends Component
 
     public function mount()
     {
-        $this->name = 'Full name';
+        $this->name = auth()->check() ? auth()->user()->name : 'Test User';
 
-        $this->email = 'test@test.com';
+        $this->email = auth()->check() ? auth()->user()->email : 'test' . uniqid() . '@test.com';
 
-        $this->phone = '015888888888';
+        $this->phone = auth()->check() ? auth()->user()?->phone : '015888888888';
 
-        $this->address = 'Niendorfer Straße 43, 22529 Hamburg';
-
+        $this->address = auth()->check() ? auth()->user()?->address : 'Niendorfer Straße 43, 22529 Hamburg';
     }
 
     public function save()
@@ -59,7 +58,7 @@ class Browse extends Component
             'address' => $this->address,
         ]);
 
-        if(session()->has('token')) {
+        if(auth()->check()) {
             $this->forget(WedoAuthService::cacheKey(session('token')));
         }
 
