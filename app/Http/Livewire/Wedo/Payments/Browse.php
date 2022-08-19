@@ -35,7 +35,7 @@ class Browse extends Component
 
         $this->notification()->success(__('Updated'), $response->message);
 
-        return $this->redirectRoute('confirmation.index');
+        return $this->redirectRoute('confirmation.index', ['orderId' => $response->orderId]);
     }
 
     public function getRowsProperty()

@@ -15,18 +15,14 @@ class Browse extends Component
 
     private string $paypalSecret;
 
-    public bool $loading = true;
-
     protected $listeners = ['setPaypalPayment'];
 
     private mixed $carts;
 
     public function setPaypalPayment($authorizationId)
     {
-        $this->loading = false;
-
         try {
-            app()->make(ApiInterface::class)->post('/paypal', [
+            $response = app()->make(ApiInterface::class)->post('/paypal', [
                 'authorizationId' => $authorizationId,
             ]);
         } catch (\Exception $e) {
@@ -38,7 +34,9 @@ class Browse extends Component
 
         $this->emitTo(Bag::class, 'refreshComponent');
 
-        return $this->redirectRoute('confirmation.index');
+        $this->notification()->success(__('Updated'), $response->message);
+
+        return $this->redirectRoute('confirmation.index', ['orderId' => $response->orderId]);
     }
 
     public function mount()
