@@ -58,9 +58,6 @@ class Browse extends Component
             'address' => $this->address,
         ]);
 
-
-        $this->notification()->success(__('Great'), $response->message);
-
         return $this->redirectRoute('login.token', [
             'token' => $response->token,
             'to' => route('payments.index'),
