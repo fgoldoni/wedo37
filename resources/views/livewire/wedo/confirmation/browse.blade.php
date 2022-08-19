@@ -31,12 +31,12 @@
                     <div class="text-sm border-b border-gray-200 mt-2 pb-5 sm:flex sm:justify-between">
                         <dl class="flex">
                             <dt class="text-gray-500">Order number&nbsp;</dt>
-                            <dd class="font-medium text-gray-900">W086438695</dd>
+                            <dd class="font-medium text-gray-900">{{ $order->id }}</dd>
                             <dt>
                                 <span class="sr-only">Date</span>
                                 <span class="text-gray-400 mx-2" aria-hidden="true">&middot;</span>
                             </dt>
-                            <dd class="font-medium text-gray-900"><time datetime="2021-03-22">March 22, 2021</time></dd>
+                            <dd class="font-medium text-gray-900"><time datetime="2021-03-22">{{ $order->created_at }}</time></dd>
                         </dl>
                         <div class="mt-4 sm:mt-0">
                             <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">View invoice<span aria-hidden="true"> &rarr;</span></a>
@@ -47,54 +47,91 @@
                         <h2 class="sr-only">Products purchased</h2>
 
                         <div class="space-y-24">
-                            <div class="grid grid-cols-1 text-sm sm:grid-rows-1 sm:grid-cols-12 sm:gap-x-6 md:gap-x-8 lg:gap-x-8">
-                                <div class="sm:col-span-4 md:col-span-5 md:row-end-2 md:row-span-2">
-                                    <div class="aspect-w-1 aspect-h-1 bg-gray-50 rounded-lg overflow-hidden">
-                                        <img src="https://tailwindui.com/img/ecommerce-images/confirmation-page-04-product-01.jpg" alt="Off-white t-shirt with circular dot illustration on the front of mountain ridges that fade." class="object-center object-cover">
+                            @forelse($order->items as $item)
+                                <div class="grid grid-cols-1 text-sm sm:grid-rows-1 sm:grid-cols-12 sm:gap-x-6 md:gap-x-8 lg:gap-x-8">
+                                    <div class="sm:col-span-4 md:col-span-5 md:row-end-2 md:row-span-2">
+                                        <div
+                                            @class([
+                                                'p-10 bg-gray-50 border-t-2 shadow-2xl -translate-y-2 border-' . $item->color . '-400 md:mt-0 hover:shadow-xl hover:-translate-y-1 ease-in-out delay-150 duration-300',
+                                            ])>
+                                            <div class="flex flex-col pb-8 border-b border-gray-200">
+                                                <h3 class="flex items-center text-{{ $item->color }}-900">
+                                                    <span class="flex items-start text-4xl tracking-tight sm:text-5xl">
+                                                      <span class="mr-2 text-2xl font-medium"> € </span>
+                                                      <span class="font-semibold"> {{ $item->price }} </span>
+                                                    </span>
+                                                </h3>
+                                                <h4 class="uppercase mt-5 text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ $item->color }}-400 to-{{ $item->color }}-900">{{ $item->quantity }} * {{ $item->name }}</h4>
+                                                <p class="mt-4 text-gray-900 text-xl cursor-pointer uppercase">{{ $item->event->artist }}</p>
+                                            </div>
+                                            <ul class="px-3 pt-8 space-y-3">
+                                                <li class="flex font-medium text-gray-500">
+                                                    <svg class="w-6 h-6 mr-1.5 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                                    Unlimited Access
+                                                </li>
+                                                <li class="flex font-medium text-gray-500">
+                                                    <svg class="w-6 h-6 mr-1.5 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                                    5 Team Members
+                                                </li>
+                                                <li class="flex font-medium text-gray-500">
+                                                    <svg class="w-6 h-6 mr-1.5 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                                    10,000 Api Calls
+                                                </li>
+                                                <li class="flex font-medium text-gray-500">
+                                                    <svg class="w-6 h-6 mr-1.5 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                                    Email Support
+                                                </li>
+                                                <li class="flex font-medium text-gray-500">
+                                                    <svg class="w-6 h-6 mr-1.5 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                                    Email Support
+                                                </li>
+                                                <li class="flex font-medium text-gray-500">
+                                                    <svg class="w-6 h-6 mr-1.5 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                                    Email Support
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="mt-6 sm:col-span-7 sm:mt-0 md:row-end-1">
+                                        <h3 class="text-lg font-medium text-gray-900 uppercase">
+                                            <a href="#">{{ $item->event->name }}</a>
+                                        </h3>
+                                        <p class="font-medium text-gray-900 mt-1">{{ $item->user->name }}</p>
+                                        <p class="text-gray-500 mt-3 whitespace-pre-wrap">{{ $item->description }}</p>
+                                    </div>
+                                    <div class="sm:col-span-12 md:col-span-7">
+                                        <dl class="grid grid-cols-1 gap-y-8 border-b py-8 border-gray-200 sm:grid-cols-2 sm:gap-x-6 sm:py-6 md:py-10">
+                                            <div>
+                                                <dt class="font-medium text-gray-900">{{ __('Location') }}</dt>
+                                                <dd class="mt-3 text-gray-500">
+                                                    {{ $item->event->address }}
+                                                </dd>
+                                            </div>
+                                            <div>
+                                                <dt class="font-medium text-gray-900">Shipping updates</dt>
+                                                <dd class="mt-3 text-gray-500 space-y-3">
+                                                    <p>f•••@example.com</p>
+                                                    <p>1•••••••••40</p>
+                                                    <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Edit</button>
+                                                </dd>
+                                            </div>
+                                        </dl>
+                                        <p class="font-medium text-gray-900 mt-6 md:mt-10">Start on <time datetime="2021-03-24">{{ $item->event->start }}</time></p>
+                                        <div class="mt-6">
+                                            <div class="bg-gray-200 rounded-full overflow-hidden">
+                                                <div class="h-2 bg-indigo-600 rounded-full" style="width: calc(1 * 100%)"></div>
+                                            </div>
+                                            <div class="hidden sm:grid grid-cols-4 font-medium text-gray-600 mt-6">
+                                                <div class="text-indigo-600">Ticket placed</div>
+                                                <div class="text-center text-indigo-600">Processing</div>
+                                                <div class="text-center text-indigo-600">Contact information</div>
+                                                <div class="text-right text-indigo-600">Payment</div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mt-6 sm:col-span-7 sm:mt-0 md:row-end-1">
-                                    <h3 class="text-lg font-medium text-gray-900">
-                                        <a href="#">Distant Mountains Artwork Tee</a>
-                                    </h3>
-                                    <p class="font-medium text-gray-900 mt-1">$36.00</p>
-                                    <p class="text-gray-500 mt-3">You awake in a new, mysterious land. Mist hangs low along the distant mountains. What does it mean?</p>
-                                </div>
-                                <div class="sm:col-span-12 md:col-span-7">
-                                    <dl class="grid grid-cols-1 gap-y-8 border-b py-8 border-gray-200 sm:grid-cols-2 sm:gap-x-6 sm:py-6 md:py-10">
-                                        <div>
-                                            <dt class="font-medium text-gray-900">Delivery address</dt>
-                                            <dd class="mt-3 text-gray-500">
-                                                <span class="block">Floyd Miles</span>
-                                                <span class="block">7363 Cynthia Pass</span>
-                                                <span class="block">Toronto, ON N3Y 4H8</span>
-                                            </dd>
-                                        </div>
-                                        <div>
-                                            <dt class="font-medium text-gray-900">Shipping updates</dt>
-                                            <dd class="mt-3 text-gray-500 space-y-3">
-                                                <p>f•••@example.com</p>
-                                                <p>1•••••••••40</p>
-                                                <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Edit</button>
-                                            </dd>
-                                        </div>
-                                    </dl>
-                                    <p class="font-medium text-gray-900 mt-6 md:mt-10">Processing on <time datetime="2021-03-24">March 24, 2021</time></p>
-                                    <div class="mt-6">
-                                        <div class="bg-gray-200 rounded-full overflow-hidden">
-                                            <div class="h-2 bg-indigo-600 rounded-full" style="width: calc((1 * 2 + 1) / 8 * 100%)"></div>
-                                        </div>
-                                        <div class="hidden sm:grid grid-cols-4 font-medium text-gray-600 mt-6">
-                                            <div class="text-indigo-600">Order placed</div>
-                                            <div class="text-center text-indigo-600">Processing</div>
-                                            <div class="text-center">Shipped</div>
-                                            <div class="text-right">Delivered</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- More products... -->
+                            @empty
+                            @endforelse
                         </div>
                     </div>
 
@@ -131,21 +168,16 @@
                             </dl>
 
                             <dl class="mt-8 divide-y divide-gray-200 text-sm lg:mt-0 lg:pr-8 lg:col-span-7">
-                                <div class="pb-4 flex items-center justify-between">
-                                    <dt class="text-gray-600">Subtotal</dt>
-                                    <dd class="font-medium text-gray-900">$72</dd>
-                                </div>
-                                <div class="py-4 flex items-center justify-between">
-                                    <dt class="text-gray-600">Shipping</dt>
-                                    <dd class="font-medium text-gray-900">$5</dd>
-                                </div>
-                                <div class="py-4 flex items-center justify-between">
-                                    <dt class="text-gray-600">Tax</dt>
-                                    <dd class="font-medium text-gray-900">$6.16</dd>
-                                </div>
+                                @forelse($order->items as $item)
+                                    <div class="pb-4 flex items-center justify-between">
+                                        <dt class="text-gray-600 uppercase btn-title">{{ $item->name }}</dt>
+                                        <dd class="font-medium text-gray-900">{{ $item->quantity }} * € {{ $item->price }}</dd>
+                                    </div>
+                                @empty
+                                @endforelse
                                 <div class="pt-4 flex items-center justify-between">
-                                    <dt class="font-medium text-gray-900">Order total</dt>
-                                    <dd class="font-medium text-indigo-600">$83.16</dd>
+                                    <dt class="font-medium text-gray-900 uppercase">Total</dt>
+                                    <dd class="font-medium text-indigo-600">€  {{ number_format($order->total, 2,'.', ' ')  }}</dd>
                                 </div>
                             </dl>
                         </div>
