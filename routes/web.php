@@ -99,7 +99,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::resource('confirmation', ConfirmationController::class);
 });
 
-Route::group(['middleware' => ['web', 'auth']], function () {
+Route::group(['middleware' => ['web']], function () {
     Route::resource('extras', ExtrasController::class);
 });
 
