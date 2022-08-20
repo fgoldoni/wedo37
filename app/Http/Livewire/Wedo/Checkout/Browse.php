@@ -18,21 +18,21 @@ class Browse extends Component
 
     use WithCachedRows;
 
-    public ?string $name;
+    public ?string $name = null;
 
-    public ?string $email;
+    public ?string $email = null;
 
-    public ?string $phone;
+    public ?string $phone = null;
 
-    public ?string $address;
+    public ?string $address = null;
 
     public function rules(): array
     {
         return [
             'name' => ['required', 'min:4'],
             'email' => ['required', 'email', new RealEmail()],
-            'phone' => ['nullable', 'min:6', new Phone()],
-            'address' => ['required', 'min:4'],
+            'phone' => ['required', 'min:6', new Phone()],
+            'address' => ['nullable', 'min:4'],
         ];
     }
 

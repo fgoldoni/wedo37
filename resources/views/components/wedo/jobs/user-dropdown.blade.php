@@ -14,11 +14,8 @@
     <x-dropdown.item href="{{ route('accounts.index') }}">
         <b>{{ __('layout.user_dropdown.personal_account') }}</b>
     </x-dropdown.item>
-    <x-dropdown.item href="{{ route('resumes.index') }}">
-        <b>{{ __('layout.user_dropdown.resumes') }}</b>
-    </x-dropdown.item>
-    <x-dropdown.item separator href="{{ route('applicants.index') }}">
-        <b>{{ __('layout.user_dropdown.applications') }}</b>
+    <x-dropdown.item separator href="{{ route('orders.index') }}">
+        <b>{{ __('layout.navigation.browse_orders') }}</b>
     </x-dropdown.item>
     <x-dropdown.item separator href="{{ route('shortlisted.index') }}">
         <b>{{ __('layout.user_dropdown.shortlisted') }}</b>

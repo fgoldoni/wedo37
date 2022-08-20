@@ -15,8 +15,8 @@
                         {{ __('layout.navigation.browse_tickets') }}
                     </x-nav-link>
                     @auth
-                        <x-nav-link :href="route('applicants.index')" :active="request()->routeIs('applicants.index')">
-                            {{ __('layout.navigation.applications') }}
+                        <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index')">
+                            {{ __('layout.navigation.browse_orders') }}
                         </x-nav-link>
                     @endauth
                 </div>

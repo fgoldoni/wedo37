@@ -3,12 +3,8 @@
         <aside class="py-6 px-2 sm:px-6 lg:py-0 lg:px-0 lg:col-span-3">
             <nav class="space-y-1">
                 <x-nav-link :href="route('accounts.index')" :active="request()->routeIs('accounts.index')">
-                    <x-heroicon-o-phone-missed-call class="flex-shrink-0 -ml-1 mr-3 h-6 w-6 @if(request()->routeIs('accounts.index')) text-{{ app_color() }}-500 @else text-gray-400 group-hover:text-gray-500 @endif"/>
+                    <x-heroicon-o-pencil class="flex-shrink-0 -ml-1 mr-3 h-6 w-6 @if(request()->routeIs('accounts.index')) text-{{ app_color() }}-500 @else text-gray-400 group-hover:text-gray-500 @endif"/>
                     <span class="truncate"> My Profile </span>
-                </x-nav-link>
-                <x-nav-link :href="route('billings.index')" :active="request()->routeIs('billings.index')">
-                    <x-heroicon-o-credit-card class="flex-shrink-0 -ml-1 mr-3 h-6 w-6 @if(request()->routeIs('billings.index')) text-{{ app_color() }}-500 @else text-gray-400 group-hover:text-gray-500 @endif"/>
-                    <span class="truncate"> Plan & Billing </span>
                 </x-nav-link>
             </nav>
         </aside>

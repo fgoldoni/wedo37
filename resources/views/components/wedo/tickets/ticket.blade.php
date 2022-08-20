@@ -31,8 +31,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="javascript:;" wire:click="add({{ $ticket->id }})" class="uppercase hover:scale-105 hover:shadow-2xl ease-in-out duration-150 flex items-center justify-center w-full px-6 py-3 my-8 text-lg rounded-md text-white bg-gradient-to-r from-{{ $ticket->color }}-500 via-{{ $ticket->color }}-600 to-{{ $ticket->color }}-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-{{ $ticket->color }}-300 dark:focus:ring-{{ $ticket->color }}-800 sm:w-auto">
+                            <a href="javascript:;" wire:click="add({{ $ticket->id }})" class="uppercase hover:scale-105 hover:shadow-2xl ease-in-out duration-150 hidden lg:flex items-center justify-center w-full px-6 py-3 my-8 text-lg rounded-md text-white bg-gradient-to-r from-{{ $ticket->color }}-500 via-{{ $ticket->color }}-600 to-{{ $ticket->color }}-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-{{ $ticket->color }}-300 dark:focus:ring-{{ $ticket->color }}-800 sm:w-auto">
                                 <x-wedo.loader wire:loading wire:target="add({{ $ticket->id }})"></x-wedo.loader>
+                                {{ __('Add to Basket') }}
+                            </a>
+                            <a href="javascript:;" wire:click="continue({{ $ticket->id }})" class="lg:hidden uppercase hover:scale-105 hover:shadow-2xl ease-in-out duration-150 flex items-center justify-center w-full px-6 py-3 my-8 text-lg rounded-md text-white bg-gradient-to-r from-{{ $ticket->color }}-500 via-{{ $ticket->color }}-600 to-{{ $ticket->color }}-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-{{ $ticket->color }}-300 dark:focus:ring-{{ $ticket->color }}-800 sm:w-auto">
+                                <x-wedo.loader wire:loading wire:target="continue({{ $ticket->id }})"></x-wedo.loader>
                                 {{ __('Add to Basket') }}
                             </a>
                             <div class="space-y-4 lg:pl-2">
