@@ -81,11 +81,8 @@
                 <x-responsive-nav-link :href="route('accounts.index')" :active="request()->routeIs('accounts.index')">
                     {{ __('layout.navigation.personal_account') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('resumes.index')" :active="request()->routeIs('resumes.index')">
-                    {{ __('layout.navigation.resumes') }}
-                </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('applicants.index')" :active="request()->routeIs('applicants.index')">
-                    {{ __('layout.navigation.applications') }}
+                <x-responsive-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index')">
+                    {{ __('layout.navigation.browse_orders') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('shortlisted.index')" :active="request()->routeIs('shortlisted.index')">
                     {{ __('layout.navigation.shortlisted') }}
