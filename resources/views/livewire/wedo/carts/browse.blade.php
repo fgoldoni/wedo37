@@ -11,11 +11,9 @@
 
                             <ul role="list" class="border-b border-gray-300 divide-y divide-gray-300">
 
-                                    @forelse ($carts?->items as $item)
+                                    @foreach ($carts?->items as $item)
                                         <x-wedo.carts.item :item="$item->attributes" :model="\App\Models\Ticket::$apiModel" wire:key="item-{{ $item->id }}" action></x-wedo.carts.item>
-                                    @empty
-                                        <p>No Items</p>
-                                    @endforelse
+                                    @endforeach
 
                             </ul>
                         </section>
