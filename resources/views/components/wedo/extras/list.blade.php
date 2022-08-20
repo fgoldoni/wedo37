@@ -1,13 +1,13 @@
 @props(['orders'])
 
-<div id="disclosure-1">
-    <ul role="list" class="divide-y divide-gray-200 border-b border-gray-200">
+<div class="relative scrollbar-thin scrollbar-thumb-secondary-400 scrollbar-track-secondary-200 overflow-y-auto max-height">
+    <ul role="list" class="divide-y divide-gray-200 border-b border-gray-200 p-4">
         @forelse($orders as $order)
             <li class="flex py-6 space-x-6">
                 <img src="{{ asset('images/extra.jpg') }}" alt="{{ $order->name }}" class="btn-img flex-none w-40 h-40 object-center object-cover bg-gray-200 rounded-md">
                 <div class="flex flex-col justify-between space-y-4">
                     <div class="text-sm font-medium space-y-1">
-                        <h3 class="text-gray-900 btn-title uppercase text-justify">{{ $order->name }}</h3>
+                        <h3 class="text-gray-900 btn-title text-xs uppercase text-justify">{{ $order->name }}</h3>
                         <p class="text-gray-900 mt-2">€ {{ $order->price }}</p>
                     </div>
                     <div class="flex space-x-4">
