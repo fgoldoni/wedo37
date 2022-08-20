@@ -36,7 +36,7 @@ class Item extends Component
 
         $this->emitTo(Bag::class, 'refreshComponent');
 
-        $this->emit('openModal', 'wedo.modals.popup.extra');
+        $this->emit('openModal', 'wedo.modals.popup.add');
     }
 
     public function continue(int $id)
