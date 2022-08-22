@@ -22,7 +22,7 @@
                             @foreach($order->items as $item)
                                 <div class="flex justify-between">
                                     <dt class="btn-title text-xs sm:text-base">{{ $item->quantity }} * {{ $item->name }}</dt>
-                                    <dd class="text-gray-900">€ {{ $item->price }}</dd>
+                                    <dd class="text-gray-900 whitespace-nowrap">€ {{ $item->price }}</dd>
                                 </div>
                             @endforeach
 
