@@ -66,6 +66,12 @@ class Browse extends Component
             return $this->redirectRoute('payments.index');
         }
 
+        $this->banner(
+            'We have e-mailed your verification link on ' . $this->email . '. Please check your mailbox!',
+            '#sdsad',
+            'RESEND VERIFICATION EMAIL'
+        );
+
         $this->emit('openModal', 'wedo.modals.popup.email');
     }
 

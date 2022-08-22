@@ -12,8 +12,21 @@ class LoginController extends Controller
     {
         try {
             WedoAuthService::loginWithToken($token);
+            session()->forget('flash');
 
             return redirect($request->get('to', url('/')));
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['message' => $e->getMessage()]);
+        }
+    }
+
+    public function resendMail(Request $request, string $email)
+    {
+        try {
+            WedoAuthService::loginLink($email, route('payments.index'));
+            session()->forget('flash');
+
+            return redirect()->back();
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['message' => $e->getMessage()]);
         }

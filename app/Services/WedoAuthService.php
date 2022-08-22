@@ -71,12 +71,12 @@ class WedoAuthService
         return "wedo.{$token}";
     }
 
-    public static function loginLink(string $email): Response
+    public static function loginLink(string $email, string $to = '/'): Response
     {
         return Http::post(env('API_URL') . '/api/sanctum/token/link', [
             'email' => $email,
             'host' => url('/'),
-            'to' => url('/'),
+            'to' => $to,
         ]);
     }
 
