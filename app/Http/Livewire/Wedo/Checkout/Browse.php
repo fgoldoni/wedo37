@@ -56,20 +56,17 @@ class Browse extends Component
             'email' => $this->email,
             'phone' => $this->phone,
             'address' => $this->address,
+            'to' => route('payments.index'),
+            'is_logged' => auth()->check(),
         ]);
 
-        if(auth()->check()) {
+        if (auth()->check()) {
             $this->forget(WedoAuthService::cacheKey(session('token')));
+
+            return $this->redirectRoute('payments.index');
         }
 
         $this->emit('openModal', 'wedo.modals.popup.email');
-
-
-//        return $this->redirectRoute('login.token', [
-//            'token' => $response->token,
-//            'to' => route('payments.index'),
-//        ]);
-
     }
 
 
