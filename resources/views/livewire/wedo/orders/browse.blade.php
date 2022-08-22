@@ -21,19 +21,19 @@
                         <dl class="text-sm font-medium text-gray-500 mt-10 space-y-6">
                             @foreach($order->items as $item)
                                 <div class="flex justify-between">
-                                    <dt class="btn-title">{{ $item->quantity }} * {{ $item->name }}</dt>
+                                    <dt class="btn-title text-xs sm:text-base">{{ $item->quantity }} * {{ $item->name }}</dt>
                                     <dd class="text-gray-900">€ {{ $item->price }}</dd>
                                 </div>
                             @endforeach
 
                             <div class="flex justify-between">
-                                <dt class="flex btn-title">
+                                <dt class="flex btn-title text-xs sm:text-base">
                                     Subtotal
                                 </dt>
                                 <dd class="text-gray-900">€ {{ $order->sub_total }}</dd>
                             </div>
                             <div class="flex justify-between font-bold">
-                                <dt class="flex btn-title">
+                                <dt class="flex btn-title text-xs sm:text-base">
                                     Total
                                     <span class="ml-2 rounded-full bg-gray-200 text-xs text-gray-600 py-0.5 px-2 tracking-wide">
                                         {{ $order->payment->brand }}
