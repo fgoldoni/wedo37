@@ -1,10 +1,14 @@
 <main class="max-w-7xl mx-auto sm:px-6 lg:px-8">
     @if($carts && $carts->total_quantity)
-        <x-wedo.basket :carts="$carts" :back="route('carts.index')" :back-name="__('layout.navigation.carts')" :link="__('Contact information')"></x-wedo.basket>
+        <x-wedo.basket :carts="$carts" :back="route('carts.index')" :back-name="__('layout.navigation.carts')" :link="__('Contact information')" save></x-wedo.basket>
 
         <h2 class="sr-only">Checkout</h2>
 
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+
+            <div class="lg:col-span-3">
+                <x-wedo.partials.alert></x-wedo.partials.alert>
+            </div>
 
             <div class="col-span-1 lg:col-span-2">
                 <x-wedo.form-section submit="save">

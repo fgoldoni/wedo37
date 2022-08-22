@@ -3,6 +3,10 @@
     <!-- Profile -->
     <x-wedo.jobs.profile :phone="app_event()->phone"></x-wedo.jobs.profile>
 
+    <div class="max-w-7xl mx-auto m-4 sm:px-6 lg:px-8">
+        <x-wedo.partials.alert></x-wedo.partials.alert>
+    </div>
+
     <!-- Tabs -->
     <x-wedo.jobs.tabs :filters="$filters" wire:model="filters.events"></x-wedo.jobs.tabs>
 

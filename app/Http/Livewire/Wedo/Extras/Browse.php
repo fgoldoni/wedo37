@@ -54,7 +54,7 @@ class Browse extends Component
 
         $this->emitTo(Bag::class, 'refreshComponent');
 
-        $this->emit('openModal', 'wedo.modals.popup.extra');
+        $this->notification()->success(__('Great!!'), $response->message);
     }
 
     public function remove(array $item)

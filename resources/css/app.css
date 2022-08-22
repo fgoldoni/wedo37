@@ -7,7 +7,7 @@
 
 @layer components {
     .btn-base {
-        @apply uppercase hover:scale-105 hover:shadow-2xl ease-in-out duration-150;
+        @apply hover:scale-105 hover:shadow-2xl ease-in-out duration-150;
     }
     .btn-icon {
         @apply w-5 h-5 group-hover:ml-1 transition-all ease-out duration-200;

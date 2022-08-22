@@ -12,7 +12,7 @@ class LoginController extends Controller
     {
         try {
             WedoAuthService::loginWithToken($token);
-            session()->forget('flash');
+            session()->forget('verification');
 
             return redirect($request->get('to', url('/')));
         } catch (\Exception $e) {
@@ -24,7 +24,6 @@ class LoginController extends Controller
     {
         try {
             WedoAuthService::loginLink($email, route('payments.index'));
-            session()->forget('flash');
 
             return redirect()->back();
         } catch (\Exception $e) {

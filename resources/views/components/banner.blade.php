@@ -19,13 +19,15 @@
                 <span class="md:hidden" x-text="message"></span>
                 <span class="hidden md:inline" x-text="message"></span>
 
-                <template x-if="url">
+                @if($url)
                     <span class="block sm:ml-2 sm:inline-block">
-                        <a x-href="url" class="btn-title cursor-pointer text-white font-bold underline">
-                            <span x-text="urlName"></span>
+                        <a href="{{ $url }}" class="btn-title cursor-pointer text-white font-bold underline">
+                            {{ $urlName }}
                             <span aria-hidden="true">&rarr;</span>
                         </a>
                     </span>
+                @endif
+
                 </template>
 
             </p>

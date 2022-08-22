@@ -53,7 +53,7 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => ['web'], 'namespace' => 'Wedo'], function () {
     Route::post('login/link', [LoginController::class, 'loginLink'])->name('login.link');
     Route::get('token/{token}', [LoginController::class, 'loginWithToken'])->name('login.token');
-    Route::get('resendMail', [LoginController::class, 'resendMail'])->name('login.token');
+    Route::get('resendMail/{email}', [LoginController::class, 'resendMail'])->name('login.resendMail');
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {

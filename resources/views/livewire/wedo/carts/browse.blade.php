@@ -2,6 +2,10 @@
     @if($carts && $carts->total_quantity)
         <x-wedo.basket :carts="$carts" action :link="__('Basket')"></x-wedo.basket>
 
+        <div class="max-w-7xl mb-8">
+            <x-wedo.partials.alert></x-wedo.partials.alert>
+        </div>
+
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 bg-white">
             <div class="col-span-1 lg:col-span-3">
                 <div class="grid grid-cols-1 border-2 border-gray-200 shadow-2xl p-8 rounded">
