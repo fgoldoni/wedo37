@@ -108,11 +108,15 @@ class Browse extends Component
     {
         $items = session('cart-' . request()->ip())?->items;
 
-        foreach ($items as $item) {
-            if ($item->associatedModel === \App\Models\Extra::$apiModel) {
-                return true;
+        if ($items) {
+            foreach ($items as $item) {
+                if ($item->associatedModel === \App\Models\Extra::$apiModel) {
+                    return true;
+                }
             }
         }
+
+
 
         return false;
     }
