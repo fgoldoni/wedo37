@@ -14,6 +14,8 @@ class Ticket extends Model
 
     public static string $apiModel = 'Modules\Tickets\Entities\Ticket';
 
+    public static string $apiPrefix = 'ticket-';
+
     public function getRows(): array
     {
         $tickets = [];

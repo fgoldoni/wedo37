@@ -12,9 +12,17 @@
                             <ul role="list" class="border-b border-gray-300 divide-y divide-gray-300">
 
                                     @foreach ($carts?->items as $item)
-                                        <x-wedo.carts.item :item="$item->attributes" :model="\App\Models\Ticket::$apiModel" wire:key="item-{{ $item->id }}" action></x-wedo.carts.item>
+                                        @if($item->associatedModel === \App\Models\Ticket::$apiModel)
+                                            <x-wedo.carts.item :item="$item->attributes" :model="\App\Models\Ticket::$apiModel" wire:key="item-{{ $item->id }}" action></x-wedo.carts.item>
+                                        @endif
                                     @endforeach
-
+                            </ul>
+                            <ul role="list" class="border-b border-gray-300 divide-y divide-gray-300">
+                                @foreach ($carts?->items as $item)
+                                    @if($item->associatedModel === \App\Models\Extra::$apiModel)
+                                        <x-wedo.carts.extra :item="$item->attributes" :model="\App\Models\Ticket::$apiModel" wire:key="item-{{ $item->id }}" action></x-wedo.carts.extra>
+                                    @endif
+                                @endforeach
                             </ul>
                         </section>
                     </div>

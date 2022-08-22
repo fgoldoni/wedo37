@@ -12,7 +12,7 @@ class Extra extends Model
 
     use WithCachedRows;
 
-    private static string $apiModel = 'Modules\Extras\Entities\Extra';
+    public static string $apiModel = 'Modules\Extras\Entities\Extra';
 
     public function getRows(): array
     {

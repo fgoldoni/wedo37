@@ -1,6 +1,7 @@
 @props([
     'item',
     'model',
+    'quantity' => null,
     'action' => false,
 ])
 
@@ -21,7 +22,13 @@
                     </span>
                 </h3>
 
-                <h4 class="uppercase mt-5 text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ $item->color }}-400 to-{{ $item->color }}-900">{{ $item->name }}</h4>
+                <h4 class="uppercase mt-5 text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ $item->color }}-400 to-{{ $item->color }}-900">
+                    @if($quantity)
+                        <span>{{ $quantity }} * </span>
+                    @endif
+
+                    {{ $item->name }}
+                </h4>
             </div>
             <ul class="px-3 pt-8 space-y-3">
                 <li class="flex font-medium text-gray-500">
@@ -44,10 +51,10 @@
 
             @if ($action)
                 <div class="px-3 pt-8 space-y-3 flex-1 flex items-end justify-between">
-                    @livewire('wedo.tickets.quantity', ['itemId' => $item->id], key('cart-quantity-' . $item->id))
+                    @livewire('wedo.tickets.quantity', ['itemId' => $item->id, 'model' => $model], key('ticket-quantity-' . $item->id))
                     <div class="ml-4">
-                        <button type="button" wire:click="remove({{ $item->id }})" class="uppercase text-xs font-medium text-rose-600 hover:text-rose-500">
-                            <x-wedo.loader wire:loading wire:target="remove({{ $item->id }})"></x-wedo.loader>
+                        <button type="button" wire:click="remove({{ json_encode(['id' => $item->id, 'model' => $model])  }})" class="uppercase text-xs font-medium text-rose-600 hover:text-rose-500">
+                            <x-wedo.loader wire:loading wire:target="remove({{ json_encode(['id' => $item->id, 'model' => $model]) }})"></x-wedo.loader>
                             <span>Remove</span>
                         </button>
                     </div>

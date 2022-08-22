@@ -69,11 +69,32 @@
                     <div class="col-span-1">
                         <section aria-labelledby="summary-heading" class="mt-16 bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:mt-0 lg:col-span-5">
                             <ul role="list" class="text-sm font-medium text-gray-900 divide-y divide-gray-200 pr-2 scrollbar-thin scrollbar-thumb-secondary-400 scrollbar-track-secondary-200 overflow-y-auto max-height">
-                                @forelse ($carts?->items as $item)
-                                    <x-wedo.carts.item :item="$item->attributes" :model="\App\Models\Ticket::$apiModel" wire:key="item-{{ $item->id }}"></x-wedo.carts.item>
-                                @empty
-                                    <p>No Items</p>
-                                @endforelse
+                                @foreach ($carts?->items as $item)
+                                    @if($item->associatedModel === \App\Models\Ticket::$apiModel)
+                                        <x-wedo.carts.item :item="$item->attributes" :model="\App\Models\Ticket::$apiModel" :quantity="$item->quantity" wire:key="item-{{ $item->id }}"></x-wedo.carts.item>
+                                    @endif
+                                @endforeach
+
+                                    @foreach ($carts?->items as $item)
+                                        @if($item->associatedModel === \App\Models\Extra::$apiModel)
+                                            <div class="group relative p-10">
+                                                <div class="w-full min-h-80 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
+                                                    <img src="{{ asset('images/extra.jpg') }}" alt="{{ $item->name }}" class="btn-img w-full h-full object-center object-cover lg:w-full lg:h-full">
+                                                </div>
+                                                <div class="mt-4 flex justify-between">
+                                                    <div>
+                                                        <h3 class="text-xs text-gray-700 btn-title">
+                                                            <a href="javascript:;">
+                                                                <span aria-hidden="true" class="absolute inset-0"></span>
+                                                                {{ $item->quantity }} * {{ $item->name }}
+                                                            </a>
+                                                        </h3>
+                                                        <p class="mt-1 text-sm text-gray-500">€ {{ $item->price }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
                             </ul>
 
                             <dl class="hidden text-sm font-medium text-gray-900 space-y-6 border-t border-gray-200 pt-6 lg:block">

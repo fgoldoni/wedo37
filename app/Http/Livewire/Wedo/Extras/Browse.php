@@ -3,9 +3,11 @@
 namespace App\Http\Livewire\Wedo\Extras;
 
 use App\Http\Livewire\Wedo\Carts\Bag;
+use App\Http\Livewire\Wedo\Modals\Popup\Extra;
 use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Http\Services\Contracts\ApiInterface;
 use App\Models\Ticket;
+use Illuminate\Support\Str;
 use Livewire\Component;
 use WireUi\Traits\Actions;
 
@@ -15,13 +17,13 @@ class Browse extends Component
 
     use Actions;
 
-    public ?int $show = null;
-
     public ?int $event_id = null;
 
     private ApiInterface $api;
 
     protected $queryString = ['event_id'];
+
+    protected $listeners = [ 'refreshComponent' => '$refresh'];
 
     public array $filters = [
         'search' => null,
@@ -41,54 +43,84 @@ class Browse extends Component
         $this->useCachedRows();
     }
 
-    public function show(int $id)
-    {
-        $this->show = $id;
-
-    }
-
     public function add(int $id)
     {
         $response = app()->make(ApiInterface::class)->post('/carts', [
-            'model' => Ticket::$apiModel,
+            'model' => \App\Models\Extra::$apiModel,
             'id' => $id,
         ]);
-
+        info('add' . $response->data->total_quantity);
         session()->put('cart-' . request()->ip(), $response->data);
 
         $this->emitTo(Bag::class, 'refreshComponent');
 
-        $this->emit('openModal', 'wedo.modals.popup.add');
+        $this->emit('openModal', 'wedo.modals.popup.extra');
     }
 
-    public function continue(int $id)
+    public function remove(array $item)
     {
-        $response = app()->make(ApiInterface::class)->post('/carts', [
-            'model' => Ticket::$apiModel,
-            'id' => $id,
+        $this->dialog()->confirm([
+            'title' => 'Are you Sure ?',
+            'description' => 'Remove item from Basket',
+            'icon' => 'error',
+            'accept' => [
+                'label' => 'Yes, remove it',
+                'method' => 'delete',
+                'params' => $item,
+            ],
+            'reject' => [
+                'label' => 'No, cancel',
+            ],
         ]);
+    }
+
+    public function delete(array $item)
+    {
+        $array = explode('\\', $item['model']);
+
+        $prefix = Str::lower($array[count($array) - 1 ]) . '-';
+
+        $response = app()->make(ApiInterface::class)->delete('/carts/' . $prefix . $item['id']);
 
         session()->put('cart-' . request()->ip(), $response->data);
 
         $this->emitTo(Bag::class, 'refreshComponent');
 
+        $this->notification()->info(__('Great!!'), $response->message);
+    }
+
+    public function basket()
+    {
         return $this->redirectRoute('carts.index');
     }
 
     public function resetFilters()
     {
-        $this->reset('filters', 'show');
+        $this->reset('filters');
     }
 
     public function apiExtras()
     {
         return app()->make(ApiInterface::class)->get('/events-extras/' . $this->event_id)->data;
     }
-    public function getRowProperty()
+
+    public function getHasExtraProperty()
     {
-        return $this->show;
+        $items = session('cart-' . request()->ip())?->items;
+
+        foreach ($items as $item) {
+            if ($item->associatedModel === \App\Models\Extra::$apiModel) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
+    public function getCartsProperty()
+    {
+        return session('cart-' . request()->ip());
+    }
 
     public function getRowsProperty()
     {
@@ -97,6 +129,10 @@ class Browse extends Component
 
     public function render()
     {
-        return view('livewire.wedo.extras.browse', ['orders' => $this->rows, 'order' => $this->row]);
+        return view('livewire.wedo.extras.browse', [
+            'orders' => $this->rows,
+            'carts' => $this->carts,
+            'hasExtra' => $this->hasExtra,
+        ]);
     }
 }

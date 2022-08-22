@@ -29,8 +29,12 @@
                         <x-wedo.jobs.applicant-status status="{{ $status }}"></x-wedo.jobs.applicant-status>
                     @endif
                     @if($apply)
-                        <x-wedo.button wire:click="add({{ $item?->id }})">
+                        <x-wedo.button wire:click="add({{ $item?->id }})" class="hidden sm:block">
                             <x-wedo.loader wire:loading wire:target="add({{ $item?->id }})"></x-wedo.loader>
+                            <span>Add to Basket</span>
+                        </x-wedo.button>
+                        <x-wedo.button wire:click="continue({{ $item?->id }})" class="sm:hidden">
+                            <x-wedo.loader wire:loading wire:target="continue({{ $item?->id }})"></x-wedo.loader>
                             <span>Add to Basket</span>
                         </x-wedo.button>
                    @else

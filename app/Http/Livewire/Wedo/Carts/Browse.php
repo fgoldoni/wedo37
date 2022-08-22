@@ -7,6 +7,7 @@ use App\Http\Services\Contracts\ApiInterface;
 use App\Models\Ticket;
 use App\Rules\Phone;
 use App\Rules\RealEmail;
+use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use WireUi\Traits\Actions;
@@ -27,7 +28,7 @@ class Browse extends Component
         ];
     }
 
-    public function remove(int $id)
+    public function remove(array $item)
     {
         $this->dialog()->confirm([
             'title' => 'Are you Sure ?',
@@ -36,7 +37,7 @@ class Browse extends Component
             'accept' => [
                 'label' => 'Yes, remove it',
                 'method' => 'delete',
-                'params' => $id,
+                'params' => $item,
             ],
             'reject' => [
                 'label' => 'No, cancel',
@@ -44,14 +45,19 @@ class Browse extends Component
         ]);
     }
 
-    public function delete(int $id)
+    public function delete(array $item)
     {
-        $this->dialog();
-        $response = app()->make(ApiInterface::class)->delete('/carts/' . $id);
+
+        $array = explode('\\', $item['model']);
+        $prefix = Str::lower($array[count($array) - 1 ]) . '-';
+
+        $response = app()->make(ApiInterface::class)->delete('/carts/' . $prefix . $item['id']);
 
         session()->put('cart-' . request()->ip(), $response->data);
 
         $this->emitTo(Bag::class, 'refreshComponent');
+
+        $this->emitSelf( 'refreshComponent');
 
         $this->notification()->info(__('Great!!'), $response->message);
     }

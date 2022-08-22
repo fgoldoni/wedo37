@@ -62,11 +62,13 @@ class Browse extends Component
             $this->forget(WedoAuthService::cacheKey(session('token')));
         }
 
+        $this->emit('openModal', 'wedo.modals.popup.email');
 
-        return $this->redirectRoute('login.token', [
-            'token' => $response->token,
-            'to' => route('payments.index'),
-        ]);
+
+//        return $this->redirectRoute('login.token', [
+//            'token' => $response->token,
+//            'to' => route('payments.index'),
+//        ]);
 
     }
 

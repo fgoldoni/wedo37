@@ -51,6 +51,10 @@
                     <img class="-ml-1 mr-2 h-6 w-6" src="{{ asset('images/svg/travel-tickets.svg') }}" alt="">
                     Book Tickets
                 </a>
+                <a href="{{ route('extras.index', ['event_id' => app_event()->id]) }}" class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 bg-gray-700 rounded shadow-md sm:w-auto hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none">
+                    <span class="-ml-1 mr-2 h-6 w-6">🍾</span>
+                    {{ __('Extras') }}
+                </a>
             </div>
         </div>
     </div>
