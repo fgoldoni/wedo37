@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Livewire\Wedo\Paypal;
 
 use App\Http\Livewire\Wedo\Carts\Bag;
@@ -57,16 +56,14 @@ class Browse extends Component
         $orders = json_encode([
             'purchase_units' => [[
                 'description' => app_team_name() . '-' . app_event()->name . ':' . app_event()->id,
-                'items' => array_map(function ($item) {
-                    return [
-                        'name' => $item->name,
-                        'quantity' => $item->quantity,
-                        'unit_amount' => [
-                            'value' => $item->price,
-                            'currency_code' => 'EUR',
-                        ],
-                    ];
-                }, (array) $this->carts->items),
+                'items' => array_map(fn ($item) => [
+                    'name' => $item->name,
+                    'quantity' => $item->quantity,
+                    'unit_amount' => [
+                        'value' => $item->price,
+                        'currency_code' => 'EUR',
+                    ],
+                ], (array) $this->carts->items),
                 'amount' => [
                     'value' => $this->carts->total,
                     'currency_code' => 'EUR',
@@ -79,7 +76,7 @@ class Browse extends Component
                 ]
             ],
 
-        ]]);
+            ]]);
 
         return <<<HTML
              <!-- Replace "test" with your own sandbox Business account app client ID -->
@@ -110,7 +107,6 @@ class Browse extends Component
             </script>
         HTML;
     }
-
 
     public function render()
     {

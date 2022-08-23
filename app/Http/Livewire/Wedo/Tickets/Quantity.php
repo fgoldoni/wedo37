@@ -1,10 +1,8 @@
 <?php
-
 namespace App\Http\Livewire\Wedo\Tickets;
 
 use App\Http\Livewire\Wedo\Carts\Bag;
 use App\Http\Services\Contracts\ApiInterface;
-use App\Models\Ticket;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use WireUi\Traits\Actions;
@@ -21,14 +19,12 @@ class Quantity extends Component
 
     public $item = null;
 
-    public function mount ()
+    public function mount()
     {
         $array = explode('\\', $this->model);
-        $this->prefix = Str::lower($array[count($array) - 1 ]) . '-';
+        $this->prefix = Str::lower($array[count($array) - 1]) . '-';
 
-        $this->item = (array) collect(session('cart-' . request()->ip())->items)->filter(function ($item) {
-            return $item->id == $this->prefix . $this->itemId;
-        })->first();
+        $this->item = (array) collect(session('cart-' . request()->ip())->items)->filter(fn ($item) => $item->id == $this->prefix . $this->itemId)->first();
     }
 
     public function updatedItem($value, $item)

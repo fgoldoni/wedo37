@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Livewire\Wedo\Modals\Popup;
 
 use LivewireUI\Modal\ModalComponent;

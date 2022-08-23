@@ -1,10 +1,8 @@
 <?php
-
 namespace App\Http\Controllers\Wedo;
 
 use App\Http\Controllers\Controller;
 use App\Models\Ticket;
-use Illuminate\Http\Request;
 
 class TicketsController extends Controller
 {

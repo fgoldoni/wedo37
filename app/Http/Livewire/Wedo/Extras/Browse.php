@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Http\Livewire\Wedo\Extras;
 
 use App\Http\Livewire\Wedo\Carts\Bag;
-use App\Http\Livewire\Wedo\Modals\Popup\Extra;
 use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Http\Services\Contracts\ApiInterface;
-use App\Models\Ticket;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use WireUi\Traits\Actions;
@@ -19,11 +16,11 @@ class Browse extends Component
 
     public ?int $event_id = null;
 
-    private ApiInterface $api;
+    private readonly ApiInterface $api;
 
     protected $queryString = ['event_id'];
 
-    protected $listeners = [ 'refreshComponent' => '$refresh'];
+    protected $listeners = ['refreshComponent' => '$refresh'];
 
     public array $filters = [
         'search' => null,
@@ -49,7 +46,6 @@ class Browse extends Component
             'model' => \App\Models\Extra::$apiModel,
             'id' => $id,
         ]);
-        info('add' . $response->data->total_quantity);
         session()->put('cart-' . request()->ip(), $response->data);
 
         $this->emitTo(Bag::class, 'refreshComponent');
@@ -76,9 +72,9 @@ class Browse extends Component
 
     public function delete(array $item)
     {
-        $array = explode('\\', $item['model']);
+        $array = explode('\\', (string) $item['model']);
 
-        $prefix = Str::lower($array[count($array) - 1 ]) . '-';
+        $prefix = Str::lower($array[count($array) - 1]) . '-';
 
         $response = app()->make(ApiInterface::class)->delete('/carts/' . $prefix . $item['id']);
 
@@ -115,8 +111,6 @@ class Browse extends Component
                 }
             }
         }
-
-
 
         return false;
     }

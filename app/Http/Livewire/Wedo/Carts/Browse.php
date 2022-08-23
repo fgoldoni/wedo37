@@ -1,12 +1,8 @@
 <?php
-
 namespace App\Http\Livewire\Wedo\Carts;
 
 use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Http\Services\Contracts\ApiInterface;
-use App\Models\Ticket;
-use App\Rules\Phone;
-use App\Rules\RealEmail;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -20,7 +16,7 @@ class Browse extends Component
 
     use WithCachedRows;
 
-    protected $listeners = [ 'refreshComponent' => '$refresh'];
+    protected $listeners = ['refreshComponent' => '$refresh'];
 
     public function rules(): array
     {
@@ -47,9 +43,8 @@ class Browse extends Component
 
     public function delete(array $item)
     {
-
-        $array = explode('\\', $item['model']);
-        $prefix = Str::lower($array[count($array) - 1 ]) . '-';
+        $array = explode('\\', (string) $item['model']);
+        $prefix = Str::lower($array[count($array) - 1]) . '-';
 
         $response = app()->make(ApiInterface::class)->delete('/carts/' . $prefix . $item['id']);
 
@@ -57,7 +52,7 @@ class Browse extends Component
 
         $this->emitTo(Bag::class, 'refreshComponent');
 
-        $this->emitSelf( 'refreshComponent');
+        $this->emitSelf('refreshComponent');
 
         $this->notification()->info(__('Great!!'), $response->message);
     }

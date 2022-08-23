@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Livewire\Wedo\Confirmation;
 
 use App\Http\Services\Contracts\ApiInterface;

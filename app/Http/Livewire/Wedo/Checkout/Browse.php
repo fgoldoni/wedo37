@@ -1,15 +1,12 @@
 <?php
-
 namespace App\Http\Livewire\Wedo\Checkout;
 
 use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Http\Services\Contracts\ApiInterface;
-use App\Models\Ticket;
 use App\Rules\Phone;
 use App\Rules\RealEmail;
 use App\Services\WedoAuthService;
 use Livewire\Component;
-use Livewire\WithFileUploads;
 use WireUi\Traits\Actions;
 
 class Browse extends Component
@@ -73,8 +70,6 @@ class Browse extends Component
 
         return $this->redirectRoute('checkout.index');
     }
-
-
 
     public function getRowsProperty()
     {

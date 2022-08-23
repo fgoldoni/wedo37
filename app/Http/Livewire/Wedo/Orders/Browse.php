@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Livewire\Wedo\Orders;
 
 use App\Http\Livewire\Wedo\Carts\Bag;
@@ -17,7 +16,7 @@ class Browse extends Component
 
     use WithCachedRows;
 
-    protected $listeners = [ 'refreshComponent' => '$refresh'];
+    protected $listeners = ['refreshComponent' => '$refresh'];
 
     public function rules(): array
     {
@@ -63,6 +62,7 @@ class Browse extends Component
     {
         return $this->redirectRoute('checkout.index');
     }
+
     public function render()
     {
         return view('livewire.wedo.orders.browse', ['orders' => $this->rows]);

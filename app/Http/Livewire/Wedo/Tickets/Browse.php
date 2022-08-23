@@ -1,9 +1,7 @@
 <?php
 namespace App\Http\Livewire\Wedo\Tickets;
 
-use App\Http\Livewire\Wedo\Applicants\Item;
 use App\Http\Livewire\Wedo\Carts\Bag;
-use App\Http\Livewire\Wedo\Modals\Popup\Add;
 use App\Http\Livewire\Wedo\WithCachedRows;
 use App\Http\Services\Contracts\ApiInterface;
 use App\Models\Ticket;
@@ -16,7 +14,7 @@ class Browse extends Component
 
     use Actions;
 
-    private ApiInterface $api;
+    private readonly ApiInterface $api;
 
     protected $queryString = ['filters', 'show'];
 
@@ -43,7 +41,6 @@ class Browse extends Component
     public function show(int $id)
     {
         $this->show = $id;
-
     }
 
     public function add(int $id)
@@ -82,7 +79,7 @@ class Browse extends Component
     public function getRowsQueryProperty()
     {
         return Ticket::query()
-            ->when($this->filters['events'], fn($query, $events) => $query->whereIn('event_id', $events))
+            ->when($this->filters['events'], fn ($query, $events) => $query->whereIn('event_id', $events))
             ->get();
     }
 

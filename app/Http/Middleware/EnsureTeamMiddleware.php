@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Middleware;
 
 use Closure;
@@ -23,7 +22,7 @@ class EnsureTeamMiddleware
                         : throw new Exception('Team not found for ' . $subDomain, 500);
                 });
 
-                Cache::rememberForever(self::cacheTeamKey(), fn() => $team->id);
+                Cache::rememberForever(self::cacheTeamKey(), fn () => $team->id);
             } else {
                 throw new Exception('Invalid subdomain', Response::HTTP_INTERNAL_SERVER_ERROR);
             }

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Livewire\Wedo\Home;
 
 use Livewire\Component;

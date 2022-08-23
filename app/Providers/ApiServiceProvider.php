@@ -28,7 +28,6 @@ class ApiServiceProvider extends ServiceProvider
                 session()->put('flash.bannerUrlName', $urlName);
             }
 
-
             $this->dispatchBrowserEvent('banner-message', [
                 'style' => 'success',
                 'message' => $message,
@@ -46,32 +45,20 @@ class ApiServiceProvider extends ServiceProvider
 
             $titles = implode(',', array_keys((array) $results->first()->getAttributes()));
 
-            $values = $results->map(function ($result) {
-                return implode(',', collect($result->getAttributes())->map(function ($thing) {
-                    return '"' . $thing . '"';
-                })->toArray());
-            });
+            $values = $results->map(fn ($result) => implode(',', collect($result->getAttributes())->map(fn ($thing) => '"' . $thing . '"')->toArray()));
 
             $values->prepend($titles);
 
             return $values->implode("\n");
         });
 
-        Blade::directive('impersonating', function ($guard = null) {
-            return "<?php if (is_impersonating({$guard})) : ?>";
-        });
+        Blade::directive('impersonating', fn ($guard = null) => "<?php if (is_impersonating({$guard})) : ?>");
 
-        Blade::directive('endImpersonating', function () {
-            return '<?php endif; ?>';
-        });
+        Blade::directive('endImpersonating', fn () => '<?php endif; ?>');
 
-        Blade::directive('canImpersonate', function ($guard = null) {
-            return "<?php if (can_impersonate({$guard})) : ?>";
-        });
+        Blade::directive('canImpersonate', fn ($guard = null) => "<?php if (can_impersonate({$guard})) : ?>");
 
-        Blade::directive('endCanImpersonate', function () {
-            return '<?php endif; ?>';
-        });
+        Blade::directive('endCanImpersonate', fn () => '<?php endif; ?>');
 
         Blade::directive('canBeImpersonated', function ($expression) {
             $args = preg_split("/,(\s+)?/", $expression);
@@ -80,8 +67,6 @@ class ApiServiceProvider extends ServiceProvider
             return "<?php if (can_be_impersonated({$args[0]}, {$guard})) : ?>";
         });
 
-        Blade::directive('endCanBeImpersonated', function () {
-            return '<?php endif; ?>';
-        });
+        Blade::directive('endCanBeImpersonated', fn () => '<?php endif; ?>');
     }
 }

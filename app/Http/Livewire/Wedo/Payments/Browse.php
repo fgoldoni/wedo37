@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Livewire\Wedo\Payments;
 
 use App\Http\Livewire\Wedo\Carts\Bag;
@@ -11,7 +10,7 @@ class Browse extends Component
 {
     use Actions;
 
-    public ?string $name;
+    public ?string $name = null;
 
     public function mount()
     {
