@@ -16,6 +16,8 @@ class Browse extends Component
 
     public ?int $event_id = null;
 
+    public ?int $quantity = null;
+
     private readonly ApiInterface $api;
 
     protected $queryString = ['event_id'];
@@ -51,7 +53,7 @@ class Browse extends Component
 
         $this->emitTo(Bag::class, 'refreshComponent');
 
-        $this->notification()->success(__('Great!!'), $response->message);
+        $this->emit('openModal', 'wedo.modals.popup.extra');
     }
 
     public function remove(array $item)
