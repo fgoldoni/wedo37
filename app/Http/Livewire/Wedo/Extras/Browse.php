@@ -46,6 +46,7 @@ class Browse extends Component
             'model' => \App\Models\Extra::$apiModel,
             'id' => $id,
         ]);
+
         session()->put('cart-' . request()->ip(), $response->data);
 
         $this->emitTo(Bag::class, 'refreshComponent');

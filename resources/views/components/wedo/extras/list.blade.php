@@ -1,23 +1,28 @@
 @props(['orders'])
 
 <div class="relative scrollbar-thin scrollbar-thumb-secondary-400 scrollbar-track-secondary-200 overflow-y-auto max-height">
-    <ul role="list" class="divide-y divide-gray-200 border-b border-gray-200 p-4">
+    <div role="list" class="divide-y divide-gray-200 border-b border-gray-200 p-4 space-y-8">
         @forelse($orders as $order)
-            <li class="flex py-6 space-x-6">
-                <img src="{{ asset('images/extra.jpg') }}" alt="{{ $order->name }}" class="btn-img flex-none w-40 h-40 object-center object-cover bg-gray-200 rounded-md">
-                <div class="flex flex-col justify-between space-y-4">
-                    <div class="text-sm font-medium space-y-1">
-                        <h3 class="text-gray-900 btn-title text-xs uppercase text-justify">{{ $order->name }}</h3>
-                        <p class="text-gray-900 mt-2">€ {{ $order->price }}</p>
+            <div>
+                <div class="relative">
+                    <div class="relative w-full h-72 rounded-lg overflow-hidden">
+                        <img src="{{ asset('images/extra.jpg') }}" alt="{{ $order->name }}" class="w-full h-full object-center object-cover">
                     </div>
-                    <div class="flex space-x-4">
-                        <button type="button" wire:click="add({{ $order->id }})" class="uppercase btn-base w-full bg-{{ app_color() }}-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-{{ app_color() }}-500">
-                            <x-wedo.loader wire:loading wire:target="add({{ $order->id }})"></x-wedo.loader>
-                            Add
-                        </button>
+                    <div class="relative mt-4">
+                        <h3 class="text-xs font-medium text-gray-900 btn-title">{{ $order->name }}</h3>
+                    </div>
+                    <div class="absolute top-0 inset-x-0 h-72 rounded-lg p-4 flex items-end justify-end overflow-hidden">
+                        <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black opacity-50"></div>
+                        <p class="relative text-lg font-semibold text-white">€ {{ $order->price }}</p>
                     </div>
                 </div>
-            </li>
+                <div class="mt-6">
+                    <a href="javascript:;" wire:click="add({{ $order->id }})" class="btn-base uppercase relative flex bg-gray-100 border border-transparent rounded-md py-2 px-8 items-center justify-center text-sm font-medium text-gray-900 hover:bg-gray-200">
+                        <x-wedo.loader wire:loading wire:target="add({{ $order->id }})"></x-wedo.loader>
+                        Add
+                    </a>
+                </div>
+            </div>
         @empty
             <div class="text-center">
                 <span class="mx-auto h-12 w-12 text-gray-400">🍾</span>
@@ -36,5 +41,5 @@
             </div>
 
         @endforelse
-    </ul>
+    </div>
 </div>

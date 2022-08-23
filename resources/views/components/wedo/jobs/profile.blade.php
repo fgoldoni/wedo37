@@ -38,11 +38,9 @@
                             <span>Add to Basket</span>
                         </x-wedo.button>
                    @else
-                        <button type="button" class="inline-flex btn-base justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-500">
-                            <!-- Heroicon name: solid/phone -->
-                            <x-heroicon-o-location-marker class="-ml-1 mr-2 h-5 w-5 text-{{ app_color() }}-400"/>
-                            <span>{{ app_event()->city }}</span>
-                        </button>
+                        <x-wedo.button link="{{ route('carts.index') }}">
+                            <span>GO TO BASKET</span>
+                        </x-wedo.button>
                    @endif
                 </div>
             </div>
