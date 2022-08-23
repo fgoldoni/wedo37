@@ -1,20 +1,15 @@
 @props(['order'])
 <div class="bg-white">
-    <div class="max-w-7xl mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-        <h1 class="text-3xl font-bold tracking-tight text-gray-900">Order Details</h1>
+    <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 sm:py-8 lg:px-8 shadow-md">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{ $order->event?->name }}</h1>
 
         <div class="text-sm border-b border-gray-200 mt-2 pb-5 sm:flex sm:justify-between">
             <dl class="flex">
-                <dt class="text-gray-500">Order number&nbsp;</dt>
+                <dt class="text-gray-500">Nr:&nbsp;</dt>
                 <dd class="font-medium text-gray-900">{{ $order->id }}</dd>
-                <dt>
-                    <span class="sr-only">Date</span>
-                    <span class="text-gray-400 mx-2" aria-hidden="true">&middot;</span>
-                </dt>
-                <dd class="font-medium text-gray-900"><time datetime="2021-03-22">{{ $order->created_at }}</time></dd>
             </dl>
             <div class="mt-4 sm:mt-0">
-                <a href="#" class="font-medium text-{{ app_color() }}-600 hover:text-{{ app_color() }}-500">View invoice<span aria-hidden="true"> &rarr;</span></a>
+                <dd class="font-medium text-gray-900"><time datetime="{{ $order->created_at }}">{{ $order->created_at }}</time></dd>
             </div>
         </div>
 
@@ -38,7 +33,7 @@
                                                     </span>
                                         </h3>
                                         <h4 class="uppercase mt-5 text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ $item->color }}-400 to-{{ $item->color }}-900">{{ $item->quantity }} * {{ $item->name }}</h4>
-                                        <p class="mt-4 text-gray-900 text-xl cursor-pointer uppercase">{{ $item->event->artist }}</p>
+                                        <p class="mt-4 text-gray-900 cursor-pointer uppercase">{{ $order->user?->name }}</p>
                                     </div>
                                     <ul class="px-3 pt-8 space-y-3">
                                         <li class="flex font-medium text-gray-500">
@@ -76,32 +71,25 @@
                                 <p class="text-gray-500 mt-3 whitespace-pre-wrap">{{ $item->description }}</p>
                             </div>
                             <div class="sm:col-span-12 md:col-span-7">
-                                <dl class="grid grid-cols-1 gap-y-8 border-b py-8 border-gray-200 sm:grid-cols-2 sm:gap-x-6 sm:py-6 md:py-10">
-                                    <div>
-                                        <dt class="font-medium text-gray-900">{{ __('Location') }}</dt>
-                                        <dd class="mt-3 text-gray-500">
-                                            {{ $item->event->address }}
-                                        </dd>
-                                    </div>
-                                    <div>
-                                        <dt class="font-medium text-gray-900">{{ __('Duration') }}</dt>
-                                        <dd class="mt-3 text-gray-500 space-y-3">
-                                            <p>{{ $item->event->start }}</p>
-                                            <p> {{ $item->event->end }}</p>
-                                        </dd>
-                                    </div>
-                                </dl>
-                                <p class="font-medium text-gray-900 mt-6 md:mt-10">Start on <time datetime="2021-03-24">{{ $item->event->start }}</time></p>
                                 <div class="mt-6">
-                                    <div class="bg-gray-200 rounded-full overflow-hidden">
-                                        <div class="h-2 bg-{{ app_color() }}-600 rounded-full" style="width: calc(1 * 100%)"></div>
-                                    </div>
-                                    <div class="hidden sm:grid grid-cols-4 font-medium text-gray-600 mt-6">
-                                        <div class="text-{{ app_color() }}-600">Ticket placed</div>
-                                        <div class="text-center text-{{ app_color() }}-600">Processing</div>
-                                        <div class="text-center text-{{ app_color() }}-600">Contact information</div>
-                                        <div class="text-right text-{{ app_color() }}-600">Payment</div>
-                                    </div>
+
+                                    <!-- Section 1 -->
+                                    <section class="h-auto bg-white relative overflow-hidden">
+                                        <!-- Top Mesh BG -->
+                                        <div class="absolute top-0 opacity-90 overflow-hidden w-full mx-auto">
+                                            <img src="https://cdn.devdojo.com/images/june2022/mesh.png">
+                                        </div>
+                                        <div class="bg-gradient-to-t from-white z-10 absolute inset-0"></div>
+                                        <div class="flex relative py-10 flex-col z-20 px-10 justify-center items-center tracking-normal leading-6 sm:text-center text-white box-border">
+                                            <h2 class="mb-8 font-sans text-gray-900 text-5xl sm:text-6xl font-semibold tracking-tighter leading-none sm:max-w-lg">
+                                                {{ $item->event->start }}
+                                            </h2>
+                                            <p class="text-2xl font-normal text-gray-500 tracking-tight">
+                                                {{ $item->event->address }}
+                                            </p>
+                                        </div>
+                                    </section>
+
                                 </div>
                             </div>
                         </div>
@@ -139,12 +127,21 @@
             <div class="bg-gray-50 rounded-lg py-6 px-6 lg:px-0 lg:py-8 lg:grid lg:grid-cols-12 lg:gap-x-8">
                 <dl class="grid grid-cols-1 gap-6 text-sm sm:grid-cols-2 md:gap-x-8 lg:pl-8 lg:col-span-5">
                     <div>
-                        <dt class="font-medium text-gray-900">Billing address</dt>
-                        <dd class="mt-3 text-gray-500">
-                            <span class="block">Floyd Miles</span>
-                            <span class="block">7363 Cynthia Pass</span>
-                            <span class="block">Toronto, ON N3Y 4H8</span>
-                        </dd>
+                        <dt class="font-medium text-gray-900">Billing Information</dt>
+                        @if($order->payment->brand === 'Paypal')
+                            <dd class="mt-3 text-gray-500">
+                                <span class="block">{{ $order->user?->name }}</span>
+                                <span class="block">{{ $order->user?->street }}</span>
+                                <span class="block">{{ $order->user?->zip }} {{ $order->user?->city }}, {{ $order->user?->country_code }}</span>
+                            </dd>
+                        @else
+                            <dd class="mt-3 text-gray-500">
+                                <span class="block">{{ $order->user?->name }}</span>
+                                <span class="block">{{ $order->user?->email }}</span>
+                                <span class="block">{{ $order->user?->phone }}</span>
+                            </dd>
+                        @endif
+
                     </div>
                     <div>
                         <dt class="font-medium text-gray-900">Payment information</dt>
@@ -165,7 +162,6 @@
                             @if($order->payment->brand != 'Paypal')
                                 <div class="ml-4">
                                     <p class="text-gray-900">Ending with {{ $order->payment->last4  }}</p>
-                                    <p class="text-gray-600">Expires 02 / 24</p>
                                 </div>
                             @endif
                         </dd>
@@ -175,8 +171,8 @@
                 <dl class="mt-8 divide-y divide-gray-200 text-sm lg:mt-0 lg:pr-8 lg:col-span-7">
                     @forelse($order->items as $item)
                         <div class="pb-4 flex items-center justify-between">
-                            <dt class="text-gray-600 uppercase btn-title">{{ $item->name }}</dt>
-                            <dd class="font-medium text-gray-900">{{ $item->quantity }} * € {{ $item->price }}</dd>
+                            <dt class="text-gray-600 uppercase btn-title text-xs">{{ $item->name }}</dt>
+                            <dd class="font-medium text-gray-900 whitespace-nowrap">{{ $item->quantity }} * € {{ $item->price }}</dd>
                         </div>
                     @empty
                     @endforelse

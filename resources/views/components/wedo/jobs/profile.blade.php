@@ -37,7 +37,7 @@
                             <x-wedo.loader wire:loading wire:target="continue({{ $item?->id }})"></x-wedo.loader>
                             <span>Add to Basket</span>
                         </x-wedo.button>
-                   @else
+                   @elseif(session('cart-' . request()->ip()))
                         <x-wedo.button link="{{ route('carts.index') }}">
                             <span>GO TO BASKET</span>
                         </x-wedo.button>

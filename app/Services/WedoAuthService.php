@@ -15,9 +15,10 @@ class WedoAuthService
     public static function retrieveUser(string $token): WedoUser
     {
         return Cache::rememberForever(static::cacheKey($token), function () use ($token) {
+
             $response = Http::withToken($token)->get(env('API_URL') . '/api/user');
 
-            $user = $response->json();
+            $user = $response->json()['data'];
 
             $user['token'] = $token;
 

@@ -35,13 +35,13 @@ class Browse extends Component
 
     public function mount()
     {
-        $this->name = auth()->check() ? auth()->user()->name : 'Test User';
+        $this->name = auth()->user()?->name;
 
-        $this->email = auth()->check() ? auth()->user()->email : 'test' . uniqid() . '@test.com';
+        $this->email = auth()->user()?->email;
 
-        $this->phone = auth()->check() ? auth()->user()?->phone : '015888888888';
+        $this->phone = auth()->user()?->phone;
 
-        $this->address = auth()->check() ? auth()->user()?->address : 'Niendorfer Straße 43, 22529 Hamburg';
+        $this->address = auth()->user()?->address;
     }
 
     public function save()
@@ -65,8 +65,6 @@ class Browse extends Component
 
         session()->put('verification.text', 'We have e-mailed your login link on ' . $this->email . '. Please check your mailbox!');
         session()->put('verification.url', route('login.resendMail', $this->email));
-
-        $this->notification()->success(__('Great!!'), $response->message);
 
         return $this->redirectRoute('checkout.index');
     }

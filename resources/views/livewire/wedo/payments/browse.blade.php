@@ -282,7 +282,7 @@
         cardButton.addEventListener('click', async (e) => {
             const { paymentMethod, error } = await stripe.createPaymentMethod(
                 'card', cardElement, {
-                    billing_details: { name: cardHolderName.value }
+                    billing_details: { name: cardHolderName.value, email: '{{ auth()->user()->email }}', phone: '{{ auth()->user()->phone }}' }
                 }
             );
 
