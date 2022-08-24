@@ -87,9 +87,9 @@
                                             <p class="text-2xl font-normal text-gray-500 tracking-tight">
                                                 {{ $item->event->address }}
                                             </p>
-                                            <p class="text-2xl font-normal text-gray-500 tracking-tight">
+                                            <a href="tel: {{ $item->event->phone }}" class="text-2xl font-normal text-gray-500 tracking-tight">
                                                 {{ $item->event->phone }}
-                                            </p>
+                                            </a>
                                         </div>
                                     </section>
 
