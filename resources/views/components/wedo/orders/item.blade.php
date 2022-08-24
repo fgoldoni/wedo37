@@ -1,7 +1,7 @@
 @props(['order'])
 <div class="bg-white">
     <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 sm:py-8 lg:px-8 shadow-md">
-        <h2 class="btn-title text-3xl font-bold tracking-tight text-gray-900 uppercase">{{ $order->event?->name }}</h2>
+        <h2 class="btn-title text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900 uppercase">{{ $order->event?->name }}</h2>
 
         <div class="text-sm border-b border-gray-200 mt-2 pb-5 sm:flex sm:justify-between">
             <dl class="flex">
@@ -87,38 +87,37 @@
                     @endif
                 @empty
                 @endforelse
-                <div class="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+                <ul role="list" class="divide-y divide-gray-200">
                     @forelse($order->items as $item)
                         @if($item->associatedModel === \App\Models\Extra::$apiModel)
-                            <div>
-                                <div class="relative">
-                                    <div class="relative w-full h-72 rounded-lg overflow-hidden">
-                                        <img src="{{ asset('images/extra.jpg') }}" alt="{{ $item->name }}" class="w-full h-full object-center object-cover">
+                            <li class="p-4 sm:p-6">
+                                <div class="flex items-center sm:items-start">
+                                    <div class="flex-shrink-0 w-20 h-20 bg-gray-200 rounded-lg overflow-hidden sm:w-40 sm:h-40">
+                                        <img src="{{ asset('images/extra.jpg') }}" alt="{{ $item->name }}" class="btn-img w-full h-full object-center object-cover">
                                     </div>
-                                    <div class="relative mt-4">
-                                        <h3 class="text-xs font-medium text-gray-900 btn-title uppercase">{{ $item->quantity }} * {{ $item->name }}</h3>
-                                    </div>
-                                    <div class="absolute top-0 inset-x-0 h-72 rounded-lg p-4 flex items-end justify-end overflow-hidden">
-                                        <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black opacity-50"></div>
-                                        <p class="relative text-lg font-semibold text-white">€ {{ $item->price }}</p>
+                                    <div class="flex-1 ml-6 text-sm">
+                                        <div class="font-medium text-gray-900 sm:flex sm:justify-between">
+                                            <h5 class="btn-title uppercase">{{ $item->quantity }} * {{ $item->name }}</h5>
+                                            <p class="mt-2 sm:mt-0">€ {{ $item->price }}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </li>
                         @endif
                     @empty
                     @endforelse
-                </div>
+                </ul>
             </div>
         </div>
 
         <!-- Billing -->
-        <div class="mt-24">
-            <h2 class="sr-only">Billing Summary</h2>
+        <section aria-labelledby="summary-heading" class="mt-16">
+            <h2 id="summary-heading" class="sr-only">Billing Summary</h2>
 
-            <div class="bg-gray-50 rounded-lg py-6 px-6 lg:px-0 lg:py-8 lg:grid lg:grid-cols-12 lg:gap-x-8">
-                <dl class="grid grid-cols-1 gap-6 text-sm sm:grid-cols-2 md:gap-x-8 lg:pl-8 lg:col-span-5">
+            <div class="bg-gray-100 py-6 px-4 sm:px-6 sm:rounded-lg lg:px-8 lg:py-8 lg:grid lg:grid-cols-12 lg:gap-x-8">
+                <dl class="grid grid-cols-2 gap-6 text-sm sm:grid-cols-2 md:gap-x-8 lg:col-span-7">
                     <div>
-                        <dt class="font-medium text-gray-900">Billing Information</dt>
+                        <dt class="font-medium text-gray-900">Billing address</dt>
                         @if($order->payment->brand === 'Paypal')
                             <dd class="mt-3 text-gray-500">
                                 <span class="block">{{ $order->user?->name }}</span>
@@ -132,12 +131,12 @@
                                 <span class="block">{{ $order->user?->phone }}</span>
                             </dd>
                         @endif
-
                     </div>
                     <div>
                         <dt class="font-medium text-gray-900">Payment information</dt>
-                        <dd class="mt-3 flex">
-                            <div>
+                        <dd class="-ml-4 -mt-1 flex flex-wrap">
+
+                            <div class="ml-4 mt-4 flex-shrink-0">
                                 @if($order->payment->brand === 'visa')
                                     <svg aria-hidden="true" width="36" height="24" viewBox="0 0 36 24" xmlns="http://www.w3.org/2000/svg" class="h-6 w-auto">
                                         <rect width="36" height="24" rx="4" fill="#224DBA" />
@@ -153,10 +152,12 @@
                                 @elseif ($order->payment->brand === 'Paypal')
                                     <img class="h-18" src="{{ asset('images/svg/paypal-2.svg') }}" alt="">
                                     <p class="sr-only">{{ $order->payment->brand }}</p>
+                                @elseif ($order->payment->brand != 'Paypal')
+                                    <p class="text-gray-900">Ending with {{ $order->payment->last4  }}</p>
                                 @endif
                             </div>
                             @if($order->payment->brand != 'Paypal')
-                                <div class="ml-4">
+                                <div class="ml-4 mt-4">
                                     <p class="text-gray-900">Ending with {{ $order->payment->last4  }}</p>
                                 </div>
                             @endif
@@ -164,7 +165,7 @@
                     </div>
                 </dl>
 
-                <dl class="mt-8 divide-y divide-gray-200 text-sm lg:mt-0 lg:pr-8 lg:col-span-7">
+                <dl class="mt-8 divide-y divide-gray-200 text-sm lg:mt-0 lg:col-span-5">
                     @forelse($order->items as $item)
                         <div class="pb-4 flex items-center justify-between">
                             <dt class="text-gray-600 uppercase btn-title text-xs">{{ $item->name }}</dt>
@@ -178,6 +179,6 @@
                     </div>
                 </dl>
             </div>
-        </div>
+        </section>
     </div>
 </div>
