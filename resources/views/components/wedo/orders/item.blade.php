@@ -9,7 +9,7 @@
                 <dd class="font-medium text-gray-900">{{ $order->id }}</dd>
             </dl>
             <div class="mt-4 sm:mt-0">
-                <dd class="font-medium text-gray-900"><time datetime="{{ $order->created_at }}">{{ $order->created_at }}</time></dd>
+                <dd class="font-medium text-gray-900"><time datetime="{{ $order->created_at }}">{{ \Illuminate\Support\Carbon::parse($order->created_at)->isoFormat('MMM DD, Y') }}</time></dd>
             </div>
         </div>
 
@@ -81,8 +81,8 @@
                                         </div>
                                         <div class="bg-gradient-to-t from-white z-10 absolute inset-0"></div>
                                         <div class="flex relative py-10 flex-col z-20 px-10 justify-center items-center tracking-normal leading-6 sm:text-center text-white box-border">
-                                            <h2 class="mb-8 font-sans text-gray-900 text-5xl sm:text-6xl font-semibold tracking-tighter leading-none sm:max-w-lg">
-                                                {{ $item->event->start }}
+                                            <h2 class="uppercase mb-8 font-sans text-gray-900 text-5xl sm:text-6xl font-semibold tracking-tighter leading-none sm:max-w-lg">
+                                                {{ \Illuminate\Support\Carbon::parse($item->event->start)->isoFormat(    'MMM DD')  }}
                                             </h2>
                                             <p class="text-2xl font-normal text-gray-500 tracking-tight">
                                                 {{ $item->event->address }}
