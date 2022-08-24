@@ -103,7 +103,7 @@
 
                             <dl class="hidden text-sm font-medium text-gray-900 space-y-6 border-t border-gray-200 pt-6 lg:block">
                                 <div class="flex items-center justify-between">
-                                    <dt class="text-gray-600">Subtotal</dt>
+                                    <dt class="text-gray-600 uppercase">Subtotal</dt>
                                     <dd>€ {{ $carts->sub_total }}</dd>
                                 </div>
 
@@ -202,8 +202,8 @@
                                         <dl class="max-w-lg mx-auto space-y-6">
                                             @foreach($carts?->items as $item)
                                                 <div class="flex items-center justify-between">
-                                                    <dt class="text-gray-600 uppercase">{{ $item->quantity }} * {{ $item->name }}</dt>
-                                                    <dd>$ {{ $item->price }}</dd>
+                                                    <dt class="text-gray-600 uppercase whitespace-nowrap">{{ $item->quantity }} * {{ $item->name }}</dt>
+                                                    <dd>€ {{ $item->price }}</dd>
                                                 </div>
                                             @endforeach
 

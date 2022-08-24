@@ -35,6 +35,7 @@ class Item extends Component
         session()->put('cart-' . request()->ip(), $response->data);
 
         $this->emitTo(Bag::class, 'refreshComponent');
+        $this->emitup(Browse::class, 'refreshComponent');
 
         $this->emit('openModal', 'wedo.modals.popup.extra');
     }

@@ -1,7 +1,7 @@
 @props(['order'])
 <div class="bg-white">
     <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 sm:py-8 lg:px-8 shadow-md">
-        <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{ $order->event?->name }}</h1>
+        <h1 class="btn-title text-3xl font-bold tracking-tight text-gray-900 uppercase">{{ $order->event?->name }}</h1>
 
         <div class="text-sm border-b border-gray-200 mt-2 pb-5 sm:flex sm:justify-between">
             <dl class="flex">

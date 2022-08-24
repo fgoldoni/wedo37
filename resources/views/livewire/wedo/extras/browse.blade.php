@@ -13,9 +13,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:gap-4 lg:grid-cols-3">
                 <div class="lg:col-span-3">
-                    <div class="grid grid-cols-1 mb-8">
+                    <div class="grid grid-cols-1 mb-8 bg-gray-50 shadow-lg pb-4">
                         <x-wedo.extras.list :orders="$orders" ></x-wedo.extras.list>
-                        <section aria-labelledby="summary-heading" class="mt-10">
+                        <section aria-labelledby="summary-heading" class="mt-10 px-8">
                             <h2 id="summary-heading" class="sr-only">Order summary</h2>
 
                             <div class="mt-10">
