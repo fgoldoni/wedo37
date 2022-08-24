@@ -1,7 +1,7 @@
 @props(['order'])
 <div class="bg-white">
     <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 sm:py-8 lg:px-8 shadow-md">
-        <h1 class="btn-title text-3xl font-bold tracking-tight text-gray-900 uppercase">{{ $order->event?->name }}</h1>
+        <h2 class="btn-title text-3xl font-bold tracking-tight text-gray-900 uppercase">{{ $order->event?->name }}</h2>
 
         <div class="text-sm border-b border-gray-200 mt-2 pb-5 sm:flex sm:justify-between">
             <dl class="flex">
@@ -63,37 +63,25 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="mt-6 sm:col-span-7 sm:mt-0 md:row-end-1">
-                                <h3 class="text-lg font-medium text-gray-900 uppercase">
-                                    <a href="#">{{ $item->event->name }}</a>
-                                </h3>
-                                <p class="font-medium text-gray-900 mt-1">{{ $item->user->name }}</p>
-                                <p class="text-gray-500 mt-3 whitespace-pre-wrap">{{ $item->description }}</p>
-                            </div>
                             <div class="sm:col-span-12 md:col-span-7">
-                                <div class="mt-6">
-
-                                    <!-- Section 1 -->
-                                    <section class="h-auto bg-white relative overflow-hidden">
-                                        <!-- Top Mesh BG -->
-                                        <div class="absolute top-0 opacity-90 overflow-hidden w-full mx-auto">
-                                            <img src="https://cdn.devdojo.com/images/june2022/mesh.png">
-                                        </div>
-                                        <div class="bg-gradient-to-t from-white z-10 absolute inset-0"></div>
-                                        <div class="flex relative py-10 flex-col z-20 px-10 justify-center items-center tracking-normal leading-6 sm:text-center text-white box-border">
-                                            <h2 class="uppercase mb-8 font-sans text-gray-900 text-5xl sm:text-6xl font-semibold tracking-tighter leading-none sm:max-w-lg">
-                                                {{ \Illuminate\Support\Carbon::parse($item->event->start)->isoFormat(    'MMM DD')  }}
-                                            </h2>
-                                            <p class="text-2xl font-normal text-gray-500 tracking-tight">
-                                                {{ $item->event->address }}
-                                            </p>
-                                            <a href="tel: {{ $item->event->phone }}" class="text-2xl font-normal text-gray-500 tracking-tight">
-                                                {{ $item->event->phone }}
-                                            </a>
-                                        </div>
-                                    </section>
-
-                                </div>
+                                <section class="h-auto bg-white relative overflow-hidden">
+                                    <!-- Top Mesh BG -->
+                                    <div class="absolute top-0 opacity-90 overflow-hidden w-full mx-auto">
+                                        <img src="https://cdn.devdojo.com/images/june2022/mesh.png">
+                                    </div>
+                                    <div class="bg-gradient-to-t from-white z-10 absolute inset-0"></div>
+                                    <div class="flex relative py-10 flex-col z-20 px-10 justify-center items-center tracking-normal leading-6 sm:text-center text-white box-border">
+                                        <h2 class="uppercase mb-8 font-sans text-gray-900 text-5xl sm:text-6xl font-semibold tracking-tighter leading-none sm:max-w-lg">
+                                            {{ \Illuminate\Support\Carbon::parse($item->event->start)->isoFormat(    'MMM DD')  }}
+                                        </h2>
+                                        <p class="text-2xl font-normal text-gray-500 text-center tracking-tight">
+                                            {{ $item->event->address }}
+                                        </p>
+                                        <a href="tel: {{ $item->event->phone }}" class="btn-title  text-center  text-xl font-normal text-{{ app_color() }}-500 tracking-tight">
+                                            {{ $item->event->phone }}
+                                        </a>
+                                    </div>
+                                </section>
                             </div>
                         </div>
                     @endif
