@@ -1,4 +1,6 @@
-<main class="max-w-7xl mx-auto pb-10 lg:py-12 lg:px-8">
+<main class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+<x-wedo.basket :link="__('Personal Account')" title="Personal Account"></x-wedo.basket>
+
     <div class="lg:grid lg:grid-cols-12 lg:gap-x-5">
         <aside class="py-6 px-2 sm:px-6 lg:py-0 lg:px-0 lg:col-span-3">
             <nav class="space-y-1">

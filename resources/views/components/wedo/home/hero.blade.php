@@ -26,25 +26,15 @@
                 <x-heroicon-o-location-marker class="-ml-1 mr-2 h-6 w-6"/>
                 {{ app_event()?->address }}
             </p>
-            <div class="uppercase flex items-center pt-2 sm:flex-row sm:pt-4 space-x-1  mb-5">
-                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
-                  <svg class="-ml-1 mr-1.5 h-2 w-2 text-gray-400" fill="currentColor" viewBox="0 0 8 8">
-                    <circle cx="4" cy="4" r="3" />
-                  </svg>
-                  AFROBIT
-                </span>
-                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
-                  <svg class="-ml-1 mr-1.5 h-2 w-2 text-gray-400" fill="currentColor" viewBox="0 0 8 8">
-                    <circle cx="4" cy="4" r="3" />
-                  </svg>
-                  Urban
-                </span>
-                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
-                  <svg class="-ml-1 mr-1.5 h-2 w-2 text-gray-400" fill="currentColor" viewBox="0 0 8 8">
-                    <circle cx="4" cy="4" r="3" />
-                  </svg>
-                  Dance
-                </span>
+            <div class="uppercase flex items-center pt-2 sm:flex-row sm:pt-4 space-x-1 mb-5 truncate">
+                @foreach(app_event()->tags as $tag)
+                    <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
+                      <svg class="-ml-1 mr-1.5 h-2 w-2 text-gray-400" fill="currentColor" viewBox="0 0 8 8">
+                        <circle cx="4" cy="4" r="3" />
+                      </svg>
+                      {{ $tag }}
+                    </span>
+                @endforeach
             </div>
             <div class="uppercase flex flex-col items-center pt-2 sm:flex-row sm:pt-4">
                 <a href="{{ route('tickets.index', ['filters' => $filters]) }}" class="inline-flex items-center justify-center w-full h-12 px-6 mb-4 font-medium tracking-wide text-white rounded shadow-md sm:w-auto sm:mr-4 sm:mb-0 hover:-translate-y-1 hover:ease-in-out duration-200 bg-{{ app_color() }}-500 hover:bg-{{ app_color() }}-700 hover:bg-deep-{{ app_color() }}-accent-700 focus:shadow-outline focus:outline-none">
