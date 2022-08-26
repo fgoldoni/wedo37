@@ -36,30 +36,20 @@
                                         <p class="mt-4 text-gray-900 cursor-pointer uppercase">{{ $order->user?->name }}</p>
                                     </div>
                                     <ul class="px-3 pt-8 space-y-3">
+                                        @php
+                                            $tags = is_array($item->tags) ? $item->tags : json_decode($item->tags);
+                                        @endphp
                                         <li class="flex font-medium text-gray-500">
-                                            <svg class="w-6 h-6 mr-1.5 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                                            Unlimited Access
+                                            <x-heroicon-s-check-circle class="w-6 h-6 mr-1.5 text-{{ $item->color }}-400"></x-heroicon-s-check-circle>
+                                            {{ $item->attendees }} Person(s)
                                         </li>
-                                        <li class="flex font-medium text-gray-500">
-                                            <svg class="w-6 h-6 mr-1.5 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                                            5 Team Members
-                                        </li>
-                                        <li class="flex font-medium text-gray-500">
-                                            <svg class="w-6 h-6 mr-1.5 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                                            10,000 Api Calls
-                                        </li>
-                                        <li class="flex font-medium text-gray-500">
-                                            <svg class="w-6 h-6 mr-1.5 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                                            Email Support
-                                        </li>
-                                        <li class="flex font-medium text-gray-500">
-                                            <svg class="w-6 h-6 mr-1.5 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                                            Email Support
-                                        </li>
-                                        <li class="flex font-medium text-gray-500">
-                                            <svg class="w-6 h-6 mr-1.5 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                                            Email Support
-                                        </li>
+
+                                        @foreach($tags as $tag)
+                                            <li class="flex font-medium text-gray-500">
+                                                <x-heroicon-s-check-circle class="w-6 h-6 mr-1.5 text-{{ $item->color }}-400"></x-heroicon-s-check-circle>
+                                                {{ $tag }}
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>

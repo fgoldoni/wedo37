@@ -24,20 +24,15 @@
             <ul class="px-3 pt-8 space-y-3">
                 <li class="flex font-medium text-gray-500">
                     <x-heroicon-s-check-circle class="w-6 h-6 mr-1.5 text-{{ $row->color }}-400"></x-heroicon-s-check-circle>
-                    Unlimited Access
+                    {{ $row->attendees }} Person(s)
                 </li>
-                <li class="flex font-medium text-gray-500">
-                    <x-heroicon-s-check-circle class="w-6 h-6 mr-1.5 text-{{ $row->color }}-400"></x-heroicon-s-check-circle>
-                    5 Team Members
-                </li>
-                <li class="flex font-medium text-gray-500">
-                    <x-heroicon-s-check-circle class="w-6 h-6 mr-1.5 text-{{ $row->color }}-400"></x-heroicon-s-check-circle>
-                    10,000 Api Calls
-                </li>
-                <li class="flex font-medium text-gray-500">
-                    <x-heroicon-s-check-circle class="w-6 h-6 mr-1.5 text-{{ $row->color }}-400"></x-heroicon-s-check-circle>
-                    Email Support
-                </li>
+
+                @foreach(json_decode($row->tags) as $tag)
+                    <li class="flex font-medium text-gray-500">
+                        <x-heroicon-s-check-circle class="w-6 h-6 mr-1.5 text-{{ $row->color }}-400"></x-heroicon-s-check-circle>
+                        {{ $tag }}
+                    </li>
+                @endforeach
             </ul>
             <button type="button" wire:click="show({{ $row->id }})" class="hidden hover:scale-105 hover:shadow-2xl ease-in-out duration-150 lg:flex items-center justify-center w-full h-12 mt-8 font-medium text-gray-600 border border-gray-500 rounded-md">
                 <x-wedo.loader wire:loading wire:target="show({{ $row->id }})"></x-wedo.loader>

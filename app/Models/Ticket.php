@@ -30,12 +30,14 @@ class Ticket extends Model
                 'id' => $item->id,
                 'name' => $item->name,
                 'description' => $item->description,
+                'attendees' => $item->attendees,
                 'price' => $item->price,
                 'type' => $item->type,
                 'event_id' => $item->event_id,
                 'position' => $item->position,
                 'color' => $item->color,
                 'avatar_url' => $item->avatar_url,
+                'tags' => json_encode($item->tags),
             ];
         }
 

@@ -40,23 +40,16 @@
                                 {{ __('Add to Basket') }}
                             </a>
                             <div class="space-y-4 lg:pl-2">
-                                <p class="mb-3 text-lg font-semibold text-gray-800">Everything in Basic, plus...</p>
-                                <div class="flex items-start">
-                                    <x-heroicon-s-check-circle class="flex-none w-6 h-6 p-px mt-px mr-2 text-{{ $ticket->color }}-500"></x-heroicon-s-check-circle>
-                                    <p class="text-gray-700">Unlimited Projects, Tasks, and Alerts</p>
-                                </div>
-                                <div class="flex items-start">
-                                    <x-heroicon-s-check-circle class="flex-none w-6 h-6 p-px mt-px mr-2 text-{{ $ticket->color }}-500"></x-heroicon-s-check-circle>
-                                    <p class="text-gray-700">Unlimited User and Admin Accounts</p>
-                                </div>
-                                <div class="flex items-start">
-                                    <x-heroicon-s-check-circle class="flex-none w-6 h-6 p-px mt-px mr-2 text-{{ $ticket->color }}-500"></x-heroicon-s-check-circle>
-                                    <p class="text-gray-700">One-on-one Coaching Call</p>
-                                </div>
-                                <div class="flex items-start">
-                                    <x-heroicon-s-check-circle class="flex-none w-6 h-6 p-px mt-px mr-2 text-{{ $ticket->color }}-500"></x-heroicon-s-check-circle>
-                                    <p class="text-gray-700">Access to Private Discord Group</p>
-                                </div>
+                                <p class="mb-3 text-lg font-semibold text-gray-800"> {{ $ticket->attendees }} Person(s)</p>
+                                @php
+                                    $tags = is_array($ticket->tags) ? $ticket->tags : json_decode($ticket->tags);
+                                @endphp
+                                @foreach($tags as $tag)
+                                    <div class="flex items-start">
+                                        <x-heroicon-s-check-circle class="flex-none w-6 h-6 p-px mt-px mr-2 text-{{ $ticket->color }}-500"></x-heroicon-s-check-circle>
+                                        <p class="text-gray-700">{{ $tag }}</p>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

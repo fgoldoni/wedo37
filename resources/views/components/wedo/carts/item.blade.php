@@ -31,22 +31,20 @@
                 </h4>
             </div>
             <ul class="px-3 pt-8 space-y-3">
+                @php
+                    $tags = is_array($item->tags) ? $item->tags : json_decode($item->tags);
+                @endphp
                 <li class="flex font-medium text-gray-500">
                     <x-heroicon-s-check-circle class="w-6 h-6 mr-1.5 text-{{ $item->color }}-400"></x-heroicon-s-check-circle>
-                    Unlimited Access
+                    {{ $item->attendees }} Person(s)
                 </li>
-                <li class="flex font-medium text-gray-500">
-                    <x-heroicon-s-check-circle class="w-6 h-6 mr-1.5 text-{{ $item->color }}-400"></x-heroicon-s-check-circle>
-                    5 Team Members
-                </li>
-                <li class="flex font-medium text-gray-500">
-                    <x-heroicon-s-check-circle class="w-6 h-6 mr-1.5 text-{{ $item->color }}-400"></x-heroicon-s-check-circle>
-                    10,000 Api Calls
-                </li>
-                <li class="flex font-medium text-gray-500">
-                    <x-heroicon-s-check-circle class="w-6 h-6 mr-1.5 text-{{ $item->color }}-400"></x-heroicon-s-check-circle>
-                    Email Support
-                </li>
+
+                @foreach($tags as $tag)
+                    <li class="flex font-medium text-gray-500">
+                        <x-heroicon-s-check-circle class="w-6 h-6 mr-1.5 text-{{ $item->color }}-400"></x-heroicon-s-check-circle>
+                        {{ $tag }}
+                    </li>
+                @endforeach
             </ul>
 
             @if ($action)
