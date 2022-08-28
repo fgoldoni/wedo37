@@ -17,7 +17,9 @@
                             <div class="pointer-events-none absolute inset-0 rounded-lg border-t border-gray-600" aria-hidden="true"></div>
                             <div class="absolute inset-x-0 top-0 transform translate-y-px">
                                 <div class="flex justify-center transform -translate-y-1/2">
-                                    <span class="uppercase inline-flex rounded-full bg-gray-600 px-4 py-1 text-base font-semibold text-gray-300"> Available </span>
+                                    <span class="uppercase inline-flex rounded-full bg-gray-600 px-4 py-1 text-base font-semibold text-gray-300">
+                                        {{ \Illuminate\Support\Carbon::parse(app_event()->start)->isoFormat('DD, MMM YYYY')  }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="bg-white rounded-t-lg px-6 pt-12 pb-10">

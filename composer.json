@@ -15,7 +15,8 @@
         "laravel/tinker": "^2.7",
         "rappasoft/laravel-livewire-tables": "^2.7",
         "wire-elements/modal": "^1.0",
-        "wireui/wireui": "^1.12"
+        "wireui/wireui": "^1.12",
+        "simplesoftwareio/simple-qrcode": "~2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

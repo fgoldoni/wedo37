@@ -20,20 +20,29 @@
                 @forelse($order->items as $item)
                     @if($item->associatedModel === \App\Models\Ticket::$apiModel)
                         <div class="grid grid-cols-1 text-sm sm:grid-rows-1 sm:grid-cols-12 sm:gap-x-6 md:gap-x-8 lg:gap-x-8">
-                            <div class="sm:col-span-4 md:col-span-5 md:row-end-2 md:row-span-2">
+                            <div class="sm:col-span-12 md:col-span-5 md:row-end-2 md:row-span-2">
                                 <div
                                     @class([
                                         'p-10 bg-gray-50 border-t-2 shadow-2xl -translate-y-2 border-' . $item->color . '-400 md:mt-0 hover:shadow-xl hover:-translate-y-1 ease-in-out delay-150 duration-300',
                                     ])>
-                                    <div class="flex flex-col pb-8 border-b border-gray-200">
-                                        <h3 class="flex items-center text-{{ $item->color }}-900">
-                                                    <span class="flex items-start text-4xl tracking-tight sm:text-5xl">
-                                                      <span class="mr-2 text-2xl font-medium"> € </span>
-                                                      <span class="font-semibold"> {{ $item->price }} </span>
-                                                    </span>
-                                        </h3>
-                                        <h4 class="uppercase mt-5 text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ $item->color }}-400 to-{{ $item->color }}-900">{{ $item->quantity }} * {{ $item->name }}</h4>
-                                        <p class="mt-4 text-gray-900 cursor-pointer uppercase">{{ $order->user?->name }}</p>
+                                    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 pb-8 border-b border-gray-200">
+                                        <div class="col-span-1 lg:col-span-2">
+                                            <div class="flex flex-col">
+                                                <h3 class="flex items-center text-{{ $item->color }}-900">
+                                            <span class="flex items-start text-4xl tracking-tight sm:text-5xl">
+                                              <span class="mr-2 text-2xl font-medium"> € </span>
+                                              <span class="font-semibold"> {{ $item->price }} </span>
+                                            </span>
+                                                </h3>
+                                                <h4 class="uppercase mt-5 text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ $item->color }}-400 to-{{ $item->color }}-900">{{ $item->quantity }} * {{ $item->name }}</h4>
+                                                <p class="mt-4 text-gray-900 cursor-pointer uppercase">{{ $order->user?->name }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-span-1">
+                                            <div class="visible-print w-16 h-16 text-center">
+                                                {!! QrCode::size(100)->generate(Request::url()); !!}
+                                            </div>
+                                        </div>
                                     </div>
                                     <ul class="px-3 pt-8 space-y-3">
                                         @php
