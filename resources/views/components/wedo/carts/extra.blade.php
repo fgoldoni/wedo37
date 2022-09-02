@@ -21,7 +21,6 @@
             </div>
 
             <div class="mt-4 sm:mt-0 sm:pr-9">
-                @livewire('wedo.tickets.quantity', ['itemId' => $item->id, 'model' => \App\Models\Extra::$apiModel], key('extra-quantity-' . $item->id))
 
                 <div class="absolute top-0 right-0">
                     <button type="button" wire:click="remove({{ json_encode(['id' => $item->id, 'model' => \App\Models\Extra::$apiModel])  }})" class="-m-2 p-2 inline-flex text-gray-400 hover:text-gray-500">

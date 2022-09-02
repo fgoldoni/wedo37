@@ -95,6 +95,6 @@ class Browse extends Component
 
     public function render()
     {
-        return view('livewire.wedo.tickets.browse', ['rows' => $this->rows, 'ticket' => $this->row]);
+        return view('livewire.wedo.tickets.browse', ['rows' => $this->rows, 'ticket' => $this->row, 'carts' => session()->get('cart-' . request()->ip())]);
     }
 }

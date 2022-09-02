@@ -14,7 +14,7 @@ class Item extends Component
 
     use Actions;
 
-    public ?int $ticketId = null;
+    public string|null $item = null;
 
     protected $queryString = ['filters'];
 
@@ -65,7 +65,7 @@ class Item extends Component
 
     private function apiTicket()
     {
-        return app()->make(ApiInterface::class)->get('/tickets/' . $this->ticketId)->data;
+        return json_decode($this->item);
     }
 
     public function getRowProperty()
@@ -75,6 +75,6 @@ class Item extends Component
 
     public function render()
     {
-        return view('livewire.wedo.tickets.item', ['ticket' => $this->row]);
+        return view('livewire.wedo.tickets.item', ['row' => $this->row]);
     }
 }

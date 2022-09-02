@@ -49,7 +49,6 @@
 
             @if ($action)
                 <div class="px-3 pt-8 space-y-3 flex-1 flex items-end justify-between">
-                    @livewire('wedo.tickets.quantity', ['itemId' => $item->id, 'model' => $model], key('ticket-quantity-' . $item->id))
                     <div class="ml-4">
                         <button type="button" wire:click="remove({{ json_encode(['id' => $item->id, 'model' => $model])  }})" class="uppercase text-xs font-medium text-rose-600 hover:text-rose-500">
                             <x-wedo.loader wire:loading wire:target="remove({{ json_encode(['id' => $item->id, 'model' => $model]) }})"></x-wedo.loader>

@@ -17,7 +17,7 @@
                       <span class="mr-2 text-2xl font-medium"> € </span>
                       <span class="font-semibold"> {{ $row->price }} </span>
                     </span>
-                </h3>
+                    </h3>
 
                 <h4 class="uppercase mt-5 text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ $row->color }}-400 to-{{ $row->color }}-900">{{ $row->name }}</h4>
             </div>
