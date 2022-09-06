@@ -13,7 +13,6 @@
             <div class="lg:col-span-2">
                 <div class="grid grid-cols-1">
                     <section class="relative w-full bg-white">
-                        <div class="absolute inset-0 w-full h-full bg-cover opacity-20" style="background-image:url('https://cdn.devdojo.com/images/september2021/mesh-bg.jpeg')"></div>
                         @livewire('wedo.paypal.browse')
 
                     <!-- This example requires Tailwind CSS v2.0+ -->
@@ -26,8 +25,7 @@
                             </div>
                         </div>
 
-
-                        <x-wedo.form-section submit="continue">
+                        <x-wedo.form-section submit="save">
                             <x-slot name="title">
                                 <div class="relative flex space-x-12 lg:pl-2">
                                     <div class="h-8 w-8 bg-white sm:translate-x-12 md:translate-x-0 rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center">
@@ -64,9 +62,14 @@
 
                                 </div>
                             </x-slot>
+                            <x-slot name="actions">
+                                <x-wedo.button  type="button" wire:loading.attr="disabled" id="card-button" class="w-full">
+                                    <x-wedo.loader wire:loading></x-wedo.loader>
+                                    {{ __('Save') }}
+                                </x-wedo.button>
+                            </x-slot>
                         </x-wedo.form-section>
-                        <x-wedo.continue :disabled="!$carts?->items" class="py-6 px-4 sm:p-6" id="card-button"></x-wedo.continue>
-                        <x-wedo.carts.mobile-summary :carts="$carts" :has-extra="$hasExtra" id="card-button"></x-wedo.carts.mobile-summary>
+                        <x-wedo.carts.mobile-summary :carts="$carts" :has-extra="$hasExtra" id="card-button"  :continue="false"></x-wedo.carts.mobile-summary>
                     </section>
                 </div>
             </div>

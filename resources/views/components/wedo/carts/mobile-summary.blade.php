@@ -1,6 +1,7 @@
 @props([
     'carts',
     'hasExtra' => false,
+    'continue' => true,
 ])
 
 <div
@@ -47,20 +48,22 @@
                     <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
                 </svg>
             </button>
-            <div class="z-20 border-t border-b border-gray-200 py-1 text-sm font-medium text-gray-500">
-                <button
-                    type="button"
-                    {{ $attributes->only(['id']) }}
-                    wire:click="continue"
-                    @class([
-                           'w-full uppercase rounded border border-transparent py-2 px-4 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-' . app_color() . '-500 focus:ring-offset-2',
-                           'btn-base text-white bg-gradient-to-r from-' . app_color() . '-500 via-' .  app_color() . '-600 to-' . app_color() . '-700 hover:bg-gradient-to-br' => $carts?->items,
-                           'disabled bg-' . app_color() . '-100 text-' . app_color() . '-400 cursor-not-allowed' => ! $carts?->items
-                       ])>
-                    <x-wedo.loader wire:loading wire:target="continue"></x-wedo.loader>
-                    {{ __('Continue') }}
-                </button>
-            </div>
+            @if($continue)
+                <div class="z-20 border-t border-b border-gray-200 py-1 text-sm font-medium text-gray-500">
+                    <button
+                        type="button"
+                        {{ $attributes->only(['id']) }}
+                        wire:click="continue"
+                        @class([
+                               'w-full uppercase rounded border border-transparent py-2 px-4 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-' . app_color() . '-500 focus:ring-offset-2',
+                               'btn-base text-white bg-gradient-to-r from-' . app_color() . '-500 via-' .  app_color() . '-600 to-' . app_color() . '-700 hover:bg-gradient-to-br' => $carts?->items,
+                               'disabled bg-' . app_color() . '-100 text-' . app_color() . '-400 cursor-not-allowed' => ! $carts?->items
+                           ])>
+                        <x-wedo.loader wire:loading wire:target="continue"></x-wedo.loader>
+                        {{ __('Continue') }}
+                    </button>
+                </div>
+            @endif
         </div>
     </div>
 
