@@ -18,6 +18,8 @@ class Browse extends Component
 
     protected $queryString = ['filters', 'show'];
 
+    protected $listeners = ['refreshComponent' => '$refresh'];
+
     public ?int $show = null;
 
     public array $filters = [
@@ -43,38 +45,31 @@ class Browse extends Component
         $this->show = $id;
     }
 
-    public function add(int $id)
+    public function continue()
     {
-        $response = app()->make(ApiInterface::class)->post('/carts', [
-            'model' => Ticket::$apiModel,
-            'id' => $id,
-        ]);
-
-        session()->put('cart-' . request()->ip(), $response->data);
-
-        $this->emitTo(Bag::class, 'refreshComponent');
-
-        $this->emit('openModal', 'wedo.modals.popup.add');
-    }
-
-    public function continue(int $id)
-    {
-        $response = app()->make(ApiInterface::class)->post('/carts', [
-            'model' => Ticket::$apiModel,
-            'id' => $id,
-        ]);
-
-        session()->put('cart-' . request()->ip(), $response->data);
-
-        $this->emitTo(Bag::class, 'refreshComponent');
-
-        return $this->redirectRoute('carts.index');
+        return $this->redirectRoute('checkout.index');
     }
 
     public function resetFilters()
     {
         $this->reset('filters', 'show');
     }
+
+    public function getHasExtraProperty()
+    {
+        $items = session('cart-' . request()->ip())?->items;
+
+        if ($items) {
+            foreach ($items as $item) {
+                if ($item->associatedModel === \App\Models\Extra::$apiModel) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
 
     public function getRowsQueryProperty()
     {
@@ -93,8 +88,18 @@ class Browse extends Component
         return $this->cache(fn () => $this->rowsQuery);
     }
 
+    public function getCartsProperty()
+    {
+        return session()->get('cart-' . request()->ip());
+    }
+
     public function render()
     {
-        return view('livewire.wedo.tickets.browse', ['rows' => $this->rows, 'ticket' => $this->row, 'carts' => session()->get('cart-' . request()->ip())]);
+        return view('livewire.wedo.tickets.browse', [
+            'rows' => $this->rows,
+            'ticket' => $this->row,
+            'carts' => $this->carts,
+            'hasExtra' => $this->hasExtra
+        ]);
     }
 }

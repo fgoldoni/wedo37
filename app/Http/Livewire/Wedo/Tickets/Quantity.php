@@ -32,6 +32,9 @@ class Quantity extends Component
 
     public function updatedRow($value, $item)
     {
+        if ((int)$value === 0) {
+            return $this->remove();
+        }
         $response = app()->make(ApiInterface::class)->post('/carts', [
             'model' => $this->model,
             'id' => Str::replace($this->prefix, '', $this->row['id']),
@@ -41,6 +44,41 @@ class Quantity extends Component
         session()->put('cart-' . request()->ip(), $response->data);
 
         $this->emitTo(Bag::class, 'refreshComponent');
+
+        $this->emitTo(Browse::class, 'refreshComponent');
+
+        $this->notification()->success(__('Great!!'), $response->message);
+    }
+
+    public function remove()
+    {
+        $this->dialog()->confirm([
+            'title' => 'Are you Sure ?',
+            'description' => 'Remove item from Basket',
+            'icon' => 'error',
+            'accept' => [
+                'label' => 'Yes, remove it',
+                'method' => 'delete',
+            ],
+            'reject' => [
+                'label' => 'No, cancel',
+            ],
+        ]);
+    }
+
+    public function delete()
+    {
+
+        $array = explode('\\', (string) $this->model);
+        $prefix = Str::lower($array[count($array) - 1]) . '-';
+
+        $response = app()->make(ApiInterface::class)->delete('/carts/' . $prefix . $this->row['id']);
+
+        session()->put('cart-' . request()->ip(), $response->data);
+
+        $this->emitTo(Bag::class, 'refreshComponent');
+
+        $this->emitTo(Browse::class, 'refreshComponent');
 
         $this->notification()->success(__('Great!!'), $response->message);
     }

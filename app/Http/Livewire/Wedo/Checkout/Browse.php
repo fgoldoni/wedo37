@@ -44,7 +44,7 @@ class Browse extends Component
         $this->address = auth()->user()?->address;
     }
 
-    public function save()
+    public function continue()
     {
         $this->validate();
 
@@ -69,6 +69,21 @@ class Browse extends Component
         return $this->redirectRoute('checkout.index');
     }
 
+    public function getHasExtraProperty()
+    {
+        $items = session('cart-' . request()->ip())?->items;
+
+        if ($items) {
+            foreach ($items as $item) {
+                if ($item->associatedModel === \App\Models\Extra::$apiModel) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     public function getRowsProperty()
     {
         return session('cart-' . request()->ip());
@@ -76,6 +91,6 @@ class Browse extends Component
 
     public function render()
     {
-        return view('livewire.wedo.checkout.browse', ['carts' => $this->rows]);
+        return view('livewire.wedo.checkout.browse', ['carts' => $this->rows, 'hasExtra' => $this->hasExtra]);
     }
 }

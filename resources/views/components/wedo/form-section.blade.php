@@ -2,7 +2,7 @@
 
 <section>
     <form wire:submit.prevent="{{ $submit }}">
-        <div class="shadow-xl sm:rounded-md sm:overflow-hidden">
+        <div class="sm:overflow-hidden">
             <div class="bg-white py-6 px-4 sm:p-6">
                 <x-wedo.section-title>
                     <x-slot name="title">{{ $title }}</x-slot>

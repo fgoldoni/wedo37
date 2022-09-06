@@ -1,6 +1,6 @@
 <main class="max-w-7xl mx-auto sm:px-6 lg:px-8">
     @if($carts && $carts->total_quantity)
-        <x-wedo.basket :carts="$carts" :back="route('carts.index')" :back-name="__('layout.navigation.carts')" :link="__('Contact information')" save></x-wedo.basket>
+        <x-wedo.basket :carts="$carts" :back="route('carts.index')" :back-name="__('layout.navigation.carts')" :link="__('Contact information')"></x-wedo.basket>
 
         <h2 class="sr-only">Checkout</h2>
 
@@ -9,217 +9,66 @@
             <div class="lg:col-span-3">
                 <x-wedo.partials.alert></x-wedo.partials.alert>
             </div>
+            <div class="lg:col-span-2">
+                <div class="grid grid-cols-1">
+                    <section class="relative w-full bg-white">
+                        <div class="absolute inset-0 w-full h-full bg-cover opacity-20" style="background-image:url('https://cdn.devdojo.com/images/september2021/mesh-bg.jpeg')"></div>
+                        <x-wedo.form-section submit="save">
+                            <x-slot name="title">
+                                {{ __('Contact information') }}
+                            </x-slot>
 
-            <div class="col-span-1 lg:col-span-2">
-                <x-wedo.form-section submit="save">
-                    <x-slot name="title">
-                        {{ __('Contact information') }}
-                    </x-slot>
+                            <x-slot name="description">
+                                {{ __('You won\'t be charged until the next step.') }}
+                            </x-slot>
 
-                    <x-slot name="description">
-                        {{ __('You won\'t be charged until the next step.') }}
-                    </x-slot>
+                            <x-slot name="form">
 
-                    <x-slot name="form">
+                                <div class="col-span-4">
+                                    <x-wedo.input.group label="{{ __('Name') }}" for="name" :error="$errors->first('name')" isRequired>
 
-                        <div class="col-span-4">
-                            <x-wedo.input.group label="{{ __('Name') }}" for="name" :error="$errors->first('name')" isRequired>
+                                        <x-wedo.input.text wire:model.lazy="name" type="text" name="name" id="name" placeholder="{{ __('Name') }}" autocomplete="off" required/>
 
-                                <x-wedo.input.text wire:model.lazy="name" type="text" name="name" id="name" placeholder="{{ __('Name') }}" autocomplete="off" required/>
+                                    </x-wedo.input.group>
+                                </div>
 
-                            </x-wedo.input.group>
-                        </div>
+                                <div class="col-span-4">
+                                    <x-wedo.input.group label="{{ __('Email address') }}"  for="email" :error="$errors->first('email')" isRequired>
 
-                        <div class="col-span-4">
-                            <x-wedo.input.group label="{{ __('Email address') }}"  for="email" :error="$errors->first('email')" isRequired>
+                                        <x-wedo.input.text wire:model.lazy="email" type="email" name="email" id="email" placeholder="{{ __('Email address') }}" autocomplete="off" required/>
 
-                                <x-wedo.input.text wire:model.lazy="email" type="email" name="email" id="email" placeholder="{{ __('Email address') }}" autocomplete="off" required/>
+                                    </x-wedo.input.group>
+                                </div>
 
-                            </x-wedo.input.group>
-                        </div>
+                                <div class="col-span-4">
+                                    <div wire:ignore x-data="internationalNumber('#phone')" class="col-span-1 sm:col-span-2">
+                                        <x-wedo.input.group label="{{ __('Phone number') }}" for="phone" :error="$errors->first('phone')" isRequired>
 
-                        <div class="col-span-4">
-                            <div wire:ignore x-data="internationalNumber('#phone')" class="col-span-1 sm:col-span-2">
-                                <x-wedo.input.group label="{{ __('Phone number') }}" for="phone" :error="$errors->first('phone')" isRequired>
+                                            <x-wedo.input.text wire:model.lazy="phone" type="tel" name="phone" id="phone" required></x-wedo.input.text>
 
-                                    <x-wedo.input.text wire:model.lazy="phone" type="tel" name="phone" id="phone" required></x-wedo.input.text>
-
-                                </x-wedo.input.group>
-                            </div>
-                            @if ($errors->first('phone'))
-                                <p class="mt-1 text-sm text-rose-500 dark:text-rose-400">{{ $errors->first('phone') }}</p>
-                            @endif
-                        </div>
-
-                        <div class="col-span-4">
-                            <x-wedo.input.group :error="$errors->first('address')" label="{{ __('Frendly Address') }}" for="address" optional>
-
-                                <x-wedo.input.textarea wire:model.lazy="address" name="address" id="address" isRequired></x-wedo.input.textarea>
-
-                            </x-wedo.input.group>
-                        </div>
-                    </x-slot>
-
-                    <x-slot name="actions">
-                        <x-wedo.button type="submit">
-                            <x-wedo.loader wire:loading wire:target="save"></x-wedo.loader>
-                            Save
-                        </x-wedo.button>
-                    </x-slot>
-                </x-wedo.form-section>
-            </div>
-            <div class="col-span-1">
-                <div class="grid grid-cols-1 gap-4">
-                    <div class="col-span-1">
-                        <section aria-labelledby="summary-heading" class="mt-16 bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:mt-0 lg:col-span-5">
-                            <ul role="list" class="text-sm font-medium text-gray-900 divide-y divide-gray-200 pr-2 scrollbar-thin scrollbar-thumb-secondary-400 scrollbar-track-secondary-200 overflow-y-auto max-height">
-                                @foreach ($carts?->items as $item)
-                                    @if($item->associatedModel === \App\Models\Ticket::$apiModel)
-                                        <x-wedo.carts.item :item="$item->attributes" :model="\App\Models\Ticket::$apiModel" :quantity="$item->quantity" wire:key="item-{{ $item->id }}"></x-wedo.carts.item>
+                                        </x-wedo.input.group>
+                                    </div>
+                                    @if ($errors->first('phone'))
+                                        <p class="mt-1 text-sm text-rose-500 dark:text-rose-400">{{ $errors->first('phone') }}</p>
                                     @endif
-                                @endforeach
-
-                                @foreach ($carts?->items as $item)
-                                        @if($item->associatedModel === \App\Models\Extra::$apiModel)
-                                            <div class="group relative p-10">
-                                                <div class="w-full min-h-80 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
-                                                    <img src="{{ asset('images/extra.jpg') }}" alt="{{ $item->name }}" class="btn-img w-full h-full object-center object-cover lg:w-full lg:h-full">
-                                                </div>
-                                                <div class="mt-4 flex justify-between">
-                                                    <div>
-                                                        <h3 class="text-xs text-gray-700 btn-title">
-                                                            <a href="javascript:;">
-                                                                <span aria-hidden="true" class="absolute inset-0"></span>
-                                                                {{ $item->quantity }} * {{ $item->name }}
-                                                            </a>
-                                                        </h3>
-                                                        <p class="mt-1 text-sm text-gray-500">€ {{ $item->price }}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endif
-                                    @endforeach
-                            </ul>
-
-                            <dl class="hidden text-sm font-medium text-gray-900 space-y-6 border-t border-gray-200 pt-6 lg:block">
-                                <div class="flex items-center justify-between">
-                                    <dt class="text-gray-600 uppercase">Subtotal</dt>
-                                    <dd>€ {{ $carts->sub_total }}</dd>
                                 </div>
 
-                                <div class="flex items-center justify-between border-t border-gray-200 pt-6">
-                                    <dt class="text-base uppercase">Total</dt>
-                                    <dd class="text-base">€ {{ $carts->total }}</dd>
+                                <div class="col-span-4">
+                                    <x-wedo.input.group :error="$errors->first('address')" label="{{ __('Frendly Address') }}" for="address" optional>
+
+                                        <x-wedo.input.textarea wire:model.lazy="address" name="address" id="address" isRequired></x-wedo.input.textarea>
+
+                                    </x-wedo.input.group>
                                 </div>
-                            </dl>
-
-                            <div
-                                x-data="{
-                                        open: false,
-                                        focus: false,
-                                        onEscape() {
-                                            this.open = !1,
-                                            this.$refs.button.focus()
-                                       },
-                                        onClosePopoverGroup (e) {
-                                            e.detail.contains(this.$el) && (this.open=!1)
-                                        },
-                                        toggle (e) {
-                                            this.open = !this.open,
-                                            this.open ? this.restoreEl = e.currentTarget : this.restoreEl && this.restoreEl.focus()
-                                       },
-
-                                    }"
-                                @keydown.escape="onEscape"
-                                @close-popover-group.window="onClosePopoverGroup"
-
-                                class="fixed bottom-0 inset-x-0 flex flex-col-reverse text-sm font-medium text-gray-900 lg:hidden">
-                                <div class="relative z-10 bg-white border-t border-gray-200 px-4 sm:px-6">
-                                    <div class="max-w-lg mx-auto">
-                                        <button
-                                            @click="toggle"
-                                            @mousedown="if (open) $event.preventDefault()"
-                                            type="button"
-                                            x-ref="button"
-                                            class="w-full flex items-center py-6 font-medium"
-                                            aria-expanded="false">
-                                            <span class="text-base mr-auto uppercase">Total</span>
-                                            <span class="text-base mr-2">€ {{ $carts->total }}</span>
-                                            <!-- Heroicon name: solid/chevron-up -->
-                                            <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <!--
-                                      Mobile summary overlay, show/hide based on mobile summary state.
-
-                                      Entering: "transition-opacity ease-linear duration-300"
-                                        From: "opacity-0"
-                                        To: "opacity-100"
-                                      Leaving: "transition-opacity ease-linear duration-300"
-                                        From: "opacity-100"
-                                        To: "opacity-0"
-                                    -->
-                                    <div
-                                        x-show="open"
-                                        x-transition:enter="transition-opacity ease-linear duration-300"
-                                        x-transition:enter-start="opacity-0"
-                                        x-transition:enter-end="opacity-100"
-                                        x-transition:leave="transition-opacity ease-linear duration-300"
-                                        x-transition:leave-start="opacity-100"
-                                        x-transition:leave-end="opacity-0"
-                                        class="fixed inset-0 bg-black bg-opacity-25"
-                                        @click="toggle"
-                                        x-cloak
-                                    ></div>
-
-                                    <!--
-                                      Mobile summary, show/hide based on mobile summary state.
-
-                                      Entering: "transition ease-in-out duration-300 transform"
-                                        From: "translate-y-full"
-                                        To: "translate-y-0"
-                                      Leaving: "transition ease-in-out duration-300 transform"
-                                        From: "translate-y-0"
-                                        To: "translate-y-full"
-                                    -->
-                                    <div x-show="open"
-                                         x-transition:enter="transition ease-in-out duration-300 transform"
-                                         x-transition:enter-start="translate-y-full"
-                                         x-transition:enter-end="translate-y-0"
-                                         x-transition:leave="transition ease-in-out duration-300 transform"
-                                         x-transition:leave-start="translate-y-0"
-                                         x-transition:leave-end="translate-y-full"
-                                         class="relative bg-white px-4 py-6 sm:px-6"
-                                         x-ref="panel"
-                                         @click.away="open = false"
-                                         x-cloak>
-
-                                        <dl class="max-w-lg mx-auto space-y-6">
-                                            @foreach($carts?->items as $item)
-                                                <div class="flex items-center justify-between">
-                                                    <dt class="text-gray-600 uppercase whitespace-nowrap">{{ $item->quantity }} * {{ $item->name }}</dt>
-                                                    <dd>€ {{ $item->price }}</dd>
-                                                </div>
-                                            @endforeach
-
-
-                                            <div class="flex items-center justify-between">
-                                                <dt class="text-gray-600 uppercase">Subtotal</dt>
-                                                <dd>€ {{ $carts->sub_total }}</dd>
-                                            </div>
-                                        </dl>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
+                            </x-slot>
+                        </x-wedo.form-section>
+                        <x-wedo.continue :disabled="!$carts?->items" class="py-6 px-4 sm:p-6"></x-wedo.continue>
+                        <x-wedo.carts.mobile-summary :carts="$carts" :has-extra="$hasExtra"></x-wedo.carts.mobile-summary>
+                    </section>
                 </div>
             </div>
+
+            <x-wedo.carts.summary :carts="$carts" :has-extra="$hasExtra"></x-wedo.carts.summary>
         </div>
     @else
         <div class="text-center max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
