@@ -16,8 +16,8 @@
                 <div class="lg:col-span-2">
                     <div class="grid grid-cols-1">
                         <section class="relative w-full py-12 bg-white">
-                            <img class="absolute inset-0 w-full h-full bg-cover opacity-20" src="background-image:url('https://cdn.devdojo.com/images/september2021/mesh-bg.jpeg')" alt="cover">
-                            <div class="relative z-20 px-4 mx-auto text-sm max-w-7xl md:text-base">
+                            <div class="absolute inset-0 w-full h-full bg-cover opacity-20" style="background-image:url('https://cdn.devdojo.com/images/september2021/mesh-bg.jpeg')"></div>
+                            <div class="relative px-4 mx-auto text-sm max-w-7xl md:text-base">
                                 <div class="grid gap-5">
                                     <div class="col-span-1">
                                         <div class="relative scrollbar-thin scrollbar-thumb-secondary-400 scrollbar-track-secondary-200 overflow-y-auto max-height">

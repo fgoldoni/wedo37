@@ -1,6 +1,6 @@
 <main class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-    @if($carts && $carts->total_quantity)
-        <x-wedo.basket :carts="$carts" :back="route('carts.index')" :back-name="__('layout.navigation.carts')" :link="__('Contact information')"></x-wedo.basket>
+    @if($carts->total_quantity)
+        <x-wedo.basket :carts="$carts" :link="__('Contact information')"></x-wedo.basket>
 
         <h2 class="sr-only">Checkout</h2>
 
@@ -13,7 +13,7 @@
                 <div class="grid grid-cols-1">
                     <section class="relative w-full bg-white">
                         <div class="absolute inset-0 w-full h-full bg-cover opacity-20" style="background-image:url('https://cdn.devdojo.com/images/september2021/mesh-bg.jpeg')"></div>
-                        <x-wedo.form-section submit="save">
+                        <x-wedo.form-section submit="continue">
                             <x-slot name="title">
                                 {{ __('Contact information') }}
                             </x-slot>

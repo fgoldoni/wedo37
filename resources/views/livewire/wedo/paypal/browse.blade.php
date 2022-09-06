@@ -1,4 +1,4 @@
-<div class="bg-white shadow sm:rounded-lg">
+<div>
     <div class="px-4 py-5 sm:p-6">
         <div class="sm:flex sm:items-start sm:justify-between">
             <div>

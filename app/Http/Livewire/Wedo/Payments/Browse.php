@@ -17,6 +17,10 @@ class Browse extends Component
         $this->name = auth()->user()->name;
     }
 
+    public function continue()
+    {
+    }
+
     public function setPayment($paymentMethod)
     {
         try {
@@ -37,6 +41,21 @@ class Browse extends Component
         return $this->redirectRoute('confirmation.index', ['orderId' => $response->orderId]);
     }
 
+    public function getHasExtraProperty()
+    {
+        $items = session('cart-' . request()->ip())?->items;
+
+        if ($items) {
+            foreach ($items as $item) {
+                if ($item->associatedModel === \App\Models\Extra::$apiModel) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     public function getRowsProperty()
     {
         if (!session()->has('cart-' . request()->ip())) {
@@ -51,6 +70,9 @@ class Browse extends Component
 
     public function render()
     {
-        return view('livewire.wedo.payments.browse', ['carts' => $this->rows]);
+        return view('livewire.wedo.payments.browse', [
+            'carts' => $this->rows,
+            'hasExtra' => $this->hasExtra
+        ]);
     }
 }
