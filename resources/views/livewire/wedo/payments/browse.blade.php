@@ -66,7 +66,7 @@
                             </x-slot>
                         </x-wedo.form-section>
                         <x-wedo.continue :disabled="!$carts?->items" class="py-6 px-4 sm:p-6" id="card-button"></x-wedo.continue>
-                        <x-wedo.carts.mobile-summary :carts="$carts" :has-extra="$hasExtra"></x-wedo.carts.mobile-summary>
+                        <x-wedo.carts.mobile-summary :carts="$carts" :has-extra="$hasExtra" id="card-button"></x-wedo.carts.mobile-summary>
                     </section>
                 </div>
             </div>

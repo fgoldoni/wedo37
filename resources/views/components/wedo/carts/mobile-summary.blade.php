@@ -50,6 +50,7 @@
             <div class="z-20 border-t border-b border-gray-200 py-1 text-sm font-medium text-gray-500">
                 <button
                     type="button"
+                    {{ $attributes->only(['id']) }}
                     wire:click="continue"
                     @class([
                            'w-full uppercase rounded border border-transparent py-2 px-4 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-' . app_color() . '-500 focus:ring-offset-2',
