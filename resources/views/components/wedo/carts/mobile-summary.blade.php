@@ -34,7 +34,7 @@
                 x-ref="button"
                 class="w-full flex items-center py-6 font-medium"
                 aria-expanded="false">
-                                            <span class="relative text-base mr-auto btn-title uppercase font-extrabold">
+                                            <span class="relative text-base mr-auto btn-title font-extrabold">
                                                 Total
                                                 @if($carts?->total_quantity)
                                                     <span class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-{{ app_color() }}-600 rounded-full">
@@ -56,7 +56,7 @@
                         {{ $carts?->items ?  '' : 'disabled'}}
                         wire:click="continue"
                         @class([
-                               'w-full uppercase rounded border border-transparent py-2 px-4 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-' . app_color() . '-500 focus:ring-offset-2',
+                               'w-full rounded border border-transparent py-2 px-4 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-' . app_color() . '-500 focus:ring-offset-2',
                                'btn-base text-white bg-gradient-to-r from-' . app_color() . '-500 via-' .  app_color() . '-600 to-' . app_color() . '-700 hover:bg-gradient-to-br' => $carts?->items,
                                'bg-' . app_color() . '-100 text-' . app_color() . '-400 cursor-not-allowed' => ! $carts?->items
                            ])>
@@ -136,7 +136,7 @@
                     @foreach($carts?->items as $item)
                         @if($item->associatedModel === \App\Models\Extra::$apiModel)
                             <div class="flex items-center justify-between">
-                                <dt class="uppercase btn-title truncate font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-400 to-{{ app_color() }}-900">{{ $item->quantity }} * {{ $item->name }}</dt>
+                                <dt class="btn-title truncate font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-400 to-{{ app_color() }}-900">{{ $item->quantity }} * {{ $item->name }}</dt>
                                 <dd class="whitespace-nowrap">€ {{ $item->price }}</dd>
                             </div>
                         @endif

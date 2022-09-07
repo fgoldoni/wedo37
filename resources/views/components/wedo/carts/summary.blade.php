@@ -27,7 +27,7 @@
                     @foreach($carts?->items as $item)
                         @if($item->associatedModel === \App\Models\Extra::$apiModel)
                             <div class="flex justify-between">
-                                <dt class="uppercase btn-title truncate text-xs text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-400 to-{{ app_color() }}-900">{{ $item->quantity }} * {{ $item->name }}</dt>
+                                <dt class="btn-title truncate text-xs text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-400 to-{{ app_color() }}-900">{{ $item->quantity }} * {{ $item->name }}</dt>
                                 <dd class="text-{{ app_color() }}-900 whitespace-nowrap">€ {{ $item->price }}</dd>
                             </div>
                         @endif
@@ -44,7 +44,7 @@
                     </form>
 
                     <div class="flex items-center justify-between pt-6 text-gray-900">
-                        <dt class="relative text-base btn-title uppercase font-extrabold">
+                        <dt class="relative text-base btn-title font-extrabold">
                             Total
                             @if($carts?->total_quantity)
                                 <span class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-{{ app_color() }}-600 rounded-full">

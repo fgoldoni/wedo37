@@ -16,7 +16,7 @@
             </div>
             <div class="mt-6 sm:flex-1 sm:min-w-0 sm:flex sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
                 <div class="sm:hidden 2xl:block mt-6 min-w-0 flex-1">
-                    <h1 class="uppercase text-2xl btn-title font-bold text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900 truncate">{{ app_event()->name }}</h1>
+                    <h1 class="text-2xl btn-title font-bold text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900 truncate">{{ app_event()->name }} in {{ app_event()->city }}</h1>
                 </div>
                 <div class="mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
                     @if($phone)
@@ -49,7 +49,7 @@
             </div>
         </div>
         <div class="hidden sm:block 2xl:hidden mt-6 min-w-0 flex-1">
-            <h1 class="uppercase text-2xl btn-title font-bold text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900 truncate">{{ app_event()->name }}</h1>
+            <h1 class="text-2xl btn-title font-bold text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900 truncate">{{ app_event()->name }} in {{ app_event()->city }}</h1>
         </div>
     </div>
 </div>
