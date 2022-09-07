@@ -15,13 +15,13 @@
                     <section class="relative w-full bg-white">
                         @livewire('wedo.paypal.browse')
 
-                    <!-- This example requires Tailwind CSS v2.0+ -->
+
                         <div class="relative px-4 py-5 sm:p-6">
                             <div class="absolute inset-0 flex items-center" aria-hidden="true">
                                 <div class="w-full border-t border-gray-300"></div>
                             </div>
                             <div class="relative flex justify-start">
-                                <span class="bg-white pr-3 text-lg font-medium text-gray-900 uppercase"> &nbsp; Or with credit card</span>
+                                <span class="bg-white pr-3 text-lg font-medium text-gray-900"> &nbsp; Or with credit card</span>
                             </div>
                         </div>
 

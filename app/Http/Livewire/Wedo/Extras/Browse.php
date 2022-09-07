@@ -42,18 +42,9 @@ class Browse extends Component
         $this->useCachedRows();
     }
 
-    public function add(int $id)
+    public function continue()
     {
-        $response = app()->make(ApiInterface::class)->post('/carts', [
-            'model' => \App\Models\Extra::$apiModel,
-            'id' => $id,
-        ]);
-
-        session()->put('cart-' . request()->ip(), $response->data);
-
-        $this->emitTo(Bag::class, 'refreshComponent');
-
-        $this->emit('openModal', 'wedo.modals.popup.extra');
+        return $this->redirectRoute('checkout.index');
     }
 
     public function remove(array $item)
@@ -132,8 +123,9 @@ class Browse extends Component
     {
         return view('livewire.wedo.extras.browse', [
             'orders' => $this->rows,
+            'rows' => $this->rows,
             'carts' => $this->carts,
-            'hasExtra' => $this->hasExtra,
+            'hasExtra' => $this->hasExtra
         ]);
     }
 }

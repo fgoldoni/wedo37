@@ -46,6 +46,8 @@ class Quantity extends Component
 
         $this->emitTo(Browse::class, 'refreshComponent');
 
+        $this->emitTo(\App\Http\Livewire\Wedo\Extras\Browse::class, 'refreshComponent');
+
         $this->notification()->success(__('Great!!'), $response->message);
     }
 
@@ -76,6 +78,8 @@ class Quantity extends Component
         $this->emitTo(Bag::class, 'refreshComponent');
 
         $this->emitTo(Browse::class, 'refreshComponent');
+
+        $this->emitTo(\App\Http\Livewire\Wedo\Extras\Browse::class, 'refreshComponent');
 
         $this->notification()->success(__('Great!!'), $response->message);
     }
