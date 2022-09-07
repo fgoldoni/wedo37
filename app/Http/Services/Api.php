@@ -47,7 +47,7 @@ class Api implements ApiInterface
     public function post(string $endpoint, array $data = []): \stdClass
     {
         try {
-            $this->response = $this->clientWithToken()->post($this->apiUrl . $endpoint, $data);
+            $this->response = $this->clientWithToken()->post($this->apiUrl . $endpoint, array_merge($data, ['ip' => request()->ip()]));
 
             if ($this->response->failed()
                 || $this->response->serverError()
