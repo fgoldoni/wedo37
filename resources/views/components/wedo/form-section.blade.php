@@ -5,7 +5,12 @@
         <div class="sm:overflow-hidden">
             <div class="bg-white py-6 px-4 sm:p-6">
                 <x-wedo.section-title>
-                    <x-slot name="title">{{ $title }}</x-slot>
+                    <x-slot name="title">
+                        @if (isset($title))
+                            {{ $title }}
+                        @endif
+                    </x-slot>
+
                     <x-slot name="description">{{ $description }}</x-slot>
                 </x-wedo.section-title>
 

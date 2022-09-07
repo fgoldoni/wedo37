@@ -26,20 +26,6 @@
                         </div>
 
                         <x-wedo.form-section submit="save">
-                            <x-slot name="title">
-                                <div class="relative flex space-x-12 lg:pl-2">
-                                    <div class="h-8 w-8 bg-white sm:translate-x-12 md:translate-x-0 rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center">
-                                        <img  class="h-6 w-6" src="{{ asset('images/svg/visa-credit-card.svg') }}" alt="paypal">
-                                    </div>
-                                    <div class="h-8 w-8 bg-white sm:translate-x-12 md:translate-x-0 rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center">
-                                        <img  class="h-6 w-6" src="{{ asset('images/svg/mastercard.svg') }}" alt="paypal">
-                                    </div>
-                                    <div class="h-8 w-8 bg-white sm:translate-x-12 md:translate-x-0 rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center">
-                                        <img  class="h-6 w-6" src="{{ asset('images/svg/payment.svg') }}" alt="paypal">
-                                    </div>
-                                </div>
-                            </x-slot>
-
                             <x-slot name="description">
                             </x-slot>
 
