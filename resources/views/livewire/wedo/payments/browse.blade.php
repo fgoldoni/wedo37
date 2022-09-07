@@ -65,7 +65,7 @@
                             <x-slot name="actions">
                                 <x-wedo.button  type="button" wire:loading.attr="disabled" id="card-button" class="w-full">
                                     <x-wedo.loader wire:loading></x-wedo.loader>
-                                    {{ __('Save') }}
+                                    {{ __('pay now') }}
                                 </x-wedo.button>
                             </x-slot>
                         </x-wedo.form-section>

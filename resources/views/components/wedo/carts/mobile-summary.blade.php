@@ -53,15 +53,19 @@
                     <button
                         type="button"
                         {{ $attributes->only(['id']) }}
+                        {{ $carts?->items ?  '' : 'disabled'}}
                         wire:click="continue"
                         @class([
                                'w-full uppercase rounded border border-transparent py-2 px-4 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-' . app_color() . '-500 focus:ring-offset-2',
                                'btn-base text-white bg-gradient-to-r from-' . app_color() . '-500 via-' .  app_color() . '-600 to-' . app_color() . '-700 hover:bg-gradient-to-br' => $carts?->items,
-                               'disabled bg-' . app_color() . '-100 text-' . app_color() . '-400 cursor-not-allowed' => ! $carts?->items
+                               'bg-' . app_color() . '-100 text-' . app_color() . '-400 cursor-not-allowed' => ! $carts?->items
                            ])>
                         <x-wedo.loader wire:loading wire:target="continue"></x-wedo.loader>
                         {{ __('Continue') }}
                     </button>
+                    <div class="flex items-center justify-center mt-2">
+                        <img class="h-8" src="https://cdn.shopify.com/s/files/1/0468/3798/9535/t/5/assets/cart_checkout_icon.png?v=21454973454622682011617284421" alt="Secure Cart">
+                    </div>
                 </div>
             @endif
         </div>

@@ -3,6 +3,7 @@ namespace App\Http\Livewire\Wedo\Tickets;
 
 use App\Http\Livewire\Wedo\Carts\Bag;
 use App\Http\Livewire\Wedo\WithCachedRows;
+use App\Http\Livewire\Wedo\WithDiscount;
 use App\Http\Services\Contracts\ApiInterface;
 use App\Models\Ticket;
 use Livewire\Component;
@@ -11,6 +12,8 @@ use WireUi\Traits\Actions;
 class Browse extends Component
 {
     use WithCachedRows;
+
+    use WithDiscount;
 
     use Actions;
 

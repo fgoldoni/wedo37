@@ -2,6 +2,7 @@
 namespace App\Http\Livewire\Wedo\Checkout;
 
 use App\Http\Livewire\Wedo\WithCachedRows;
+use App\Http\Livewire\Wedo\WithDiscount;
 use App\Http\Services\Contracts\ApiInterface;
 use App\Rules\Phone;
 use App\Rules\RealEmail;
@@ -14,6 +15,8 @@ class Browse extends Component
     use Actions;
 
     use WithCachedRows;
+
+    use WithDiscount;
 
     public ?string $name = null;
 

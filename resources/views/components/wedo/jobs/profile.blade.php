@@ -20,11 +20,11 @@
                 </div>
                 <div class="mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
                     @if($phone)
-                        <button type="button" class="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2">
+                        <a href="tel: {{$phone}}" class="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-{{ app_color() }}-500 focus:ring-offset-2">
                             <!-- Heroicon name: mini/envelope -->
                             <x-heroicon-o-phone-outgoing class="-ml-1 mr-2 h-5 w-5 text-gray-400"></x-heroicon-o-phone-outgoing>
                             <span>{{ $phone }}</span>
-                        </button>
+                        </a>
                     @endif
                     @if($status)
                         <x-wedo.jobs.applicant-status status="{{ $status }}"></x-wedo.jobs.applicant-status>
@@ -39,11 +39,11 @@
                             <span>Add to Basket</span>
                         </x-wedo.button>
                    @else
-                            <button type="button" class="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2">
-                                <!-- Heroicon name: mini/phone -->
-                                <x-heroicon-o-map class="-ml-1 mr-2 h-5 w-5 text-gray-400"></x-heroicon-o-map>
-                                <span class="uppercase">{{ app_event()->city }}</span>
-                            </button>
+                        <a href="mailto: {{ app_event()->email }}" class="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-{{ app_color() }}-500 focus:ring-offset-2">
+                            <!-- Heroicon name: mini/phone -->
+                            <x-heroicon-o-mail class="-ml-1 mr-2 h-5 w-5 text-gray-400"></x-heroicon-o-mail>
+                            <span class="lowercase">{{ app_event()->email }}</span>
+                        </a>
                    @endif
                 </div>
             </div>

@@ -7,6 +7,7 @@
         type="button"
         wire:click="continue"
         {{ $attributes->only(['id']) }}
+        {{ $disabled ?  'disabled' : ''}}
         @class([
             'w-full uppercase rounded border border-transparent py-2 px-4 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-' . app_color() . '-500 focus:ring-offset-2',
             'btn-base text-white bg-gradient-to-r from-' . app_color() . '-500 via-' .  app_color() . '-600 to-' . app_color() . '-700 hover:bg-gradient-to-br' => !$disabled,

@@ -11,11 +11,11 @@ class Quantity extends Component
 {
     use Actions;
 
-    public ?string $prefix = null;
-
     public ?string $model = null;
 
     public ?string $item = null;
+
+    public ?int $quantity = null;
 
     public  $row = null;
 
@@ -23,21 +23,20 @@ class Quantity extends Component
     {
         $row = (array) json_decode($this->item);
 
-        if (!isset($row['quantity'])) {
-            $row['quantity'] = 0;
-        }
+        $this->quantity = $this->getQuantity($row);
 
         $this->row = $row;
     }
 
-    public function updatedRow($value, $item)
+    public function updatedQuantity($value)
     {
         if ((int)$value === 0) {
             return $this->remove();
         }
+
         $response = app()->make(ApiInterface::class)->post('/carts', [
             'model' => $this->model,
-            'id' => Str::replace($this->prefix, '', $this->row['id']),
+            'id' => $this->getRowId(),
             'quantity' => (int) $value,
         ]);
 
@@ -68,9 +67,7 @@ class Quantity extends Component
 
     public function delete()
     {
-
-        $array = explode('\\', (string) $this->model);
-        $prefix = Str::lower($array[count($array) - 1]) . '-';
+        $prefix = $this->getPrefix();
 
         $response = app()->make(ApiInterface::class)->delete('/carts/' . $prefix . $this->row['id']);
 
@@ -86,5 +83,31 @@ class Quantity extends Component
     public function render()
     {
         return view('livewire.wedo.tickets.quantity');
+    }
+
+    private function getQuantity(array $row): int
+    {
+        $items = session('cart-' . request()->ip())?->items;
+
+        if ($items) {
+            $item = collect($items)->first(fn ($item) => $item->id === $this->getPrefix() . $row['id']);
+            if ($item) {
+                return $item->quantity;
+            }
+        }
+
+        return 0;
+    }
+
+    private function getPrefix(): string
+    {
+        $array = explode('\\', (string) $this->model);
+
+        return Str::lower($array[count($array) - 1]) . '-';
+    }
+
+    private function getRowId(): int
+    {
+        return Str::replace($this->getPrefix(), '', $this->row['id']);
     }
 }

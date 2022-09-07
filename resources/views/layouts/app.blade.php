@@ -26,7 +26,10 @@
         <x-notifications z-index="z-50" />
         <x-dialog z-index="z-50" blur="md" align="center" />
         @livewireScripts
-        <x-wedo.home.float-button></x-wedo.home.float-button>
+        @if (isset($floatButton))
+            <x-wedo.home.float-button></x-wedo.home.float-button>
+        @endif
+
         @stack('scripts')
     </body>
 </html>

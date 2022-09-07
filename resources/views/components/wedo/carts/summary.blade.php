@@ -10,15 +10,6 @@
             <div class="sticky bottom-0 flex-none border-t border-gray-200 bg-gray-50 p-6">
                 <h2 class="text-lg font-medium text-gray-900">Summary</h2>
 
-                {{--                                <form>--}}
-                {{--                                    <label for="discount-code" class="block text-sm font-medium text-gray-700">Discount code</label>--}}
-                {{--                                    <div class="mt-1 flex space-x-4">--}}
-                {{--                                        <input type="text" id="discount-code" name="discount-code" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">--}}
-                {{--                                        <button type="submit" class="rounded-md bg-gray-200 px-4 text-sm font-medium text-gray-600 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">Apply</button>--}}
-                {{--                                    </div>--}}
-                {{--                                </form>--}}
-
-                {{--                                <dl class="mt-10 space-y-6 text-sm font-medium text-gray-500">--}}
                 <dl class="mt-10 space-y-6 text-sm font-medium text-gray-500">
                     @foreach($carts?->items as $item)
                         @if($item->associatedModel === \App\Models\Ticket::$apiModel)
@@ -42,7 +33,17 @@
                         @endif
                     @endforeach
 
-                    <div class="flex items-center justify-between border-t border-gray-200 pt-6 text-gray-900">
+                    <form wire:submit.prevent="discount">
+                        <div class="flex space-x-4 border-t border-gray-200 pt-6">
+                            <input type="text" id="discount-code" name="discount-code" placeholder="Discount code" class="uppercase block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <button type="submit" class="uppercase flex items-center justify-center rounded-md bg-gray-200 px-4 text-sm font-medium text-gray-600 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">
+                                <x-wedo.loader wire:loading wire:target="discount"></x-wedo.loader>
+                                Apply
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="flex items-center justify-between pt-6 text-gray-900">
                         <dt class="relative text-base btn-title uppercase font-extrabold">
                             Total
                             @if($carts?->total_quantity)
@@ -53,7 +54,12 @@
                         </dt>
                         <dd class="text-base whitespace-nowrap font-extrabold">€ {{ $carts?->total }}</dd>
                     </div>
+                    <div class="flex items-center pt-6">
+                        <img src="https://cdn.shopify.com/s/files/1/0468/3798/9535/t/5/assets/cart_checkout_icon.png?v=21454973454622682011617284421" alt="">
+                    </div>
                 </dl>
+
+
             </div>
         </section>
     @else
