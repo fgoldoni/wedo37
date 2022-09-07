@@ -6,13 +6,19 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ config('app.name', 'Laravel') }}</title>
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+        <link href='https://fonts.googleapis.com/css?family=Josefin Sans' rel='stylesheet'>
+
         <!-- Styles -->
         @stack('styles')
         <!-- Scripts -->
         @livewireStyles
         @wireUiScripts
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <style>
+            body {
+                font-family: 'Josefin Sans';
+            }
+        </style>
     </head>
     <body class="h-full font-sans antialiased">
         <x-banner></x-banner>
