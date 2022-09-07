@@ -14,7 +14,7 @@ class Item extends Component
 
     use Actions;
 
-    public string|null $item = null;
+    public ?string $item = null;
 
     protected $queryString = ['filters'];
 
@@ -58,23 +58,9 @@ class Item extends Component
         $this->reset('filters', 'show');
     }
 
-    public function getRowsQueryProperty()
-    {
-        return $this->apiTicket();
-    }
-
-    private function apiTicket()
-    {
-        return json_decode($this->item);
-    }
-
-    public function getRowProperty()
-    {
-        return $this->cache(fn () => $this->rowsQuery);
-    }
 
     public function render()
     {
-        return view('livewire.wedo.tickets.item', ['row' => $this->row]);
+        return view('livewire.wedo.tickets.item', ['row' => json_decode($this->item)]);
     }
 }

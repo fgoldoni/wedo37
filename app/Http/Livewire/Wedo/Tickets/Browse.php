@@ -100,7 +100,6 @@ class Browse extends Component
     {
         return view('livewire.wedo.tickets.browse', [
             'rows' => $this->rows,
-            'ticket' => $this->row,
             'carts' => $this->carts,
             'hasExtra' => $this->hasExtra
         ]);

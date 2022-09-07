@@ -1,5 +1,4 @@
 <div>
-
     <!-- Section 1 -->
     <section class="relative p-2">
         <div

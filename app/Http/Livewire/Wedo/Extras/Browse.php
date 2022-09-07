@@ -19,8 +19,6 @@ class Browse extends Component
 
     public ?int $event_id = null;
 
-    public ?int $quantity = null;
-
     private readonly ApiInterface $api;
 
     protected $queryString = ['event_id'];
@@ -48,48 +46,6 @@ class Browse extends Component
     public function continue()
     {
         return $this->redirectRoute('checkout.index');
-    }
-
-    public function remove(array $item)
-    {
-        $this->dialog()->confirm([
-            'title' => 'Are you Sure ?',
-            'description' => 'Remove item from Basket',
-            'icon' => 'error',
-            'accept' => [
-                'label' => 'Yes, remove it',
-                'method' => 'delete',
-                'params' => $item,
-            ],
-            'reject' => [
-                'label' => 'No, cancel',
-            ],
-        ]);
-    }
-
-    public function delete(array $item)
-    {
-        $array = explode('\\', (string) $item['model']);
-
-        $prefix = Str::lower($array[count($array) - 1]) . '-';
-
-        $response = app()->make(ApiInterface::class)->delete('/carts/' . $prefix . $item['id']);
-
-        session()->put('cart-' . request()->ip(), $response->data);
-
-        $this->emitTo(Bag::class, 'refreshComponent');
-
-        $this->notification()->info(__('Great!!'), $response->message);
-    }
-
-    public function basket()
-    {
-        return $this->redirectRoute('carts.index');
-    }
-
-    public function resetFilters()
-    {
-        $this->reset('filters');
     }
 
     public function apiExtras()
@@ -125,7 +81,6 @@ class Browse extends Component
     public function render()
     {
         return view('livewire.wedo.extras.browse', [
-            'orders' => $this->rows,
             'rows' => $this->rows,
             'carts' => $this->carts,
             'hasExtra' => $this->hasExtra
