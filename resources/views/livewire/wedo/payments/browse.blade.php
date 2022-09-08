@@ -23,7 +23,7 @@
                         <x-wedo.disclosure title="Secure payment with credit card" open>
                             <x-wedo.button  wire:click="save" wire:loading.attr="disabled" id="checkout-button" class="w-full py-4 items-center">
                                 <x-wedo.loader wire:loading></x-wedo.loader>
-                                <x-heroicon-o-credit-card class="h-6 w-6 mr-2 mb-1"></x-heroicon-o-credit-card>
+                                <x-heroicon-o-credit-card class="h-6 w-6 mr-2 mb-1" wire:loading.remove></x-heroicon-o-credit-card>
                                 <span class="text-xl">{{ __('Checkout') }}</span>
                             </x-wedo.button>
                             <div class="flex items-center justify-center pt-6">

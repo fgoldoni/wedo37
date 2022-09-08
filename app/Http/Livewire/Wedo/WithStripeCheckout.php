@@ -17,7 +17,7 @@ trait WithStripeCheckout
 
     public function checkoutSession()
     {
-        \Stripe\Stripe::setApiKey('sk_test_rUdbY7nHw15cCHJdFy0JJOzl');
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
         \Stripe\Stripe::setApiVersion('2022-08-01');
 
