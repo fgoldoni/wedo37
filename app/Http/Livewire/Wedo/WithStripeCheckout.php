@@ -3,6 +3,8 @@
 
 namespace App\Http\Livewire\Wedo;
 
+use App\Http\Middleware\EnsureTeamMiddleware;
+
 /**
  * Class WithStripeCheckout
  *
@@ -31,7 +33,6 @@ trait WithStripeCheckout
 
         return \Stripe\Checkout\Session::create([
             'mode' => 'payment',
-            'billing_address_collection' => 'required',
             'line_items' => [
                 array_map(fn ($item) => [
                     'quantity' => $item->quantity,
@@ -48,6 +49,8 @@ trait WithStripeCheckout
                 'id' => auth()->user()->id,
                 'name' => auth()->user()->name,
                 'email' => auth()->user()->email,
+                'cart-id' => session()->get('cart-id'),
+                'team-id' => EnsureTeamMiddleware::teamId(),
             ],
             'success_url' => url('/'),
             'cancel_url' => url('/'),

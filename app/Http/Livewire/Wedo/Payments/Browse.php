@@ -32,6 +32,8 @@ class Browse extends Component
     {
         $checkoutSession = $this->checkoutSession();
 
+        session()->put('checkout-session-id', $checkoutSession->id);
+
         return $this->redirect($checkoutSession->url);
     }
 

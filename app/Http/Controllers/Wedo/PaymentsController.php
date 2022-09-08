@@ -10,17 +10,4 @@ class PaymentsController extends Controller
     {
         return view('wedo.payments.index');
     }
-
-    public function success()
-    {
-        try {
-            $response = app()->make(ApiInterface::class)->post('/paypal', [
-                'authorizationId' => $authorizationId,
-            ]);
-        } catch (\Exception $e) {
-            session()->flash('error', $e->getMessage() != '' ? $e->getMessage() : 'Unable to process payment');
-            return $this->redirectRoute('payments.index');
-        }
-        return view('wedo.payments.index');
-    }
 }
