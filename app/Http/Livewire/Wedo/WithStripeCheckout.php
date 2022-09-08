@@ -21,6 +21,14 @@ trait WithStripeCheckout
 
         \Stripe\Stripe::setApiVersion('2022-08-01');
 
+        $list = [];
+
+        foreach (session('cart-' . request()->ip())->items as $item) {
+            $list[] = ' ( ' . $item->quantity . 'X' . $item->name . ' )';
+        }
+
+        $description = implode(' | ', $list);
+
         return \Stripe\Checkout\Session::create([
             'mode' => 'payment',
             'billing_address_collection' => 'required',
