@@ -2,6 +2,7 @@
 namespace App\Http\Livewire\Wedo\Payments;
 
 use App\Http\Livewire\Wedo\Carts\Bag;
+use App\Http\Livewire\Wedo\WithStripeCheckout;
 use App\Http\Services\Contracts\ApiInterface;
 use Livewire\Component;
 use WireUi\Traits\Actions;
@@ -10,16 +11,31 @@ class Browse extends Component
 {
     use Actions;
 
+    use WithStripeCheckout;
+
     public ?string $name = null;
+
+
 
     public function mount()
     {
         $this->name = auth()->user()->name;
+
     }
 
     public function continue()
     {
+
     }
+
+    public function save()
+    {
+        $checkoutSession = $this->checkoutSession();
+
+        return $this->redirect($checkoutSession->url);
+    }
+
+
 
     public function setPayment($paymentMethod)
     {

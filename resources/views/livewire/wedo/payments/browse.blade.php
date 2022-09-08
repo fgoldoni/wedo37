@@ -4,7 +4,7 @@
 
         <h2 class="sr-only">Payment</h2>
 
-        <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+        <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
 
             <div class="lg:col-span-3">
                 <x-wedo.partials.alert></x-wedo.partials.alert>
@@ -12,49 +12,29 @@
 
             <div class="lg:col-span-2">
                 <div class="grid grid-cols-1">
-                    <section class="relative w-full bg-white">
-                        @livewire('wedo.paypal.browse')
+                    <section class="relative w-full">
+                        <x-wedo.disclosure title="Secure payment with paypal" open>
+                            @livewire('wedo.paypal.browse')
+                        </x-wedo.disclosure>
+
+                        <x-wedo.divider label="OR" class="py-8"></x-wedo.divider>
 
 
-                        <div class="relative px-4 py-5 sm:p-6">
-                            <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                                <div class="w-full border-t border-gray-300"></div>
+                        <x-wedo.disclosure title="Secure payment with credit card" open>
+                            <x-wedo.button  wire:click="save" wire:loading.attr="disabled" id="checkout-button" class="w-full py-4 items-center">
+                                <x-wedo.loader wire:loading></x-wedo.loader>
+                                <x-heroicon-o-credit-card class="h-6 w-6 mr-2 mb-1"></x-heroicon-o-credit-card>
+                                <span class="text-xl">{{ __('Checkout') }}</span>
+                            </x-wedo.button>
+                            <div class="flex items-center justify-center pt-6">
+                                <img src="{{ asset('images/Secure_Cart.png') }}" alt="">
                             </div>
-                            <div class="relative flex justify-start">
-                                <span class="bg-white pr-3 text-lg font-medium text-gray-900"> &nbsp; Or with credit card</span>
-                            </div>
-                        </div>
+                        </x-wedo.disclosure>
 
-                        <x-wedo.form-section submit="save">
-                            <x-slot name="description">
-                            </x-slot>
 
-                            <x-slot name="form">
-                                <div class="col-span-4">
-                                    <x-wedo.input.group label="{{ __('Name') }}" for="card-holder-name" :error="$errors->first('card-holder-name')" isRequired>
 
-                                        <x-wedo.input.text class="bg-slate-100 px-4 py-4" value="{{ $name }}" type="text" name="card-holder-name" id="card-holder-name" placeholder="{{ __('Name') }}" autocomplete="off" required/>
 
-                                    </x-wedo.input.group>
-                                </div>
 
-                                <div class="col-span-4" wire:ignore>
-
-                                    <x-wedo.label for="card-element" class="mb-5"> {{__('Visa / Master / American Express')}} </x-wedo.label>
-
-                                    <div id="card-element"></div>
-
-                                    <div id="card-errors" class="mt-5 text-sm text-red-600"></div>
-
-                                </div>
-                            </x-slot>
-                            <x-slot name="actions">
-                                <x-wedo.button  type="button" wire:loading.attr="disabled" id="card-button" class="w-full">
-                                    <x-wedo.loader wire:loading></x-wedo.loader>
-                                    {{ __('pay now') }}
-                                </x-wedo.button>
-                            </x-slot>
-                        </x-wedo.form-section>
                         <x-wedo.carts.mobile-summary :carts="$carts" :has-extra="$hasExtra" id="card-button"  :continue="false"></x-wedo.carts.mobile-summary>
                     </section>
                 </div>
@@ -79,57 +59,8 @@
     @endif
 
     @pushOnce('scripts')
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+
     <script src="https://js.stripe.com/v3/"></script>
-
-    <script>
-        const stripe = Stripe('{{ env("STRIPE_KEY") }}');
-
-        const elements = stripe.elements();
-
-        const cardElement = elements.create('card', {
-            classes : {
-                    base: 'StripeElement bg-gray-100 px-4 py-4 rounded-md shadow-lg'
-            },
-            style: {
-                base: {
-                    fontWeight: '500',
-                    fontFamily: 'Open Sans, Segoe UI, sans-serif',
-                    fontSize: '20px',
-                    fontSmoothing: 'antialiased',
-                }
-            },
-        });
-
-        cardElement.mount('#card-element');
-
-        const cardHolderName = document.getElementById('card-holder-name');
-        const cardButton = document.getElementById('card-button');
-        const cardError = document.getElementById('card-errors');
-        const clientSecret = cardButton.dataset.secret;
-
-        cardElement.addEventListener('change', function(event) {
-            if (event.error) {
-                cardError.textContent = event.error.message;
-            } else {
-                cardError.textContent = '';
-            }
-        });
-
-        cardButton.addEventListener('click', async (e) => {
-            const { paymentMethod, error } = await stripe.createPaymentMethod(
-                'card', cardElement, {
-                    billing_details: { name: cardHolderName.value, email: '{{ auth()->user()->email }}', phone: '{{ auth()->user()->phone }}' }
-                }
-            );
-
-            if (error) {
-                cardError.textContent = error.message;
-                console.info(error)
-            } else {
-                @this.call('setPayment', paymentMethod.id)
-            }
-        });
-
-    </script>
     @endPushOnce
 </main>
