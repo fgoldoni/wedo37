@@ -17,6 +17,8 @@ class EnsureTeamMiddleware
                 $team = Cache::rememberForever(static::getCacheKey($subDomain), function () use ($subDomain) {
                     $response = Http::acceptJson()->get(env('API_URL') . "/api/teams/{$subDomain}");
 
+                    session()->put('cart-id', uniqid());
+
                     return $response->ok()
                         ? $response->object()->data
                         : throw new Exception('Team not found for ' . $subDomain, 500);
@@ -56,6 +58,15 @@ class EnsureTeamMiddleware
     public static function teamId()
     {
         return Cache::get(self::cacheTeamKey());
+    }
+
+    public static function cartId()
+    {
+        if (!session()->has('cart-id')) {
+            session()->put('cart-id', uniqid());
+        }
+
+        return session('cart-id');
     }
 
     public static function cacheTeamKey(): string

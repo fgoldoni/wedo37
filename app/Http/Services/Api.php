@@ -20,7 +20,8 @@ class Api implements ApiInterface
     public function __construct(Factory $http)
     {
         $this->client = $http->withHeaders([
-            'X-Team-Id' => EnsureTeamMiddleware::teamId()
+            'x-team-id' => EnsureTeamMiddleware::teamId(),
+            'x-cart-id' => EnsureTeamMiddleware::cartId()
         ])->acceptJson();
 
         $this->apiUrl = env('API_URL', 'http://localhost:8000') . '/api';
@@ -47,7 +48,7 @@ class Api implements ApiInterface
     public function post(string $endpoint, array $data = []): \stdClass
     {
         try {
-            $this->response = $this->clientWithToken()->post($this->apiUrl . $endpoint, array_merge($data, ['ip' => request()->ip()]));
+            $this->response = $this->clientWithToken()->post($this->apiUrl . $endpoint, $data);
 
             if ($this->response->failed()
                 || $this->response->serverError()
