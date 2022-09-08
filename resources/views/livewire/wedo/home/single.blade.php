@@ -2,7 +2,7 @@
     <!-- Section 1 -->
     <section class="w-full py-20 bg-gray-100">
 
-        <div class="max-w-3xl px-10 mx-auto">
+        <div class="max-w-3xl px-10 mx-auto"  wire:click="show({{$ticket->id}})">
             <h2 class="mb-10 text-xl text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900">SINGLE PASS</h2>
 
             <div class="relative flex flex-col overflow-hidden bg-gray-900 rounded-xl">

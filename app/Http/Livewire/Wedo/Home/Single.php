@@ -13,6 +13,11 @@ class Single extends Component
             ->first();
     }
 
+    public function show(int $id)
+    {
+        return $this->redirectRoute('tickets.show', $id);
+    }
+
     public function render()
     {
         return view('livewire.wedo.home.single', ['ticket' => $this->row]);

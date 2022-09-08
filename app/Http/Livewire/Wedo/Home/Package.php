@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Livewire\Wedo\Home;
 
 use App\Models\Ticket;
@@ -12,6 +13,11 @@ class Package extends Component
             ->orderBy('position', 'asc')
             ->limit(3)
             ->get();
+    }
+
+    public function show(int $id)
+    {
+        return $this->redirectRoute('tickets.show', $id);
     }
 
     public function render()
