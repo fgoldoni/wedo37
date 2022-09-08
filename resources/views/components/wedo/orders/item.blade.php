@@ -19,73 +19,97 @@
             <div class="space-y-24">
                 @forelse($order->items as $item)
                     @if($item->associatedModel === \App\Models\Ticket::$apiModel)
-                        <div class="grid grid-cols-1 text-sm sm:grid-rows-1 sm:grid-cols-12 sm:gap-x-6 md:gap-x-8 lg:gap-x-8">
-                            <div class="sm:col-span-12 md:col-span-5 md:row-end-2 md:row-span-2">
-                                <div
-                                    @class([
-                                        'p-10 bg-gray-50 border-t-2 shadow-2xl -translate-y-2 border-' . $item->color . '-400 md:mt-0 hover:shadow-xl hover:-translate-y-1 ease-in-out delay-150 duration-300',
-                                    ])>
-                                    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 pb-8 border-b border-gray-200">
-                                        <div class="col-span-1 lg:col-span-2">
-                                            <div class="flex flex-col">
-                                                <h3 class="flex items-center text-{{ $item->color }}-900">
-                                            <span class="flex items-start text-4xl tracking-tight sm:text-5xl">
-                                              <span class="mr-2 text-2xl font-medium"> € </span>
-                                              <span class="font-semibold"> {{ $item->price }} </span>
-                                            </span>
-                                                </h3>
-                                                <h4 class="uppercase mt-5 text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ $item->color }}-400 to-{{ $item->color }}-900">{{ $item->quantity }} * {{ $item->name }}</h4>
-                                                <p class="mt-4 text-gray-900 cursor-pointer">{{ $order->user?->name }}</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-span-1">
-                                            <div class="visible-print w-16 h-16 text-center">
-                                                {!! QrCode::size(100)->generate(Request::url()); !!}
-                                            </div>
+                        <div class="grid grid-cols-1 sm:gap-6">
+                            <div class="bg-{{ $item->color }}-100">
+                                <div class="pt-12 sm:pt-16 lg:pt-20">
+                                    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                                        <div class="text-center">
+                                            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">{{ $order->user?->name }}</h2>
+                                            <p class="uppercase mt-4 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ $item->color }}-400 to-{{ $item->color }}-900">{{ $item->quantity }} * {{ $item->name }}</p>
                                         </div>
                                     </div>
-                                    <ul class="px-3 pt-8 space-y-3">
-                                        @php
-                                            $tags = is_array($item->tags) ? $item->tags : json_decode($item->tags);
-                                        @endphp
-                                        <li class="flex font-medium text-gray-500">
-                                            <x-heroicon-s-check-circle class="w-6 h-6 mr-1.5 text-{{ $item->color }}-400"></x-heroicon-s-check-circle>
-                                            {{ $item->attendees }} Person(s)
-                                        </li>
-
-                                        @foreach($tags as $tag)
-                                            <li class="flex font-medium text-gray-500">
-                                                <x-heroicon-s-check-circle class="w-6 h-6 mr-1.5 text-{{ $item->color }}-400"></x-heroicon-s-check-circle>
-                                                {{ $tag }}
-                                            </li>
-                                        @endforeach
-                                    </ul>
                                 </div>
-                            </div>
-                            <div class="sm:col-span-12 md:col-span-7">
-                                <section class="h-auto bg-white relative overflow-hidden">
-                                    <!-- Top Mesh BG -->
-                                    <div class="absolute top-0 opacity-90 overflow-hidden w-full mx-auto">
-                                        <img src="https://cdn.devdojo.com/images/june2022/mesh.png">
+                                <div class="mt-8 bg-white pb-16 sm:mt-12 sm:pb-20 lg:pb-28">
+                                    <div class="relative">
+                                        <div class="absolute inset-0 h-1/2 bg-{{ $item->color }}-100"></div>
+                                        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                                            <div class="mx-auto max-w-lg overflow-hidden rounded-lg shadow-lg lg:flex lg:max-w-none">
+                                                <div class="flex-1 bg-white px-6 py-8 lg:p-12">
+                                                    <h3 class="text-2xl font-bold text-gray-900 sm:text-3xl sm:tracking-tight uppercase">{{ \Illuminate\Support\Carbon::parse($item->event->start)->isoFormat('DD MMM hh:mm')  }}</h3>
+                                                    <p class="mt-6 text-base text-gray-500">{{ $item->event->address }}</p>
+                                                    <div class="mt-8">
+                                                        <div class="flex items-center">
+                                                            <h4 class="flex-shrink-0 bg-white pr-4 text-base font-semibold text-indigo-600">What's included</h4>
+                                                            <div class="flex-1 border-t-2 border-gray-200"></div>
+                                                        </div>
+                                                        <ul role="list" class="mt-8 space-y-5 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-5 lg:space-y-0">
+                                                            @php
+                                                                $tags = is_array($item->tags) ? $item->tags : json_decode($item->tags);
+                                                            @endphp
+
+                                                            <li class="flex items-start lg:col-span-1">
+                                                                <div class="flex-shrink-0">
+                                                                    <!-- Heroicon name: mini/check-circle -->
+                                                                    <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                                                                    </svg>
+                                                                </div>
+                                                                <p class="ml-3 text-sm text-gray-700">{{ $item->attendees }} Person(s)</p>
+                                                            </li>
+                                                            @foreach($tags as $tag)
+                                                                <li class="flex items-start lg:col-span-1">
+                                                                    <div class="flex-shrink-0">
+                                                                        <!-- Heroicon name: mini/check-circle -->
+                                                                        <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                                                                        </svg>
+                                                                    </div>
+                                                                    <p class="ml-3 text-sm text-gray-700">Private forum access</p>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="bg-{{ $item->color }}-50 py-8 px-6 text-center lg:flex lg:flex-shrink-0 lg:flex-col lg:justify-center lg:p-12">
+                                                    <p class="text-lg font-medium leading-6 text-gray-900">{{ app_team_name() }}</p>
+                                                    <div class="mt-4 flex items-center justify-center text-5xl font-bold tracking-tight text-gray-900">
+                                                        <h3 class="flex items-center text-{{ $item->color }}-900">
+                                                        <span class="flex items-start text-4xl tracking-tight sm:text-5xl">
+                                                          <span class="mr-2 text-2xl font-medium"> € </span>
+                                                          <span class="font-semibold"> {{ $item->price }} </span>
+                                                        </span>
+                                                        </h3>
+                                                    </div>
+                                                    <p class="mt-4 text-sm">
+                                                        <a href="javascript:;" class="font-medium text-gray-500 underline">Learn about our refund policy</a>
+                                                    </p>
+                                                    <div class="mt-6">
+                                                        <div class="rounded-md shadow">
+                                                            <a href="javascript:;" class="flex items-center justify-center rounded-md border border-transparent bg-gray-800 px-5 py-3 text-base font-medium text-white hover:bg-gray-900">Check In</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-4 text-sm">
+                                                        <a href="javascript:;" class="font-medium text-gray-900 btn-title">
+                                                            Buy it again
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="bg-gradient-to-t from-white z-10 absolute inset-0"></div>
-                                    <div class="flex relative py-10 flex-col z-20 px-10 justify-center items-center tracking-normal leading-6 sm:text-center text-white box-border">
-                                        <h2 class="uppercase mb-8 font-sans text-gray-900 text-5xl sm:text-6xl font-semibold tracking-tighter leading-none sm:max-w-lg">
-                                            {{ \Illuminate\Support\Carbon::parse($item->event->start)->isoFormat('DD MMM hh:mm')  }}
-                                        </h2>
-                                        <p class="text-2xl font-normal text-gray-500 text-center tracking-tight">
-                                            {{ $item->event->address }}
-                                        </p>
-                                        <a href="tel: {{ $item->event->phone }}" class="btn-title  text-center  text-xl font-normal text-{{ app_color() }}-500 tracking-tight">
-                                            {{ $item->event->phone }}
-                                        </a>
-                                    </div>
-                                </section>
+                                </div>
                             </div>
                         </div>
                     @endif
                 @empty
                 @endforelse
+
+                @foreach($order->items as $item)
+                        @if($item->associatedModel === \App\Models\Extra::$apiModel)
+                            <x-wedo.divider label="Extras"></x-wedo.divider>
+                        @endif
+                @endforeach
+
                 <ul role="list" class="divide-y divide-gray-200">
                     @forelse($order->items as $item)
                         @if($item->associatedModel === \App\Models\Extra::$apiModel)
