@@ -1,7 +1,7 @@
 @props(['order'])
 <div class="bg-white">
     <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 sm:py-8 lg:px-8 shadow-md">
-        <h2 class="btn-title text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900 uppercase">{{ $order->event?->name }}</h2>
+        <h2 class="btn-title text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900">{{ $order->event?->name }}</h2>
 
         <div class="text-sm border-b border-gray-200 mt-2 pb-5 sm:flex sm:justify-between">
             <dl class="flex">
@@ -9,7 +9,7 @@
                 <dd class="font-medium text-gray-900">{{ $order->id }}</dd>
             </dl>
             <div class="mt-4 sm:mt-0">
-                <dd class="font-medium text-gray-900"><time datetime="{{ $order->created_at }}">{{ \Illuminate\Support\Carbon::parse($order->created_at)->isoFormat('MMM DD, Y') }}</time></dd>
+                <dd class="font-medium text-gray-900">Order on: <time datetime="{{ $order->created_at }}">{{ \Illuminate\Support\Carbon::parse($order->created_at)->isoFormat('MMM DD, Y hh:mm') }}</time></dd>
             </div>
         </div>
 
@@ -35,7 +35,7 @@
                                             </span>
                                                 </h3>
                                                 <h4 class="uppercase mt-5 text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ $item->color }}-400 to-{{ $item->color }}-900">{{ $item->quantity }} * {{ $item->name }}</h4>
-                                                <p class="mt-4 text-gray-900 cursor-pointer uppercase">{{ $order->user?->name }}</p>
+                                                <p class="mt-4 text-gray-900 cursor-pointer">{{ $order->user?->name }}</p>
                                             </div>
                                         </div>
                                         <div class="col-span-1">
@@ -71,7 +71,7 @@
                                     <div class="bg-gradient-to-t from-white z-10 absolute inset-0"></div>
                                     <div class="flex relative py-10 flex-col z-20 px-10 justify-center items-center tracking-normal leading-6 sm:text-center text-white box-border">
                                         <h2 class="uppercase mb-8 font-sans text-gray-900 text-5xl sm:text-6xl font-semibold tracking-tighter leading-none sm:max-w-lg">
-                                            {{ \Illuminate\Support\Carbon::parse($item->event->start)->isoFormat(    'MMM DD')  }}
+                                            {{ \Illuminate\Support\Carbon::parse($item->event->start)->isoFormat('DD MMM hh:mm')  }}
                                         </h2>
                                         <p class="text-2xl font-normal text-gray-500 text-center tracking-tight">
                                             {{ $item->event->address }}

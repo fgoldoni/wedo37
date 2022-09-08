@@ -17,7 +17,6 @@
                         <h3 class="text-sm font-medium text-green-800">Payment successful</h3>
                         <div class="mt-2 text-sm text-green-700">
                             <p class="mt-2 text-4xl font-bold tracking-tight sm:tracking-tight sm:text-5xl">Thanks for ordering</p>
-                            <p class="mt-2 text-base text-gray-500">We appreciate your order, we’re currently processing it. So hang tight and we’ll send you confirmation very soon!</p>
                         </div>
                     </div>
                 </div>
