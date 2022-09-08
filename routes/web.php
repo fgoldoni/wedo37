@@ -98,6 +98,8 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
 Route::group(['middleware' => ['web', 'auth']], function () {
     Route::resource('confirmation', ConfirmationController::class);
+    Route::get('stripe', [ConfirmationController::class, 'stripe'])->name('confirmation.stripe');
+
 });
 
 Route::group(['middleware' => ['web']], function () {

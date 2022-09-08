@@ -52,7 +52,7 @@ trait WithStripeCheckout
                 'cart-id' => session()->get('cart-id'),
                 'team-id' => EnsureTeamMiddleware::teamId(),
             ],
-            'success_url' => url('/'),
+            'success_url' => route('confirmation.stripe'),
             'cancel_url' => url('/'),
         ]);
     }
