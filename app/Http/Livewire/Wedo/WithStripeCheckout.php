@@ -50,6 +50,7 @@ trait WithStripeCheckout
                 'name' => auth()->user()->name,
                 'email' => auth()->user()->email,
                 'cart-id' => EnsureTeamMiddleware::cartId(),
+                'user-id' => auth()->user()->id,
                 'team-id' => EnsureTeamMiddleware::teamId(),
             ],
             'success_url' => route('payments.stripe'),
