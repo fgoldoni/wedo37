@@ -49,11 +49,11 @@ trait WithStripeCheckout
                 'id' => auth()->user()->id,
                 'name' => auth()->user()->name,
                 'email' => auth()->user()->email,
-                'cart-id' => session()->get('cart-id'),
+                'cart-id' => EnsureTeamMiddleware::cartId(),
                 'team-id' => EnsureTeamMiddleware::teamId(),
             ],
-            'success_url' => route('confirmation.stripe'),
-            'cancel_url' => url('/'),
+            'success_url' => route('payments.success'),
+            'cancel_url' => route('payments.index'),
         ]);
     }
 }

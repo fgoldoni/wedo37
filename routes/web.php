@@ -89,7 +89,9 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {
+    Route::get('payments/success', [PaymentsController::class, 'success'])->name('payments.success');
     Route::resource('payments', PaymentsController::class);
+
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {
@@ -98,8 +100,6 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
 Route::group(['middleware' => ['web', 'auth']], function () {
     Route::resource('confirmation', ConfirmationController::class);
-    Route::get('stripe', [ConfirmationController::class, 'stripe'])->name('confirmation.stripe');
-
 });
 
 Route::group(['middleware' => ['web']], function () {

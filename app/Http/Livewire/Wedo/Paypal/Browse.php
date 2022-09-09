@@ -2,6 +2,7 @@
 namespace App\Http\Livewire\Wedo\Paypal;
 
 use App\Http\Livewire\Wedo\Carts\Bag;
+use App\Http\Middleware\EnsureTeamMiddleware;
 use App\Http\Services\Contracts\ApiInterface;
 use Livewire\Component;
 use WireUi\Traits\Actions;
@@ -23,6 +24,7 @@ class Browse extends Component
         try {
             $response = app()->make(ApiInterface::class)->post('/paypal', [
                 'authorizationId' => $authorizationId,
+                'cartId' => EnsureTeamMiddleware::cartId(),
             ]);
         } catch (\Exception $e) {
             session()->flash('error', $e->getMessage() != '' ? $e->getMessage() : 'Unable to process payment');
@@ -30,12 +32,13 @@ class Browse extends Component
         }
 
         session()->forget('cart-' . request()->ip());
+        session()->forget('cart-id');
 
         $this->emitTo(Bag::class, 'refreshComponent');
 
         $this->notification()->success(__('Updated'), $response->message);
 
-        return $this->redirectRoute('confirmation.index', ['orderId' => $response->orderId]);
+        return redirect()->route('extras.index', ['event_id' => app_event()->id])->with('payment', 'Payment successful');
     }
 
     public function mount()

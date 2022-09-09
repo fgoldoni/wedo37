@@ -9,12 +9,4 @@ class ConfirmationController extends Controller
     {
         return view('wedo.confirmation.index');
     }
-
-    public function stripe()
-    {
-        session()->put('cart-id', uniqid());
-        session()->forget('cart-' . request()->ip());
-
-        return view('wedo.confirmation.stripe');
-    }
 }

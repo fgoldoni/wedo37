@@ -4,7 +4,6 @@
 
 
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
-
             <div class="lg:col-span-3">
                 <div class="bg-green-50 border-l-4 border-green-400 p-4">
                     <div class="flex">
@@ -25,6 +24,8 @@
                 </div>
             </div>
         </div>
+
+        @livewire('wedo.extras.browse')
 
     </main>
     <x-wedo.home.footer></x-wedo.home.footer>
