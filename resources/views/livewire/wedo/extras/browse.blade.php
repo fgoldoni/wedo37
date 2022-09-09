@@ -1,8 +1,6 @@
 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-    @if(!session()->has('payment'))
-        <x-wedo.jobs.profile :phone="app_event()->phone"></x-wedo.jobs.profile>
-    @endif
+    <x-wedo.jobs.profile :phone="app_event()->phone"></x-wedo.jobs.profile>
 
     @if(count($rows))
         <div class="max-w-7xl mx-auto m-4 sm:px-6 lg:px-8">

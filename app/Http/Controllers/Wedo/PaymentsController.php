@@ -11,11 +11,16 @@ class PaymentsController extends Controller
         return view('wedo.payments.index');
     }
 
+    public function stripe()
+    {
+        session()->forget('cart-' . request()->ip());
+        session()->forget('cart-id');
+
+        return redirect()->route('payments.success');
+    }
+
     public function success()
     {
-        session()->forget('cart-id');
-        session()->forget('cart-' . request()->ip());
-
-        return redirect()->route('extras.index', ['event_id' => app_event()->id])->with('payment', 'Payment successful');
+        return view('wedo.payments.success')->with('payment', 'Payment successful');
     }
 }

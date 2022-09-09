@@ -70,7 +70,7 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <div class="bg-{{ $item->color }}-50 py-8 px-6 text-center lg:flex lg:flex-shrink-0 lg:flex-col lg:justify-center lg:p-12">
+                                                <div class="bg-gray-50 py-8 px-6 text-center lg:flex lg:flex-shrink-0 lg:flex-col lg:justify-center lg:p-12">
                                                     <p class="text-lg font-medium leading-6 text-gray-900">{{ app_team_name() }}</p>
                                                     <div class="mt-4 flex items-center justify-center text-5xl font-bold tracking-tight text-gray-900">
                                                         <h3 class="flex items-center text-{{ $item->color }}-900">
@@ -85,7 +85,7 @@
                                                     </p>
                                                     <div class="mt-6">
                                                         <div class="rounded-md shadow">
-                                                            <a href="javascript:;" class="flex items-center justify-center rounded-md border border-transparent bg-gray-800 px-5 py-3 text-base font-medium text-white hover:bg-gray-900">Check In</a>
+                                                            <a href="javascript:;" class="flex items-center justify-center rounded-md border border-transparent bg-{{ app_color() }}-800 px-5 py-3 text-base font-medium text-white hover:bg-{{ app_color() }}-900">Check In</a>
                                                         </div>
                                                     </div>
                                                     <div class="mt-4 text-sm">

@@ -38,7 +38,7 @@ class Browse extends Component
 
         $this->notification()->success(__('Updated'), $response->message);
 
-        return redirect()->route('extras.index', ['event_id' => app_event()->id])->with('payment', 'Payment successful');
+        return redirect()->route('payments.success');
     }
 
     public function mount()

@@ -52,7 +52,7 @@ trait WithStripeCheckout
                 'cart-id' => EnsureTeamMiddleware::cartId(),
                 'team-id' => EnsureTeamMiddleware::teamId(),
             ],
-            'success_url' => route('payments.success'),
+            'success_url' => route('payments.stripe'),
             'cancel_url' => route('payments.index'),
         ]);
     }
