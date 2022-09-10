@@ -12,7 +12,7 @@ return [
      * to learn how to get this file. You can also pass the credentials as an array
      * instead of a file path.
      */
-    'service_account_credentials_json' => public_path('sell-first-362105-6049a4995061.json'),
+    'service_account_credentials_json' => base_path('sell-first-362105-6049a4995061.json'),
 
     /*
      * The amount of minutes the Google API responses will be cached.
