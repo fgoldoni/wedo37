@@ -39,6 +39,16 @@
             gtag('config', 'UA-240737354-1');
         </script>
 
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-240737354-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-240737354-1');
+        </script>
+
     </head>
     <body class="h-full font-sans antialiased">
         <x-banner></x-banner>
