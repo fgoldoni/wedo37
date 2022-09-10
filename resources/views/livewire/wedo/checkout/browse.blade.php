@@ -1,5 +1,5 @@
 <main class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-    @if($carts->total_quantity)
+    @if($carts?->total_quantity)
         <x-wedo.basket :carts="$carts" :link="__('Contact information')"></x-wedo.basket>
 
         <h2 class="sr-only">Checkout</h2>
@@ -77,7 +77,7 @@
             <h3 class="uppercase mt-2 text-sm font-medium text-gray-900">No Basket</h3>
             <p class="mt-1 text-sm text-gray-500">Get started by creating a new basket.</p>
             <div class="mt-6">
-                <a href="{{ route('tickets.index') }}" class="btn-base inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-{{ app_color() }}-600 hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-500">
+                <a href="{{ route('tickets.index') . '?filters[events][0]=' . app_event()->id }}" class="btn-base inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-{{ app_color() }}-600 hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{{ app_color() }}-500">
                     <x-heroicon-o-shopping-bag class="-ml-1 mr-2 h-5 w-5"></x-heroicon-o-shopping-bag>
                     {{ __('layout.navigation.browse_tickets') }}
                 </a>
