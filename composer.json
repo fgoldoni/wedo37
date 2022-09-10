@@ -15,6 +15,7 @@
         "laravel/tinker": "^2.7",
         "rappasoft/laravel-livewire-tables": "^2.7",
         "simplesoftwareio/simple-qrcode": "~2",
+        "spatie/laravel-analytics": "^4.1",
         "stripe/stripe-php": "^9.5",
         "wire-elements/modal": "^1.0",
         "wireui/wireui": "^1.12"
