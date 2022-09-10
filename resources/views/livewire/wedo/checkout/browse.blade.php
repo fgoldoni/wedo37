@@ -59,11 +59,15 @@
                                 <div class="col-span-4">
                                     <div class="flex space-x-2 relative">
                                         <div class="flex h-5 items-center ">
-                                            <input id="same-as-shipping" name="same-as-shipping" type="checkbox" checked class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            <input id="terms" name="terms"  wire:model.lazy="terms" type="checkbox"  class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                         </div>
-                                        <label for="same-as-shipping" class="font-medium text-gray-500">I accept the <a href="javascript:;" class="btn-title underline cursor-pointer text-{{ app_color() }}-500">terms and conditions</a> </label>
+                                        <label for="terms" class="font-medium text-gray-500">I accept the <a href="javascript:;" class="btn-title underline cursor-pointer text-{{ app_color() }}-500">terms and conditions</a> </label>
                                     </div>
+                                    @if ($errors->first('terms'))
+                                        <p class="mt-1 text-sm text-rose-500 dark:text-rose-400">{{ $errors->first('terms') }}</p>
+                                    @endif
                                 </div>
+
                             </x-slot>
                         </x-wedo.form-section>
                         <x-wedo.continue :disabled="!$carts?->items" class="py-6 px-4 sm:p-6"></x-wedo.continue>

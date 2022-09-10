@@ -28,6 +28,8 @@ class Browse extends Component
 
     public ?string $address = null;
 
+    public bool $terms = false;
+
     public function rules(): array
     {
         return [
@@ -40,6 +42,7 @@ class Browse extends Component
                 new RealEmail(),
             ],
             'phone' => ['required', 'min:6', new Phone()],
+            'terms' => ['required', 'accepted'],
         ];
     }
 
