@@ -49,16 +49,11 @@
                                 </div>
 
                                 <div class="col-span-4">
-                                    <div wire:ignore x-data="internationalNumber('#phone')" class="col-span-1 sm:col-span-2">
-                                        <x-wedo.input.group label="{{ __('Phone number') }}" for="phone" :error="$errors->first('phone')" isRequired>
+                                    <x-wedo.input.group label="{{ __('Phone number') }}"  for="phone" :error="$errors->first('phone')" isRequired>
 
-                                            <x-wedo.input.text wire:model.lazy="phone" type="tel" name="phone" id="phone" required></x-wedo.input.text>
+                                        <x-wedo.input.text wire:model.lazy="phone" type="text" name="phone" id="phone" placeholder="{{ __('Phone number') }}" autocomplete="off" required/>
 
-                                        </x-wedo.input.group>
-                                    </div>
-                                    @if ($errors->first('phone'))
-                                        <p class="mt-1 text-sm text-rose-500 dark:text-rose-400">{{ $errors->first('phone') }}</p>
-                                    @endif
+                                    </x-wedo.input.group>
                                 </div>
 
                                 <div class="col-span-4">
