@@ -41,6 +41,14 @@
                                 </div>
 
                                 <div class="col-span-4">
+                                    <x-wedo.input.group label="{{ __('Confirm email') }}"  for="email_confirmation" :error="$errors->first('email_confirmation')" isRequired>
+
+                                        <x-wedo.input.text wire:model.lazy="email_confirmation" type="email" name="email_confirmation" id="email_confirmation" placeholder="{{ __('Confirm email') }}" autocomplete="off" required/>
+
+                                    </x-wedo.input.group>
+                                </div>
+
+                                <div class="col-span-4">
                                     <div wire:ignore x-data="internationalNumber('#phone')" class="col-span-1 sm:col-span-2">
                                         <x-wedo.input.group label="{{ __('Phone number') }}" for="phone" :error="$errors->first('phone')" isRequired>
 
@@ -54,11 +62,12 @@
                                 </div>
 
                                 <div class="col-span-4">
-                                    <x-wedo.input.group :error="$errors->first('address')" label="{{ __('Frendly Address') }}" for="address" optional>
-
-                                        <x-wedo.input.textarea wire:model.lazy="address" name="address" id="address" isRequired></x-wedo.input.textarea>
-
-                                    </x-wedo.input.group>
+                                    <div class="flex space-x-2 relative">
+                                        <div class="flex h-5 items-center ">
+                                            <input id="same-as-shipping" name="same-as-shipping" type="checkbox" checked class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                        </div>
+                                        <label for="same-as-shipping" class="font-medium text-gray-500">I accept the <a href="javascript:;" class="btn-title underline cursor-pointer text-{{ app_color() }}-500">terms and conditions</a> </label>
+                                    </div>
                                 </div>
                             </x-slot>
                         </x-wedo.form-section>

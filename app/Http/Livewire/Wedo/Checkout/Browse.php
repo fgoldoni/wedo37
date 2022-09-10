@@ -22,6 +22,8 @@ class Browse extends Component
 
     public ?string $email = null;
 
+    public ?string $email_confirmation = null;
+
     public ?string $phone = null;
 
     public ?string $address = null;
@@ -30,9 +32,14 @@ class Browse extends Component
     {
         return [
             'name' => ['required', 'min:4'],
-            'email' => ['required', 'email', new RealEmail()],
+            'email' => ['required', 'email', 'confirmed', new RealEmail()],
+            'email_confirmation' => [
+                'required',
+                'email',
+                'max:255',
+                new RealEmail(),
+            ],
             'phone' => ['required', 'min:6', new Phone()],
-            'address' => ['nullable', 'min:4'],
         ];
     }
 
@@ -55,21 +62,18 @@ class Browse extends Component
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
-            'address' => $this->address,
-            'to' => route('payments.index'),
+            'to' => route('tickets.index'),
             'is_logged' => auth()->check(),
         ]);
 
         if (auth()->check()) {
             $this->forget(WedoAuthService::cacheKey(session('token')));
-
-            return $this->redirectRoute('payments.index');
         }
 
-        session()->put('verification.text', 'We have e-mailed your login link on ' . $this->email . '. Please check your mailbox!');
-        session()->put('verification.url', route('login.resendMail', $this->email));
-
-        return $this->redirectRoute('checkout.index');
+        return $this->redirectRoute('login.token', [
+            'token' => $response->token,
+            'to' => route('payments.index'),
+        ]);
     }
 
     public function getHasExtraProperty()

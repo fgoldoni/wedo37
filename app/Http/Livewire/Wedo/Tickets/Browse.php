@@ -76,6 +76,10 @@ class Browse extends Component
 
     public function getRowsQueryProperty()
     {
+        if( !$this->filters['events']) {
+            $this->filters['events'] = [app_event()->id];
+        }
+
         return Ticket::query()
             ->when($this->filters['events'], fn ($query, $events) => $query->whereIn('event_id', $events))
             ->get();
