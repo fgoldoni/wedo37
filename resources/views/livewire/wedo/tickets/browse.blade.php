@@ -20,11 +20,6 @@
                             <div class="relative px-4 mx-auto text-sm max-w-7xl md:text-base">
                                 <div class="grid gap-5">
                                     <div class="col-span-1">
-                                        <div class="text-center p-4">
-                                            <h2 class="text-xl font-semibold leading-6 text-gray-900"> {{ \Illuminate\Support\Carbon::parse(app_event()->start)->isoFormat('DD, MMM YYYY')  }}</h2>
-                                            <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">{{ app_event()->address }}</p>
-                                            <p class="mx-auto mt-3 max-w-4xl text-xl text-gray-900 sm:mt-5 sm:text-2xl whitespace-pre-wrap">{{ app_event()->description }}</p>
-                                        </div>
                                         <div class="relative scrollbar-thin scrollbar-thumb-secondary-400 scrollbar-track-secondary-200 overflow-y-auto max-height">
                                             <ul class="grid grid-cols-1 space-y-4">
                                                 @foreach($rows as $row)
