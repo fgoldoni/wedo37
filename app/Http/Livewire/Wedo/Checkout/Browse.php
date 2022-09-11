@@ -52,9 +52,13 @@ class Browse extends Component
 
         $this->email = auth()->user()?->email;
 
+        $this->email_confirmation = auth()->user()?->email;
+
         $this->phone = auth()->user()?->phone;
 
         $this->address = auth()->user()?->address;
+
+        $this->terms = true;
     }
 
     public function continue()
