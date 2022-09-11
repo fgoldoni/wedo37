@@ -1,0 +1,185 @@
+    <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tainvoice</title>
+    <link rel="stylesheet" href="css/tailwind.css">
+</head>
+
+<body class="w-full h-screen bg-white subpixel-antialiased">
+
+<!--title -->
+<div class="w-full bg-gray-50 py-10">
+
+    <div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-10 px-4">
+
+        <div>
+            <img src="images/logo.svg" class="w-20">
+        </div>
+
+        <div class="flex flex-col gap-8">
+            <p class="text-3xl font-medium tracking-wider">Invoice</p>
+
+            <div class="flex flex-col gap-1">
+                <p class="font-medium">Invoice Number:</p>
+                <p class="text-gray-400 text-sm">
+                    INV-21-12-009
+                </p>
+            </div>
+
+
+            <div class="flex flex-col gap-1">
+                <p class="font-medium">Date:</p>
+                <p class="text-gray-400 text-sm">
+                    25 Apr, 2022
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!--bill to -->
+<div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-10 py-10 px-4">
+
+    <div class="flex flex-col gap-8">
+
+        <div class="flex flex-col gap-1">
+            <p class="font-medium">Bill To:</p>
+            <p class="text-gray-400 text-sm">
+                Johnny Depp
+            </p>
+            <p class="text-gray-400 text-sm">
+                15205 North Kierland Blvd
+            </p>
+            <p class="text-gray-400 text-sm">
+                Suite 100
+            </p>
+            <p class="text-gray-400 text-sm">
+                Tommy Bahama Scottsdale Kierland
+            </p>
+        </div>
+
+
+        <div class="flex flex-col gap-1">
+            <p class="font-medium">Tax Number:</p>
+            <p class="text-gray-400 text-sm">
+                TAX99110212
+            </p>
+        </div>
+    </div>
+
+    <div class="flex flex-col gap-8">
+
+        <div class="flex flex-col gap-1">
+            <p class="font-medium">Bill From:</p>
+            <p class="text-gray-400 text-sm">
+                Johnny Depp
+            </p>
+            <p class="text-gray-400 text-sm">
+                15205 North Kierland Blvd
+            </p>
+            <p class="text-gray-400 text-sm">
+                Suite 100
+            </p>
+            <p class="text-gray-400 text-sm">
+                Tommy Bahama Scottsdale Kierland
+            </p>
+        </div>
+
+
+        <div class="flex flex-col gap-1">
+            <p class="font-medium">Tax Number:</p>
+            <p class="text-gray-400 text-sm">
+                TAX99110212
+            </p>
+        </div>
+    </div>
+</div>
+
+<!--items -->
+<div class="w-full bg-gray-50 py-4">
+    <div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-10 px-4">
+        <div class="flex flex-row items-center justify-start">
+            <p class="uppercase font-medium">Item</p>
+        </div>
+
+        <div class="grid grid-cols-3">
+            <p class="uppercase font-medium">Cost</p>
+            <p class="uppercase font-medium">Quantity</p>
+            <p class="uppercase font-medium">Price</p>
+        </div>
+    </div>
+</div>
+
+<div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-10 py-10 px-4">
+
+    <div class="flex flex-row items-center justify-start">
+        <div class="flex flex-col gap-4">
+            <p class="font-medium">Monthly membership</p>
+            <p class="font-medium">Tax VAT</p>
+        </div>
+    </div>
+
+    <div class="flex flex-col items-start justify-start gap-4">
+        <div class="grid grid-cols-3 w-full">
+            <p class="">$49.00</p>
+            <p class="">1</p>
+            <p class="">$59</p>
+        </div>
+
+        <div class="grid grid-cols-3 w-full">
+            <p class="">$49.00</p>
+            <p class="">1</p>
+            <p class="">$79</p>
+        </div>
+
+        <div class="grid grid-cols-3 w-full border-t-2 border-gray-900 pt-4">
+            <p class="col-span-2">Subtotal</p>
+            <p class="">$99</p>
+        </div>
+
+        <div class="grid grid-cols-3 w-full">
+            <p class="col-span-2">Discount</p>
+            <p class="">$39</p>
+        </div>
+
+        <div class="grid grid-cols-3 w-full">
+            <p class="col-span-2">Paid</p>
+            <p class="">$149</p>
+        </div>
+
+        <div class="grid grid-cols-3 w-full border-t-2 border-gray-900 pt-4">
+            <p class="col-span-2">Amount Due</p>
+            <p class="">$99</p>
+        </div>
+
+    </div>
+
+</div>
+
+<!--payment -->
+<div class="max-w-5xl mx-auto grid sm:grid-cols-2 px-4 pb-10">
+    <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-1">
+            <p class="font-medium">Payment Method:</p>
+            <p class="text-gray-400 text-sm">
+                Stripe
+            </p>
+        </div>
+        <div class="flex flex-col gap-1">
+            <p class="font-medium">Notes:</p>
+            <p class="text-gray-400 text-sm">
+                Add a note...
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+
+</html>
