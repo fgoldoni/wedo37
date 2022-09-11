@@ -1,6 +1,6 @@
 <x-app-layout>
     <main class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <x-wedo.basket :back="route('orders.index')" :back-name="__('Browse orders')" :link="__('Confirmation')" title="Purchase confirmation"></x-wedo.basket>
+        <x-wedo.basket :back="route('orders.index')" :back-name="__('Browse orders')" :link="__('Confirmation')" title="Purchase confirmation #{{$id}}"></x-wedo.basket>
 
 
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -14,24 +14,27 @@
             <div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-10 px-4">
 
                 <div class="visible-print text-center">
-                    {!! QrCode::size(200)->generate(url('/')); !!}
+                    {!! QrCode::size(250)->generate(url('/')); !!}
                 </div>
 
                 <div class="flex flex-col gap-8">
                     <p class="text-2xl font-medium tracking-wider">{{ auth()->user()->name }}</p>
 
                     <div class="flex flex-col gap-1">
-                        <p class="font-medium">{{ app_event()->name }}</p>
+                        <p class="font-medium">Purchase Number:</p>
                         <p class="text-gray-400 text-sm">
-                            {{ app_event()->address }}
+                            #{{ $id }}
                         </p>
                     </div>
 
 
                     <div class="flex flex-col gap-1">
-                        <p class="font-medium">Date:</p>
+                        <p class="font-medium">{{ app_event()->name }}</p>
                         <p class="text-gray-400 text-sm">
-                            {{ \Carbon\Carbon::parse(app_event()?->start)->format('d M, Y h:m') }} -  {{ \Carbon\Carbon::parse(app_event()?->end   )->format('d M, Y h:m') }}
+                            Date: {{ \Carbon\Carbon::parse(app_event()?->start)->format('d M, Y h:m') }} -  {{ \Carbon\Carbon::parse(app_event()?->end   )->format('d M, Y h:m') }}
+                        </p>
+                        <p class="text-gray-400 text-sm">
+                            Address: {{ app_event()->address }}
                         </p>
                     </div>
                 </div>
@@ -46,7 +49,7 @@
             <div class="flex flex-col gap-8">
 
                 <div class="flex flex-col gap-1">
-                    <p class="font-medium">Customer:</p>
+                    <p class="font-medium">Paid by:</p>
                     <p class="text-gray-400 text-sm">
                         {{ auth()->user()->name }}
                     </p>
@@ -56,18 +59,15 @@
                     <p class="text-gray-400 text-sm">
                         {{ auth()->user()->phone }}
                     </p>
-                    <p class="text-gray-400 text-sm">
-                        Tommy Bahama Scottsdale Kierland
-                    </p>
                 </div>
 
 
-                <div class="flex flex-col gap-1">
-                    <p class="font-medium">Tax Number:</p>
-                    <p class="text-gray-400 text-sm">
-                        TAX99110212
-                    </p>
-                </div>
+{{--                <div class="flex flex-col gap-1">--}}
+{{--                    <p class="font-medium">Tax Number:</p>--}}
+{{--                    <p class="text-gray-400 text-sm">--}}
+{{--                        TAX99110212--}}
+{{--                    </p>--}}
+{{--                </div>--}}
             </div>
 
             <div class="flex flex-col gap-8">
@@ -83,18 +83,15 @@
                     <p class="text-gray-400 text-sm">
                         {{ app_event()->phone }}
                     </p>
-                    <p class="text-gray-400 text-sm">
-                        Tommy Bahama Scottsdale Kierland
-                    </p>
                 </div>
 
 
-                <div class="flex flex-col gap-1">
-                    <p class="font-medium">Tax Number:</p>
-                    <p class="text-gray-400 text-sm">
-                        TAX99110212
-                    </p>
-                </div>
+{{--                <div class="flex flex-col gap-1">--}}
+{{--                    <p class="font-medium">Tax Number:</p>--}}
+{{--                    <p class="text-gray-400 text-sm">--}}
+{{--                        TAX99110212--}}
+{{--                    </p>--}}
+{{--                </div>--}}
             </div>
         </div>
 
@@ -102,12 +99,12 @@
         <div class="w-full bg-gray-50 py-4">
             <div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-10 px-4">
                 <div class="flex flex-row items-center justify-start">
-                    <p class="uppercase font-medium">Item</p>
+                    <p class="uppercase font-medium">Item(s)</p>
                 </div>
 
                 <div class="grid grid-cols-3">
-                    <p class="uppercase font-medium">Cost</p>
-                    <p class="uppercase font-medium">Quantity</p>
+                    <p class="uppercase font-medium">Name</p>
+                    <p class="uppercase font-medium">Unit</p>
                     <p class="uppercase font-medium">Price</p>
                 </div>
             </div>
@@ -116,44 +113,42 @@
         <div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-10 py-10 px-4">
 
             <div class="flex flex-row items-center justify-start">
-                <div class="flex flex-col gap-4">
-                    <p class="font-medium">Monthly membership</p>
-                    <p class="font-medium">Tax VAT</p>
-                </div>
+{{--                <div class="flex flex-col gap-4">--}}
+{{--                    <p class="font-medium">Monthly membership</p>--}}
+{{--                    <p class="font-medium">Tax VAT</p>--}}
+{{--                </div>--}}
             </div>
 
             <div class="flex flex-col items-start justify-start gap-4">
-                <div class="grid grid-cols-3 w-full">
-                    <p class="">$49.00</p>
-                    <p class="">1</p>
-                    <p class="">$59</p>
-                </div>
+                @if(session()->get($id))
+                    @foreach(session()->get($id)?->items as $item)
+                        <div class="grid grid-cols-3 w-full">
+                            <p class="">{{ $item->quantity }} x {{ $item->name }}</p>
+                            <p class="">€ {{ $item->price }}</p>
+                            <p class="">€ {{ $item->quantity *  $item->price}}</p>
+                        </div>
+                    @endforeach
 
-                <div class="grid grid-cols-3 w-full">
-                    <p class="">$49.00</p>
-                    <p class="">1</p>
-                    <p class="">$79</p>
-                </div>
+                        <div class="grid grid-cols-3 w-full border-t-2 border-gray-900 pt-4">
+                            <p class="col-span-2">Subtotal</p>
+                            <p class="">€ {{ session()->get($id)?->sub_total }}</p>
+                        </div>
 
-                <div class="grid grid-cols-3 w-full border-t-2 border-gray-900 pt-4">
-                    <p class="col-span-2">Subtotal</p>
-                    <p class="">$99</p>
-                </div>
+{{--                        <div class="grid grid-cols-3 w-full">--}}
+{{--                            <p class="col-span-2">Discount</p>--}}
+{{--                            <p class="">$39</p>--}}
+{{--                        </div>--}}
 
-                <div class="grid grid-cols-3 w-full">
-                    <p class="col-span-2">Discount</p>
-                    <p class="">$39</p>
-                </div>
+{{--                        <div class="grid grid-cols-3 w-full">--}}
+{{--                            <p class="col-span-2">Paid</p>--}}
+{{--                            <p class="">$149</p>--}}
+{{--                        </div>--}}
 
-                <div class="grid grid-cols-3 w-full">
-                    <p class="col-span-2">Paid</p>
-                    <p class="">$149</p>
-                </div>
-
-                <div class="grid grid-cols-3 w-full border-t-2 border-gray-900 pt-4">
-                    <p class="col-span-2">Amount Due</p>
-                    <p class="">$99</p>
-                </div>
+                        <div class="grid grid-cols-3 w-full border-t-2 border-gray-900 pt-4">
+                            <p class="col-span-2">Total</p>
+                            <p class="">€ {{ session()->get($id)?->total }}</p>
+                        </div>
+                @endif
 
             </div>
 
@@ -162,16 +157,16 @@
         <!--payment -->
         <div class="max-w-5xl mx-auto grid sm:grid-cols-2 px-4 pb-10">
             <div class="flex flex-col gap-4">
-                <div class="flex flex-col gap-1">
-                    <p class="font-medium">Payment Method:</p>
-                    <p class="text-gray-400 text-sm">
-                        Stripe
-                    </p>
-                </div>
+{{--                <div class="flex flex-col gap-1">--}}
+{{--                    <p class="font-medium">Payment Method:</p>--}}
+{{--                    <p class="text-gray-400 text-sm">--}}
+{{--                        Stripe--}}
+{{--                    </p>--}}
+{{--                </div>--}}
                 <div class="flex flex-col gap-1">
                     <p class="font-medium">Notes:</p>
                     <p class="text-gray-400 text-sm">
-                        Add a note...
+                        We appreciate your order, we’re currently processing it. So hang tight and we’ll send you confirmation very soon!
                     </p>
                 </div>
             </div>

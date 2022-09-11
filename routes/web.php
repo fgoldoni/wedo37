@@ -89,8 +89,8 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {
-    Route::get('payments/stripe', [PaymentsController::class, 'stripe'])->name('payments.stripe');
-    Route::get('payments/success', [PaymentsController::class, 'success'])->name('payments.success');
+    Route::get('payments/stripe/{id}', [PaymentsController::class, 'stripe'])->name('payments.stripe');
+    Route::get('payments/success/{id}', [PaymentsController::class, 'success'])->name('payments.success');
     Route::resource('payments', PaymentsController::class);
 
 });

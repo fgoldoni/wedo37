@@ -7,9 +7,15 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
 class EnsureTeamMiddleware
 {
+    private static function uniqueCode(int $limit = 9): string
+    {
+        return Str::upper(substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, $limit));
+    }
+
     public function handle(Request $request, Closure $next)
     {
         try {
@@ -17,7 +23,7 @@ class EnsureTeamMiddleware
                 $team = Cache::rememberForever(static::getCacheKey($subDomain), function () use ($subDomain) {
                     $response = Http::acceptJson()->get(env('API_URL') . "/api/teams/{$subDomain}");
 
-                    session()->put('cart-id', uniqid());
+                    session()->put('cart-id', static::uniqueCode());
 
                     return $response->ok()
                         ? $response->object()->data
@@ -62,11 +68,28 @@ class EnsureTeamMiddleware
 
     public static function cartId()
     {
-        if (!session()->has('cart-id')) {
-            session()->put('cart-id', uniqid());
+        if (! session()->has('cart-id')) {
+            session()->put('cart-id', static::uniqueCode());
         }
 
         return session('cart-id');
+    }
+
+    public static function sessionCart(): ?\stdClass
+    {
+        return session()->get(static::sessionCartKey());
+    }
+
+    public static function sessionCartKey(): string
+    {
+        return 'cart-' . request()->ip();
+    }
+
+    public static function resetCartId()
+    {
+        session()->put(static::cartId(), static::sessionCart());
+        session()->forget(static::sessionCartKey());
+        session()->forget('cart-id');
     }
 
     public static function cacheTeamKey(): string

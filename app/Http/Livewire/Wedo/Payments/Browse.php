@@ -3,6 +3,7 @@ namespace App\Http\Livewire\Wedo\Payments;
 
 use App\Http\Livewire\Wedo\Carts\Bag;
 use App\Http\Livewire\Wedo\WithStripeCheckout;
+use App\Http\Middleware\EnsureTeamMiddleware;
 use App\Http\Services\Contracts\ApiInterface;
 use Livewire\Component;
 use WireUi\Traits\Actions;
@@ -37,31 +38,9 @@ class Browse extends Component
         return $this->redirect($checkoutSession->url);
     }
 
-
-
-    public function setPayment($paymentMethod)
-    {
-        try {
-            $response = app()->make(ApiInterface::class)->post('/payments', [
-                'paymentMethod' => $paymentMethod,
-            ]);
-        } catch (\Exception $e) {
-            session()->flash('error', $e->getMessage());
-            return $this->redirectRoute('payments.index');
-        }
-
-        session()->forget('cart-' . request()->ip());
-
-        $this->emitTo(Bag::class, 'refreshComponent');
-
-        $this->notification()->success(__('Updated'), $response->message);
-
-        return $this->redirectRoute('confirmation.index', ['orderId' => $response->orderId]);
-    }
-
     public function getHasExtraProperty()
     {
-        $items = session('cart-' . request()->ip())?->items;
+        $items = EnsureTeamMiddleware::sessionCart()?->items;
 
         if ($items) {
             foreach ($items as $item) {

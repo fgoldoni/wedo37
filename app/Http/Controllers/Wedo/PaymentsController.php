@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Wedo;
 
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\EnsureTeamMiddleware;
 use App\Http\Services\Contracts\ApiInterface;
 
 class PaymentsController extends Controller
@@ -11,16 +12,15 @@ class PaymentsController extends Controller
         return view('wedo.payments.index');
     }
 
-    public function stripe()
+    public function stripe(string $id)
     {
-        session()->forget('cart-' . request()->ip());
-        session()->forget('cart-id');
+        EnsureTeamMiddleware::resetCartId();
 
-        return redirect()->route('payments.success');
+        return redirect()->route('payments.success', ['id' => $id]);
     }
 
-    public function success()
+    public function success(string $id)
     {
-        return view('wedo.payments.success')->with('payment', 'Payment successful');
+        return view('wedo.payments.success', compact('id'))->with('payment', 'Payment successful');
     }
 }

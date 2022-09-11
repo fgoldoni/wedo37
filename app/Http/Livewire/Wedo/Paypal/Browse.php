@@ -21,24 +21,25 @@ class Browse extends Component
 
     public function setPaypalPayment($authorizationId)
     {
+        $cartId = EnsureTeamMiddleware::cartId();
+
         try {
             $response = app()->make(ApiInterface::class)->post('/paypal', [
                 'authorizationId' => $authorizationId,
-                'cartId' => EnsureTeamMiddleware::cartId(),
+                'cartId' => $cartId,
             ]);
         } catch (\Exception $e) {
             session()->flash('error', $e->getMessage() != '' ? $e->getMessage() : 'Unable to process payment');
             return $this->redirectRoute('payments.index');
         }
 
-        session()->forget('cart-' . request()->ip());
-        session()->forget('cart-id');
+        EnsureTeamMiddleware::resetCartId();
 
         $this->emitTo(Bag::class, 'refreshComponent');
 
         $this->notification()->success(__('Updated'), $response->message);
 
-        return redirect()->route('payments.success');
+        return redirect()->route('payments.success', ['id' => $cartId]);
     }
 
     public function mount()

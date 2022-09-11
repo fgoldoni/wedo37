@@ -54,7 +54,7 @@ trait WithStripeCheckout
                 'user-id' => auth()->user()->id,
                 'team-id' => EnsureTeamMiddleware::teamId(),
             ],
-            'success_url' => route('payments.stripe'),
+            'success_url' => route('payments.stripe', ['id' => EnsureTeamMiddleware::cartId()]),
             'cancel_url' => route('payments.index'),
         ]);
     }
