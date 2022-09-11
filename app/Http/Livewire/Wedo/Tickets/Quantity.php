@@ -49,8 +49,6 @@ class Quantity extends Component
         $this->emitTo(\App\Http\Livewire\Wedo\Extras\Browse::class, 'refreshComponent');
 
         $this->emitTo(Ticket::class, 'refreshComponent');
-
-        $this->notification()->success(__('Great!!'), $response->message);
     }
 
     public function remove()
