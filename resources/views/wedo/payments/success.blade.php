@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="flex flex-col gap-8">
-                    <p class="text-2xl font-medium tracking-wider">€ 5000 paid on Dec 22, 2022</p>
+                    <p class="text-2xl font-medium tracking-wider">{{ auth()->user()->name }}</p>
 
                     <div class="flex flex-col gap-1">
                         <p class="font-medium">{{ app_event()->name }}</p>
@@ -31,7 +31,7 @@
                     <div class="flex flex-col gap-1">
                         <p class="font-medium">Date:</p>
                         <p class="text-gray-400 text-sm">
-                            {{ \Carbon\Carbon::parse(app_event()?->start)->format('d M, Y h:m') }}
+                            {{ \Carbon\Carbon::parse(app_event()?->start)->format('d M, Y h:m') }} -  {{ \Carbon\Carbon::parse(app_event()?->end   )->format('d M, Y h:m') }}
                         </p>
                     </div>
                 </div>
@@ -46,15 +46,15 @@
             <div class="flex flex-col gap-8">
 
                 <div class="flex flex-col gap-1">
-                    <p class="font-medium">Bill To:</p>
+                    <p class="font-medium">Customer:</p>
                     <p class="text-gray-400 text-sm">
-                        Johnny Depp
+                        {{ auth()->user()->name }}
                     </p>
                     <p class="text-gray-400 text-sm">
-                        15205 North Kierland Blvd
+                        {{ auth()->user()->email }}
                     </p>
                     <p class="text-gray-400 text-sm">
-                        Suite 100
+                        {{ auth()->user()->phone }}
                     </p>
                     <p class="text-gray-400 text-sm">
                         Tommy Bahama Scottsdale Kierland
@@ -73,15 +73,15 @@
             <div class="flex flex-col gap-8">
 
                 <div class="flex flex-col gap-1">
-                    <p class="font-medium">Bill From:</p>
+                    <p class="font-medium">Organizer:</p>
                     <p class="text-gray-400 text-sm">
-                        Johnny Depp
+                        {{ app_team_name() }}
                     </p>
                     <p class="text-gray-400 text-sm">
-                        15205 North Kierland Blvd
+                        {{ app_event()->email }}
                     </p>
                     <p class="text-gray-400 text-sm">
-                        Suite 100
+                        {{ app_event()->phone }}
                     </p>
                     <p class="text-gray-400 text-sm">
                         Tommy Bahama Scottsdale Kierland
