@@ -57,8 +57,6 @@ class Browse extends Component
         $this->phone = auth()->user()?->phone;
 
         $this->address = auth()->user()?->address;
-
-        $this->terms = true;
     }
 
     public function continue()
