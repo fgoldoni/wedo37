@@ -17,9 +17,6 @@
     <x-dropdown.item separator href="{{ route('orders.index') }}">
         <b>{{ __('layout.navigation.browse_orders') }}</b>
     </x-dropdown.item>
-    <x-dropdown.item separator href="{{ route('shortlisted.index') }}">
-        <b>{{ __('layout.user_dropdown.shortlisted') }}</b>
-    </x-dropdown.item>
     <form method="POST" action="{{ route('logout') }}">
         @csrf
         <x-dropdown.item separator :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
