@@ -9,12 +9,14 @@
                 <h4 class="text-sm">
                     <a href="#" class="font-medium text-gray-700 hover:text-gray-800 btn-title text-xs uppercase"> {{ $row->name }} </a>
                 </h4>
-                <p class="ml-4 text-sm font-medium text-gray-900 whitespace-nowrap">€ {{ $row->price }}</p>
+                <div>
+                    @livewire('wedo.tickets.quantity', ['item' => json_encode($row), 'model' => \App\Models\Extra::$apiModel], key('extra-quantity-' . $row->id))
+                </div>
             </div>
         </div>
 
         <div class="mt-4 flex-1 flex items-end justify-between">
-            @livewire('wedo.tickets.quantity', ['item' => json_encode($row), 'model' => \App\Models\Extra::$apiModel], key('extra-quantity-' . $row->id))
+            € {{ $row->price }}
         </div>
     </div>
 </li>
