@@ -3,13 +3,90 @@
     <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 sm:py-8 lg:px-8 shadow-md">
         <h2 class="btn-title text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900">{{ $order->event?->name }}</h2>
 
-        <div class="text-sm border-b border-gray-200 mt-2 pb-5 sm:flex sm:justify-between">
-            <dl class="flex">
-                <dt class="text-gray-500">Nr:&nbsp;</dt>
-                <dd class="font-medium text-gray-900">{{ $order->id }}</dd>
-            </dl>
-            <div class="mt-4 sm:mt-0">
-                <dd class="font-medium text-gray-900">Order on: <time datetime="{{ $order->created_at }}">{{ \Illuminate\Support\Carbon::parse($order->created_at)->isoFormat('MMM DD, Y hh:mm') }}</time></dd>
+        <!--title -->
+        <div class="w-full bg-gray-50 py-10">
+
+            <div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-10 px-4">
+
+                <div class="visible-print text-center">
+                    {!! QrCode::size(250)->generate(url('/')); !!}
+                </div>
+
+                <div class="flex flex-col gap-8">
+                    <p class="text-2xl font-medium tracking-wider">{{ auth()->user()->name }}</p>
+
+                    <div class="flex flex-col gap-1">
+                        <p class="font-medium">Purchase Number:</p>
+                        <p class="text-gray-400 text-sm">
+                            #{{ $order->id }}
+                        </p>
+                    </div>
+
+
+                    <div class="flex flex-col gap-1">
+                        <p class="font-medium">Date & Address</p>
+                        <p class="text-gray-400 text-sm">
+                            {{ \Carbon\Carbon::parse($order->event?->start)->format('d M, Y h:m') }} -  {{ \Carbon\Carbon::parse($order->event?->end   )->format('d M, Y h:m') }}
+                        </p>
+                        <p class="text-gray-400 text-sm">
+                            {{ $order->event->address }}
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--bill to -->
+        <div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-10 py-10 px-4">
+
+            <div class="flex flex-col gap-8">
+
+                <div class="flex flex-col gap-1">
+                    <p class="font-medium">Paid by:</p>
+                    <p class="text-gray-400 text-sm">
+                        {{ auth()->user()->name }}
+                    </p>
+                    <p class="text-gray-400 text-sm">
+                        {{ auth()->user()->email }}
+                    </p>
+                    <p class="text-gray-400 text-sm">
+                        {{ auth()->user()->phone }}
+                    </p>
+                </div>
+
+
+                {{--                <div class="flex flex-col gap-1">--}}
+                {{--                    <p class="font-medium">Tax Number:</p>--}}
+                {{--                    <p class="text-gray-400 text-sm">--}}
+                {{--                        TAX99110212--}}
+                {{--                    </p>--}}
+                {{--                </div>--}}
+            </div>
+
+            <div class="flex flex-col gap-8">
+
+                <div class="flex flex-col gap-1">
+                    <p class="font-medium">Organizer:</p>
+                    <p class="text-gray-400 text-sm">
+                        {{ app_team_name() }}
+                    </p>
+                    <p class="text-gray-400 text-sm">
+                        {{ app_event()->email }}
+                    </p>
+                    <p class="text-gray-400 text-sm">
+                        {{ app_event()->phone }}
+                    </p>
+                </div>
+
+
+                {{--                <div class="flex flex-col gap-1">--}}
+                {{--                    <p class="font-medium">Tax Number:</p>--}}
+                {{--                    <p class="text-gray-400 text-sm">--}}
+                {{--                        TAX99110212--}}
+                {{--                    </p>--}}
+                {{--                </div>--}}
             </div>
         </div>
 
@@ -21,14 +98,6 @@
                     @if($item->associatedModel === \App\Models\Ticket::$apiModel)
                         <div class="grid grid-cols-1 sm:gap-6">
                             <div class="bg-{{ $item->color }}-100">
-                                <div class="pt-12 sm:pt-16 lg:pt-20">
-                                    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                                        <div class="text-center">
-                                            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">{{ $order->user?->name }}</h2>
-                                            <p class="uppercase mt-4 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ $item->color }}-400 to-{{ $item->color }}-900">{{ $item->quantity }} * {{ $item->name }}</p>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="mt-8 bg-white pb-16 sm:mt-12 sm:pb-20 lg:pb-28">
                                     <div class="relative">
                                         <div class="absolute inset-0 h-1/2 bg-{{ $item->color }}-100"></div>
