@@ -3,6 +3,21 @@
     <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 sm:py-8 lg:px-8 shadow-md">
         <h2 class="btn-title text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900">{{ $order->event?->name }}</h2>
 
+        <div class="mt-2 border-b border-gray-200 pb-5 text-sm sm:flex sm:justify-between">
+            <dl class="flex">
+                <dt class="text-gray-500">Order number&nbsp;</dt>
+                <dd class="font-medium text-gray-900">{{ $order->id }}</dd>
+            </dl>
+            <div class="mt-4 sm:mt-0">
+                <dl class="flex">
+                    <dt>
+                        <span class="sr-only">Date</span>
+                        <span class="sm:mx-2 text-gray-400" aria-hidden="true">&middot;</span>
+                    </dt>
+                    <dd class="font-medium text-gray-900">Order on: <time datetime="{{ $order->created_at }}">{{ \Illuminate\Support\Carbon::parse($order->created_at)->isoFormat('MMM DD, Y hh:mm') }}</time></dd>
+                </dl>
+            </div>
+        </div>
         <!--title -->
         <div class="w-full bg-gray-50 py-10">
 
@@ -13,7 +28,7 @@
                 </div>
 
                 <div class="flex flex-col gap-8">
-                    <p class="text-2xl font-medium tracking-wider">{{ auth()->user()->name }}</p>
+                    <p class="text-2xl font-medium tracking-wider">{{ $order->user->name }}</p>
 
                     <div class="flex flex-col gap-1">
                         <p class="font-medium">Purchase Number:</p>
@@ -46,13 +61,13 @@
                 <div class="flex flex-col gap-1">
                     <p class="font-medium">Paid by:</p>
                     <p class="text-gray-400 text-sm">
-                        {{ auth()->user()->name }}
+                        {{ $order->buyer->name }}
                     </p>
                     <p class="text-gray-400 text-sm">
-                        {{ auth()->user()->email }}
+                        {{ $order->buyer?->email }}
                     </p>
                     <p class="text-gray-400 text-sm">
-                        {{ auth()->user()->phone }}
+                        {{ $order->buyer?->phone }}
                     </p>
                 </div>
 
@@ -104,8 +119,8 @@
                                         <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                                             <div class="mx-auto max-w-lg overflow-hidden rounded-lg shadow-lg lg:flex lg:max-w-none">
                                                 <div class="flex-1 bg-white px-6 py-8 lg:p-12">
-                                                    <h3 class="text-2xl font-bold text-gray-900 sm:text-3xl sm:tracking-tight uppercase">{{ \Illuminate\Support\Carbon::parse($item->event->start)->isoFormat('DD MMM hh:mm')  }}</h3>
-                                                    <p class="mt-6 text-base text-gray-500">{{ $item->event->address }}</p>
+                                                    <h3 class="text-2xl font-bold sm:text-3xl sm:tracking-tight uppercase text-transparent bg-clip-text bg-gradient-to-r from-{{ $item->color }}-400 to-{{ $item->color }}-900">{{ $item->quantity  }} * {{ $item->name  }}</h3>
+                                                    <p class="mt-6 text-base text-gray-500">{{ $order->user->name }}</p>
                                                     <div class="mt-8">
                                                         <div class="flex items-center">
                                                             <h4 class="flex-shrink-0 bg-white pr-4 text-base font-semibold text-indigo-600">What's included</h4>
@@ -212,15 +227,15 @@
                         <dt class="font-medium text-gray-900">Billing address</dt>
                         @if($order->payment->brand === 'Paypal')
                             <dd class="mt-3 text-gray-500">
-                                <span class="block">{{ $order->user?->name }}</span>
-                                <span class="block">{{ $order->user?->street }}</span>
-                                <span class="block">{{ $order->user?->zip }} {{ $order->user?->city }}, {{ $order->user?->country_code }}</span>
+                                <span class="block">{{ $order->buyer?->name }}</span>
+                                <span class="block">{{ $order->buyer?->street }}</span>
+                                <span class="block">{{ $order->buyer?->zip }} {{ $order->buyer?->city }}, {{ $order->buyer?->country_code }}</span>
                             </dd>
                         @else
                             <dd class="mt-3 text-gray-500">
-                                <span class="block">{{ $order->user?->name }}</span>
-                                <span class="block">{{ $order->user?->email }}</span>
-                                <span class="block">{{ $order->user?->phone }}</span>
+                                <span class="block">{{ $order->buyer?->name }}</span>
+                                <span class="block">{{ $order->buyer?->email }}</span>
+                                <span class="block">{{ $order->buyer?->phone }}</span>
                             </dd>
                         @endif
                     </div>
