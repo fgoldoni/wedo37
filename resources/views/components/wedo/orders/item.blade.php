@@ -14,7 +14,7 @@
                         <span class="sr-only">Date</span>
                         <span class="sm:mx-2 text-gray-400" aria-hidden="true">&middot;</span>
                     </dt>
-                    <dd class="font-medium text-gray-900">Order on: <time datetime="{{ $order->created_at }}">{{ \Illuminate\Support\Carbon::parse($order->created_at)->isoFormat('MMM DD, Y hh:mm') }}</time></dd>
+                    <dd class="font-medium text-gray-900">Order on: <time datetime="{{ $order->created_at }}">{{ \Illuminate\Support\Carbon::parse($order->created_at)->isoFormat('MMM DD, Y HH:mm') }}</time></dd>
                 </dl>
             </div>
         </div>
