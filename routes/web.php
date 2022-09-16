@@ -14,6 +14,7 @@ use App\Http\Controllers\Wedo\PaymentsController;
 use App\Http\Controllers\Wedo\ResumeController;
 use App\Http\Controllers\Wedo\ShortlistedController;
 use App\Http\Controllers\Wedo\TicketsController;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function (\Illuminate\Http\Request $request) {
+
+    SEOTools::setTitle(app_event()->name . ' - ' . app_team_name(), false);
+    SEOTools::setDescription(app_event()->description);
+    SEOTools::opengraph()->setUrl('http://current.url.com');
+    SEOTools::setCanonical(url('/'));
+    SEOTools::opengraph()->addProperty('type', 'articles');
+    SEOTools::twitter()->setSite('@LuizVinicius73');
+    SEOTools::jsonLd()->addImage(app_team_avatar());
+
     return view('welcome');
 });
 
