@@ -82,12 +82,17 @@ class EnsureTeamMiddleware
 
     public static function sessionCartKey(): string
     {
-        return 'cart-' . request()->ip();
+        return self::cartId();
+    }
+
+    public static function successOrder(): string
+    {
+        return 'success-order';
     }
 
     public static function resetCartId()
     {
-        session()->put(static::cartId(), static::sessionCart());
+        session()->put(self::successOrder(), static::sessionCart());
         session()->forget(static::sessionCartKey());
         session()->forget('cart-id');
     }

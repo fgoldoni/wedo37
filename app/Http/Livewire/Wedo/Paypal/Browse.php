@@ -39,7 +39,7 @@ class Browse extends Component
 
         $this->notification()->success(__('Updated'), $response->message);
 
-        return redirect()->route('payments.success', ['id' => $cartId]);
+        return redirect()->route('payments.success');
     }
 
     public function mount()
@@ -48,7 +48,7 @@ class Browse extends Component
 
         $this->paypalSecret = env('PAYPAL_SECRET');
 
-        $this->carts = session('cart-' . request()->ip());
+        $this->carts = app_session_cart();
     }
 
     public function ui()

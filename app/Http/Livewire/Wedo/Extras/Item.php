@@ -35,7 +35,7 @@ class Item extends Component
             'id' => $id,
         ]);
 
-        session()->put('cart-' . request()->ip(), $response->data);
+        app_session_cart_store($response->data);
 
         $this->emitTo(Bag::class, 'refreshComponent');
         $this->emitup(Browse::class, 'refreshComponent');

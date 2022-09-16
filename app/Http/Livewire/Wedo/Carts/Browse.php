@@ -48,7 +48,7 @@ class Browse extends Component
 
         $response = app()->make(ApiInterface::class)->delete('/carts/' . $prefix . $item['id']);
 
-        session()->put('cart-' . request()->ip(), $response->data);
+        app_session_cart_store($response->data);
 
         $this->emitTo(Bag::class, 'refreshComponent');
 
@@ -59,7 +59,7 @@ class Browse extends Component
 
     public function getRowsProperty()
     {
-        return session('cart-' . request()->ip());
+        return app_session_cart();
     }
 
     public function checkout()

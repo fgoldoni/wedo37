@@ -40,7 +40,7 @@ class Quantity extends Component
             'quantity' => (int) $value,
         ]);
 
-        session()->put('cart-' . request()->ip(), $response->data);
+        app_session_cart_store($response->data);
 
         $this->emitTo(Bag::class, 'refreshComponent');
 
@@ -73,7 +73,7 @@ class Quantity extends Component
 
         $response = app()->make(ApiInterface::class)->delete('/carts/' . $prefix . $this->row['id']);
 
-        session()->put('cart-' . request()->ip(), $response->data);
+        app_session_cart_store($response->data);
 
         $this->emitTo(Bag::class, 'refreshComponent');
 
@@ -93,7 +93,7 @@ class Quantity extends Component
 
     private function getQuantity(array $row): int
     {
-        $items = session('cart-' . request()->ip())?->items;
+        $items = app_session_cart()?->items;
 
         if ($items) {
             $item = collect($items)->first(fn ($item) => $item->id === $this->getPrefix() . $row['id']);

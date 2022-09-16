@@ -55,14 +55,14 @@ class Browse extends Component
 
     public function getRowsProperty()
     {
-        if (!session()->has('cart-' . request()->ip())) {
+        if (!session()->has(app_cart_id())) {
             $response = app()->make(ApiInterface::class)->get('/carts');
 
-            session()->put('cart-' . request()->ip(), $response->data);
+            app_session_cart_store($response->data);
         }
 
 
-        return session()->get('cart-' . request()->ip());
+        return app_session_cart();
     }
 
     public function render()

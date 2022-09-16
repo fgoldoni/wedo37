@@ -57,3 +57,24 @@ if (!function_exists('cache_path')) {
         return EnsureTeamMiddleware::cachePrefix(config('app.system.cache.keys.' . $path));
     }
 }
+
+if (!function_exists('app_cart_id')) {
+    function app_cart_id(): string
+    {
+        return EnsureTeamMiddleware::sessionCartKey();
+    }
+}
+
+if (!function_exists('app_session_cart')) {
+    function app_session_cart(): ?\stdClass
+    {
+        return EnsureTeamMiddleware::sessionCart();
+    }
+}
+
+if (!function_exists('app_session_cart_store')) {
+    function app_session_cart_store($data)
+    {
+        return  session()->put(EnsureTeamMiddleware::sessionCartKey(), $data);
+    }
+}

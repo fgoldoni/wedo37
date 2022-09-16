@@ -25,7 +25,7 @@ trait WithStripeCheckout
 
         $list = [];
 
-        foreach (session('cart-' . request()->ip())->items as $item) {
+        foreach (app_session_cart()->items as $item) {
             $list[] = ' ( ' . $item->quantity . 'X' . $item->name . ' )';
         }
 
@@ -43,7 +43,7 @@ trait WithStripeCheckout
                         ],
                         'unit_amount' => $item->price * 100
                     ],
-                ], (array) session('cart-' . request()->ip())->items)
+                ], (array) app_session_cart()->items)
             ],
             'metadata' => [
                 'id' => auth()->user()->id,
@@ -54,7 +54,7 @@ trait WithStripeCheckout
                 'user-id' => auth()->user()->id,
                 'team-id' => EnsureTeamMiddleware::teamId(),
             ],
-            'success_url' => route('payments.stripe', ['id' => EnsureTeamMiddleware::cartId()]),
+            'success_url' => route('payments.stripe'),
             'cancel_url' => route('payments.index'),
         ]);
     }

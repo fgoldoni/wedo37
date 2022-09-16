@@ -9,7 +9,7 @@ class Bag extends Component
 
     public function getRowsProperty()
     {
-        return session('cart-' . request()->ip());
+        return app_session_cart();
     }
 
     public function render()

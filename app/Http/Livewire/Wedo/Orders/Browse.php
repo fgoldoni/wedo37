@@ -46,7 +46,7 @@ class Browse extends Component
         $this->dialog();
         $response = app()->make(ApiInterface::class)->delete('/carts/' . $id);
 
-        session()->put('cart-' . request()->ip(), $response->data);
+        session()->put(app_cart_id(), $response->data);
 
         $this->emitTo(Bag::class, 'refreshComponent');
 

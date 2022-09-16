@@ -25,11 +25,13 @@ class PaymentsController extends Controller
     {
         EnsureTeamMiddleware::resetCartId();
 
-        return redirect()->route('payments.success', ['id' => $id]);
+        return redirect()->route('payments.success');
     }
 
-    public function success(string $id)
+    public function success()
     {
+        $id = EnsureTeamMiddleware::successOrder();
+
         return view('wedo.payments.success', compact('id'))->with('payment', 'Payment successful');
     }
 }

@@ -60,7 +60,7 @@ class Browse extends Component
 
     public function getHasExtraProperty()
     {
-        $items = session('cart-' . request()->ip())?->items;
+        $items = app_session_cart()?->items;
 
         if ($items) {
             foreach ($items as $item) {
@@ -97,7 +97,7 @@ class Browse extends Component
 
     public function getCartsProperty()
     {
-        return session()->get('cart-' . request()->ip());
+        return app_session_cart();
     }
 
     public function render()
