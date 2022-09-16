@@ -21,7 +21,7 @@ class PaymentsController extends Controller
         return view('wedo.payments.index');
     }
 
-    public function stripe(string $id)
+    public function stripe()
     {
         EnsureTeamMiddleware::resetCartId();
 
