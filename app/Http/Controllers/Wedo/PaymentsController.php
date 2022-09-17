@@ -30,6 +30,14 @@ class PaymentsController extends Controller
 
     public function success()
     {
+        SEOTools::setTitle('Purchase confirmation - ' . app_event()->name, false);
+        SEOTools::setDescription(app_event()->description);
+        SEOTools::opengraph()->setUrl(route('orders.index'));
+        SEOTools::setCanonical(url('/'));
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite('@LuizVinicius73');
+        SEOTools::jsonLd()->addImage(app_team_avatar());
+
         $id = EnsureTeamMiddleware::successOrder();
 
         return view('wedo.payments.success', compact('id'))->with('payment', 'Payment successful');
