@@ -75,6 +75,6 @@ if (!function_exists('app_session_cart')) {
 if (!function_exists('app_session_cart_store')) {
     function app_session_cart_store($data)
     {
-        return  session()->put(EnsureTeamMiddleware::sessionCartKey(), $data);
+        return  session()->put(EnsureTeamMiddleware::cartId(), $data);
     }
 }

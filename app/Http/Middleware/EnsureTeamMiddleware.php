@@ -23,11 +23,15 @@ class EnsureTeamMiddleware
                 $team = Cache::rememberForever(static::getCacheKey($subDomain), function () use ($subDomain) {
                     $response = Http::acceptJson()->get(env('API_URL') . "/api/teams/{$subDomain}");
 
-                    session()->put('cart-id', static::uniqueCode());
 
-                    return $response->ok()
-                        ? $response->object()->data
-                        : throw new Exception('Team not found for ' . $subDomain, 500);
+                    if ($response->ok()) {
+                        $team = $response->object()->data;
+                        session()->put($team->id . '-cart-id', static::uniqueCode());
+
+                        return $team;
+                    }
+
+                    return throw new Exception('Team not found for ' . $subDomain, 500);
                 });
 
                 Cache::rememberForever(self::cacheTeamKey(), fn () => $team->id);
@@ -68,33 +72,32 @@ class EnsureTeamMiddleware
 
     public static function cartId()
     {
-        if (! session()->has('cart-id')) {
-            session()->put('cart-id', static::uniqueCode());
+        if (! session()->has(self::sessionCartKey())) {
+            session()->put(self::sessionCartKey(), static::uniqueCode());
         }
 
-        return session('cart-id');
+        return session(self::sessionCartKey());
     }
 
     public static function sessionCart(): ?\stdClass
     {
-        return session()->get(static::sessionCartKey());
+        return session()->get(static::cartId());
     }
 
     public static function sessionCartKey(): string
     {
-        return self::cartId();
+        return self::teamId() . '-cart-id';
     }
 
     public static function successOrder(): string
     {
-        return 'success-order';
+        return self::teamId() . '-' . 'success-order';
     }
 
     public static function resetCartId()
     {
         session()->put(self::successOrder(), static::sessionCart());
         session()->forget(static::sessionCartKey());
-        session()->forget('cart-id');
     }
 
     public static function cacheTeamKey(): string
