@@ -29,6 +29,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+    return redirect()->back();
+})->name('language');
+
 Route::get('/', function (\Illuminate\Http\Request $request) {
 
     SEOTools::setTitle(app_event()->name . ' - ' . app_team_name(), false);
