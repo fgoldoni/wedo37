@@ -17,7 +17,7 @@ class TicketsController extends Controller
         SEOTools::setDescription(app_event()->description);
         SEOTools::opengraph()->setUrl(route('tickets.index'));
         SEOTools::setCanonical(url('/'));
-        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::opengraph()->addProperty('type', 'website');
         SEOTools::twitter()->setSite('@LuizVinicius73');
         SEOTools::jsonLd()->addImage(app_team_avatar());
 
