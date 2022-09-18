@@ -8,9 +8,6 @@
             <x-wedo.partials.alert></x-wedo.partials.alert>
         </div>
 
-        <!-- Tabs -->
-        <x-wedo.jobs.tabs :filters="$filters" wire:model="filters.events"></x-wedo.jobs.tabs>
-
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:gap-4 lg:grid-cols-3">
                 <div class="lg:col-span-2">

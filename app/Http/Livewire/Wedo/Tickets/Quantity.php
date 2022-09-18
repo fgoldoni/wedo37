@@ -43,10 +43,10 @@ class Quantity extends Component
         app_session_cart_store($response->data);
 
         $this->emitTo(Bag::class, 'refreshComponent');
-
         $this->emitTo(Browse::class, 'refreshComponent');
-
         $this->emitTo(\App\Http\Livewire\Wedo\Extras\Browse::class, 'refreshComponent');
+        $this->emitTo(\App\Http\Livewire\Wedo\Checkout\Browse::class, 'refreshComponent');
+        $this->emitTo(\App\Http\Livewire\Wedo\Payments\Browse::class, 'refreshComponent');
 
         $this->emitTo(Ticket::class, 'refreshComponent');
     }
@@ -63,15 +63,21 @@ class Quantity extends Component
             ],
             'reject' => [
                 'label' => 'No, cancel',
+                'method' => 'cancel',
             ],
         ]);
+    }
+
+    public function cancel()
+    {
+        $this->quantity = $this->getQuantity($this->row);
     }
 
     public function delete()
     {
         $prefix = $this->getPrefix();
 
-        $response = app()->make(ApiInterface::class)->delete('/carts/' . $prefix . $this->row['id']);
+        $response = app()->make(ApiInterface::class)->delete('/carts/' . $prefix . $this->getRowCartId($this->row['id']));
 
         app_session_cart_store($response->data);
 
@@ -80,6 +86,9 @@ class Quantity extends Component
         $this->emitTo(Browse::class, 'refreshComponent');
 
         $this->emitTo(\App\Http\Livewire\Wedo\Extras\Browse::class, 'refreshComponent');
+
+        $this->emitTo(\App\Http\Livewire\Wedo\Checkout\Browse::class, 'refreshComponent');
+        $this->emitTo(\App\Http\Livewire\Wedo\Payments\Browse::class, 'refreshComponent');
 
         $this->emitTo(Ticket::class, 'refreshComponent');
 
@@ -96,7 +105,7 @@ class Quantity extends Component
         $items = app_session_cart()?->items;
 
         if ($items) {
-            $item = collect($items)->first(fn ($item) => $item->id === $this->getPrefix() . $row['id']);
+            $item = collect($items)->first(fn ($item) => $item->id === $this->getPrefix() . $this->getRowCartId($row['id']));
             if ($item) {
                 return $item->quantity;
             }
@@ -114,6 +123,11 @@ class Quantity extends Component
 
     private function getRowId(): int
     {
-        return Str::replace($this->getPrefix(), '', $this->row['id']);
+        return Str::replace($this->getPrefix(), '', $this->getRowCartId($this->row['id']));
+    }
+
+    private function getRowCartId(string $id): int
+    {
+        return Str::replace($this->getPrefix(), '', $id);
     }
 }

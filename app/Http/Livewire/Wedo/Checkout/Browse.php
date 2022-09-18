@@ -30,6 +30,8 @@ class Browse extends Component
 
     public bool $terms = false;
 
+    protected $listeners = ['refreshComponent' => '$refresh'];
+
     public function rules(): array
     {
         return [

@@ -112,36 +112,72 @@
              x-transition:leave="transition ease-in-out duration-300 transform"
              x-transition:leave-start="translate-y-0"
              x-transition:leave-end="translate-y-full"
-             class="relative bg-white px-4 py-6 sm:px-6"
+             class="relative bg-white px-4 py-6 sm:px-6 scrollbar-thin scrollbar-thumb-secondary-400 scrollbar-track-secondary-200 overflow-y-auto max-height"
              x-ref="panel"
              @click.away="open = false"
              x-cloak>
 
             @if($carts?->items)
                 <h2 class="max-w-lg mx-auto text-lg font-medium text-gray-900 pb-6">Summary</h2>
-                <dl class="max-w-lg mx-auto space-y-6">
+                <ul role="list" class="divide-y divide-gray-200">
                     @foreach($carts?->items as $item)
                         @if($item->associatedModel === \App\Models\Ticket::$apiModel)
-                            <div class="flex items-center justify-between">
-                                <dt class="uppercase btn-title truncate font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ $item->attributes->color }}-400 to-{{ $item->attributes->color }}-900">{{ $item->quantity }} * {{ $item->name }}</dt>
-                                <dd class="whitespace-nowrap">€ {{ $item->price }}</dd>
-                            </div>
+                            <li class="flex py-6 px-4 sm:px-6">
+                                <div class="flex flex-1 flex-col">
+                                    <div class="flex">
+                                        <div class="min-w-0 flex-1">
+                                            <h4 class="text-sm">
+                                                <a href="javascript:;" class="uppercase btn-title truncate font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ $item->attributes->color }}-400 to-{{ $item->attributes->color }}-900">
+                                                    {{ $item->name }}
+                                                </a>
+                                            </h4>
+                                            <p class="mt-1 text-sm text-gray-500">€ {{ $item->price }}</p>
+                                        </div>
+
+                                        <div class="ml-4 flow-root flex-shrink-0">
+                                            @livewire('wedo.tickets.quantity', ['item' => json_encode($item), 'model' => \App\Models\Ticket::$apiModel], key('ticket-mobile-quantity-' . $item->id))
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
                         @endif
                     @endforeach
+                </ul>
+                @if($hasExtra)
+                    <x-wedo.divider label="Extra"></x-wedo.divider>
+                    <ul role="list" class="divide-y divide-gray-200">
+                        @foreach($carts?->items as $item)
+                            @if($item->associatedModel === \App\Models\Extra::$apiModel)
+                                <li class="flex py-6 px-4 sm:px-6">
+                                    <div class="flex flex-1 flex-col">
+                                        <div class="flex">
+                                            <div class="min-w-0 flex-1">
+                                                <h4 class="text-sm">
+                                                    <a href="javascript:;" class="font-medium text-gray-700 hover:text-gray-800">
+                                                        {{ $item->name }}
+                                                    </a>
+                                                </h4>
+                                                <p class="mt-1 text-sm text-gray-500">€ {{ $item->price }}</p>
+                                            </div>
 
-                    @if($hasExtra)
-                        <x-wedo.divider label="Extra"></x-wedo.divider>
-                    @endif
-
-                    @foreach($carts?->items as $item)
-                        @if($item->associatedModel === \App\Models\Extra::$apiModel)
-                            <div class="flex items-center justify-between">
-                                <dt class="btn-title truncate font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-400 to-{{ app_color() }}-900">{{ $item->quantity }} * {{ $item->name }}</dt>
-                                <dd class="whitespace-nowrap">€ {{ $item->price }}</dd>
-                            </div>
-                        @endif
-                    @endforeach
-                </dl>
+                                            <div class="ml-4 flow-root flex-shrink-0">
+                                                @livewire('wedo.tickets.quantity', ['item' => json_encode($item), 'model' => \App\Models\Extra::$apiModel], key('extra-mobile-quantity-' . $item->id))
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endif
+                        @endforeach
+                    </ul>
+               @endif
+                <div class="border-t border-gray-200 py-6 px-4 sm:px-6">
+                    <button type="submit" class="flex items-center justify-center w-full rounded-md border border-{{ app_color() }}-300 bg-white py-3 px-4 text-base font-medium text-{{ app_color() }}-900 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">
+                        <span class="inline-flex items-center">
+                            <span class="-ml-1 mr-3">&#127870;</span>
+                            <span>{{ __('Add a drink') }}</span>
+                        </span>
+                    </button>
+                </div>
             @else
                 <x-wedo.pages.layouts.empty-state>
                     <!-- This example requires Tailwind CSS v2.0+ -->
