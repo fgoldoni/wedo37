@@ -202,7 +202,7 @@
                                     <div class="flex">
                                         <div class="min-w-0 flex-1">
                                             <h4 class="text-sm">
-                                                <a href="javascript:;" class="apitalize font-medium text-gray-700 hover:text-gray-800">{{ $item->name }}</a>
+                                                <a href="javascript:;" class="capitalize btn-title font-medium text-gray-700 hover:text-gray-800">{{ $item->name }}</a>
                                             </h4>
                                             <p class="mt-1 text-sm text-gray-500">{{ $item->quantity }} * € {{ $item->price }}</p>
                                         </div>
