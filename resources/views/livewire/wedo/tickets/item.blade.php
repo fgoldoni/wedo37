@@ -1,6 +1,6 @@
 <div>
     <!-- Section 1 -->
-    <section class="relative p-1 sm:p-2">
+    <section class="relative p-2">
         <div
             @class([
                 'p-10 border-' . $row->color . '-400 border-t-2 shadow-2xl -translate-y-2 md:mt-0 hover:shadow-xl hover:-translate-y-1 ease-in-out delay-150 duration-300',
