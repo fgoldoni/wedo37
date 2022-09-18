@@ -1,22 +1,16 @@
-<li class="flex py-6">
-    <div class="flex-shrink-0">
-        <img src="{{ asset('images/extra.jpg') }}" alt="{{ $row->name }}" class="btn-img w-24 h-24 rounded-md object-center object-cover sm:w-32 sm:h-32">
-    </div>
-
-    <div class="ml-4 flex-1 flex flex-col sm:ml-6">
-        <div>
-            <div class="flex justify-between">
+<li class="flex px-4 sm:px-6 py-6">
+    <div class="flex flex-1 flex-col">
+        <div class="flex">
+            <div class="min-w-0 flex-1">
                 <h4 class="text-sm">
-                    <a href="#" class="font-medium text-gray-700 hover:text-gray-800 btn-title text-xs uppercase"> {{ $row->name }} </a>
+                    <a href="javascript:;" class="font-medium text-gray-700 hover:text-gray-800 btn-title text-xs uppercase"> {{ $row->name }} </a>
                 </h4>
-                <div>
-                    @livewire('wedo.tickets.quantity', ['item' => json_encode($row), 'model' => \App\Models\Extra::$apiModel], key('extra-quantity-' . $row->id))
-                </div>
+                <p class="mt-1 text-sm text-gray-500">€ {{ $row->price }}</p>
             </div>
-        </div>
 
-        <div class="mt-4 flex-1 flex items-end justify-between">
-            € {{ $row->price }}
+            <div class="ml-4 flow-root flex-shrink-0">
+                @livewire('wedo.tickets.quantity', ['item' => json_encode($row), 'model' => \App\Models\Extra::$apiModel], key('extra-quantity-' . $row->id))
+            </div>
         </div>
     </div>
 </li>

@@ -2,6 +2,7 @@
 namespace App\Http\Livewire\Wedo\Tickets;
 
 use App\Http\Livewire\Wedo\Carts\Bag;
+use App\Http\Livewire\Wedo\Modals\Popup\Extra;
 use App\Http\Services\Contracts\ApiInterface;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -88,6 +89,7 @@ class Quantity extends Component
         $this->emitTo(\App\Http\Livewire\Wedo\Extras\Browse::class, 'refreshComponent');
 
         $this->emitTo(\App\Http\Livewire\Wedo\Checkout\Browse::class, 'refreshComponent');
+
         $this->emitTo(\App\Http\Livewire\Wedo\Payments\Browse::class, 'refreshComponent');
 
         $this->emitTo(Ticket::class, 'refreshComponent');
