@@ -62,7 +62,7 @@
                     </ul>
                 @endif
                 <div class="border-t border-gray-200 py-6">
-                    <button type="button" onclick="Livewire.emit('openModal', 'wedo.modals.popup.extras')"    class="flex items-center justify-center w-full rounded-md border border-{{ app_color() }}-300 bg-white py-3 px-4 text-base font-medium text-{{ app_color() }}-900 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">
+                    <button type="button" onclick="Livewire.emit('openModal', 'wedo.modals.popup.extras')" class="flex items-center justify-center w-full rounded-md border border-{{ app_color() }}-300 bg-white py-3 px-4 text-base font-medium text-{{ app_color() }}-900 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">
                         <span class="inline-flex items-center">
                             <span class="-ml-1 mr-3">&#127870;</span>
                             <span>{{ __('Add a drink') }}</span>
