@@ -191,6 +191,7 @@
                 @foreach($order->items as $item)
                         @if($item->associatedModel === \App\Models\Extra::$apiModel)
                             <x-wedo.divider label="Extras"></x-wedo.divider>
+                            @break
                         @endif
                 @endforeach
 
