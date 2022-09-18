@@ -199,12 +199,9 @@
                         @if($item->associatedModel === \App\Models\Extra::$apiModel)
                             <li class="p-4 sm:p-6">
                                 <div class="flex items-center sm:items-start">
-                                    <div class="flex-shrink-0 w-20 h-20 bg-gray-200 rounded-lg overflow-hidden sm:w-40 sm:h-40">
-                                        <img src="{{ asset('images/extra.jpg') }}" alt="{{ $item->name }}" class="btn-img w-full h-full object-center object-cover">
-                                    </div>
-                                    <div class="flex-1 ml-6 text-sm">
+                                    <div class="flex-1 text-sm">
                                         <div class="font-medium text-gray-900 sm:flex sm:justify-between">
-                                            <h5 class="btn-title uppercase">{{ $item->quantity }} * {{ $item->name }}</h5>
+                                            <h5 class="btn-title capitalize">{{ $item->quantity }} * {{ $item->name }}</h5>
                                             <p class="mt-2 sm:mt-0">€ {{ $item->price }}</p>
                                         </div>
                                     </div>
