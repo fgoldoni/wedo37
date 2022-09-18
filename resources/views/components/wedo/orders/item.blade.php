@@ -197,12 +197,18 @@
                 <ul role="list" class="divide-y divide-gray-200">
                     @forelse($order->items as $item)
                         @if($item->associatedModel === \App\Models\Extra::$apiModel)
-                            <li class="p-4 sm:p-6">
-                                <div class="flex items-center sm:items-start">
-                                    <div class="flex-1 text-sm">
-                                        <div class="font-medium text-gray-900 sm:flex sm:justify-between">
-                                            <h5 class="btn-title capitalize">{{ $item->quantity }} * {{ $item->name }}</h5>
-                                            <p class="mt-2 sm:mt-0">€ {{ $item->price }}</p>
+                            <li class="flex py-6 px-4 sm:px-6">
+                                <div class="ml-6 flex flex-1 flex-col">
+                                    <div class="flex">
+                                        <div class="min-w-0 flex-1">
+                                            <h4 class="text-sm">
+                                                <a href="javascript:;" class="apitalize font-medium text-gray-700 hover:text-gray-800">{{ $item->name }}</a>
+                                            </h4>
+                                            <p class="mt-1 text-sm text-gray-500">{{ $item->quantity }} * € {{ $item->price }}</p>
+                                        </div>
+
+                                        <div class="ml-4 flow-root flex-shrink-0">
+                                            <p class="mt-1 text-sm font-medium text-gray-900">€ {{ $item->sub_total }}</p>
                                         </div>
                                     </div>
                                 </div>
