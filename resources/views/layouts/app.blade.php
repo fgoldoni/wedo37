@@ -20,6 +20,7 @@
                 font-family: 'Josefin Sans';
             }
         </style>
+
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-DJL7N46CXH"></script>
         <script>
@@ -40,18 +41,8 @@
             gtag('config', 'UA-240737354-1');
         </script>
 
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-240737354-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'UA-240737354-1');
-        </script>
-
     </head>
-    <body class="h-full font-sans antialiased">
+    <body class="h-full antialiased">
         <x-banner></x-banner>
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')

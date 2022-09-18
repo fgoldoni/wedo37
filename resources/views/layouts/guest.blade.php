@@ -7,8 +7,13 @@
         {!! SEO::generate() !!}
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+        <link href='https://fonts.googleapis.com/css?family=Josefin Sans' rel='stylesheet'>
 
+        <style>
+            body {
+                font-family: 'Josefin Sans';
+            }
+        </style>
         @stack('styles')
 
         <!-- Scripts -->
@@ -17,9 +22,28 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         @livewireStyles
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DJL7N46CXH"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-DJL7N46CXH');
+        </script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-240737354-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-240737354-1');
+        </script>
     </head>
     <body>
-        <div class="font-sans min-h-screen bg-gray-100 antialiased">
+        <div class="min-h-screen bg-gray-100 antialiased">
             @include('layouts.navigation')
             <main>
                 {{ $slot }}
