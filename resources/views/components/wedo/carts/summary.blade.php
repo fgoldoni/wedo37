@@ -44,7 +44,7 @@
                                         <div class="flex">
                                             <div class="min-w-0 flex-1">
                                                 <h4 class="text-sm">
-                                                    <a href="javascript:;" class="font-medium text-gray-700 hover:text-gray-800">
+                                                    <a href="javascript:;" class="capitalize font-medium text-gray-700 hover:text-gray-800">
                                                         {{ $item->name }}
                                                     </a>
                                                 </h4>

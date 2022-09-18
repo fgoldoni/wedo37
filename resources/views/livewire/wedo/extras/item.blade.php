@@ -3,7 +3,7 @@
         <div class="flex">
             <div class="min-w-0 flex-1">
                 <h4 class="text-sm">
-                    <a href="javascript:;" class="font-medium text-gray-700 hover:text-gray-800 btn-title text-xs uppercase"> {{ $row->name }} </a>
+                    <a href="javascript:;" class="font-medium text-gray-700 hover:text-gray-800 btn-title text-xs capitalize"> {{ $row->name }} </a>
                 </h4>
                 <p class="mt-1 text-sm text-gray-500">€ {{ $row->price }}</p>
             </div>
