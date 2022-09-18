@@ -6,7 +6,7 @@
         <div class="mt-2 border-b border-gray-200 pb-5 text-sm sm:flex sm:justify-between">
             <dl class="flex">
                 <dt class="text-gray-500">Order number&nbsp;</dt>
-                <dd class="font-medium text-gray-900">{{ $order->id }}</dd>
+                <dd class="font-medium text-gray-900">#{{ $order->id }}</dd>
             </dl>
             <div class="mt-4 sm:mt-0">
                 <dl class="flex">
@@ -44,7 +44,7 @@
                             {{ \Carbon\Carbon::parse($order->event?->start)->format('d M, Y h:m') }} -  {{ \Carbon\Carbon::parse($order->event?->end   )->format('d M, Y h:m') }}
                         </p>
                         <p class="text-gray-400 text-sm">
-                            {{ $order->event->address }}
+                            {{ $order?->event?->address }}
                         </p>
                     </div>
                 </div>

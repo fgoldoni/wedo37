@@ -78,3 +78,10 @@ if (!function_exists('app_session_cart_store')) {
         return  session()->put(EnsureTeamMiddleware::cartId(), $data);
     }
 }
+
+if (!function_exists('app_session_order')) {
+    function app_session_order()
+    {
+        return  session()->get(EnsureTeamMiddleware::successOrder());
+    }
+}

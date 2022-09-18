@@ -38,7 +38,7 @@ class PaymentsController extends Controller
         SEOTools::twitter()->setSite('@LuizVinicius73');
         SEOTools::jsonLd()->addImage(app_team_avatar());
 
-        $id = EnsureTeamMiddleware::successOrder();
+        $id = app_session_order()->id;
 
         return view('wedo.payments.success', compact('id'))->with('payment', 'Payment successful');
     }

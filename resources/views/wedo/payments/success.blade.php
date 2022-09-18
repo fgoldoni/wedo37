@@ -2,46 +2,65 @@
     <main class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <x-wedo.basket :back="route('orders.index')" :back-name="__('Browse orders')" :link="__('Confirmation')" title="Purchase confirmation"></x-wedo.basket>
 
-
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
             <div class="lg:col-span-3">
-            </div>
-        </div>
+                <h2 class="btn-title text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900">{{ app_event()?->name }}</h2>
 
-        <!--title -->
-        <div class="w-full bg-gray-50 py-10">
-
-            <div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-10 px-4">
-
-                <div class="visible-print text-center">
-                    {!! QrCode::size(250)->generate(url('/')); !!}
-                </div>
-
-                <div class="flex flex-col gap-8">
-                    <p class="text-2xl font-medium tracking-wider">{{ auth()->user()->name }}</p>
-
-                    <div class="flex flex-col gap-1">
-                        <p class="font-medium">Purchase Number:</p>
-                        <p class="text-gray-400 text-sm">
-                            #{{ $id }}
-                        </p>
-                    </div>
-
-
-                    <div class="flex flex-col gap-1">
-                        <p class="font-medium">{{ app_event()->name }}</p>
-                        <p class="text-gray-400 text-sm">
-                            Date: {{ \Carbon\Carbon::parse(app_event()?->start)->format('d M, Y h:m') }} -  {{ \Carbon\Carbon::parse(app_event()?->end   )->format('d M, Y h:m') }}
-                        </p>
-                        <p class="text-gray-400 text-sm">
-                            Address: {{ app_event()->address }}
-                        </p>
+                <div class="mt-2 border-b border-gray-200 pb-5 text-sm sm:flex sm:justify-between">
+                    <dl class="flex">
+                        <dt class="text-gray-500">Order number&nbsp;</dt>
+                        <dd class="font-medium text-gray-900"> #{{ app_session_order()->id }}</dd>
+                    </dl>
+                    <div class="mt-4 sm:mt-0">
+                        <dl class="flex">
+                            <dt>
+                                <span class="sr-only">Date</span>
+                                <span class="sm:mx-2 text-gray-400" aria-hidden="true">&middot;</span>
+                            </dt>
+                        </dl>
                     </div>
                 </div>
 
-            </div>
+                <!--title -->
+                <div class="w-full bg-gray-50 py-10">
 
+                    <div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-10 px-4">
+
+                        <div class="visible-print text-center">
+                            {!! QrCode::size(250)->generate(url('/')); !!}
+                        </div>
+
+                        <div class="flex flex-col gap-8">
+                            <p class="text-2xl font-medium tracking-wider">{{ auth()->user()->name }}</p>
+
+                            <div class="flex flex-col gap-1">
+                                <p class="font-medium">Purchase Number:</p>
+                                <p class="text-gray-400 text-sm">
+                                    #{{ app_session_order()->id }}
+                                </p>
+                            </div>
+
+
+                            <div class="flex flex-col gap-1">
+                                <p class="font-medium">Date & Address</p>
+                                <p class="text-gray-400 text-sm">
+                                    {{ \Carbon\Carbon::parse(app_event()?->start)->format('d M, Y h:m') }} -  {{ \Carbon\Carbon::parse(app_event()?->end   )->format('d M, Y h:m') }}
+                                </p>
+                                <p class="text-gray-400 text-sm">
+                                    {{ app_event()->address }}
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
         </div>
+
+
+
+
 
         <!--bill to -->
         <div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-10 py-10 px-4">
@@ -120,8 +139,8 @@
             </div>
 
             <div class="flex flex-col items-start justify-start gap-4">
-                @if(session()->get($id))
-                    @foreach(session()->get($id)?->items as $item)
+                @if(app_session_order())
+                    @foreach(app_session_order()?->items as $item)
                         <div class="grid grid-cols-3 w-full">
                             <p class="">{{ $item->quantity }} x {{ $item->name }}</p>
                             <p class="">€ {{ $item->price }}</p>
@@ -131,7 +150,7 @@
 
                         <div class="grid grid-cols-3 w-full border-t-2 border-gray-900 pt-4">
                             <p class="col-span-2">Subtotal</p>
-                            <p class="">€ {{ session()->get($id)?->sub_total }}</p>
+                            <p class="">€ {{ app_session_order()?->sub_total }}</p>
                         </div>
 
 {{--                        <div class="grid grid-cols-3 w-full">--}}
@@ -146,7 +165,7 @@
 
                         <div class="grid grid-cols-3 w-full border-t-2 border-gray-900 pt-4">
                             <p class="col-span-2">Total</p>
-                            <p class="">€ {{ session()->get($id)?->total }}</p>
+                            <p class="">€ {{ app_session_order()?->total }}</p>
                         </div>
                 @endif
 
