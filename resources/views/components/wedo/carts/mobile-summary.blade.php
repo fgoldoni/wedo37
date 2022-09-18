@@ -63,9 +63,6 @@
                         <x-wedo.loader wire:loading wire:target="continue"></x-wedo.loader>
                         {{ __('Continue') }}
                     </button>
-                    <div class="flex items-center justify-center mt-2">
-                        <img class="h-8" src="https://cdn.shopify.com/s/files/1/0468/3798/9535/t/5/assets/cart_checkout_icon.png?v=21454973454622682011617284421" alt="Secure Cart">
-                    </div>
                 </div>
             @endif
         </div>
