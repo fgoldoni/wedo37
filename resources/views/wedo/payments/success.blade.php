@@ -8,7 +8,7 @@
 
                 <div class="mt-2 border-b border-gray-200 pb-5 text-sm sm:flex sm:justify-between">
                     <dl class="flex">
-                        <dt class="text-gray-500">Order number&nbsp;</dt>
+                        <dt class="text-gray-500">{{ __('Order Number') }}&nbsp;</dt>
                         <dd class="font-medium text-gray-900"> #{{ app_session_order()->id }}</dd>
                     </dl>
                     <div class="mt-4 sm:mt-0">
@@ -34,15 +34,15 @@
                             <p class="text-2xl font-medium tracking-wider">{{ auth()->user()->name }}</p>
 
                             <div class="flex flex-col gap-1">
-                                <p class="font-medium">Purchase Number:</p>
+                                <p class="font-medium">{{ __('Number of items') }}:</p>
                                 <p class="text-gray-400 text-sm">
-                                    #{{ app_session_order()->id }}
+                                    {{ app_session_order()->total_quantity }} Item(s)
                                 </p>
                             </div>
 
 
                             <div class="flex flex-col gap-1">
-                                <p class="font-medium">Date & Address</p>
+                                <p class="font-medium">{{ __('Date & address') }}:</p>
                                 <p class="text-gray-400 text-sm">
                                     {{ \Carbon\Carbon::parse(app_event()?->start)->format('d M, Y h:m') }} -  {{ \Carbon\Carbon::parse(app_event()?->end   )->format('d M, Y h:m') }}
                                 </p>
@@ -68,7 +68,7 @@
             <div class="flex flex-col gap-8">
 
                 <div class="flex flex-col gap-1">
-                    <p class="font-medium">Paid by:</p>
+                    <p class="font-medium">{{ __('Customer') }}:</p>
                     <p class="text-gray-400 text-sm">
                         {{ auth()->user()->name }}
                     </p>
@@ -92,7 +92,7 @@
             <div class="flex flex-col gap-8">
 
                 <div class="flex flex-col gap-1">
-                    <p class="font-medium">Organizer:</p>
+                    <p class="font-medium">{{ __('Organizer') }}:</p>
                     <p class="text-gray-400 text-sm">
                         {{ app_team_name() }}
                     </p>
@@ -122,9 +122,9 @@
                 </div>
 
                 <div class="grid grid-cols-3">
-                    <p class="uppercase font-medium">Name</p>
-                    <p class="uppercase font-medium">Unit</p>
-                    <p class="uppercase font-medium">Price</p>
+                    <p class="uppercase font-medium">{{ __('Name') }}</p>
+                    <p class="uppercase font-medium">{{ __('Unit') }}</p>
+                    <p class="uppercase font-medium">{{ __('Price') }}</p>
                 </div>
             </div>
         </div>
@@ -149,7 +149,7 @@
                     @endforeach
 
                         <div class="grid grid-cols-3 w-full border-t-2 border-gray-900 pt-4">
-                            <p class="col-span-2">Subtotal</p>
+                            <p class="col-span-2">{{ __('Subtotal') }}</p>
                             <p class="">€ {{ app_session_order()?->sub_total }}</p>
                         </div>
 
@@ -164,7 +164,7 @@
 {{--                        </div>--}}
 
                         <div class="grid grid-cols-3 w-full border-t-2 border-gray-900 pt-4">
-                            <p class="col-span-2">Total</p>
+                            <p class="col-span-2">{{ __('Total') }}</p>
                             <p class="">€ {{ app_session_order()?->total }}</p>
                         </div>
                 @endif
@@ -185,7 +185,7 @@
                 <div class="flex flex-col gap-1">
                     <p class="font-medium">Notes:</p>
                     <p class="text-gray-400 text-sm">
-                        We appreciate your order, we’re currently processing it. So hang tight and we’ll send you confirmation very soon!
+                        {{ __('We appreciate your order, we’re currently processing it. So hang tight and we’ll send you confirmation very soon!') }}
                     </p>
                 </div>
             </div>

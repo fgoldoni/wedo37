@@ -74,7 +74,7 @@ rector: ## PRS2 Validation
 	./vendor/bin/rector process
 
 server: ## Load phpMyAdmin server
-	 /usr/bin/php7.4 -S localhost:$(PORT) -t ../../phpMyAdmin
+	 /usr/bin/php7.4 -S localhost:$(PORT) -t ../phpMyAdmin
 
 test: ## phpunit test
 	./vendor/bin/phpunit --debug

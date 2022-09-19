@@ -5,7 +5,7 @@
 
         <div class="mt-2 border-b border-gray-200 pb-5 text-sm sm:flex sm:justify-between">
             <dl class="flex">
-                <dt class="text-gray-500">Order number&nbsp;</dt>
+                <dt class="text-gray-500">{{ __('Order Number') }}&nbsp;</dt>
                 <dd class="font-medium text-gray-900">#{{ $order->id }}</dd>
             </dl>
             <div class="mt-4 sm:mt-0">
@@ -14,7 +14,7 @@
                         <span class="sr-only">Date</span>
                         <span class="sm:mx-2 text-gray-400" aria-hidden="true">&middot;</span>
                     </dt>
-                    <dd class="font-medium text-gray-900">Order on: <time datetime="{{ $order->created_at }}">{{ \Illuminate\Support\Carbon::parse($order->created_at)->isoFormat('MMM DD, Y HH:mm') }}</time></dd>
+                    <dd class="font-medium text-gray-900">{{ __('Order on') }}: <time datetime="{{ $order->created_at }}">{{ \Illuminate\Support\Carbon::parse($order->created_at)->isoFormat('MMM DD, Y HH:mm') }}</time></dd>
                 </dl>
             </div>
         </div>
@@ -31,15 +31,15 @@
                     <p class="text-2xl font-medium tracking-wider">{{ $order->user->name }}</p>
 
                     <div class="flex flex-col gap-1">
-                        <p class="font-medium">Purchase Number:</p>
+                        <p class="font-medium">{{ __('Number of items') }}:</p>
                         <p class="text-gray-400 text-sm">
-                            #{{ $order->id }}
+                            {{ $order->total_quantity }} Item(s)
                         </p>
                     </div>
 
 
                     <div class="flex flex-col gap-1">
-                        <p class="font-medium">Date & Address</p>
+                        <p class="font-medium">{{ __('Date & address') }}</p>
                         <p class="text-gray-400 text-sm">
                             {{ \Carbon\Carbon::parse($order->event?->start)->format('d M, Y h:m') }} -  {{ \Carbon\Carbon::parse($order->event?->end   )->format('d M, Y h:m') }}
                         </p>
@@ -59,7 +59,7 @@
             <div class="flex flex-col gap-8">
 
                 <div class="flex flex-col gap-1">
-                    <p class="font-medium">Paid by:</p>
+                    <p class="font-medium">{{ __('Paid by') }}:</p>
                     <p class="text-gray-400 text-sm">
                         {{ $order->buyer->name }}
                     </p>
@@ -83,15 +83,15 @@
             <div class="flex flex-col gap-8">
 
                 <div class="flex flex-col gap-1">
-                    <p class="font-medium">Organizer:</p>
+                    <p class="font-medium">{{ __('Organizer') }}:</p>
                     <p class="text-gray-400 text-sm">
                         {{ app_team_name() }}
                     </p>
                     <p class="text-gray-400 text-sm">
-                        {{ app_event()->email }}
+                        {{ $order->event->email }}
                     </p>
                     <p class="text-gray-400 text-sm">
-                        {{ app_event()->phone }}
+                        {{ $order->event->phone }}
                     </p>
                 </div>
 
