@@ -18,7 +18,7 @@
                     <h4 class="uppercase mt-5 text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ $row->color }}-400 to-{{ $row->color }}-900">{{ $row->name }}</h4>
                 </div>
                 <div>
-                    @livewire('wedo.tickets.quantity', ['item' => json_encode($row), 'model' => \App\Models\Ticket::$apiModel], key('ticket-quantity-' . $row->id))
+                    @livewire('wedo.tickets.quantity', ['item' => json_encode($row), 'model' => \App\Models\Ticket::$apiModel], key('single-ticket-quantity-' . $row->id))
                 </div>
             </div>
 
