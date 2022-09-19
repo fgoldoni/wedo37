@@ -48,6 +48,7 @@ class Quantity extends Component
         $this->emitTo(\App\Http\Livewire\Wedo\Extras\Browse::class, 'refreshComponent');
         $this->emitTo(\App\Http\Livewire\Wedo\Checkout\Browse::class, 'refreshComponent');
         $this->emitTo(\App\Http\Livewire\Wedo\Payments\Browse::class, 'refreshComponent');
+        $this->emitTo(\App\Http\Livewire\Wedo\Tickets\Ticket::class, 'refreshComponent');
 
         $this->emitTo(Ticket::class, 'refreshComponent');
     }
@@ -91,6 +92,8 @@ class Quantity extends Component
         $this->emitTo(\App\Http\Livewire\Wedo\Checkout\Browse::class, 'refreshComponent');
 
         $this->emitTo(\App\Http\Livewire\Wedo\Payments\Browse::class, 'refreshComponent');
+
+        $this->emitTo(\App\Http\Livewire\Wedo\Tickets\Ticket::class, 'refreshComponent');
 
         $this->emitTo(Ticket::class, 'refreshComponent');
 
