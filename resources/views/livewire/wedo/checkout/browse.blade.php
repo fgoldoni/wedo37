@@ -33,7 +33,7 @@
                                 </div>
 
                                 <div class="col-span-4">
-                                    <x-wedo.input.group label="{{ __('Email address') }}"  for="email" :error="$errors->first('email')" isRequired>
+                                    <x-wedo.input.group label="{{ __('Email') }}"  for="email" :error="$errors->first('email')" isRequired>
 
                                         <x-wedo.input.text wire:model.lazy="email" type="email" name="email" id="email" placeholder="{{ __('Email address') }}" autocomplete="off" required/>
 
@@ -41,7 +41,7 @@
                                 </div>
 
                                 <div class="col-span-4">
-                                    <x-wedo.input.group label="{{ __('Confirm email') }}"  for="email_confirmation" :error="$errors->first('email_confirmation')" isRequired>
+                                    <x-wedo.input.group label="{{ __('Confirm Email') }}"  for="email_confirmation" :error="$errors->first('email_confirmation')" isRequired>
 
                                         <x-wedo.input.text wire:model.lazy="email_confirmation" type="email" name="email_confirmation" id="email_confirmation" placeholder="{{ __('Confirm email') }}" autocomplete="off" required/>
 
@@ -49,7 +49,7 @@
                                 </div>
 
                                 <div class="col-span-4">
-                                    <x-wedo.input.group label="{{ __('Phone number') }}"  for="phone" :error="$errors->first('phone')" isRequired>
+                                    <x-wedo.input.group label="{{ __('Phone Number') }}"  for="phone" :error="$errors->first('phone')" isRequired>
 
                                         <x-wedo.input.text wire:model.lazy="phone" type="text" name="phone" id="phone" placeholder="{{ __('Phone number') }}" autocomplete="off" required/>
 
@@ -61,7 +61,7 @@
                                         <div class="flex h-5 items-center ">
                                             <input id="terms" name="terms"  wire:model.lazy="terms" type="checkbox"  class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                         </div>
-                                        <label for="terms" class="font-medium text-gray-500">I accept the <a href="javascript:;" class="btn-title underline cursor-pointer text-{{ app_color() }}-500">terms and conditions</a> </label>
+                                        <label for="terms" class="font-medium text-gray-500"> {!! __('layout.forms.label.terms', ['color' => app_color()]) !!}  </label>
                                     </div>
                                     @if ($errors->first('terms'))
                                         <p class="mt-1 text-sm text-rose-500 dark:text-rose-400">{{ $errors->first('terms') }}</p>

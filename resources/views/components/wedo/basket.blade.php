@@ -53,7 +53,8 @@
         <div class="mt-2 md:flex md:items-center md:justify-between">
             <div class="flex-1 min-w-0">
                 @if($carts)
-                    <h2 class="btn-title text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:tracking-tight sm:truncate">Basket: € {{ $carts->total }}</h2>
+                    <h2 class="btn-title text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:tracking-tight sm:truncate">
+                        {{ __('Basket') }}: € {{ $carts->total }}</h2>
                 @elseif($title)
                     <h2 class="btn-title text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:tracking-tight sm:truncate">{{ $title }}</h2>
                 @endif

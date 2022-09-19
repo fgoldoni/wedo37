@@ -61,7 +61,7 @@
                                'bg-' . app_color() . '-100 text-' . app_color() . '-400 cursor-not-allowed' => ! $carts?->items
                            ])>
                         <x-wedo.loader wire:loading wire:target="continue"></x-wedo.loader>
-                        {{ __('Continue') }}
+                        {{ __('layout.continue') }}
                     </button>
                 </div>
             @endif
@@ -115,7 +115,7 @@
              x-cloak>
 
             @if($carts?->items)
-                <h2 class="max-w-lg mx-auto text-lg font-medium text-gray-900 pb-6">Summary</h2>
+                <h2 class="mx-auto text-lg font-medium text-gray-900 pb-6">{{ __('layout.card.summary') }}</h2>
                 <ul role="list" class="divide-y divide-gray-200">
                     @foreach($carts?->items as $item)
                         @if($item->associatedModel === \App\Models\Ticket::$apiModel)
@@ -141,7 +141,7 @@
                     @endforeach
                 </ul>
                 @if($hasExtra)
-                    <x-wedo.divider label="Extra"></x-wedo.divider>
+                    <x-wedo.divider label="Extra(s)"></x-wedo.divider>
                     <ul role="list" class="divide-y divide-gray-200">
                         @foreach($carts?->items as $item)
                             @if($item->associatedModel === \App\Models\Extra::$apiModel)
@@ -171,7 +171,7 @@
                     <button type="button" onclick="Livewire.emit('openModal', 'wedo.modals.popup.extras')" class="flex items-center justify-center w-full rounded-md border border-{{ app_color() }}-300 bg-white py-3 px-4 text-base font-medium text-{{ app_color() }}-900 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-{{ app_color() }}-500 focus:ring-offset-2 focus:ring-offset-gray-50">
                         <span class="inline-flex items-center">
                             <span class="-ml-1 mr-3">&#127870;</span>
-                            <span>{{ __('Add a drink') }}</span>
+                            <span>{{ __('layout.card.add_drink') }}</span>
                         </span>
                     </button>
                 </div>

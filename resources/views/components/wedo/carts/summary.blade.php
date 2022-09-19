@@ -9,7 +9,9 @@
     @if($carts?->items)
         <section aria-labelledby="summary-heading" class="hidden w-full sticky top-0 max-w-md flex-col bg-gray-50 lg:flex">
             <div class="sticky bottom-0 flex-none border-t border-gray-200 bg-gray-50 p-6">
-                <h2 class="text-lg font-medium text-gray-900">Summary</h2>
+                <h2 class="text-lg font-medium text-gray-900">
+                    {{ __('layout.card.summary') }}
+                </h2>
 
                 <ul role="list" class="divide-y divide-gray-200">
                     @foreach($carts?->items as $item)
@@ -44,7 +46,7 @@
                     @endforeach
                 </ul>
                 @if($hasExtra)
-                    <x-wedo.divider label="Extra"></x-wedo.divider>
+                    <x-wedo.divider label="Extra(s)"></x-wedo.divider>
                     <ul role="list" class="divide-y divide-gray-200">
                         @foreach($carts?->items as $item)
                             @if($item->associatedModel === \App\Models\Extra::$apiModel)
@@ -82,7 +84,7 @@
                     <button type="button" onclick="Livewire.emit('openModal', 'wedo.modals.popup.extras')" class="flex items-center justify-center w-full rounded-md border border-{{ app_color() }}-300 bg-white py-3 px-4 text-base font-medium text-{{ app_color() }}-900 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-{{ app_color() }}-500 focus:ring-offset-2 focus:ring-offset-gray-50">
                         <span class="inline-flex items-center">
                             <span class="-ml-1 mr-3">&#127870;</span>
-                            <span>{{ __('Add a drink') }}</span>
+                            <span>{{ __('layout.card.add_drink') }}</span>
                         </span>
                     </button>
                 </div>
@@ -91,10 +93,10 @@
 
                     <form wire:submit.prevent="discount">
                         <div class="flex space-x-4 border-t border-gray-200 pt-6">
-                            <input type="text" id="discount-code" name="discount-code" placeholder="Discount code" class="uppercase block w-full rounded-md border-gray-300 shadow-sm focus:border-{{ app_color() }}-500 focus:ring-{{ app_color() }}-500 sm:text-sm">
+                            <input type="text" id="discount-code" name="discount-code" placeholder="{{__('layout.card.discount_code') }}" class="uppercase block w-full rounded-md border-gray-300 shadow-sm focus:border-{{ app_color() }}-500 focus:ring-{{ app_color() }}-500 sm:text-sm">
                             <button type="submit" class="uppercase flex items-center justify-center rounded-md bg-gray-200 px-4 text-sm font-medium text-gray-600 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-{{ app_color() }}-500 focus:ring-offset-2 focus:ring-offset-gray-50">
                                 <x-wedo.loader wire:loading wire:target="discount"></x-wedo.loader>
-                                Apply
+                                {{ __('layout.card.apply') }}
                             </button>
                         </div>
                     </form>

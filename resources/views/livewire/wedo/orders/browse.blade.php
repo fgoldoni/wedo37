@@ -1,5 +1,5 @@
 <main class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-    <x-wedo.basket :link="__('Browse orders')" title="Orders"></x-wedo.basket>
+    <x-wedo.basket :link="__('layout.navigation.browse_orders')" title="{{ __('layout.navigation.browse_orders') }}"></x-wedo.basket>
 
 
 

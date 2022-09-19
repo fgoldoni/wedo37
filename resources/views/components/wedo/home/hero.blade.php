@@ -19,7 +19,9 @@
             </a>
             <h1 class="uppercase mb-5 font-sans text-3xl font-bold tracking-tight text-white sm:text-5xl sm:leading-none">
                 {{ app_team_name() }}<br class="hidden md:block">
-                <span class="inline-block text-{{ app_color() }}-500">Presente</span>
+                <span class="inline-block text-{{ app_color() }}-500">
+                     {{ __('layout.hero.present') }}
+                </span>
                 <span class="block"><x-wedo.home.typing-effect :items="[app_event()?->artist]"></x-wedo.home.typing-effect>&nbsp;</span>
             </h1>
             <p class="inline-flex mb-5 text-base text-gray-300 sm:pr-10 md:text-lg">
@@ -39,11 +41,11 @@
             <div class="uppercase flex flex-col items-center pt-2 sm:flex-row sm:pt-4">
                 <a href="{{ route('tickets.index', ['filters' => $filters]) }}" class="inline-flex items-center justify-center w-full h-12 px-6 mb-4 font-medium tracking-wide text-white rounded shadow-md sm:w-auto sm:mr-4 sm:mb-0 hover:-translate-y-1 hover:ease-in-out duration-200 bg-{{ app_color() }}-500 hover:bg-{{ app_color() }}-700 hover:bg-deep-{{ app_color() }}-accent-700 focus:shadow-outline focus:outline-none">
                     <img class="-ml-1 mr-2 h-6 w-6" src="{{ asset('images/svg/travel-tickets.svg') }}" alt="">
-                    Book Tickets
+                    {{ __('layout.hero.ticket_reservation') }}
                 </a>
                 <a href="javascript:;" onclick="Livewire.emit('openModal', 'wedo.modals.popup.extras')" class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 bg-gray-700 rounded shadow-md sm:w-auto hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none">
-                    <span class="-ml-1 mr-2 h-6 w-6">🍾</span>
-                    {{ __('Extras') }}
+                    <span class="-ml-1 mr-2">🍾</span>
+                    {{ __('layout.hero.add_drink') }}
                 </a>
             </div>
         </div>

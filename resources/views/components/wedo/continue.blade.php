@@ -14,6 +14,6 @@
             'disabled bg-' . app_color() . '-100 text-' . app_color() . '-400 cursor-not-allowed' => $disabled
         ])>
         <x-wedo.loader wire:loading wire:target="continue"></x-wedo.loader>
-        {{ __('Continue') }}
+        {{ __('layout.continue') }}
     </button>
 </div>

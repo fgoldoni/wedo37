@@ -111,7 +111,7 @@ return [
             'emoji' => '🇬🇧',
             'locale' => 'en'
         ],
-        'French' => [
+        'Français' => [
             'emoji' => '🇫🇷',
             'locale' => 'fr'
         ],

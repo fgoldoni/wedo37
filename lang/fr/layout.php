@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'continue' => 'Continue',
-    'close_continue' => 'Close & Continue',
+    'continue' => 'Continuer',
+    'close_continue' => 'Fermer & Continuer',
     'forms' => [
         'label' => [
-            'terms' => 'I accept the <a href="javascript:;" class="btn-title underline cursor-pointer text-:color-500">terms and conditions</a>',
+            'terms' => 'J\'accepte les <a href="javascript:;" class="btn-title underline cursor-pointer text-:color-500">termes et conditions</a>',
             'email' => 'Email address',
             'password' => 'Password',
             'new_password' => 'New Password',
@@ -124,47 +124,47 @@ return [
 
     'hero' => [
         'present' => 'present',
-        'ticket_reservation' => 'Ticket reservation',
-        'add_drink' => 'Add a drink',
+        'ticket_reservation' => 'Réservation',
+        'add_drink' => 'Ajout de boisson',
     ],
 
     'package' => [
-        'details' => 'detail',
-        'price' => 'From :price euro',
+        'details' => 'Détails',
+        'price' => 'À partir de :price euro',
     ],
 
     'single' => [
-        'details' => 'details',
-        'pass' => 'Single Pass',
+        'pass' => 'Pass simple',
+        'details' => 'Détails',
     ],
 
     'card' => [
-        'discount_code' => 'Discount code',
+        'discount_code' => 'Code de réduction',
         'apply' => 'Ok',
-        'summary' => 'Order summary',
+        'summary' => 'Résumé de la commande',
         'add_drink' => 'Ajout de boisson',
-        'title' => 'Our Card',
+        'title' => 'Notre carte',
         'bar' => 'Skyline Bar',
         'details' => 'Détails',
-        'description' => 'Here you get an insight on offered cocktails, long drinks and spirits.The full map is also available as a PDF download.',
+        'description' => 'Vous y trouverez un aperçu des cocktails, long drinks et spiritueux proposés. La carte complète est également disponible au format PDF.',
     ],
 
     'navigation' => [
         'dashboard' => 'Dashboard',
         'signed_in_as' => 'Signed in as',
-        'personal_account' => 'Personal Account',
-        'browse_tickets' => 'Browse Tickets',
+        'personal_account' => 'Mon Profil',
+        'browse_tickets' => 'Tickets',
         'home' => 'Home',
-        'browse_orders' => 'My Tickets',
+        'browse_orders' => 'Mes Réservations',
         'browse_extras' => 'Browse Extras',
         'carts' => 'Basket',
-        'payments' => 'Payments',
+        'payments' => 'Paiements',
         'sign_in' => 'Login Link',
         'resumes' => 'My Resumes',
         'applications' => 'My Applications',
         'shortlisted' => 'Shortlisted',
         'sign_in' => 'Login Link',
-        'sign_out' => 'Sign out',
+        'sign_out' => 'Se déconnecter',
     ],
 
 
@@ -185,12 +185,12 @@ return [
     'user_dropdown' => [
         'title' => 'Open user menu',
         'trial_period' => 'Trial Period',
-        'personal_account' => 'Personal Account',
+        'personal_account' => 'Mon Profil',
         'resumes' => 'My Resumes',
         'applications' => 'My Applications',
         'shortlisted' => 'Shortlisted',
         'sign_in' => 'Login Link',
-        'sign_out' => 'Sign out',
+        'sign_out' => 'Se déconnecter',
     ],
 
     'back' => 'Back',
