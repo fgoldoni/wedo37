@@ -98,13 +98,13 @@ return [
     'fallback_locale' => 'en',
 
     /*
-|--------------------------------------------------------------------------
-| Available locales
-|--------------------------------------------------------------------------
-|
-| List all locales that your application works with
-|
-*/
+    |--------------------------------------------------------------------------
+    | Available locales
+    |--------------------------------------------------------------------------
+    |
+    | List all locales that your application works with
+    |
+    */
 
     'available_locales' => [
         'English' => [
