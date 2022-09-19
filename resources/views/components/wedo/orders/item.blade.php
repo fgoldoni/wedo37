@@ -85,7 +85,7 @@
                 <div class="flex flex-col gap-1">
                     <p class="font-medium">{{ __('Organizer') }}:</p>
                     <p class="text-gray-400 text-sm">
-                        {{ app_team_name() }}
+                        {{ $order->team->name }}
                     </p>
                     <p class="text-gray-400 text-sm">
                         {{ $order->event->email }}
