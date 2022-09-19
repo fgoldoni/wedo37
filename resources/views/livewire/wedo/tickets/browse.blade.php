@@ -32,7 +32,7 @@
                         </section>
                     </div>
                 </div>
-                <x-wedo.carts.summary :carts="$carts" :has-extra="$hasExtra"></x-wedo.carts.summary>
+                <x-wedo.carts.summary :carts="$carts" :has-extra="$hasExtra" :display-only="true"></x-wedo.carts.summary>
             </div>
         </div>
     @else
