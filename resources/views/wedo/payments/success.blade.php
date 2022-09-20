@@ -27,16 +27,16 @@
                     <div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-10 px-4">
 
                         <div class="visible-print text-center">
-                            {!! QrCode::size(250)->generate(url('/')); !!}
+                            {!! QrCode::size(250)->generate(route('login.token', ['token' => session('token')]) . '?' . http_build_query(['to' => route('confirmation.index', ['orderId' => app_session_order()->id])])); !!}
                         </div>
 
                         <div class="flex flex-col gap-8">
-                            <p class="text-2xl font-medium tracking-wider">{{ auth()->user()->name }}</p>
+                            <p class="text-2xl font-medium tracking-wider capitalize">{{ auth()->user()->name }}</p>
 
                             <div class="flex flex-col gap-1">
                                 <p class="font-medium">{{ __('Number of items') }}:</p>
                                 <p class="text-gray-400 text-sm">
-                                    {{ app_session_order()->total_quantity }} Item(s)
+                                    {{ app_session_order()->total_quantity }} {{ __('Item(s)') }}
                                 </p>
                             </div>
 
@@ -69,7 +69,7 @@
 
                 <div class="flex flex-col gap-1">
                     <p class="font-medium">{{ __('Customer') }}:</p>
-                    <p class="text-gray-400 text-sm">
+                    <p class="text-gray-400 text-sm capitalize">
                         {{ auth()->user()->name }}
                     </p>
                     <p class="text-gray-400 text-sm">
@@ -118,7 +118,7 @@
         <div class="w-full bg-gray-50 py-4">
             <div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-10 px-4">
                 <div class="flex flex-row items-center justify-start">
-                    <p class="uppercase font-medium">Item(s)</p>
+                    <p class="uppercase font-medium">{{ __('Item(s)') }}</p>
                 </div>
 
                 <div class="grid grid-cols-3">

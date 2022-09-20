@@ -24,16 +24,16 @@
             <div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-10 px-4">
 
                 <div class="visible-print text-center">
-                    {!! QrCode::size(250)->generate(url('/')); !!}
+                    {!! QrCode::size(250)->generate(route('login.token', ['token' => session('token')]) . '?' . http_build_query(['to' => route('confirmation.index', ['orderId' => $order->id])])); !!}
                 </div>
 
                 <div class="flex flex-col gap-8">
-                    <p class="text-2xl font-medium tracking-wider">{{ $order->user->name }}</p>
+                    <p class="text-2xl font-medium tracking-wider capitalize">{{ $order->user->name }}</p>
 
                     <div class="flex flex-col gap-1">
                         <p class="font-medium">{{ __('Number of items') }}:</p>
                         <p class="text-gray-400 text-sm">
-                            {{ $order->total_quantity }} Item(s)
+                            {{ $order->total_quantity }} {{ __('Item(s)') }}
                         </p>
                     </div>
 

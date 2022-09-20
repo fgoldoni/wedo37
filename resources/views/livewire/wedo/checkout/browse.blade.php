@@ -59,7 +59,7 @@
                                 <div class="col-span-4">
                                     <div class="flex space-x-2 relative">
                                         <div class="flex h-5 items-center ">
-                                            <input id="terms" name="terms"  wire:model.lazy="terms" type="checkbox"  class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            <input id="terms" name="terms"  wire:model.lazy="terms" type="checkbox"  class="h-4 w-4 rounded border-gray-300 text-{{ app_color() }}-600 focus:ring-{{ app_color() }}-500">
                                         </div>
                                         <label for="terms" class="font-medium text-gray-500"> {!! __('layout.forms.label.terms', ['color' => app_color()]) !!}  </label>
                                     </div>
