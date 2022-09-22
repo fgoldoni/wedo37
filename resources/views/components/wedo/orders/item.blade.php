@@ -4,10 +4,17 @@
         <h2 class="btn-title text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900">{{ $order->event?->name }}</h2>
 
         <div class="mt-2 border-b border-gray-200 pb-5 text-sm sm:flex sm:justify-between">
-            <dl class="flex">
-                <dt class="text-gray-500">{{ __('Order Number') }}&nbsp;</dt>
-                <dd class="font-medium text-gray-900">#{{ $order->id }}</dd>
-            </dl>
+            <div class="flex sm:items-baseline sm:space-x-4">
+                <dl class="flex">
+                    <dt class="text-gray-500">{{ __('Order Number') }}&nbsp;</dt>
+                    <dd class="font-medium text-gray-900">#{{ $order->id }}</dd>
+                </dl>
+                <a href="{{ env('API_URL') . '/admin/orders/' . $order->id . '/edit' }}" target="_blank" class="hidden text-sm font-medium text-indigo-600 hover:text-indigo-500 sm:block">
+                    Check-in
+                    <span aria-hidden="true"> &rarr;</span>
+                </a>
+            </div>
+
             <div class="mt-4 sm:mt-0">
                 <dl class="flex">
                     <dt>
@@ -17,6 +24,10 @@
                     <dd class="font-medium text-gray-900">{{ __('Order on') }}: <time datetime="{{ $order->created_at }}">{{ \Illuminate\Support\Carbon::parse($order->created_at)->isoFormat('MMM DD, Y HH:mm') }}</time></dd>
                 </dl>
             </div>
+            <a href="{{ env('API_URL') . '/admin/orders/' . $order->id . '/edit' }}" target="_blank" class="text-sm font-medium text-indigo-600 hover:text-indigo-500 sm:hidden">
+                Check-in
+                <span aria-hidden="true"> &rarr;</span>
+            </a>
         </div>
         <!--title -->
         <div class="w-full bg-gray-50 py-10">
@@ -24,7 +35,7 @@
             <div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-10 px-4">
 
                 <div class="visible-print text-center">
-                    {!! QrCode::size(250)->generate(route('login.token', ['token' => session('token')]) . '?' . http_build_query(['to' => route('confirmation.index', ['orderId' => $order->id])])); !!}
+                    {!! QrCode::size(250)->generate(route('confirmation.index', ['orderId' => $order->id])) !!}
                 </div>
 
                 <div class="flex flex-col gap-8">
@@ -164,18 +175,10 @@
                                                         </span>
                                                         </h3>
                                                     </div>
-                                                    <p class="mt-4 text-sm">
-                                                        <a href="javascript:;" class="font-medium text-gray-500 underline">Learn about our refund policy</a>
-                                                    </p>
                                                     <div class="mt-6">
                                                         <div class="rounded-md shadow">
-                                                            <a href="javascript:;" class="flex items-center justify-center rounded-md border border-transparent bg-{{ app_color() }}-800 px-5 py-3 text-base font-medium text-white hover:bg-{{ app_color() }}-900">Check In</a>
+                                                            <a href="{{ route('tickets.show', Str::replace('ticket-', '', $item->id)) }}" class="flex items-center justify-center rounded-md border border-transparent bg-{{ app_color() }}-800 px-5 py-3 text-base font-medium text-white hover:bg-{{ app_color() }}-900">Buy it again</a>
                                                         </div>
-                                                    </div>
-                                                    <div class="mt-4 text-sm">
-                                                        <a href="javascript:;" class="font-medium text-gray-900 btn-title">
-                                                            Buy it again
-                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
