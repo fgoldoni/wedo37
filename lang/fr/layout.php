@@ -146,7 +146,7 @@ return [
         'title' => 'Notre carte',
         'bar' => 'Skyline Bar',
         'details' => 'Détails',
-        'description' => 'Vous y trouverez un aperçu des cocktails, long drinks et spiritueux proposés. La carte complète est également disponible au format PDF.',
+        'description' => 'Vous y trouverez un aperçu des cocktails, long drinks et spiritueux proposés. La carte complète est également disponible sur détails.',
     ],
 
     'navigation' => [
