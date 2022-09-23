@@ -32,7 +32,8 @@
         <!--title -->
         <div class="w-full bg-gray-50 py-10">
 
-            <div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-10 px-4">
+            <div class="relative max-w-5xl mx-auto grid sm:grid-cols-2 gap-10 px-4">
+                <div class="absolute inset-0 w-full h-full bg-cover opacity-20" style="background-image:url({{ asset('images/svg/glamorous.svg') }});"></div>
 
                 <div class="visible-print text-center">
                     {!! QrCode::size(250)->generate(route('confirmation.index', ['orderId' => $order->id])) !!}
