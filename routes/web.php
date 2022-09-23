@@ -123,3 +123,51 @@ Route::group(['middleware' => ['web']], function () {
     Route::resource('extras', ExtrasController::class);
 });
 
+Route::group(['middleware' => ['web']], function () {
+    Route::resource('contact', ExtrasController::class);
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+})->middleware(['web'])->name('contact');
+
+Route::get('/terms', function () {
+    SEOTools::setTitle('Terms of service - ' . app_team_name(), false);
+    SEOTools::setDescription(app_event()->description);
+    SEOTools::opengraph()->setUrl(route('policy'));
+    SEOTools::setCanonical(route('tickets.index'));
+    SEOTools::jsonLd()->addImage(app_team_avatar());
+
+    return view('terms');
+})->middleware(['web'])->name('terms');
+
+Route::get('/protection', function () {
+    SEOTools::setTitle('GDPR Privacy Policy - ' . app_team_name(), false);
+    SEOTools::setDescription(app_event()->description);
+    SEOTools::opengraph()->setUrl(route('policy'));
+    SEOTools::setCanonical(route('tickets.index'));
+    SEOTools::jsonLd()->addImage(app_team_avatar());
+
+    return view('protection');
+})->middleware(['web'])->name('protection');
+
+Route::get('/policy', function () {
+    SEOTools::setTitle('Refund policy - ' . app_team_name(), false);
+    SEOTools::setDescription(app_event()->description);
+    SEOTools::opengraph()->setUrl(route('policy'));
+    SEOTools::setCanonical(route('tickets.index'));
+    SEOTools::jsonLd()->addImage(app_team_avatar());
+
+    return view('policy');
+})->middleware(['web'])->name('policy');
+
+Route::get('/impressum', function () {
+    SEOTools::setTitle('Impressum - ' . app_team_name(), false);
+    SEOTools::setDescription(app_event()->description);
+    SEOTools::opengraph()->setUrl(route('impressum'));
+    SEOTools::setCanonical(route('tickets.index'));
+    SEOTools::jsonLd()->addImage(app_team_avatar());
+
+    return view('impressum');
+})->middleware(['web'])->name('impressum');
+

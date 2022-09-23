@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Middleware\EnsureTeamMiddleware;
+use App\Http\Services\Contracts\ApiInterface;
+use Illuminate\Support\Facades\Cache;
 
 if (!function_exists('app_team')) {
     function app_team()
@@ -83,5 +85,21 @@ if (!function_exists('app_session_order')) {
     function app_session_order()
     {
         return  session()->get(EnsureTeamMiddleware::successOrder());
+    }
+}
+
+if (!function_exists('app_footers')) {
+    function app_footers()
+    {
+        return Cache::rememberForever('footers', function ()  {
+            $response = app()->make(ApiInterface::class)->get('/footers');
+
+
+            if ($response->ok()) {
+                return $response->object()->data;
+            }
+
+            return throw new Exception('Footer not found', 500);
+        });
     }
 }
