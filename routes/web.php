@@ -39,7 +39,7 @@ Route::get('/', function (\Illuminate\Http\Request $request) {
 
     SEOTools::setTitle(app_event()->name . ' - ' . app_team_name(), false);
     SEOTools::setDescription(app_event()->description);
-    SEOTools::opengraph()->setUrl('http://current.url.com');
+    SEOTools::opengraph()->setUrl(url('/'));
     SEOTools::setCanonical(url('/'));
     SEOTools::opengraph()->addProperty('type', 'articles');
     SEOTools::twitter()->setSite('@LuizVinicius73');
