@@ -1,6 +1,6 @@
 <!-- Section 1 -->
 <template>
-    @if($rows)
+    @if(empty($rows))
         <section class="w-full py-16 bg-white lg:py-24">
             <div class="relative w-full px-5 py-10 mx-auto sm:py-12 md:py-16 md:px-10 max-w-7xl">
                 <div class="space-y-12 md:text-left">
