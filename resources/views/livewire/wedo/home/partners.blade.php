@@ -1,6 +1,6 @@
-<!-- Section 1 -->
-<template>
-    <section class="w-full py-16 bg-white lg:py-24">
+<div>
+    @if(count($rows))
+        <section class="w-full py-16 bg-white lg:py-24">
         <div class="relative w-full px-5 py-10 mx-auto sm:py-12 md:py-16 md:px-10 max-w-7xl">
             <div class="space-y-12 md:text-left">
                 <div class="mb-20 space-y-5 sm:mx-auto sm:max-w-xl md:max-w-2xl sm:space-y-4 lg:max-w-5xl">
@@ -48,5 +48,6 @@
             </div>
         </div>
     </section>
-</template>
+    @endif
+</div>
 
