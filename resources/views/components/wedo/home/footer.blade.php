@@ -18,10 +18,6 @@
                             <li>
                                 <a href="javascript:;" class="text-base text-gray-500 hover:text-gray-900">{{ __('Questions les plus fréquentes (F.A.Q )') }}</a>
                             </li>
-
-                            <li>
-                                <a href="#" class="text-base text-gray-500 hover:text-gray-900">Insights</a>
-                            </li>
                         </ul>
                     </div>
                 </div>
