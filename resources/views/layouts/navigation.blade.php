@@ -21,7 +21,7 @@
                     @endauth
                 </div>
             </div>
-            @include('partials/language')
+{{--            @include('partials/language')--}}
             @auth
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                     <x-wedo.navigation.bag class="mr-3"></x-wedo.navigation.bag>
