@@ -4,5 +4,5 @@
         <a href="{{ $row->url }}" class="hover:opacity-75">{{ $row->name }}</a>
     @empty
     @endforelse
-    <a href="{{ route('contact') }}" class="hover:opacity-75">{{ __('Help ?') }}</a>
+    <a href="{{ route('contact') }}" class="hover:opacity-75">{{ __('Aide ?') }}</a>
 </div>
