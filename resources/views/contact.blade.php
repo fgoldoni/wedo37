@@ -14,25 +14,32 @@
                         Questions les plus fréquentes
                     </h3>
                     <div class="w-full px-6 py-6 mx-auto mt-10 bg-white border border-gray-200 rounded-lg sm:px-8 md:px-12 sm:py-8 sm:shadow lg:w-5/6 xl:w-2/3" data-rounded="rounded-lg" data-rounded-max="rounded-full">
-                        <h3 class="text-lg font-bold text-purple-500 sm:text-xl md:text-2xl" data-primary="purple-500">How does it work?</h3>
+                        <h3 class="text-lg font-bold text-{{ app_color() }}-500 sm:text-xl md:text-2xl" data-primary="{{ app_color() }}-500">{{ __('How to book tickets') }} ?</h3>
                         <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
-                            Our platform works with your content to provides insights and metrics on how you can grow your business and scale your infastructure.
+                            {!! __('Our platform works with your content to provides insights and metrics on how you can grow your business and scale your infastructure.') !!}
                         </p>
                     </div>
                     <div class="w-full px-6 py-6 mx-auto mt-10 bg-white border border-gray-200 rounded-lg sm:px-8 md:px-12 sm:py-8 sm:shadow lg:w-5/6 xl:w-2/3" data-rounded="rounded-lg" data-rounded-max="rounded-full">
-                        <h3 class="text-lg font-bold text-purple-500 sm:text-xl md:text-2xl" data-primary="purple-500">Do you offer team pricing?</h3>
+                        <h3 class="text-lg font-bold text-{{ app_color() }}-500 sm:text-xl md:text-2xl" data-primary="{{ app_color() }}-500">{{ __('How can i present my ticket at the event entrance') }} ?</h3>
                         <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
                             Yes, we do! Team pricing is available for any plan. You can take advantage of 30% off for signing up for team pricing of 10 users or more.
                         </p>
                     </div>
                     <div class="w-full px-6 py-6 mx-auto mt-10 bg-white border border-gray-200 rounded-lg sm:px-8 md:px-12 sm:py-8 sm:shadow lg:w-5/6 xl:w-2/3" data-rounded="rounded-lg" data-rounded-max="rounded-full">
-                        <h3 class="text-lg font-bold text-purple-500 sm:text-xl md:text-2xl" data-primary="purple-500">How do I make changes and configure my site?</h3>
+                        <h3 class="text-lg font-bold text-{{ app_color() }}-500 sm:text-xl md:text-2xl" data-primary="{{ app_color() }}-500">{{ __('Where can i find my tickets') }} ?</h3>
                         <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
                             You can easily change your site settings inside of your site dashboard by clicking the top right menu and clicking the settings button.
                         </p>
                     </div>
                     <div class="w-full px-6 py-6 mx-auto mt-10 bg-white border border-gray-200 rounded-lg sm:px-8 md:px-12 sm:py-8 sm:shadow lg:w-5/6 xl:w-2/3" data-rounded="rounded-lg" data-rounded-max="rounded-full">
-                        <h3 class="text-lg font-bold text-purple-500 sm:text-xl md:text-2xl" data-primary="purple-500">How do I add a custom domain?</h3>
+                        <h3 class="text-lg font-bold text-{{ app_color() }}-500 sm:text-xl md:text-2xl" data-primary="{{ app_color() }}-500">{{ __('What does a ticket look like') }} ?</h3>
+                        <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
+                            You can easily change your site settings inside of your site dashboard by clicking the top right menu and clicking the settings button.
+                        </p>
+                    </div>
+
+                    <div class="w-full px-6 py-6 mx-auto mt-10 bg-white border border-gray-200 rounded-lg sm:px-8 md:px-12 sm:py-8 sm:shadow lg:w-5/6 xl:w-2/3" data-rounded="rounded-lg" data-rounded-max="rounded-full">
+                        <h3 class="text-lg font-bold text-{{ app_color() }}-500 sm:text-xl md:text-2xl" data-primary="{{ app_color() }}-500">{{ __('How to contact an event organizer') }} ?</h3>
                         <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
                             You can easily change your site settings inside of your site dashboard by clicking the top right menu and clicking the settings button.
                         </p>
