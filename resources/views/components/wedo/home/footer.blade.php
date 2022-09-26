@@ -1,4 +1,4 @@
-<footer class="bg-gray-100" aria-labelledby="footer-heading">
+<footer class="bg-gray-200" aria-labelledby="footer-heading">
     <h2 id="footer-heading" class="sr-only">Footer</h2>
     <div class="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div class="pb-8 xl:grid xl:grid-cols-5 xl:gap-8">
@@ -16,7 +16,7 @@
                             </li>
 
                             <li>
-                                <a href="javascript:;" class="text-base text-gray-500 hover:text-gray-900">{{ __('Questions les plus fréquentes (F.A.Q )') }}</a>
+                                <a href="{{ route('contact') }}" class="text-base text-gray-500 hover:text-gray-900">{{ __('Questions les plus fréquentes (F.A.Q )') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -49,7 +49,7 @@
                 </form>
             </div>
         </div>
-        <div class="border-t border-gray-200 pt-8 lg:flex lg:items-center lg:justify-between xl:mt-0">
+        <div class="border-t border-gray-300 pt-8 lg:flex lg:items-center lg:justify-between xl:mt-0">
             <div>
                 <h3 class="text-base font-medium text-gray-900">S'abonner à notre newsletter</h3>
                 <p class="mt-2 text-base text-gray-500">Les dernières nouvelles et événements les plus récents, envoyés dans votre boîte de réception chaque semaine.</p>
@@ -62,7 +62,7 @@
                 </div>
             </form>
         </div>
-        <div class="mt-8 border-t border-gray-200 pt-8 md:flex md:items-center md:justify-between">
+        <div class="mt-8 border-t border-gray-300 pt-8 md:flex md:items-center md:justify-between">
             <div class="flex space-x-6 md:order-2">
                 @if(app_team()->facebook)
                     <a href="{{ app_team()->facebook }}" target="_blank"  class="text-gray-400 hover:text-gray-500">

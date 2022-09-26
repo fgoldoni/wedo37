@@ -1,12 +1,8 @@
 @if($ticket)
     <!-- Section 1 -->
-    <section class="w-full py-20 bg-gray-100">
+    <section class="w-full py-20 bg-gray-200">
 
         <div class="max-w-3xl px-10 mx-auto"  wire:click="show({{$ticket->id}})">
-            <h2 class="uppercase mb-10 text-xl text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-{{ $ticket->color }}-500 to-{{ $ticket->color }}-900">
-                {{ __('layout.single.pass') }}
-            </h2>
-
             <div class="relative flex flex-col overflow-hidden bg-gray-900 rounded-xl">
                 <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-{{ $ticket->color }}-100 to-{{ $ticket->color }}-500"></div>
                 <div class="flex flex-col items-center p-10 md:flex-row">
