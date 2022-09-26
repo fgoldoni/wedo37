@@ -1,7 +1,8 @@
-<div class="grid grid-cols-2 gap-4 p-6 text-sm font-medium bg-gray-100 rounded-lg sm:grid-cols-3 lg:grid-cols-6">
+<ul role="list" class="mt-4 space-y-4">
     @forelse ($rows as $row)
-        <a href="{{ $row->url }}" class="hover:opacity-75">{{ $row->name }}</a>
+        <li>
+            <a href="{{ $row->url }}" class="text-base text-gray-300 hover:text-white">{{ $row->name }}</a>
+        </li>
     @empty
     @endforelse
-    <a href="{{ route('contact') }}" class="hover:opacity-75">{{ __('FAQ & Contact') }}</a>
-</div>
+</ul>
