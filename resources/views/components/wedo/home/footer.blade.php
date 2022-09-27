@@ -34,10 +34,7 @@
                     <fieldset class="w-full">
                         <label for="language" class="sr-only">Language</label>
                         <div class="relative">
-                            <select id="language" name="language" class="block w-full appearance-none rounded-md border border-gray-300 bg-white bg-none py-2 pl-3 pr-10 text-base text-gray-900 focus:border-{{ app_color() }}-500 focus:outline-none focus:ring-{{ app_color() }}-500 sm:text-sm">
-                                <option selected>French</option>
-                                <option>English</option>
-                            </select>
+                            @include('partials.language')
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2">
                                 <!-- Heroicon name: mini/chevron-down -->
                                 <svg class="h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">

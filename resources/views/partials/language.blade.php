@@ -1,9 +1,7 @@
-<div class="flex items-center ml-6 justify-center">
+<select onchange="location = this.value;" id="language" name="language" class="block w-full appearance-none rounded-md border border-gray-300 bg-white bg-none py-2 pl-3 pr-10 text-base text-gray-900 focus:border-{{ app_color() }}-500 focus:outline-none focus:ring-{{ app_color() }}-500 sm:text-sm">
     @foreach($availableLocales as $localeName => $availableLocale)
-        @if($availableLocale['locale'] !== $currentLocale)
-            <x-nav-link :href="route('language', $availableLocale['locale'])" class="underline">
-                <span><span class="-ml-1 mr-2">{{ $availableLocale['emoji'] }}</span>{{ $localeName }}</span>
-            </x-nav-link>
-        @endif
+        <option @if($availableLocale['locale'] == $currentLocale) selected @endif value="{{ route('language', $availableLocale['locale']) }}">
+            <span><span class="-ml-1 mr-2">{{ $availableLocale['emoji'] }}</span>&nbsp; {{ $localeName }}</span>
+        </option>
     @endforeach
-</div>
+</select>
