@@ -12,7 +12,11 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
             <div class="flex">
-                <img class="h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32" src="{{ app_event()->avatar_url }}" alt="{{ app_event()->name }}">
+                @if($item?->avatar_url)
+                    <img class="h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32" src="{{ $item?->avatar_url }}" alt="{{ app_event()->name }}">
+                @else
+                    <img class="h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32" src="{{ app_event()?->avatar_url }}" alt="{{ app_event()->name }}">
+                @endif
             </div>
             <div class="mt-6 sm:flex-1 sm:min-w-0 sm:flex sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
                 <div class="sm:hidden 2xl:block mt-6 min-w-0 flex-1">
