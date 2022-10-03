@@ -84,16 +84,17 @@ class Browse extends Component
 
         return <<<HTML
              <!-- Replace "test" with your own sandbox Business account app client ID -->
-            <script src="https://www.paypal.com/sdk/js?client-id={$this->clientId}&currency=EUR&intent=authorize"></script>
+            <script src="https://www.paypal.com/sdk/js?client-id={$this->clientId}&currency=EUR&intent=authorize&enable-funding=paylater"></script>
             <!-- Set up a container element for the button -->
             <div id="paypal-button-container"></div>
             <script>
               paypal.Buttons({
                 style: {
                     layout: 'horizontal',
-                    color:  'gold',
+                    color:  'blue',
                     shape:  'rect',
-                    label:  'pay',
+                    label:  'paypal',
+                    tagline:  false,
                     height:  50
                   },
                 // Sets up the transaction when a payment button is clicked
