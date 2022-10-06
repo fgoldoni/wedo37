@@ -134,6 +134,16 @@ Route::get('/terms', function () {
     return view('terms');
 })->middleware(['web'])->name('terms');
 
+Route::get('/refund', function () {
+    SEOTools::setTitle('Refund Policy - ' . app_team_name(), false);
+    SEOTools::setDescription(app_event()->description);
+    SEOTools::opengraph()->setUrl(route('refund'));
+    SEOTools::setCanonical(route('tickets.index'));
+    SEOTools::jsonLd()->addImage(app_team_avatar());
+
+    return view('refund');
+})->middleware(['web'])->name('refund');
+
 Route::get('/protection', function () {
     SEOTools::setTitle('GDPR Privacy Policy - ' . app_team_name(), false);
     SEOTools::setDescription(app_event()->description);
@@ -177,4 +187,26 @@ Route::get('/contact', function () {
 
     return view('contact');
 })->middleware(['web'])->name('contact');
+
+Route::get('/about-us', function () {
+    SEOTools::setTitle('About Us - ' . app_team_name(), false);
+    SEOTools::setDescription(app_event()->description);
+    SEOTools::opengraph()->setUrl(route('about-us'));
+    SEOTools::opengraph()->addProperty('type', 'website');
+    SEOTools::setCanonical(route('tickets.index'));
+    SEOTools::jsonLd()->addImage(app_team_avatar());
+
+    return view('about-us');
+})->middleware(['web'])->name('about-us');
+
+Route::get('/covid', function () {
+    SEOTools::setTitle('Covid - ' . app_team_name(), false);
+    SEOTools::setDescription(app_event()->description);
+    SEOTools::opengraph()->setUrl(route('covid'));
+    SEOTools::opengraph()->addProperty('type', 'website');
+    SEOTools::setCanonical(route('tickets.index'));
+    SEOTools::jsonLd()->addImage(app_team_avatar());
+
+    return view('covid');
+})->middleware(['web'])->name('covid');
 

@@ -17,13 +17,12 @@ class Footer extends Component
 
     public function getRowsProperty(): array
     {
-        return $this->cache(fn () => $this->rowsQuery, 'footers');
+//        return $this->cache(fn () => $this->rowsQuery, 'footers');
+        return [];
     }
 
     public function render()
     {
-        $this->useCachedRows();
-
         return view('livewire.wedo.home.footer', ['rows' => $this->rows]);
     }
 }

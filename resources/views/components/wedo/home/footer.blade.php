@@ -8,11 +8,11 @@
                         <h3 class="text-base font-medium text-gray-900">{{ __('Informations') }}</h3>
                         <ul role="list" class="mt-4 space-y-4">
                             <li>
-                                <a href="javascript:;" class="text-base text-gray-500 hover:text-gray-900">{{ __('UPDATE-SEITE-COVID-19') }}</a>
+                                <a href="{{ route('covid') }}" class="text-base text-gray-500 hover:text-gray-900">{{ __('UPDATE-SEITE-COVID-19') }}</a>
                             </li>
 
                             <li>
-                                <a href="javascript:;" class="text-base text-gray-500 hover:text-gray-900">{{ __('À propos') }}</a>
+                                <a href="{{ route('about-us') }}" class="text-base text-gray-500 hover:text-gray-900">{{ __('About Us') }}</a>
                             </li>
 
                             <li>
