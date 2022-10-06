@@ -97,13 +97,13 @@
                 <div class="flex flex-col gap-1">
                     <p class="font-medium">{{ __('Organizer') }}:</p>
                     <p class="text-gray-400 text-sm">
-                        {{ $order->team->name }}
+                        {{ $order->team?->name }}
                     </p>
                     <p class="text-gray-400 text-sm">
-                        {{ $order->event->email }}
+                        {{ $order->event?->email }}
                     </p>
                     <p class="text-gray-400 text-sm">
-                        {{ $order->event->phone }}
+                        {{ $order->event?->phone }}
                     </p>
                 </div>
 
