@@ -12,7 +12,7 @@
                    <div class="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group md:col-span-6 xl:col-span-4">
                @endif
                    <a href="javascript:;" class="relative block w-full transition duration-300 ease-in-out transform bg-center bg-cover h-96 hover:scale-110" style="background-image:url({{ $ticket->avatar_url }})">
-                       @if(($ticket->quantity >= 0) && ($ticket->quantity <= 5))
+                       @if(($ticket->quantity > 0) && ($ticket->quantity <= 5))
                            <p class="absolute animate-pulse top-10 left-8 sm:left-5 -translate-y-1/2 transform rounded-full bg-rose-500 py-1.5 px-4 text-sm font-semibold text-white">
                                {{ $ticket->quantity . ' ' . __('Only') }}
                            </p>
