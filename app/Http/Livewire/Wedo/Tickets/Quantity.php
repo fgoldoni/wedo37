@@ -18,6 +18,8 @@ class Quantity extends Component
 
     public ?int $quantity = null;
 
+    public ?int $max = null;
+
     public  $row = null;
 
     public function mount()
