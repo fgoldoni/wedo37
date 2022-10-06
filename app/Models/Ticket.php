@@ -10,8 +10,6 @@ class Ticket extends Model
 {
     use Sushi;
 
-    use WithCachedRows;
-
     public static string $apiModel = 'Modules\Tickets\Entities\Ticket';
 
     public static string $apiPrefix = 'ticket-';
@@ -20,16 +18,14 @@ class Ticket extends Model
     {
         $tickets = [];
 
-        $items = $this->cache(
-            fn () => app()->make(ApiInterface::class)->get('/tickets')->data,
-            cache_path('tickets')
-        );
+        $items = app()->make(ApiInterface::class)->get('/tickets', ['event_id' => app_event()->id])->data;
 
         foreach ($items as $item) {
             $tickets[] = [
                 'id' => $item->id,
                 'name' => $item->name,
                 'description' => $item->description,
+                'quantity' => $item->quantity,
                 'attendees' => $item->attendees,
                 'price' => $item->price,
                 'type' => $item->type,

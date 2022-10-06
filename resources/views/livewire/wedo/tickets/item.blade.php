@@ -18,7 +18,13 @@
                     <h4 class="uppercase mt-5 text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ $row->color }}-400 to-{{ $row->color }}-900">{{ $row->name }}</h4>
                 </div>
                 <div>
-                    @livewire('wedo.tickets.quantity', ['item' => json_encode($row), 'model' => \App\Models\Ticket::$apiModel], key('single-ticket-quantity-' . $row->id))
+                    @if($row->quantity)
+                        @livewire('wedo.tickets.quantity', ['item' => json_encode($row), 'model' => \App\Models\Ticket::$apiModel], key('single-ticket-quantity-' . $row->id))
+                    @else
+                        <div class="rounded-full bg-rose-500 px-3 py-1 text-base text-white">
+                            {{ __('Sold Out') }}
+                        </div>
+                    @endif
                 </div>
             </div>
 
