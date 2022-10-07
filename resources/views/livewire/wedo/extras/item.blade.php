@@ -12,7 +12,7 @@
                 @if($row->quantity > 0)
                     @livewire('wedo.tickets.quantity', ['item' => json_encode($row), 'max' => $row->quantity > 10 ? 10 : $row->quantity, 'model' => \App\Models\Extra::$apiModel], key('extra-quantity-' . $row->id))
                 @else
-                    <div class="hover:scale-125 ease-in-out duration-150 inline-block text-base bg-white">
+                    <div class="hover:scale-125 ease-in-out duration-150 inline-block text-xs bg-white">
                             <span class="inline-flex items-center rounded-full px-2 py-0.5 font-medium text-gray-800 uppercase">
                                   <svg class="mr-1.5 h-2 w-2 text-gray-400" fill="currentColor" viewBox="0 0 8 8">
                                     <circle cx="4" cy="4" r="3" />
