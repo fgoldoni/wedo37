@@ -132,8 +132,8 @@
                                         </div>
 
                                         <div class="ml-4 flow-root flex-shrink-0">
-                                            @if($row->quantity > 0)
-                                                @livewire('wedo.tickets.quantity', ['item' => json_encode($item), 'max' => $item->quantity > 10 ? 10 : $item->quantity, 'model' => \App\Models\Ticket::$apiModel], key('ticket-mobile-quantity-' . $item->id))
+                                            @if($item->quantity > 0)
+                                                @livewire('wedo.tickets.quantity', ['item' => json_encode($item), 'max' => $item?->quantity > 10 ? 10 : $item?->quantity, 'model' => \App\Models\Ticket::$apiModel], key('ticket-mobile-quantity-' . $item->id))
                                             @else
                                                 <div class="hover:scale-125 ease-in-out duration-150 inline-block text-xs bg-white">
                             <span class="inline-flex items-center rounded-full px-2 py-0.5 font-medium text-gray-800 uppercase">
