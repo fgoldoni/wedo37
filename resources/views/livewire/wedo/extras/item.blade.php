@@ -9,7 +9,7 @@
             </div>
 
             <div class="ml-4 flow-root flex-shrink-0">
-                @livewire('wedo.tickets.quantity', ['item' => json_encode($row), 'model' => \App\Models\Extra::$apiModel], key('extra-quantity-' . $row->id))
+                @livewire('wedo.tickets.quantity', ['item' => json_encode($row), 'max' => $row->quantity > 10 ? 10 : $row->quantity, 'model' => \App\Models\Extra::$apiModel], key('extra-quantity-' . $row->id))
             </div>
         </div>
     </div>
