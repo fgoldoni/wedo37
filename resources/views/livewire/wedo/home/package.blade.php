@@ -18,7 +18,7 @@
                            </p>
                        @endif
                    </a>
-                    <div class="relative z-20 w-full h-auto py-8 text-white bg-{{ app_color() }}-400 border-t-0 border-yellow-200 px-7">
+                    <div class="relative z-20 w-full h-auto py-8 text-white bg-{{ app_color() }}-500 border-t-0 border-yellow-200 px-7">
                         @if($ticket->quantity > 0)
                             <a href="javascript:;" class="hover:scale-125 ease-in-out duration-150 inline-block text-xs font-semibold absolute top-0 -mt-3.5 rounded-full px-4 py-2 uppercase text-{{ app_color() }}-500 bg-white">
                                 {{ __('layout.package.details') }}
