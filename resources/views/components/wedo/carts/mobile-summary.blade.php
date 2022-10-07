@@ -132,7 +132,7 @@
                                         </div>
 
                                         <div class="ml-4 flow-root flex-shrink-0">
-                                            @livewire('wedo.tickets.quantity', ['item' => json_encode($item), 'model' => \App\Models\Ticket::$apiModel], key('ticket-mobile-quantity-' . $item->id))
+                                            @livewire('wedo.tickets.quantity', ['item' => json_encode($item), 'max' => $item->quantity > 10 ? 10 : $item->quantity, 'model' => \App\Models\Ticket::$apiModel], key('ticket-mobile-quantity-' . $item->id))
                                         </div>
                                     </div>
                                 </div>
