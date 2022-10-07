@@ -24,7 +24,7 @@
                                             <p class="mx-auto mt-3 max-w-4xl text-xl text-gray-900 sm:mt-5 sm:text-2xl whitespace-pre-wrap">{{ app_event()->description }}</p>
                                         </div>
                                         <div class="relative scrollbar-thin scrollbar-thumb-secondary-400 scrollbar-track-secondary-200 overflow-y-auto max-height">
-                                            <ul class="grid grid-cols-1 space-y-4">
+                                            <ul class="grid grid-cols-1 space-y-4  mt-4">
                                                 @livewire('wedo.tickets.item', ['item' => json_encode($row)], key('wedo.tickets.item-' . $row->id))
                                             </ul>
                                         </div>

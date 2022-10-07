@@ -20,7 +20,7 @@
                                         <div class="relative scrollbar-thin scrollbar-thumb-secondary-400 scrollbar-track-secondary-200 overflow-y-auto max-height">
                                             <ul class="grid grid-cols-1 space-y-4">
                                                 @foreach($rows as $row)
-                                                    @livewire('wedo.tickets.item', ['item' => json_encode($row)], key('wedo.tickets.item-' . $row->id))
+                                                    @livewire('wedo.tickets.item', ['item' => json_encode($row), 'first' => $loop->first], key('wedo.tickets.item-' . $row->id))
                                                 @endforeach
                                             </ul>
                                         </div>

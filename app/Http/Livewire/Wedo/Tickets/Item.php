@@ -16,6 +16,8 @@ class Item extends Component
 
     public ?string $item = null;
 
+    public ?bool $first = false;
+
     protected $queryString = ['filters'];
 
     public array $filters = [
