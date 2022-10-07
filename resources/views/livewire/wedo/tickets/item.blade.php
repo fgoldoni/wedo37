@@ -1,6 +1,6 @@
 <div>
     <!-- Section 1 -->
-    <section class="relative  @if($first) pt-8 @else p-2 @endif">
+    <section class="relative  @if($first && ($row->quantity > 0) && ($row->quantity <= 5)) pt-8 @else p-2 @endif">
         <div
             @class([
                 'p-10 border-' . app_color() . '-300 border-t-2 shadow-2xl -translate-y-2 md:mt-0 hover:shadow-xl hover:-translate-y-1 ease-in-out delay-150 duration-300',
