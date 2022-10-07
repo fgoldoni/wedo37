@@ -24,7 +24,7 @@
                     <h4 class="uppercase mt-5 text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-{{ $row->color }}-400 to-{{ $row->color }}-900">{{ $row->name }}</h4>
                 </div>
                 <div>
-                    @if($row->quantity)
+                    @if($row->quantity > 0)
                         @livewire('wedo.tickets.quantity', ['item' => json_encode($row), 'max' => $row->quantity > 10 ? 10 : $row->quantity, 'model' => \App\Models\Ticket::$apiModel], key('single-ticket-quantity-' . $row->id))
                     @else
                         <div class="hover:scale-125 ease-in-out duration-150 inline-block text-base bg-white">
