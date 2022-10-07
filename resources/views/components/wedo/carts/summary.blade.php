@@ -37,6 +37,7 @@
                                                 <p class="text-gray-900">€ {{ $item->quantity * $item->price }}</p>
                                             @else
                                                 @if($item->quantity > 0)
+                                                    {{ json_encode($item) }}
                                                     @livewire('wedo.tickets.quantity', ['item' => json_encode($item), 'max' => $item?->quantity > 10 ? 10 : $item?->quantity, 'model' => \App\Models\Ticket::$apiModel], key('ticket-quantity-' . $item->id))
                                                 @else
                                                     <div class="hover:scale-125 ease-in-out duration-150 inline-block text-xs bg-white">
