@@ -38,6 +38,15 @@ class Browse extends Component
         return $this->redirect($checkoutSession->url);
     }
 
+    public function sofort()
+    {
+        $checkoutSession = $this->checkoutSession(['sofort']);
+
+        session()->put('checkout-session-id', $checkoutSession->id);
+
+        return $this->redirect($checkoutSession->url);
+    }
+
     public function getHasExtraProperty()
     {
         $items = EnsureTeamMiddleware::sessionCart()?->items;

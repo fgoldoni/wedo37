@@ -17,7 +17,7 @@ trait WithStripeCheckout
 
     }
 
-    public function checkoutSession()
+    public function checkoutSession($method = ['card']): \Stripe\Checkout\Session
     {
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
@@ -32,12 +32,13 @@ trait WithStripeCheckout
         $description = implode(' | ', $list);
 
         return \Stripe\Checkout\Session::create([
+            'payment_method_types' => $method,
             'mode' => 'payment',
             'line_items' => [
                 array_map(fn ($item) => [
                     'quantity' => $item->quantity,
                     'price_data' => [
-                        'currency' => 'EUR',
+                        'currency' => 'eur',
                         'product_data' => [
                             'name' => $item->name
                         ],
