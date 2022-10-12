@@ -18,36 +18,28 @@
                         <x-wedo.disclosure title="{{ __('Secure payment') }}" open>
 
                             <!-- Section 1 -->
-                            <section class="w-full overflow-hidden relative" wire:click="save">
+                            <section class="w-full overflow-hidden relative">
                                 <div class="max-w-6xl relative mx-auto flex px-0 px-10 flex-col items-center justify-center">
                                     <div class="flex items-center justify-center">
-                                        <x-wedo.loader class="h-6 w-6" wire:loading  wire:target="save"></x-wedo.loader>
-                                        <span class="animate-pulse text-gray-900 text-2xl" wire:loading  wire:target="save"> Processing ... </span>
+                                        <x-wedo.loader class="h-6 w-6" wire:loading></x-wedo.loader>
+                                        <span class="animate-pulse text-gray-900 text-2xl" wire:loading> Processing ... </span>
                                     </div>
-                                    <div  wire:loading.remove wire:target="save" class="flex flex-wrap justify-start grid grid-cols-3 gap-6 mt-8">
-                                        <div class="h-16 w-16 bg-white rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center">
+                                    <div  wire:loading.remove class="flex flex-wrap justify-start grid grid-cols-4 gap-6 mt-8">
+                                        <div class="h-16 w-16 bg-white rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center" wire:click="save">
                                             <img class="w-12 h-12" src="{{ asset('images/cards/mastercard.svg') }}" alt="mastercard">
                                         </div>
-                                        <div class="h-16 w-16 bg-white rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center">
+                                        <div class="h-16 w-16 bg-white rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center" wire:click="save">
                                             <img class="w-12 h-12" src="{{ asset('images/cards/visa.svg') }}" alt="visa">
                                         </div>
-                                        <div class="h-16 w-16 bg-white rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center">
+                                        <div class="h-16 w-16 bg-white rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center" wire:click="save">
                                             <img class="w-12 h-12" src="{{ asset('images/cards/payment-card-amex.svg') }}" alt="amex">
+                                        </div>
+                                        <div class="h-16 w-30 px-4 bg-white rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center" wire:click="sofort">
+                                            <img class="h-4 sm:h-6" src="{{ asset('images/svg/sofort.svg') }}" alt="sofort">
                                         </div>
                                     </div>
                                 </div>
                             </section>
-
-                            <x-wedo.divider label="{{ __('Or with Sofort') }}" class="py-8"></x-wedo.divider>
-                            <div class="flex items-center justify-center">
-                                <x-wedo.loader class="h-6 w-6" wire:loading  wire:target="sofort"></x-wedo.loader>
-                                <span class="animate-pulse text-gray-900 text-2xl" wire:loading  wire:target="sofort"> Processing ... </span>
-                            </div>
-                            <div class="flex items-center justify-center pt-4 relative cursor-pointer" wire:click="sofort">
-                                <div wire:loading.remove wire:target="sofort" class="h-20 w-30 px-4 bg-white rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center">
-                                    <img class="h-10" src="{{ asset('images/svg/sofort.svg') }}" alt="sofort">
-                                </div>
-                            </div>
 
                             <x-wedo.divider label="{{ __('Or with Paypal') }}" class="py-8"></x-wedo.divider>
                             @livewire('wedo.paypal.browse')
