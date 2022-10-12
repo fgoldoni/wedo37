@@ -73,7 +73,7 @@
                             <li class="p-4 sm:p-6">
                                 <div class="flex items-center sm:items-start">
                                     <div class="h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg bg-gray-200 sm:h-40 sm:w-40">
-                                        <img src="{{ $item->avatar_url }}" alt="{{ $item->name }}" class="h-full w-full object-cover object-center">
+                                        <img src="{{ $item->avatar_url }}" alt="{{ $item->name }}" class="sm:translate-x-12 md:translate-x-0 hover:scale-125 transition-all ease-out cursor-pointer duration-200 h-full w-full object-cover object-center">
                                     </div>
                                     <div class="ml-6 flex-1 text-sm">
                                         <div class="font-medium text-gray-900 sm:flex sm:justify-between">
