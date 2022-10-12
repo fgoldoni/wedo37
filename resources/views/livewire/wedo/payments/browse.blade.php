@@ -19,12 +19,12 @@
 
                             <!-- Section 1 -->
                             <section class="w-full overflow-hidden relative" wire:click="save">
-                                <div class="max-w-6xl relative mx-auto flex sm:px-0 px-10 flex-col items-start sm:items-center justify-center">
+                                <div class="max-w-6xl relative mx-auto flex px-0 px-10 flex-col items-center justify-center">
                                     <div class="flex items-center justify-center">
                                         <x-wedo.loader class="h-6 w-6" wire:loading  wire:target="save"></x-wedo.loader>
                                         <span class="animate-pulse text-gray-900 text-2xl" wire:loading  wire:target="save"> Processing ... </span>
                                     </div>
-                                    <div  wire:loading.remove wire:target="save" class="flex flex-wrap justify-start sm:grid sm:grid-cols-5 gap-6 mt-8">
+                                    <div  wire:loading.remove wire:target="save" class="flex flex-wrap justify-start grid grid-cols-3 gap-6 mt-8">
                                         <div class="h-16 w-16 bg-white rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center">
                                             <img class="w-12 h-12" src="{{ asset('images/cards/mastercard.svg') }}" alt="mastercard">
                                         </div>
@@ -33,12 +33,6 @@
                                         </div>
                                         <div class="h-16 w-16 bg-white rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center">
                                             <img class="w-12 h-12" src="{{ asset('images/cards/payment-card-amex.svg') }}" alt="amex">
-                                        </div>
-                                        <div class="h-16 w-16 bg-white rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center">
-                                            <img class="w-12 h-12" src="{{ asset('images/cards/discover.svg') }}" alt="discover">
-                                        </div>
-                                        <div class="h-16 w-16 bg-white sm:translate-x-12 md:translate-x-0 rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center">
-                                            <img class="w-12 h-12" src="{{ asset('images/cards/cb.svg') }}" alt="Carte Bleue">
                                         </div>
                                     </div>
                                 </div>
