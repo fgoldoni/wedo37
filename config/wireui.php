@@ -98,7 +98,7 @@ return [
         ],
         'dropdown' => [
             'class' => Components\Dropdown::class,
-            'alias' => 'dropdown',
+            'alias' => 'wireui-dropdown',
         ],
         'dropdown.item' => [
             'class' => Components\Dropdown\DropdownItem::class,

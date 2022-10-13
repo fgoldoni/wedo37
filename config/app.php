@@ -237,6 +237,9 @@ return [
         'JsonLdMulti'   => \Artesaos\SEOTools\Facades\JsonLdMulti::class,
         // or
         'SEO' => \Artesaos\SEOTools\Facades\SEOTools::class,
+
+        'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
+        'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
     ])->toArray(),
 
 ];

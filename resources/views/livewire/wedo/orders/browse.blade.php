@@ -24,35 +24,11 @@
                             <dd class="mt-1 font-medium text-gray-900">€  {{ number_format($order->total, 2,'.', ' ')  }}</dd>
                         </div>
                     </dl>
-
-                    <div class="relative flex justify-end lg:hidden">
-                        <div class="flex items-center">
-                            <button type="button" class="-m-2 flex items-center p-2 text-gray-400 hover:text-gray-500" id="menu-0-button" aria-expanded="false" aria-haspopup="true">
-                                <span class="sr-only">Options for order WU88191111</span>
-                                <!-- Heroicon name: outline/ellipsis-vertical -->
-                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />
-                                </svg>
-                            </button>
-                        </div>
-
-                        <!--
-                          Dropdown menu, show/hide based on menu state.
-
-                          Entering: "transition ease-out duration-100"
-                            From: "transform opacity-0 scale-95"
-                            To: "transform opacity-100 scale-100"
-                          Leaving: "transition ease-in duration-75"
-                            From: "transform opacity-100 scale-100"
-                            To: "transform opacity-0 scale-95"
-                        -->
-                        <div class="absolute right-0 z-10 mt-2 w-40 origin-bottom-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-0-button" tabindex="-1">
-                            <div class="py-1" role="none">
-                                <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-0-item-0">View</a>
-                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-0-item-1">Invoice</a>
-                            </div>
-                        </div>
+                    <div class="lg:hidden">
+                        <x-wireui-dropdown>
+                            <x-dropdown.item href="{{ route('confirmation.index', ['orderId' => $order->id]) }}" label="View" />
+                            <x-dropdown.item href="{{ env('API_URL') . '/admin/orders/' . $order->id . '/edit' }}" separator label="Invoice" />
+                        </x-wireui-dropdown>
                     </div>
 
                     <div class="hidden lg:col-span-2 lg:flex lg:items-center lg:justify-end lg:space-x-4">
@@ -92,7 +68,7 @@
                                 </div>
 
                                 <div class="mt-6 sm:flex sm:justify-between">
-                                    <div class="flex items-center">
+                                    <div class="flex items-center space-x-2">
                                         <!-- Heroicon name: mini/check-circle -->
                                         <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
