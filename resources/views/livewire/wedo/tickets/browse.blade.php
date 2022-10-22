@@ -1,7 +1,7 @@
 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
     <!-- Profile -->
-    <x-wedo.jobs.profile :phone="app_event()->phone"></x-wedo.jobs.profile>
+    <x-wedo.jobs.profile :phone="app_team()->phone"></x-wedo.jobs.profile>
 
     @if($rows->isNotEmpty())
         <div class="max-w-7xl mx-auto m-4 sm:px-6 lg:px-8">
