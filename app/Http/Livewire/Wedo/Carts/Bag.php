@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Livewire\Wedo\Carts;
 
+use App\Http\Middleware\EnsureTeamMiddleware;
 use Livewire\Component;
 
 class Bag extends Component
@@ -9,7 +10,7 @@ class Bag extends Component
 
     public function getRowsProperty()
     {
-        return app_session_cart();
+        return session()->get(EnsureTeamMiddleware::cartId());
     }
 
     public function render()
