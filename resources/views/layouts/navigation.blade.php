@@ -63,7 +63,6 @@
                     <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
                         {{ __('layout.navigation.sign_in') }}
                     </x-responsive-nav-link>
-                    <x-wedo.navigation.bag></x-wedo.navigation.bag>
                 </div>
             @endauth
         </div>
