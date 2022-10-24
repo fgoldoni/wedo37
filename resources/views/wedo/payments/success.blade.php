@@ -150,13 +150,13 @@
                                                 $tags = is_array($item->attributes->tags) ? $item->attributes->tags : json_decode($item->attributes->tags);
                                             @endphp
                                             <li class="flex font-medium text-gray-500">
-                                                <x-heroicon-s-check-circle class="w-6 h-6 mr-1.5 text-{{ $item->attributes->color }}-400"></x-heroicon-s-check-circle>
+                                                <x-heroicon-s-check-circle class="w-5 h-5 mr-1.5 text-{{ $item->attributes->color }}-400"></x-heroicon-s-check-circle>
                                                 {{ $item->attributes->attendees }} Person(s)
                                             </li>
 
                                             @foreach($tags as $tag)
                                                 <li class="flex items-center font-medium text-gray-500">
-                                                    <x-heroicon-s-check-circle class="w-4 h-4 mr-1.5 text-{{ $item->attributes->color }}-400"></x-heroicon-s-check-circle>
+                                                    <x-heroicon-s-check-circle class="w-5 h-5 mr-1.5 text-{{ $item->attributes->color }}-400"></x-heroicon-s-check-circle>
                                                     {{ $tag }}
                                                 </li>
                                             @endforeach
