@@ -57,9 +57,12 @@
                             <p class="text-2xl font-medium tracking-wider capitalize">{{ auth()->user()->name }}</p>
 
                             <div class="flex flex-col gap-1">
-                                <p class="font-medium">{{ __('Number of items') }}:</p>
+                                <p class="font-medium">{{ __('Organizer') }}</p>
                                 <p class="text-gray-400 text-sm">
-                                    {{ app_session_order()->total_quantity }} {{ __('Item(s)') }}
+                                    {{ app_team_name() }}
+                                </p>
+                                <p class="text-{{ app_color() }}-400 text-sm relative underline">
+                                    <a href="tel: {{ app_team()->phone }}">{{ app_team()->phone }}</a>
                                 </p>
                             </div>
 
@@ -82,54 +85,7 @@
         </div>
 
 
-
-
-
-        <!--bill to -->
-        <div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-10 py-10 px-4">
-
-            <div class="flex flex-col gap-8">
-
-                <div class="flex flex-col gap-1">
-                    <p class="font-medium">{{ __('Customer') }}:</p>
-                    <p class="text-gray-400 text-sm capitalize">
-                        {{ auth()->user()->name }}
-                    </p>
-                    <p class="text-gray-400 text-sm">
-                        {{ auth()->user()->email }}
-                    </p>
-                    <p class="text-gray-400 text-sm">
-                        {{ auth()->user()->phone }}
-                    </p>
-                </div>
-
-
-{{--                <div class="flex flex-col gap-1">--}}
-{{--                    <p class="font-medium">Tax Number:</p>--}}
-{{--                    <p class="text-gray-400 text-sm">--}}
-{{--                        TAX99110212--}}
-{{--                    </p>--}}
-{{--                </div>--}}
-            </div>
-
-            <div class="flex flex-col gap-8">
-
-                <div class="flex flex-col gap-1">
-                    <p class="font-medium">{{ __('Organizer') }}:</p>
-                    <p class="text-gray-400 text-sm">
-                        {{ app_team_name() }}
-                    </p>
-                    <p class="text-gray-400 text-sm">
-                        {{ app_event()->email }}
-                    </p>
-                    <p class="text-gray-400 text-sm">
-                        {{ app_event()->phone }}
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white shadow sm:rounded-lg">
+        <div class="bg-white shadow sm:rounded-lg mt-8">
             <div class="px-4 py-5 sm:p-6">
                 <h3 class="text-lg font-medium leading-6 text-gray-900">
                     {{ __('layout.card.summary') }}
