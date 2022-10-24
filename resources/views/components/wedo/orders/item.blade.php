@@ -156,7 +156,6 @@
                         <div>
                             <dt class="font-medium text-gray-900">Payment information</dt>
                             <dd class="-ml-4 -mt-1 flex flex-wrap">
-
                                 <div class="ml-4 mt-4 flex-shrink-0">
                                     @if($order->payment->brand === 'visa')
                                         <svg aria-hidden="true" width="36" height="24" viewBox="0 0 36 24" xmlns="http://www.w3.org/2000/svg" class="h-6 w-auto">
@@ -177,11 +176,6 @@
                                         <p class="text-gray-900">Ending with {{ $order->payment->last4  }}</p>
                                     @endif
                                 </div>
-                                @if($order->payment->brand != 'Paypal')
-                                    <div class="ml-4 mt-4">
-                                        <p class="text-gray-900">Ending with {{ $order->payment->last4  }}</p>
-                                    </div>
-                                @endif
                             </dd>
                         </div>
                     </dl>
