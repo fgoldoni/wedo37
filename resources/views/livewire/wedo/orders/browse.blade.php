@@ -1,7 +1,7 @@
 <main class="max-w-7xl mx-auto sm:px-6 lg:px-8">
     <x-wedo.basket :link="__('layout.navigation.browse_orders')" title="{{ __('layout.navigation.browse_orders') }}"></x-wedo.basket>
 
-    <section aria-labelledby="recent-heading" class="space-y-8 sm:px-4">
+    <section aria-labelledby="recent-heading" class="space-y-24 sm:px-4">
         <h2 id="recent-heading" class="sr-only">Recent orders</h2>
         @forelse($orders as $order)
             <div class="border-t border-b border-gray-200 bg-white shadow-sm sm:rounded-lg sm:border">
