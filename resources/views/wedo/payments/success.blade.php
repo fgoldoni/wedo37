@@ -50,7 +50,7 @@
                     <div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-10 px-4">
 
                         <div class="visible-print text-center">
-                            {!! QrCode::size(250)->generate(route('login.token', ['token' => session('token')]) . '?' . http_build_query(['to' => route('confirmation.index', ['orderId' => app_session_order()->id])])); !!}
+                            {!! QrCode::size(250)->generate(env('API_URL') . '/admin/orders/' . app_session_order()->id . '/edit'); !!}
                         </div>
 
                         <div class="flex flex-col gap-8">
