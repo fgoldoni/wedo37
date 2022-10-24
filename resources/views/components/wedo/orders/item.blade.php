@@ -77,7 +77,7 @@
                 {{ __('layout.card.summary') }}
             </h3>
             <div class="mt-2 w-full text-sm text-gray-500">
-                @if(app_session_order())
+                @if($order)
                     <ul role="list" class="mt-6 divide-y divide-gray-200 border-t border-gray-200 text-sm font-medium text-gray-500">
                        @foreach($order->items as $item)
                             @if($item->associatedModel === \App\Models\Ticket::$apiModel)
@@ -126,12 +126,12 @@
                     <dl class="space-y-6 border-t border-gray-200 pt-6 text-sm font-medium text-gray-500">
                         <div class="flex justify-between">
                             <dt>{{ __('Subtotal') }}</dt>
-                            <dd class="text-gray-900">€ {{ app_session_order()?->sub_total }}</dd>
+                            <dd class="text-gray-900">€ {{ $order?->sub_total }}</dd>
                         </div>
 
                         <div class="flex items-center justify-between border-t border-gray-200 pt-6 text-gray-900">
                             <dt class="text-base">{{ __('Total') }}</dt>
-                            <dd class="text-base">€ {{ app_session_order()?->total }}</dd>
+                            <dd class="text-base">€ {{ $order?->total }}</dd>
                         </div>
                     </dl>
 
