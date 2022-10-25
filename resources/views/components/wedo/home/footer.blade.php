@@ -11,9 +11,9 @@
                                 <a href="{{ route('covid') }}" class="text-base text-gray-500 hover:text-gray-900">{{ __('UPDATE-SEITE-COVID-19') }}</a>
                             </li>
 
-                            <li>
-                                <a href="{{ route('about-us') }}" class="text-base text-gray-500 hover:text-gray-900">{{ __('About Us') }}</a>
-                            </li>
+{{--                            <li>--}}
+{{--                                <a href="{{ route('about-us') }}" class="text-base text-gray-500 hover:text-gray-900">{{ __('About Us') }}</a>--}}
+{{--                            </li>--}}
 
                             <li>
                                 <a href="{{ route('contact') }}" rel="nofollow" class="text-base text-gray-500 hover:text-gray-900">{{ __('Frequently asked questions (F.A.Q.)') }}</a>
