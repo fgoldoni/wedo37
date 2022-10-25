@@ -16,7 +16,7 @@
                             </li>
 
                             <li>
-                                <a href="{{ route('contact') }}" class="text-base text-gray-500 hover:text-gray-900">{{ __('Frequently asked questions (F.A.Q.)') }}</a>
+                                <a href="{{ route('contact') }}" rel="nofollow" class="text-base text-gray-500 hover:text-gray-900">{{ __('Frequently asked questions (F.A.Q.)') }}</a>
                             </li>
                         </ul>
                     </div>
