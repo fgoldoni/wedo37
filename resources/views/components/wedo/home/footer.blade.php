@@ -16,7 +16,7 @@
                             </li>
 
                             <li>
-                                <a href="{{ route('contact') }}" class="text-base text-gray-500 hover:text-gray-900">{{ __('Questions les plus fréquentes (F.A.Q )') }}</a>
+                                <a href="{{ route('contact') }}" class="text-base text-gray-500 hover:text-gray-900">{{ __('Frequently asked questions (F.A.Q.)') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -52,10 +52,10 @@
                 <p class="mt-2 text-base text-gray-500">Les dernières nouvelles et événements les plus récents, envoyés dans votre boîte de réception chaque semaine.</p>
             </div>
             <form class="mt-4 sm:flex sm:max-w-md lg:mt-0">
-                <label for="email-address" class="sr-only">Email address</label>
-                <input type="email" name="email-address" id="email-address" autocomplete="email" required class="w-full min-w-0 appearance-none rounded-md border border-gray-300 bg-white py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:border-{{ app_color() }}-500 focus:placeholder-gray-400 focus:outline-none focus:ring-{{ app_color() }}-500 sm:max-w-xs" placeholder="Enter your email">
+                <label for="email-address" class="sr-only">{{ __('Email') }}</label>
+                <input type="email" name="email-address" id="email-address" autocomplete="email" required class="w-full min-w-0 appearance-none rounded-md border border-gray-300 bg-white py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:border-{{ app_color() }}-500 focus:placeholder-gray-400 focus:outline-none focus:ring-{{ app_color() }}-500 sm:max-w-xs" placeholder="{{ __('Email') }}">
                 <div class="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-                    <button type="submit" class="flex w-full items-center justify-center rounded-md border border-transparent bg-{{ app_color() }}-600 py-2 px-4 text-base font-medium text-white hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-{{ app_color() }}-500 focus:ring-offset-2">Subscribe</button>
+                    <button type="submit" class="flex w-full items-center justify-center rounded-md border border-transparent bg-{{ app_color() }}-600 py-2 px-4 text-base font-medium text-white hover:bg-{{ app_color() }}-700 focus:outline-none focus:ring-2 focus:ring-{{ app_color() }}-500 focus:ring-offset-2">{{ __('Subscribe') }}</button>
                 </div>
             </form>
         </div>
