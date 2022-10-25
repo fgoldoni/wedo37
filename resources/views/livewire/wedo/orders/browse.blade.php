@@ -1,10 +1,10 @@
 <main class="max-w-7xl mx-auto sm:px-6 lg:px-8">
     <x-wedo.basket :link="__('layout.navigation.browse_orders')" title="{{ __('layout.navigation.browse_orders') }}"></x-wedo.basket>
 
-    <section aria-labelledby="recent-heading" class="space-y-24 sm:px-4">
+    <section aria-labelledby="recent-heading">
         <h2 id="recent-heading" class="sr-only">Recent orders</h2>
         @forelse($orders as $order)
-            <div class="border-t border-b border-gray-200 bg-white shadow-sm sm:rounded-lg sm:border">
+            <div class="border-t border-b border-gray-200 bg-white shadow-sm sm:rounded-lg sm:border mb-16">
                 <h3 class="sr-only">Order placed on <time datetime="2021-07-06">Jul 6, 2021</time></h3>
 
                 <div class="flex items-center border-b border-gray-200 p-4 sm:grid sm:grid-cols-4 sm:gap-x-6 sm:p-6">
