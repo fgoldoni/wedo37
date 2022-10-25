@@ -61,7 +61,7 @@
                                         <div class="flex h-5 items-center ">
                                             <input id="terms" name="terms"  wire:model.lazy="terms" type="checkbox"  class="h-4 w-4 rounded border-gray-300 text-{{ app_color() }}-600 focus:ring-{{ app_color() }}-500">
                                         </div>
-                                        <label for="terms" class="font-medium text-gray-500"> {!! __('layout.forms.label.terms', ['color' => app_color()]) !!}  </label>
+                                        <label for="terms" class="font-medium text-gray-500"> {!! __('layout.forms.label.terms', ['color' => app_color(), 'url' => route('terms')]) !!}  </label>
                                     </div>
                                     @if ($errors->first('terms'))
                                         <p class="mt-1 text-sm text-rose-500 dark:text-rose-400">{{ $errors->first('terms') }}</p>

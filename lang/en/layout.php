@@ -5,7 +5,7 @@ return [
     'close_continue' => 'Close & Continue',
     'forms' => [
         'label' => [
-            'terms' => 'I accept the <a href="javascript:;" class="btn-title underline cursor-pointer text-:color-500">terms and conditions</a>',
+            'terms' => 'I accept the <a href=":url" target="_blank" class="btn-title underline cursor-pointer text-:color-500">terms and conditions</a>',
             'email' => 'Email address',
             'password' => 'Password',
             'new_password' => 'New Password',

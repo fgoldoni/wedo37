@@ -10,7 +10,7 @@
                 <div class="flex items-center border-b border-gray-200 p-4 sm:grid sm:grid-cols-4 sm:gap-x-6 sm:p-6">
                     <dl class="grid flex-1 grid-cols-2 gap-x-6 text-sm sm:col-span-3 sm:grid-cols-3 lg:col-span-2">
                         <div>
-                            <dt class="font-medium text-gray-900">{{ $order->user->name }}</dt>
+                            <dt class="font-medium text-gray-900">{{ $order->event?->name }}</dt>
                             <dd class="mt-1 text-gray-500">#{{ $order->id }}</dd>
                         </div>
                         <div class="hidden sm:block">
@@ -52,7 +52,7 @@
                         </div>
 
                         <div class="flex flex-col gap-8">
-                            <p class="text-2xl font-medium tracking-wider capitalize">{{ $order->event?->name }}</p>
+                            <p class="text-2xl font-medium tracking-wider capitalize">{{ $order->user?->name }}</p>
 
                             <div class="flex flex-col gap-1">
                                 <p class="font-medium">{{ __('Organizer') }}:</p>

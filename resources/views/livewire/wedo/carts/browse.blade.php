@@ -70,7 +70,10 @@
                                          @endif
                                     @endforeach
                             </ul>
-                            <x-wedo.divider label="Extra(s)"></x-wedo.divider>
+                            @if($hasExtra)
+                                <x-wedo.divider label="Extra(s)"></x-wedo.divider>
+                            @endif
+
                             <ul role="list" class="divide-y divide-gray-200">
                                 @foreach ($carts?->items as $item)
                                     @if($item->associatedModel === \App\Models\Extra::$apiModel)

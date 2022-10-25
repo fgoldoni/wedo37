@@ -25,20 +25,22 @@
 
             </div>
             <div class="lg:col-span-3">
-                <h2 class="btn-title text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900">{{ app_event()?->name }}</h2>
+                <div class="px-4 py-5 sm:p-6">
+                    <h2 class="btn-title text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-{{ app_color() }}-500 to-{{ app_color() }}-900">{{ app_event()?->name }}</h2>
 
-                <div class="mt-2 border-b border-gray-200 pb-5 text-sm sm:flex sm:justify-between">
-                    <dl class="flex">
-                        <dt class="text-gray-500">{{ __('Order Number') }}&nbsp;</dt>
-                        <dd class="font-medium text-gray-900"> #{{ app_session_order()->id }}</dd>
-                    </dl>
-                    <div class="mt-4 sm:mt-0">
+                    <div class="mt-2 border-b border-gray-200 pb-5 text-sm sm:flex sm:justify-between">
                         <dl class="flex">
-                            <dt>
-                                <span class="sr-only">Date</span>
-                                <span class="sm:mx-2 text-gray-400" aria-hidden="true">&middot;</span>
-                            </dt>
+                            <dt class="text-gray-500">{{ __('Order Number') }}&nbsp;</dt>
+                            <dd class="font-medium text-gray-900"> #{{ app_session_order()->id }}</dd>
                         </dl>
+                        <div class="mt-4 sm:mt-0">
+                            <dl class="flex">
+                                <dt>
+                                    <span class="sr-only">Date</span>
+                                    <span class="sm:mx-2 text-gray-400" aria-hidden="true">&middot;</span>
+                                </dt>
+                            </dl>
+                        </div>
                     </div>
                 </div>
 

@@ -5,7 +5,7 @@ return [
     'close_continue' => 'Fermer & Continuer',
     'forms' => [
         'label' => [
-            'terms' => 'J\'accepte les <a href="javascript:;" class="btn-title underline cursor-pointer text-:color-500">termes et conditions</a>',
+            'terms' => 'J\'accepte les <a href=":url"  target="_blank" class="btn-title underline cursor-pointer text-:color-500">termes et conditions</a>',
             'email' => 'Email address',
             'password' => 'Password',
             'new_password' => 'New Password',
@@ -159,11 +159,11 @@ return [
         'browse_extras' => 'Browse Extras',
         'carts' => 'Basket',
         'payments' => 'Paiements',
-        'sign_in' => 'Login Link',
+        'sign_in' => 'Lien de connexion',
         'resumes' => 'My Resumes',
         'applications' => 'My Applications',
         'shortlisted' => 'Shortlisted',
-        'sign_in' => 'Login Link',
+        'sign_in' => 'Lien de connexion',
         'sign_out' => 'Se déconnecter',
     ],
 

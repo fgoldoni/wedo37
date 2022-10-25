@@ -66,9 +66,24 @@ class Browse extends Component
     {
         return $this->redirectRoute('checkout.index');
     }
+    public function getHasExtraProperty()
+    {
+        $items = app_session_cart()?->items;
+
+        if ($items) {
+            foreach ($items as $item) {
+                if ($item->associatedModel === \App\Models\Extra::$apiModel) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
 
     public function render()
     {
-        return view('livewire.wedo.carts.browse', ['carts' => $this->rows]);
+        return view('livewire.wedo.carts.browse', ['carts' => $this->rows,  'hasExtra' => $this->hasExtra]);
     }
 }
