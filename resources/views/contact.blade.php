@@ -14,34 +14,61 @@
                         Questions les plus fréquentes
                     </h3>
                     <div class="w-full px-6 py-6 mx-auto mt-10 bg-white border border-gray-200 rounded-lg sm:px-8 md:px-12 sm:py-8 sm:shadow lg:w-5/6 xl:w-2/3" data-rounded="rounded-lg" data-rounded-max="rounded-full">
-                        <h3 class="text-lg font-bold text-{{ app_color() }}-500 sm:text-xl md:text-2xl" data-primary="{{ app_color() }}-500">{{ __('How to book tickets') }} ?</h3>
+                        <h3 class="text-lg font-bold text-{{ app_color() }}-500 sm:text-xl md:text-2xl" data-primary="{{ app_color() }}-500">{{ __('Je voudrais annuler le billet que j’ai reçu et recevoir un remboursement, que dois-je faire ?') }}</h3>
                         <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
-                            {!! __('Our platform works with your content to provides insights and metrics on how you can grow your business and scale your infastructure.') !!}
+                            {!! __('Veuillez contacter l’organisateur de l’événement pour réclamer un remboursement. L\'approbation du remboursement est à l\'entière discrétion de l\'organisateur de l\'événement. Un lien pour contacter l’organisateur peut être trouvé juste en dessous de l’image sur la page d\'événement. L’e-mail de l’organisateur peut aussi être trouvé dans l’e-mail de confirmation. Rappelez-vous d’inclure l’ID de la commande de votre billet (qui peut être trouvé sur votre billet et dans l’e-mail de confirmation) cela aidera à accélérer le processus de remboursement.') !!}
                         </p>
                     </div>
                     <div class="w-full px-6 py-6 mx-auto mt-10 bg-white border border-gray-200 rounded-lg sm:px-8 md:px-12 sm:py-8 sm:shadow lg:w-5/6 xl:w-2/3" data-rounded="rounded-lg" data-rounded-max="rounded-full">
-                        <h3 class="text-lg font-bold text-{{ app_color() }}-500 sm:text-xl md:text-2xl" data-primary="{{ app_color() }}-500">{{ __('How can i present my ticket at the event entrance') }} ?</h3>
+                        <h3 class="text-lg font-bold text-{{ app_color() }}-500 sm:text-xl md:text-2xl" data-primary="{{ app_color() }}-500">{{ __('Est-il sûr de saisir les détails de ma carte bancaire pour acheter un billet via ' . app_team_name()) . ' ?'}}</h3>
                         <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
-                            Yes, we do! Team pricing is available for any plan. You can take advantage of 30% off for signing up for team pricing of 10 users or more.
+                            Toutes les connexions à notre plate-forme et aux fournisseurs de paiement sont sécurisées par les protocoles cryptographiques TLS / SSL. Cela signifie que les informations de votre carte seront envoyées par Internet sous forme cryptée et sont sécurisées.
+                        </p>
+                        <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
+                            Nous ne gardons pas vos informations de carte sur Sell First. En réalité elle n’atteigne jamais notre plateforme – elles sont soient directement saisis sur le site de notre fournisseur de paiement ou transférer directement sans toucher les serveurs Sell First.
                         </p>
                     </div>
                     <div class="w-full px-6 py-6 mx-auto mt-10 bg-white border border-gray-200 rounded-lg sm:px-8 md:px-12 sm:py-8 sm:shadow lg:w-5/6 xl:w-2/3" data-rounded="rounded-lg" data-rounded-max="rounded-full">
-                        <h3 class="text-lg font-bold text-{{ app_color() }}-500 sm:text-xl md:text-2xl" data-primary="{{ app_color() }}-500">{{ __('Where can i find my tickets') }} ?</h3>
+                        <h3 class="text-lg font-bold text-{{ app_color() }}-500 sm:text-xl md:text-2xl" data-primary="{{ app_color() }}-500">{{ __('[Acheteur de tickets] Préoccupations et questions concernant le coronavirus (Covid-19)') }}</h3>
                         <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
-                            You can easily change your site settings inside of your site dashboard by clicking the top right menu and clicking the settings button.
+                            Nous comprenons que l'épidémie actuelle de coronavirus suscite de nombreuses inquiétudes. Nous sommes là pour vous aider du mieux que nous pouvons.
+                        </p>
+                        <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
+                            Veuillez vous tenir au courant des suggestions de votre gouvernement local à ce sujet et suivre tous les conseils et règlements.
+                        </p>
+                        <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
+                            J'ai souscrit une assurance de remboursement. Puis-je l'utiliser ?
+                        </p>
+                        <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
+                            Pour faire une demande de remboursement, veuillez consulter le site Web de l'assureur. Il s'agit de la tierce partie qui fournit l'assurance.
+                        </p>
+                        <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
+                            J'ai une question ou je souhaite obtenir un remboursement pour un événement non annulé. Que dois-je faire ?
+                        </p>
+                        <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
+                            Nous vous suggérons de contacter directement l'organisateur de l'événement. Vous trouverez le formulaire de contact sur la page de l'événement et dans l'e-mail de confirmation que nous vous avons envoyé lorsque vous avez acheté les billets.
+                        </p>
+                        <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
+                            Que se passe-t-il si un événement est annulé ?
+                        </p>
+                        <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
+                            Le prix du billet vous sera automatiquement remboursé pour tout événement annulé. Veuillez noter que ce remboursement n'inclut pas les frais ou services supplémentaires et qu'il peut prendre jusqu'à 21 jours pour être reversé sur votre compte.
                         </p>
                     </div>
                     <div class="w-full px-6 py-6 mx-auto mt-10 bg-white border border-gray-200 rounded-lg sm:px-8 md:px-12 sm:py-8 sm:shadow lg:w-5/6 xl:w-2/3" data-rounded="rounded-lg" data-rounded-max="rounded-full">
-                        <h3 class="text-lg font-bold text-{{ app_color() }}-500 sm:text-xl md:text-2xl" data-primary="{{ app_color() }}-500">{{ __('What does a ticket look like') }} ?</h3>
+                        <h3 class="text-lg font-bold text-{{ app_color() }}-500 sm:text-xl md:text-2xl" data-primary="{{ app_color() }}-500">{{ __('Comment puis-je contacter l’organisateur de l\'événement ?') }}</h3>
                         <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
-                            You can easily change your site settings inside of your site dashboard by clicking the top right menu and clicking the settings button.
+                            Vous pouvez trouver un lien pour contacter l'organisateur d’événement juste en dessous de la bannière sur la page d’événement.
+                        </p>
+                        <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
+                            Si vous avez déjà acheté un billet, vous pouvez aussi trouver l’adresse e-mail de l’organisateur dans votre e-mail de confirmation.
                         </p>
                     </div>
 
                     <div class="w-full px-6 py-6 mx-auto mt-10 bg-white border border-gray-200 rounded-lg sm:px-8 md:px-12 sm:py-8 sm:shadow lg:w-5/6 xl:w-2/3" data-rounded="rounded-lg" data-rounded-max="rounded-full">
-                        <h3 class="text-lg font-bold text-{{ app_color() }}-500 sm:text-xl md:text-2xl" data-primary="{{ app_color() }}-500">{{ __('How to contact an event organizer') }} ?</h3>
+                        <h3 class="text-lg font-bold text-{{ app_color() }}-500 sm:text-xl md:text-2xl" data-primary="{{ app_color() }}-500">{{ __('J’ai une question à propos d’un événement') }} ?</h3>
                         <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
-                            You can easily change your site settings inside of your site dashboard by clicking the top right menu and clicking the settings button.
+                            Si vous avez des questions spécifiques à propos d’un événement (temps, lieu, accès, spécifications des exigences etc…), veuillez directement contacter l’organisateur via la page de l’événement sur {{ app_team_name() }}. Un lien pour contacter l’organisateur de l’événement peut être trouvé juste en dessous de l’image (bannière) de la page d’événement.
                         </p>
                     </div>
                 </div>
