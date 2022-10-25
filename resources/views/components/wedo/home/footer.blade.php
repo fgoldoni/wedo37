@@ -94,7 +94,7 @@
                     </a>
                 @endif
             </div>
-            <p class="mt-8 text-base text-gray-400 md:order-1 md:mt-0">{{ __('pages/home.footer.copyright', ['team' => app_team_name()]) }}</p>
+            <p class="mt-8 text-base text-gray-400 md:order-1 md:mt-0">{{ __('pages/home.footer.copyright', ['team' => config('app.name')]) }}</p>
         </div>
     </div>
 </footer>
