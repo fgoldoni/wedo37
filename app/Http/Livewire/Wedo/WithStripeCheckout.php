@@ -19,7 +19,9 @@ trait WithStripeCheckout
 
     public function checkoutSession($method = ['card']): \Stripe\Checkout\Session
     {
-        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        $stripeSecret = app_team()->stripe_secret ?? env('STRIPE_SECRET');
+
+        \Stripe\Stripe::setApiKey($stripeSecret);
 
         \Stripe\Stripe::setApiVersion('2022-08-01');
 

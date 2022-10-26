@@ -24,25 +24,31 @@
                                         <x-wedo.loader class="h-6 w-6" wire:loading></x-wedo.loader>
                                         <span class="animate-pulse text-gray-900 text-2xl" wire:loading> Processing ... </span>
                                     </div>
-                                    <div  wire:loading.remove class="flex flex-wrap justify-start grid grid-cols-4 gap-6 mt-8">
-                                        <div class="h-16 w-16 bg-white rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center" wire:click="save">
-                                            <img class="w-12 h-12" src="{{ asset('images/cards/mastercard.svg') }}" alt="mastercard">
+                                    @if(app_team()->stripe)
+                                        <div  wire:loading.remove class="flex flex-wrap justify-start grid @if(app_team()->sofort) grid-cols-4 @else grid-cols-3 @endif gap-6 mt-8">
+                                            <div class="h-16 w-16 bg-white rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center" wire:click="save">
+                                                <img class="w-12 h-12" src="{{ asset('images/cards/mastercard.svg') }}" alt="mastercard">
+                                            </div>
+                                            <div class="h-16 w-16 bg-white rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center" wire:click="save">
+                                                <img class="w-12 h-12" src="{{ asset('images/cards/visa.svg') }}" alt="visa">
+                                            </div>
+                                            <div class="h-16 w-16 bg-white rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center" wire:click="save">
+                                                <img class="w-12 h-12" src="{{ asset('images/cards/payment-card-amex.svg') }}" alt="amex">
+                                            </div>
+                                            @if(app_team()->sofort)
+                                                <div class="h-16 w-30 px-4 bg-white rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center" wire:click="sofort">
+                                                    <img class="h-4 sm:h-6" src="{{ asset('images/svg/sofort.svg') }}" alt="sofort">
+                                                </div>
+                                            @endif
                                         </div>
-                                        <div class="h-16 w-16 bg-white rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center" wire:click="save">
-                                            <img class="w-12 h-12" src="{{ asset('images/cards/visa.svg') }}" alt="visa">
-                                        </div>
-                                        <div class="h-16 w-16 bg-white rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center" wire:click="save">
-                                            <img class="w-12 h-12" src="{{ asset('images/cards/payment-card-amex.svg') }}" alt="amex">
-                                        </div>
-                                        <div class="h-16 w-30 px-4 bg-white rounded-2xl hover:scale-125 transition-all ease-out cursor-pointer duration-200 border border-gray-200 flex items-center justify-center" wire:click="sofort">
-                                            <img class="h-4 sm:h-6" src="{{ asset('images/svg/sofort.svg') }}" alt="sofort">
-                                        </div>
-                                    </div>
+                                    @endif
                                 </div>
                             </section>
 
-                            <x-wedo.divider label="{{ __('Or with Paypal') }}" class="py-8"></x-wedo.divider>
-                            @livewire('wedo.paypal.browse')
+                            @if(app_team()->paypal)
+                                <x-wedo.divider label="{{ __('Or with Paypal') }}" class="py-8"></x-wedo.divider>
+                                @livewire('wedo.paypal.browse')
+                            @endif
                         </x-wedo.disclosure>
 
                         <x-wedo.carts.mobile-summary :carts="$carts" :has-extra="$hasExtra" id="card-button"  :continue="false"></x-wedo.carts.mobile-summary>

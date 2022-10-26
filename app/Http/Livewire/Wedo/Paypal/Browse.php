@@ -13,8 +13,6 @@ class Browse extends Component
 
     private string $clientId;
 
-    private string $paypalSecret;
-
     protected $listeners = ['setPaypalPayment'];
 
     private mixed $carts;
@@ -44,18 +42,14 @@ class Browse extends Component
 
     public function mount()
     {
-        $this->clientId = env('PAYPAL_ID');
-
-        $this->paypalSecret = env('PAYPAL_SECRET');
+        $this->clientId = app_team()?->paypal_id ?? env('PAYPAL_ID');
 
         $this->carts = app_session_cart();
     }
 
     public function ui()
     {
-        $this->clientId = env('PAYPAL_ID');
-
-        $this->paypalSecret = env('PAYPAL_SECRET');
+        $this->clientId = app_team()->paypal_id ?? env('PAYPAL_ID');
 
         $orders = json_encode([
             'purchase_units' => [[
