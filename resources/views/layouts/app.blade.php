@@ -55,7 +55,7 @@
         <x-dialog z-index="z-50" blur="md" align="center" />
         @livewireScripts
         @if (isset($floatButton))
-            <x-wedo.home.float-button></x-wedo.home.float-button>
+{{--            <x-wedo.home.float-button></x-wedo.home.float-button>--}}
         @endif
 
         @stack('scripts')
