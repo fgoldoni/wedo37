@@ -56,15 +56,15 @@ class Quantity extends Component
     public function remove()
     {
         $this->dialog()->confirm([
-            'title' => 'Are you Sure ?',
-            'description' => 'Remove item from Basket',
+            'title' => __('Are you Sure ?'),
+            'description' => __('Remove item from Basket'),
             'icon' => 'error',
             'accept' => [
-                'label' => 'Yes, remove it',
+                'label' => __('Yes, remove it'),
                 'method' => 'delete',
             ],
             'reject' => [
-                'label' => 'No, cancel',
+                'label' => __('No, cancel'),
                 'method' => 'cancel',
             ],
         ]);
