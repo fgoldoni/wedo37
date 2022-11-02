@@ -25,7 +25,7 @@
     @close-popover-group.window="onClosePopoverGroup"
 
     class="fixed bottom-0 inset-x-0 flex flex-col-reverse text-sm font-medium text-gray-900 lg:hidden">
-    <div class="relative z-10 bg-white border-t border-gray-200 px-4 sm:px-6">
+    <div class="relative z-50 bg-white border-t border-gray-200 px-4 sm:px-6">
         <div class="max-w-lg mx-auto">
             <button
                 @click="toggle"
