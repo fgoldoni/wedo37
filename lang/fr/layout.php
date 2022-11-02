@@ -123,7 +123,7 @@ return [
     ],
 
     'hero' => [
-        'present' => 'present',
+        'present' => 'presents',
         'ticket_reservation' => 'Réservation',
         'add_drink' => 'Ajout de boisson',
     ],

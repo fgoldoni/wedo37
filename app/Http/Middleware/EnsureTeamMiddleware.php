@@ -20,6 +20,7 @@ class EnsureTeamMiddleware
     {
         try {
             if ($subDomain = self::getSubDomain()) {
+                if($subDomain === 'www') return redirect()->to(env('APP_HOME', 'https://sell-first.com/'));
                 $team = Cache::rememberForever(static::getCacheKey($subDomain), function () use ($subDomain) {
                     $response = Http::acceptJson()->get(env('API_URL') . "/api/teams/{$subDomain}");
 
