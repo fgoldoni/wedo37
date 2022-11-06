@@ -81,7 +81,7 @@ class Browse extends Component
         }
 
         return Ticket::query()
-            ->when($this->filters['events'], fn ($query, $events) => $query->whereIn('event_id', $events))
+            ->when($this->filters['events'], fn ($query, $events) => $query->whereIn('event_id', $events)->orderByDesc('price'))
             ->get();
     }
 
