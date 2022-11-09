@@ -6,7 +6,7 @@
     </div>
 
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
-        <div class="lg:col-span-3 px-4 sm:px-0">
+        <div class="lg:col-span-3 px-4 sm:px-0 mt-8">
             <div class="bg-white shadow sm:rounded-lg">
                 <div class="px-4 py-5 sm:p-6">
                     <h3 class="text-lg font-medium leading-6 text-gray-900">Conditions de paiement & d'annulation</h3>
