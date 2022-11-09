@@ -6,11 +6,11 @@
     </div>
 
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
-        <div class="lg:col-span-3 px-4 sm:px-0 mt-8">
+        <div class="lg:col-span-3 px-4 sm:px-0 my-8">
             <div class="bg-white shadow sm:rounded-lg">
                 <div class="px-4 py-5 sm:p-6">
                     <h3 class="text-lg font-medium leading-6 text-gray-900">Conditions de paiement & d'annulation</h3>
-                    <div class="mt-2 max-w-xl text-sm text-gray-500">
+                    <div class="mt-2 w-full text-sm text-gray-500">
                         <p>
                             Toutes les transactions de billets se font entre un Organisateur et les Consommateurs respectifs. Par conséquent, les Consommateurs doivent contacter l'Organisateur concerné pour toute demande de remboursement. Vous trouverez de l'aide pour obtenir un remboursement ici.
                         </p>
