@@ -153,9 +153,11 @@
             </x-wedo.pages.layouts.empty-state>
         @endif
     </div>
-    <div>
-        <div class="flex items-center justify-center">
-            <div class="mapouter"><div class="gmap_canvas"><iframe width="100%" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=Niendorfer%20Strasse%2043&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><br><style>.mapouter{position:relative;text-align:right;height:300px;width:100%;}</style><a href="https://www.embedgooglemap.net">google embed</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:100%;}</style></div></div>
+    @if(app_event()->iframe)
+        <div>
+            <div class="flex items-center justify-center">
+                {!! app_event()->iframe !!}
+            </div>
         </div>
-    </div>
+    @endif
 </div>
