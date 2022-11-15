@@ -87,7 +87,7 @@
         </div>
 
 
-        <div class="bg-white shadow sm:rounded-lg mt-8">
+        <div class="bg-white shadow mt-8">
             <div class="px-4 py-5 sm:p-6">
                 <h3 class="text-lg font-medium leading-6 text-gray-900">
                     {{ __('layout.card.summary') }}
@@ -161,8 +161,10 @@
             </div>
         </div>
 
-
-
+        <x-wedo.home.map class="my-8"></x-wedo.home.map>
     </main>
+
+
+
     <x-wedo.home.footer></x-wedo.home.footer>
 </x-app-layout>
