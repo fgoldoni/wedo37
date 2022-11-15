@@ -36,7 +36,9 @@
                         </section>
                     </div>
                 </div>
-                <x-wedo.carts.summary :carts="$carts" :has-extra="$hasExtra" :display-only="true"></x-wedo.carts.summary>
+                <div class="lg:col-span-1 space-y-4">
+                    <x-wedo.carts.summary :carts="$carts" :has-extra="$hasExtra" :display-only="true"></x-wedo.carts.summary>
+                </div>
             </div>
         </div>
     @else

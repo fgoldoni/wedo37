@@ -1,4 +1,4 @@
-<section class="py-16 bg-gray-50 xl:px-0 px-8">
+<section class="py-16 bg-gray-200 xl:px-0 px-8">
     <div class="w-full max-w-6xl mx-auto">
         <div class="w-full relative md:pr-48">
             <img class="rounded-t-2xl md:rounded-2xl aspect-video object-cover" src="{{ app_event()?->menu }}" alt="{{ app_event()?->name }}">
