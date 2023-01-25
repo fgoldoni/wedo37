@@ -29,9 +29,9 @@
                 {{ app_event()?->address }}
             </p>
 
-            <div class="pt-2 sm:pt-4 mb-5">
+            <div class="sm:pt-4 mb-5">
                 @foreach(collect(app_event()->tags)->chunk(2) as $chunk)
-                    <div class="uppercase flex items-center sm:flex-row  space-x-1 space-x-1 truncate">
+                    <div class="uppercase flex items-center pt-2 sm:flex-row  space-x-1 space-x-1 truncate">
                         @foreach($chunk as $tag)
                             <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
                       <svg class="-ml-1 mr-1.5 h-2 w-2 text-gray-400" fill="currentColor" viewBox="0 0 8 8">
