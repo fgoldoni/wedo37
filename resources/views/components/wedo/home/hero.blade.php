@@ -29,7 +29,7 @@
                 {{ app_event()?->address }}
             </p>
 
-            @foreach($items->chunk(2) as $chunk)
+            @foreach(app_event()->tags->chunk(2) as $chunk)
                 <div class="uppercase flex items-center pt-2 sm:flex-row sm:pt-4 space-x-1 mb-5 truncate">
                     @foreach($chunk as $tag)
                         <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
